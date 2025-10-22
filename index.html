@@ -3227,6 +3227,18 @@ input:checked + .toggle-slider:before {
     box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
 }
 
+.btn-danger {
+    background-color: #dc3545 !important;
+    color: white !important;
+    box-shadow: 0 2px 5px rgba(220, 53, 69, 0.3) !important;
+}
+
+.btn-danger:hover {
+    background-color: #c82333 !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3) !important;
+}
+
 .enrolled-subjects-section h4 {
     margin: 0 0 16px 0;
     color: #374151;
@@ -4344,6 +4356,28 @@ input:checked + .toggle-slider:before {
                             </div>
                         </div>
                     </div>
+
+                    <div class="card enrollment-card">
+                        <div class="card-header">
+                            <i class="fas fa-minus-circle"></i>
+                            <h3>Drop Subject</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="subject-form">
+                                <div class="form-group">
+                                    <label for="drop-subject-input">
+                                        <i class="fas fa-search"></i> Drop Subject
+                                    </label>
+                                    <div class="input-group">
+                                        <input type="text" id="drop-subject-input" placeholder="Enter subject code to drop" class="form-input">
+                                        <button class="btn btn-danger btn-drop" id="drop-subject-btn">
+                                            <i class="fas fa-trash"></i> Drop Subject
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             
@@ -4979,7 +5013,7 @@ input:checked + .toggle-slider:before {
                                 <i class="fas fa-calculator"></i>
                             </div>
                             <h3>Tentative Assessment</h3>
-                            <p>View your tentative tuition and fee assessment</p>
+                            <p>View your tentative tuition and fee assessment in Pesos (P)</p>
                             <button class="doc-btn">
                                 <i class="fas fa-eye"></i> View Assessment
                             </button>
@@ -5133,19 +5167,22 @@ input:checked + .toggle-slider:before {
                             <tbody>
                                 <tr>
                                     <td>Registrar's Office</td>
-                                    <td>Academic Records Clearance </td>
+                                    <td>Academic Records Clearance <br>
+                                    <div class="stat-label">(Ecr Submission & Uploading Ecr)</div> </td>
                                     <td><span class="status-badge status-completed">Completed</span></td>
                                     <td><button class="view-action">View</button></td>
                                 </tr>
                                 <tr>
                                     <td>Accounting Office</td>
                                     <td>Financial Clearance<br>
+                                    <div class="stat-label">(Budget Legislation)</div</td>
                                     <td><span class="status-badge status-completed">Completed</span></td>
                                     <td><button class="view-action">View</button></td>
                                 </tr>
                                 <tr>
                                     <td>Library</td>
                                     <td>Library Clearance<br>
+                                    <div class="stat-label">(Return Borrowed)</div</td>
                                     <td><span class="status-badge status-completed">Completed</span></td>
                                     <td><button class="view-action">View</button></td>
                                 </tr>
@@ -5156,7 +5193,8 @@ input:checked + .toggle-slider:before {
                                     <td><button class="view-action">View</button></td>
                                 </tr>
                                 <tr>
-                                    <td>Department of Chair </td>                       
+                                    <td>Department of Academic Coordinator Requirement
+                                    <br>OIC / HoD / Dean</td>
                                     <td>Department Clearance</td>
                                     <td><span class="status-badge status-completed">Completed</span></td>
                                     <td><button class="view-action">View</button></td>
@@ -7333,11 +7371,13 @@ input:checked + .toggle-slider:before {
             const triSelect = document.getElementById('trimester-select-enroll');
             const subjectInput = document.getElementById('subject-input');
             const addSubjectBtn = document.getElementById('add-subject-btn');
+            const dropSubjectInput = document.getElementById('drop-subject-input');
+            const dropSubjectBtn = document.getElementById('drop-subject-btn');
             const enrolledList = document.getElementById('enrolled-subjects');
             const currentEnrollment = document.getElementById('current-enrollment');
             const subjectCount = document.getElementById('subject-count');
 
-            if (!enrollBtn || !yearSelect || !triSelect || !addSubjectBtn || !enrolledList) return;
+            if (!enrollBtn || !yearSelect || !triSelect || !addSubjectBtn || !dropSubjectBtn || !enrolledList) return;
 
             let enrolledSubjects = [];
 
@@ -7420,6 +7460,33 @@ input:checked + .toggle-slider:before {
                 updateSubjectsList();
                 updateOverview();
                 subjectInput.value = '';
+            });
+
+            dropSubjectBtn.addEventListener('click', function() {
+                const val = dropSubjectInput.value.trim();
+                if (!val) {
+                    alert('Please enter a subject code to drop');
+                    return;
+                }
+
+                const subjectIndex = enrolledSubjects.findIndex(subject => 
+                    subject.toLowerCase().includes(val.toLowerCase()) || 
+                    subject.toLowerCase() === val.toLowerCase()
+                );
+
+                if (subjectIndex === -1) {
+                    alert('Subject not found in enrolled subjects');
+                    return;
+                }
+
+                const subjectToDrop = enrolledSubjects[subjectIndex];
+                if (confirm(`Are you sure you want to drop "${subjectToDrop}"?`)) {
+                    enrolledSubjects.splice(subjectIndex, 1);
+                    updateSubjectsList();
+                    updateOverview();
+                    dropSubjectInput.value = '';
+                    alert(`Successfully dropped "${subjectToDrop}"`);
+                }
             });
 
             // Initial update
