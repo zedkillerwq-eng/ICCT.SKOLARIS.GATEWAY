@@ -1713,40 +1713,524 @@ input:checked + .toggle-slider:before {
 }
 
 /* Feedback Styles */
-.feedback-form {
-    max-width: 600px;
+.feedback-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 32px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
 }
 
-.form-group {
-    margin-bottom: 20px;
+.feedback-intro {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex: 1;
 }
 
-.form-group label {
+.intro-icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.intro-content h2 {
+    margin: 0 0 8px 0;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.intro-content p {
+    margin: 0;
+    opacity: 0.9;
+    font-size: 16px;
+}
+
+.feedback-stats {
+    display: flex;
+    gap: 24px;
+}
+
+.stat-box {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 16px 20px;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+}
+
+.stat-number {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 4px;
     display: block;
-    margin-bottom: 8px;
+}
+
+.stat-label {
+    font-size: 12px;
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.feedback-tabs {
+    display: flex;
+    background: #f8fafc;
+    border-radius: 12px;
+    padding: 4px;
+    margin-bottom: 32px;
+    border: 1px solid #e5e7eb;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 16px 24px;
+    border: none;
+    background: transparent;
+    border-radius: 8px;
+    font-weight: 600;
+    color: #6b7280;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+    background: white;
+    color: #1f2937;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tab-btn i {
+    font-size: 16px;
+}
+
+.feedback-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.feedback-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e5e7eb;
+    overflow: hidden;
+}
+
+.card-header-professional {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    padding: 24px 32px;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.card-header-professional i {
+    color: #3b82f6;
+    font-size: 20px;
+}
+
+.card-header-professional h3 {
+    margin: 0;
+    color: #1f2937;
+    font-size: 20px;
     font-weight: 600;
 }
 
-.form-control {
-    width: 100%;
-    padding: 12px 15px;
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
-    background-color: var(--card-bg);
-    color: var(--text-color);
+.card-body {
+    padding: 32px;
+}
+
+.feedback-form-professional {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.form-group-professional {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group-professional label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    color: #374151;
     font-size: 14px;
-    transition: var(--transition);
 }
 
-.form-control:focus {
+.form-group-professional label i {
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.form-select-professional,
+.form-input-professional {
+    padding: 12px 16px;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-select-professional:focus,
+.form-input-professional:focus {
     outline: none;
-    border-color: var(--primary);
-    box-shadow: 0 0 0 2px rgba(30, 58, 95, 0.2);
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
-textarea.form-control {
-    min-height: 150px;
+.form-textarea-professional {
+    padding: 12px 16px;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 14px;
     resize: vertical;
+    font-family: inherit;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-textarea-professional:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.file-upload-area {
+    position: relative;
+    border: 2px dashed #d1d5db;
+    border-radius: 8px;
+    padding: 24px;
+    text-align: center;
+    transition: border-color 0.2s, background-color 0.2s;
+    cursor: pointer;
+}
+
+.file-upload-area:hover {
+    border-color: #3b82f6;
+    background-color: #f0f9ff;
+}
+
+.file-input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.file-upload-content i {
+    font-size: 32px;
+    color: #9ca3af;
+    margin-bottom: 8px;
+}
+
+.file-upload-content p {
+    margin: 0 0 4px 0;
+    color: #374151;
+    font-weight: 500;
+}
+
+.file-upload-content small {
+    color: #6b7280;
+    font-size: 12px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    font-weight: 500;
+    color: #374151;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #3b82f6;
+}
+
+.form-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    padding-top: 16px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.recent-feedback-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.feedback-item {
+    padding: 20px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background: #fafafa;
+}
+
+.feedback-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.feedback-category {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.feedback-category.academic {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.feedback-category.facilities {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.feedback-date {
+    color: #6b7280;
+    font-size: 12px;
+}
+
+.feedback-item h4 {
+    margin: 0 0 8px 0;
+    color: #1f2937;
+    font-size: 16px;
+}
+
+.feedback-item p {
+    margin: 0 0 12px 0;
+    color: #4b5563;
+    line-height: 1.5;
+}
+
+.status-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.status-badge.in-review {
+    background: #fef3c7;
+    color: #d97706;
+}
+
+.status-badge.resolved {
+    background: #dcfce7;
+    color: #166534;
+}
+
+/* Evaluation Wizard Styles */
+.evaluation-wizard {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.wizard-step {
+    display: none;
+}
+
+.wizard-step.active {
+    display: block;
+}
+
+.step-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.step-header h3 {
+    margin: 0;
+    color: #1f2937;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.step-content {
+    background: white;
+    border-radius: 12px;
+    padding: 32px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.step-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.evaluation-criteria-modern {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-bottom: 32px;
+}
+
+.criteria-group {
+    background: #f8fafc;
+    border-radius: 12px;
+    padding: 24px;
+    border: 1px solid #e5e7eb;
+}
+
+.criteria-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.criteria-header i {
+    color: #3b82f6;
+    font-size: 20px;
+}
+
+.criteria-header h4 {
+    margin: 0;
+    color: #1f2937;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.criteria-items {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.criteria-item-modern {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.criteria-item-modern label {
+    flex: 1;
+    font-weight: 500;
+    color: #374151;
+    margin-right: 20px;
+}
+
+.rating-stars {
+    display: flex;
+    gap: 4px;
+}
+
+.rating-stars i {
+    font-size: 20px;
+    color: #d1d5db;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.rating-stars i:hover,
+.rating-stars i.active {
+    color: #fbbf24;
+}
+
+.rating-stars i.far:hover ~ i,
+.rating-stars i.fas ~ i {
+    color: #d1d5db;
+}
+
+.rating-stars i.fas {
+    color: #fbbf24;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .feedback-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 24px;
+    }
+
+    .feedback-stats {
+        justify-content: center;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .step-actions {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .criteria-item-modern {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .rating-stars {
+        align-self: flex-end;
+    }
+
+    .file-upload-area {
+        padding: 16px;
+    }
 }
 
 /* Prospectus Styles */
@@ -4384,78 +4868,23 @@ textarea.form-control {
 
                 <!-- SHS Uniforms -->
                 <div id="shs-uniform-options" class="uniform-section-container" style="display:none;">
-                    <!-- Academic Tracks -->
+                    <!-- SHS Uniform -->
                     <div class="card uniform-category-card">
                         <div class="card-header">
                             <div>
                                 <h2 class="card-title">
-                                    <i class="fas fa-book"></i> Academic Tracks
+                                    <i class="fas fa-school"></i> Senior High School Uniform
                                 </h2>
-                                <p class="card-subtitle">Select your enrolled SHS track uniform</p>
+                                <p class="card-subtitle">Standard uniform for all SHS students</p>
                             </div>
                         </div>
                         <div class="uniform-grid-professional">
-                            <div class="uniform-card uniform-option" data-program="STEM" data-category="shs">
+                            <div class="uniform-card uniform-option" data-program="SHS Uniform" data-category="shs">
                                 <div class="uniform-card-icon">
-                                    <i class="fas fa-flask"></i>
+                                    <i class="fas fa-graduation-cap"></i>
                                 </div>
-                                <h3 class="uniform-card-title">STEM</h3>
-                                <p class="uniform-card-description">Science, Technology, Engineering & Math</p>
-                                <div class="uniform-card-badge">
-                                    <i class="fas fa-check-circle"></i> Selected
-                                </div>
-                            </div>
-
-                            <div class="uniform-card uniform-option" data-program="ABM" data-category="shs">
-                                <div class="uniform-card-icon">
-                                    <i class="fas fa-chart-line"></i>
-                                </div>
-                                <h3 class="uniform-card-title">ABM</h3>
-                                <p class="uniform-card-description">Accountancy, Business & Management</p>
-                                <div class="uniform-card-badge">
-                                    <i class="fas fa-check-circle"></i> Selected
-                                </div>
-                            </div>
-
-                            <div class="uniform-card uniform-option" data-program="HUMSS" data-category="shs">
-                                <div class="uniform-card-icon">
-                                    <i class="fas fa-users"></i>
-                                </div>
-                                <h3 class="uniform-card-title">HUMSS</h3>
-                                <p class="uniform-card-description">Humanities & Social Sciences</p>
-                                <div class="uniform-card-badge">
-                                    <i class="fas fa-check-circle"></i> Selected
-                                </div>
-                            </div>
-
-                            <div class="uniform-card uniform-option" data-program="GAS" data-category="shs">
-                                <div class="uniform-card-icon">
-                                    <i class="fas fa-th"></i>
-                                </div>
-                                <h3 class="uniform-card-title">GAS</h3>
-                                <p class="uniform-card-description">General Academic Strand</p>
-                                <div class="uniform-card-badge">
-                                    <i class="fas fa-check-circle"></i> Selected
-                                </div>
-                            </div>
-
-                            <div class="uniform-card uniform-option" data-program="TVL" data-category="shs">
-                                <div class="uniform-card-icon">
-                                    <i class="fas fa-tools"></i>
-                                </div>
-                                <h3 class="uniform-card-title">TVL</h3>
-                                <p class="uniform-card-description">Technical-Vocational-Livelihood</p>
-                                <div class="uniform-card-badge">
-                                    <i class="fas fa-check-circle"></i> Selected
-                                </div>
-                            </div>
-
-                            <div class="uniform-card uniform-option" data-program="Arts & Design" data-category="shs">
-                                <div class="uniform-card-icon">
-                                    <i class="fas fa-palette"></i>
-                                </div>
-                                <h3 class="uniform-card-title">Arts & Design</h3>
-                                <p class="uniform-card-description">Arts & Design Track</p>
+                                <h3 class="uniform-card-title">SHS Uniform</h3>
+                                <p class="uniform-card-description">Senior High School Standard Uniform</p>
                                 <div class="uniform-card-badge">
                                     <i class="fas fa-check-circle"></i> Selected
                                 </div>
@@ -5094,273 +5523,365 @@ textarea.form-control {
             
             <!-- Feedback Section -->
             <div id="feedback" class="content-section">
-                <div class="breadcrumb">            
+                <div class="breadcrumb">
                     <a href="#" data-section="dashboard">Dashboard</a> <i class="fas fa-chevron-right"></i> <span>Feedback/Faculty Evaluation</span>
                 </div>
                 <h1 class="page-title">Feedback & Faculty Evaluation</h1>
-                
-                <!-- Tab Navigation -->
-                <div class="card" style="margin-bottom: 20px;">
-                    <div style="display: flex; gap: 0; border-bottom: 1px solid var(--border-color);">
-                        <button id="feedback-tab-btn" class="btn" style="flex: 1; padding: 15px; border-radius: 0; border: none; background: none; border-bottom: 3px solid var(--primary);">
-                            <i class="fas fa-comments"></i> General Feedback
-                        </button>
-                        <button id="evaluation-tab-btn" class="btn" style="flex: 1; padding: 15px; border-radius: 0; border: none; background: none;">
-                            <i class="fas fa-chalkboard-teacher"></i> Faculty Evaluation
-                        </button>
+
+                <!-- Professional Header -->
+                <div class="feedback-header">
+                    <div class="feedback-intro">
+                        <div class="intro-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="intro-content">
+                            <h2>Your Voice Matters</h2>
+                            <p>Help us improve by sharing your feedback and evaluating your professors</p>
+                        </div>
+                    </div>
+                    <div class="feedback-stats">
+                        <div class="stat-box">
+                            <div class="stat-number">98%</div>
+                            <div class="stat-label">Response Rate</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Support Available</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-number">1-2</div>
+                            <div class="stat-label">Business Days</div>
+                        </div>
                     </div>
                 </div>
 
+                <!-- Tab Navigation -->
+                <div class="feedback-tabs">
+                    <button id="feedback-tab-btn" class="tab-btn active">
+                        <i class="fas fa-comments"></i>
+                        <span>General Feedback</span>
+                    </button>
+                    <button id="evaluation-tab-btn" class="tab-btn">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <span>Faculty Evaluation</span>
+                    </button>
+                </div>
+
                 <!-- General Feedback Section -->
-                <div id="feedback-section" class="card">          
-                    <div class="card-header">
-                        <h2 class="card-title">We Value Your Feedback</h2>  
+                <div id="feedback-section" class="feedback-content">
+                    <div class="feedback-card">
+                        <div class="card-header-professional">
+                            <i class="fas fa-bullhorn"></i>
+                            <h3>Share Your Thoughts</h3>
+                        </div>
+                        <div class="card-body">
+                            <form class="feedback-form-professional">
+                                <div class="form-row">
+                                    <div class="form-group-professional">
+                                        <label for="feedback-type">
+                                            <i class="fas fa-tag"></i> Feedback Category
+                                        </label>
+                                        <select id="feedback-type" class="form-select-professional" required>
+                                            <option value="">Select a category</option>
+                                            <option value="academic">Academic Services</option>
+                                            <option value="facilities">Facilities & Equipment</option>
+                                            <option value="technology">Technology & Systems</option>
+                                            <option value="administration">Administrative Services</option>
+                                            <option value="suggestion">Improvement Suggestions</option>
+                                            <option value="complaint">Complaints & Issues</option>
+                                            <option value="compliment">Positive Feedback</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group-professional">
+                                        <label for="feedback-priority">
+                                            <i class="fas fa-exclamation-triangle"></i> Priority Level
+                                        </label>
+                                        <select id="feedback-priority" class="form-select-professional">
+                                            <option value="low">Low Priority</option>
+                                            <option value="medium" selected>Medium Priority</option>
+                                            <option value="high">High Priority</option>
+                                            <option value="urgent">Urgent</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group-professional">
+                                    <label for="feedback-subject">
+                                        <i class="fas fa-heading"></i> Subject
+                                    </label>
+                                    <input type="text" id="feedback-subject" class="form-input-professional" placeholder="Brief description of your feedback" required>
+                                </div>
+
+                                <div class="form-group-professional">
+                                    <label for="feedback-message">
+                                        <i class="fas fa-align-left"></i> Detailed Message
+                                    </label>
+                                    <textarea id="feedback-message" class="form-textarea-professional" placeholder="Please provide detailed information about your feedback. Include specific details, suggestions for improvement, or any relevant context." rows="6" required></textarea>
+                                </div>
+
+                                <div class="form-group-professional">
+                                    <label for="feedback-attachment">
+                                        <i class="fas fa-paperclip"></i> Attachments (Optional)
+                                    </label>
+                                    <div class="file-upload-area">
+                                        <input type="file" id="feedback-attachment" class="file-input" multiple accept="image/*,.pdf,.doc,.docx">
+                                        <div class="file-upload-content">
+                                            <i class="fas fa-cloud-upload-alt"></i>
+                                            <p>Click to upload files or drag and drop</p>
+                                            <small>Supported: Images, PDF, Word documents (Max 10MB)</small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group-professional">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="anonymous-feedback">
+                                        <span class="checkmark"></span>
+                                        Submit anonymously (Your identity will be protected)
+                                    </label>
+                                </div>
+
+                                <div class="form-actions">
+                                    <button type="button" class="btn btn-secondary">
+                                        <i class="fas fa-save"></i> Save Draft
+                                    </button>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-paper-plane"></i> Submit Feedback
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                    <div class="feedback-form">
-                        <div class="form-group">
-                            <label for="feedback-type">Feedback Type</label>
-                            <select id="feedback-type" class="form-control">
-                                <option value="">Select feedback type</option>
-                                <option value="suggestion">Suggestion</option>
-                                <option value="complaint">Complaint</option>
-                                <option value="compliment">Compliment</option>
-                                <option value="bug">Bug Report</option>
-                                <option value="other">Other</option>
-                            </select>
+
+                    <!-- Recent Feedback -->
+                    <div class="feedback-card">
+                        <div class="card-header-professional">
+                            <i class="fas fa-history"></i>
+                            <h3>Recent Feedback</h3>
                         </div>
-                        <div class="form-group">
-                            <label for="feedback-subject">Subject</label>
-                            <input type="text" id="feedback-subject" class="form-control" placeholder="Enter subject">
+                        <div class="card-body">
+                            <div class="recent-feedback-list">
+                                <div class="feedback-item">
+                                    <div class="feedback-meta">
+                                        <span class="feedback-category academic">Academic</span>
+                                        <span class="feedback-date">2 days ago</span>
+                                    </div>
+                                    <h4>Library Resources Enhancement</h4>
+                                    <p>Suggestion for expanding digital library resources...</p>
+                                    <div class="feedback-status">
+                                        <span class="status-badge in-review">In Review</span>
+                                    </div>
+                                </div>
+                                <div class="feedback-item">
+                                    <div class="feedback-meta">
+                                        <span class="feedback-category facilities">Facilities</span>
+                                        <span class="feedback-date">1 week ago</span>
+                                    </div>
+                                    <h4>Classroom Maintenance</h4>
+                                    <p>Report about air conditioning issues in Room 205...</p>
+                                    <div class="feedback-status">
+                                        <span class="status-badge resolved">Resolved</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="feedback-message">Message</label>
-                            <textarea id="feedback-message" class="form-control" placeholder="Please provide detailed feedback..."></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="feedback-attachment">Attachment (Optional)</label>
-                            <input type="file" id="feedback-attachment" class="form-control">
-                        </div>
-                        <button class="btn btn-primary">
-                            <i class="fas fa-paper-plane"></i> Submit Feedback
-                        </button>
                     </div>
                 </div>
 
                 <!-- Faculty Evaluation Section -->
-                <div id="evaluation-section" class="card" style="display: none;">
-                    <div class="card-header">
-                        <h2 class="card-title">Faculty Evaluation</h2>
-                    </div>
-                    
-                    <div class="evaluation-form" style="padding: 20px;">
-                        <!-- Professor Selection -->
-                        <div class="form-group">
-                            <label for="select-professor">Select Professor to Evaluate</label>
-                            <select id="select-professor" class="form-control">
-                                <option value="">Choose a professor...</option>
-                                <option value="1">Chions, Jord Dedal</option>
-                                <option value="2">Vilog, Jericho Manlangit</option>
-                            </select>
+                <div id="evaluation-section" class="feedback-content" style="display: none;">
+                    <div class="evaluation-wizard">
+                        <!-- Step 1: Professor Selection -->
+                        <div class="wizard-step active" id="step-1">
+                            <div class="step-header">
+                                <div class="step-number">1</div>
+                                <h3>Select Professor & Subject</h3>
+                            </div>
+                            <div class="step-content">
+                                <div class="form-row">
+                                    <div class="form-group-professional">
+                                        <label for="select-professor">
+                                            <i class="fas fa-user-graduate"></i> Professor
+                                        </label>
+                                        <select id="select-professor" class="form-select-professional" required>
+                                            <option value="">Choose a professor...</option>
+                                            <option value="1">Chions, Jord Dedal</option>
+                                            <option value="2">Vilog, Jericho Manlangit</option>
+                                            <option value="3">Prof. Maria Santos</option>
+                                            <option value="4">Dr. Juan dela Cruz</option>
+                                            <option value="5">Prof. Ana Reyes</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group-professional">
+                                        <label for="select-subject">
+                                            <i class="fas fa-book"></i> Subject
+                                        </label>
+                                        <select id="select-subject" class="form-select-professional" required>
+                                            <option value="">Choose a subject...</option>
+                                            <option value="OLIPT2">Integrative Programming and Technologies 2</option>
+                                            <option value="OLSA01">System Administration and Maintenance</option>
+                                            <option value="CS101">Computer Programming 1</option>
+                                            <option value="IT201">Data Structures and Algorithms</option>
+                                            <option value="IT202">Database Management Systems</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="step-actions">
+                                    <button class="btn btn-primary" id="next-to-step2">
+                                        <span>Continue to Evaluation</span>
+                                        <i class="fas fa-arrow-right"></i>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
 
-                        <!-- Subject Selection -->
-                        <div class="form-group">
-                            <label for="select-subject">Select Subject</label>
-                            <select id="select-subject" class="form-control">
-                                <option value="">Choose a subject...</option>
-                                <option value="OLIPT2">Integrative Programming and Technologies 2</option>
-                                <option value="OLSA01">System Administration and Maintenance</option>
-                            </select>
-                        </div>
-
-                        <!-- Evaluation Criteria -->
-                        <div class="evaluation-criteria" style="margin-top: 30px;">
-                            <h3 style="margin-bottom: 20px; color: var(--primary);">Evaluation Criteria</h3>
-                            
-                            <!-- Teaching Effectiveness -->
-                            <div class="criteria-section" style="margin-bottom: 30px;">
-                                <h4 style="margin-bottom: 15px;">Teaching Effectiveness</h4>
-                                <div class="criteria-items" style="display: grid; gap: 15px;">
-                                    <div class="criteria-item">
-                                        <label>Explains the subject matter clearly and thoroughly</label>
-                                        <div class="rating" style="display: flex; gap: 10px; margin-top: 8px;">
-                                            <label class="rating-option" style="display: flex; align-items: center; gap: 5px;">
-                                                <input type="radio" name="teaching-clarity" value="5">
-                                                <span>5</span>
-                                            </label>
-                                            <label class="rating-option" style="display: flex; align-items: center; gap: 5px;">
-                                                <input type="radio" name="teaching-clarity" value="4">
-                                                <span>4</span>
-                                            </label>
-                                            <label class="rating-option" style="display: flex; align-items: center; gap: 5px;">
-                                                <input type="radio" name="teaching-clarity" value="3">
-                                                <span>3</span>
-                                            </label>
-                                            <label class="rating-option" style="display: flex; align-items: center; gap: 5px;">
-                                                <input type="radio" name="teaching-clarity" value="2">
-                                                <span>2</span>
-                                            </label>
-                                            <label class="rating-option" style="display: flex; align-items: center; gap: 5px;">
-                                                <input type="radio" name="teaching-clarity" value="1">
-                                                <span>1</span>
-                                            </label>
+                        <!-- Step 2: Evaluation Form -->
+                        <div class="wizard-step" id="step-2">
+                            <div class="step-header">
+                                <div class="step-number">2</div>
+                                <h3>Rate Your Professor</h3>
+                            </div>
+                            <div class="step-content">
+                                <div class="evaluation-criteria-modern">
+                                    <!-- Teaching Effectiveness -->
+                                    <div class="criteria-group">
+                                        <div class="criteria-header">
+                                            <i class="fas fa-chalkboard"></i>
+                                            <h4>Teaching Effectiveness</h4>
+                                        </div>
+                                        <div class="criteria-items">
+                                            <div class="criteria-item-modern">
+                                                <label>Explains concepts clearly and thoroughly</label>
+                                                <div class="rating-stars" data-name="teaching-clarity">
+                                                    <i class="far fa-star" data-rating="1"></i>
+                                                    <i class="far fa-star" data-rating="2"></i>
+                                                    <i class="far fa-star" data-rating="3"></i>
+                                                    <i class="far fa-star" data-rating="4"></i>
+                                                    <i class="far fa-star" data-rating="5"></i>
+                                                </div>
+                                            </div>
+                                            <div class="criteria-item-modern">
+                                                <label>Uses effective teaching methods</label>
+                                                <div class="rating-stars" data-name="teaching-methods">
+                                                    <i class="far fa-star" data-rating="1"></i>
+                                                    <i class="far fa-star" data-rating="2"></i>
+                                                    <i class="far fa-star" data-rating="3"></i>
+                                                    <i class="far fa-star" data-rating="4"></i>
+                                                    <i class="far fa-star" data-rating="5"></i>
+                                                </div>
+                                            </div>
+                                            <div class="criteria-item-modern">
+                                                <label>Provides helpful feedback on assignments</label>
+                                                <div class="rating-stars" data-name="feedback-quality">
+                                                    <i class="far fa-star" data-rating="1"></i>
+                                                    <i class="far fa-star" data-rating="2"></i>
+                                                    <i class="far fa-star" data-rating="3"></i>
+                                                    <i class="far fa-star" data-rating="4"></i>
+                                                    <i class="far fa-star" data-rating="5"></i>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
-                                    <div class="criteria-item">
-                                        <label>Uses effective teaching methods and strategies</label>
-                                        <div class="rating" style="display: flex; gap: 10px; margin-top: 8px;">
-                                            <label class="rating-option" style="display: flex; align-items: center; gap: 5px;">
-                                                <input type="radio" name="teaching-methods" value="5">
-                                                <span>5</span>
-                                            </label>
-                                            <label class="rating-option" style="display: flex; align-items: center; gap: 5px;">
-                                                <input type="radio" name="teaching-methods" value="4">
-                                                <span>4</span>
-                                            </label>
-                                            <label class="rating-option" style="display: flex; align-items: center; gap: 5px;">
-                                                <input type="radio" name="teaching-methods" value="3">
-                                                <span>3</span>
-                                            </label>
-                                            <label class="rating-option" style="display: flex; align-items: center; gap: 5px;">
-                                                <input type="radio" name="teaching-methods" value="2">
-                                                <span>2</span>
-                                            </label>
-                                            <label class="rating-option" style="display: flex; align-items: center; gap: 5px;">
-                                                <input type="radio" name="teaching-methods" value="1">
-                                                <span>1</span>
-                                            </label>
+                                    <!-- Class Management -->
+                                    <div class="criteria-group">
+                                        <div class="criteria-header">
+                                            <i class="fas fa-users-cog"></i>
+                                            <h4>Class Management</h4>
+                                        </div>
+                                        <div class="criteria-items">
+                                            <div class="criteria-item-modern">
+                                                <label>Maintains classroom discipline</label>
+                                                <div class="rating-stars" data-name="class-discipline">
+                                                    <i class="far fa-star" data-rating="1"></i>
+                                                    <i class="far fa-star" data-rating="2"></i>
+                                                    <i class="far fa-star" data-rating="3"></i>
+                                                    <i class="far fa-star" data-rating="4"></i>
+                                                    <i class="far fa-star" data-rating="5"></i>
+                                                </div>
+                                            </div>
+                                            <div class="criteria-item-modern">
+                                                <label>Makes effective use of class time</label>
+                                                <div class="rating-stars" data-name="time-management">
+                                                    <i class="far fa-star" data-rating="1"></i>
+                                                    <i class="far fa-star" data-rating="2"></i>
+                                                    <i class="far fa-star" data-rating="3"></i>
+                                                    <i class="far fa-star" data-rating="4"></i>
+                                                    <i class="far fa-star" data-rating="5"></i>
+                                                </div>
+                                            </div>
+                                            <div class="criteria-item-modern">
+                                                <label>Encourages student participation</label>
+                                                <div class="rating-stars" data-name="student-engagement">
+                                                    <i class="far fa-star" data-rating="1"></i>
+                                                    <i class="far fa-star" data-rating="2"></i>
+                                                    <i class="far fa-star" data-rating="3"></i>
+                                                    <i class="far fa-star" data-rating="4"></i>
+                                                    <i class="far fa-star" data-rating="5"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Professionalism -->
+                                    <div class="criteria-group">
+                                        <div class="criteria-header">
+                                            <i class="fas fa-user-tie"></i>
+                                            <h4>Professionalism</h4>
+                                        </div>
+                                        <div class="criteria-items">
+                                            <div class="criteria-item-modern">
+                                                <label>Shows professionalism and good character</label>
+                                                <div class="rating-stars" data-name="professionalism">
+                                                    <i class="far fa-star" data-rating="1"></i>
+                                                    <i class="far fa-star" data-rating="2"></i>
+                                                    <i class="far fa-star" data-rating="3"></i>
+                                                    <i class="far fa-star" data-rating="4"></i>
+                                                    <i class="far fa-star" data-rating="5"></i>
+                                                </div>
+                                            </div>
+                                            <div class="criteria-item-modern">
+                                                <label>Is punctual and regular in attendance</label>
+                                                <div class="rating-stars" data-name="attendance">
+                                                    <i class="far fa-star" data-rating="1"></i>
+                                                    <i class="far fa-star" data-rating="2"></i>
+                                                    <i class="far fa-star" data-rating="3"></i>
+                                                    <i class="far fa-star" data-rating="4"></i>
+                                                    <i class="far fa-star" data-rating="5"></i>
+                                                </div>
+                                            </div>
+                                            <div class="criteria-item-modern">
+                                                <label>Is approachable and helpful</label>
+                                                <div class="rating-stars" data-name="approachability">
+                                                    <i class="far fa-star" data-rating="1"></i>
+                                                    <i class="far fa-star" data-rating="2"></i>
+                                                    <i class="far fa-star" data-rating="3"></i>
+                                                    <i class="far fa-star" data-rating="4"></i>
+                                                    <i class="far fa-star" data-rating="5"></i>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <!-- Class Management -->
-                            <div class="criteria-section" style="margin-bottom: 30px;">
-                                <h4 style="margin-bottom: 15px;">Class Management</h4>
-                                <div class="criteria-items" style="display: grid; gap: 15px;">
-                                    <div class="criteria-item">
-                                        <label>Maintains discipline in the classroom</label>
-                                        <div class="rating" style="display: flex; gap: 10px; margin-top: 8px;">
-                                            <label class="rating-option" style="display: flex; align-items: center; gap: 5px;">
-                                                <input type="radio" name="class-discipline" value="5">
-                                                <span>5</span>
-                                            </label>
-                                            <label class="rating-option" style="display: flex; align-items: center; gap: 5px;">
-                                                <input type="radio" name="class-discipline" value="4">
-                                                <span>4</span>
-                                            </label>
-                                            <label class="rating-option" style="display: flex; align-items: center; gap: 5px;">
-                                                <input type="radio" name="class-discipline" value="3">
-                                                <span>3</span>
-                                            </label>
-                                            <label class="rating-option" style="display: flex; align-items: center; gap: 5px;">
-                                                <input type="radio" name="class-discipline" value="2">
-                                                <span>2</span>
-                                            </label>
-                                            <label class="rating-option" style="display: flex; align-items: center; gap: 5px;">
-                                                <input type="radio" name="class-discipline" value="1">
-                                                <span>1</span>
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="criteria-item">
-                                        <label>Makes good use of class time</label>
-                                        <div class="rating" style="display: flex; gap: 10px; margin-top: 8px;">
-                                            <label class="rating-option" style="display: flex; align-items: center; gap: 5px;">
-                                                <input type="radio" name="time-management" value="5">
-                                                <span>5</span>
-                                            </label>
-                                            <label class="rating-option" style="display: flex; align-items: center; gap: 5px;">
-                                                <input type="radio" name="time-management" value="4">
-                                                <span>4</span>
-                                            </label>
-                                            <label class="rating-option" style="display: flex; align-items: center; gap: 5px;">
-                                                <input type="radio" name="time-management" value="3">
-                                                <span>3</span>
-                                            </label>
-                                            <label class="rating-option" style="display: flex; align-items: center; gap: 5px;">
-                                                <input type="radio" name="time-management" value="2">
-                                                <span>2</span>
-                                            </label>
-                                            <label class="rating-option" style="display: flex; align-items: center; gap: 5px;">
-                                                <input type="radio" name="time-management" value="1">
-                                                <span>1</span>
-                                            </label>
-                                        </div>
-                                    </div>
+                                <div class="form-group-professional">
+                                    <label for="evaluation-comments">
+                                        <i class="fas fa-comment"></i> Additional Comments (Optional)
+                                    </label>
+                                    <textarea id="evaluation-comments" class="form-textarea-professional" placeholder="Share any additional feedback about this professor's teaching, suggestions for improvement, or specific experiences you'd like to highlight." rows="4"></textarea>
                                 </div>
-                            </div>
 
-                            <!-- Professional Characteristics -->
-                            <div class="criteria-section" style="margin-bottom: 30px;">
-                                <h4 style="margin-bottom: 15px;">Professional Characteristics</h4>
-                                <div class="criteria-items" style="display: grid; gap: 15px;">
-                                    <div class="criteria-item">
-                                        <label>Shows professionalism and good character</label>
-                                        <div class="rating" style="display: flex; gap: 10px; margin-top: 8px;">
-                                            <label class="rating-option" style="display: flex; align-items: center; gap: 5px;">
-                                                <input type="radio" name="professionalism" value="5">
-                                                <span>5</span>
-                                            </label>
-                                            <label class="rating-option" style="display: flex; align-items: center; gap: 5px;">
-                                                <input type="radio" name="professionalism" value="4">
-                                                <span>4</span>
-                                            </label>
-                                            <label class="rating-option" style="display: flex; align-items: center; gap: 5px;">
-                                                <input type="radio" name="professionalism" value="3">
-                                                <span>3</span>
-                                            </label>
-                                            <label class="rating-option" style="display: flex; align-items: center; gap: 5px;">
-                                                <input type="radio" name="professionalism" value="2">
-                                                <span>2</span>
-                                            </label>
-                                            <label class="rating-option" style="display: flex; align-items: center; gap: 5px;">
-                                                <input type="radio" name="professionalism" value="1">
-                                                <span>1</span>
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="criteria-item">
-                                        <label>Is punctual and regular in attendance</label>
-                                        <div class="rating" style="display: flex; gap: 10px; margin-top: 8px;">
-                                            <label class="rating-option" style="display: flex; align-items: center; gap: 5px;">
-                                                <input type="radio" name="attendance" value="5">
-                                                <span>5</span>
-                                            </label>
-                                            <label class="rating-option" style="display: flex; align-items: center; gap: 5px;">
-                                                <input type="radio" name="attendance" value="4">
-                                                <span>4</span>
-                                            </label>
-                                            <label class="rating-option" style="display: flex; align-items: center; gap: 5px;">
-                                                <input type="radio" name="attendance" value="3">
-                                                <span>3</span>
-                                            </label>
-                                            <label class="rating-option" style="display: flex; align-items: center; gap: 5px;">
-                                                <input type="radio" name="attendance" value="2">
-                                                <span>2</span>
-                                            </label>
-                                            <label class="rating-option" style="display: flex; align-items: center; gap: 5px;">
-                                                <input type="radio" name="attendance" value="1">
-                                                <span>1</span>
-                                            </label>
-                                        </div>
-                                    </div>
+                                <div class="step-actions">
+                                    <button class="btn btn-secondary" id="back-to-step1">
+                                        <i class="fas fa-arrow-left"></i>
+                                        <span>Back</span>
+                                    </button>
+                                    <button class="btn btn-primary" id="submit-evaluation">
+                                        <i class="fas fa-paper-plane"></i>
+                                        <span>Submit Evaluation</span>
+                                    </button>
                                 </div>
-                            </div>
-
-                            <!-- Comments Section -->
-                            <div class="form-group">
-                                <label for="evaluation-comments">Additional Comments (Optional)</label>
-                                <textarea id="evaluation-comments" class="form-control" placeholder="Please provide any additional feedback about the professor..." style="height: 120px;"></textarea>
-                            </div>
-
-                            <div style="margin-top: 30px;">
-                                <button class="btn btn-primary" style="padding: 12px 30px;">
-                                    <i class="fas fa-paper-plane"></i> Submit Evaluation
-                                </button>
                             </div>
                         </div>
                     </div>
@@ -6416,18 +6937,128 @@ textarea.form-control {
         const evaluationSection = document.getElementById('evaluation-section');
 
         feedbackTabBtn.addEventListener('click', function() {
+            feedbackTabBtn.classList.add('active');
+            evaluationTabBtn.classList.remove('active');
             feedbackSection.style.display = 'block';
             evaluationSection.style.display = 'none';
-            feedbackTabBtn.style.borderBottom = '3px solid var(--primary)';
-            evaluationTabBtn.style.borderBottom = 'none';
         });
 
         evaluationTabBtn.addEventListener('click', function() {
+            evaluationTabBtn.classList.add('active');
+            feedbackTabBtn.classList.remove('active');
             feedbackSection.style.display = 'none';
             evaluationSection.style.display = 'block';
-            evaluationTabBtn.style.borderBottom = '3px solid var(--primary)';
-            feedbackTabBtn.style.borderBottom = 'none';
         });
+
+        // Evaluation Wizard Functionality
+        (function() {
+            const step1 = document.getElementById('step-1');
+            const step2 = document.getElementById('step-2');
+            const nextToStep2Btn = document.getElementById('next-to-step2');
+            const backToStep1Btn = document.getElementById('back-to-step1');
+            const submitEvaluationBtn = document.getElementById('submit-evaluation');
+            const selectProfessor = document.getElementById('select-professor');
+            const selectSubject = document.getElementById('select-subject');
+
+            // Star rating functionality
+            function initializeStarRatings() {
+                document.querySelectorAll('.rating-stars').forEach(container => {
+                    const stars = container.querySelectorAll('i');
+                    const name = container.dataset.name;
+
+                    stars.forEach((star, index) => {
+                        star.addEventListener('click', function() {
+                            const rating = index + 1;
+                            // Remove active class from all stars in this container
+                            stars.forEach(s => s.classList.remove('fas', 'active'));
+                            stars.forEach(s => s.classList.add('far'));
+                            // Add active class to clicked star and previous stars
+                            for (let i = 0; i <= index; i++) {
+                                stars[i].classList.remove('far');
+                                stars[i].classList.add('fas', 'active');
+                            }
+                        });
+
+                        star.addEventListener('mouseover', function() {
+                            stars.forEach(s => s.classList.remove('fas', 'active'));
+                            stars.forEach(s => s.classList.add('far'));
+                            for (let i = 0; i <= index; i++) {
+                                stars[i].classList.remove('far');
+                                stars[i].classList.add('fas');
+                            }
+                        });
+
+                        star.addEventListener('mouseout', function() {
+                            stars.forEach(s => {
+                                if (!s.classList.contains('active')) {
+                                    s.classList.remove('fas');
+                                    s.classList.add('far');
+                                }
+                            });
+                        });
+                    });
+                });
+            }
+
+            // Initialize star ratings
+            initializeStarRatings();
+
+            // Step navigation
+            nextToStep2Btn.addEventListener('click', function() {
+                if (!selectProfessor.value || !selectSubject.value) {
+                    alert('Please select both professor and subject before proceeding.');
+                    return;
+                }
+                step1.classList.remove('active');
+                step2.classList.add('active');
+            });
+
+            backToStep1Btn.addEventListener('click', function() {
+                step2.classList.remove('active');
+                step1.classList.add('active');
+            });
+
+            submitEvaluationBtn.addEventListener('click', function() {
+                // Check if all ratings are provided
+                const allRatings = document.querySelectorAll('.rating-stars i.active');
+                if (allRatings.length < 9) { // 9 criteria total
+                    alert('Please provide ratings for all evaluation criteria.');
+                    return;
+                }
+
+                // Collect evaluation data
+                const evaluationData = {
+                    professor: selectProfessor.value,
+                    subject: selectSubject.value,
+                    ratings: {},
+                    comments: document.getElementById('evaluation-comments').value
+                };
+
+                // Collect ratings
+                document.querySelectorAll('.rating-stars').forEach(container => {
+                    const name = container.dataset.name;
+                    const activeStars = container.querySelectorAll('i.active').length;
+                    evaluationData.ratings[name] = activeStars;
+                });
+
+                // Submit evaluation (you can replace this with actual submission logic)
+                alert('Evaluation submitted successfully! Thank you for your feedback.');
+                console.log('Evaluation Data:', evaluationData);
+
+                // Reset form
+                selectProfessor.value = '';
+                selectSubject.value = '';
+                document.getElementById('evaluation-comments').value = '';
+                document.querySelectorAll('.rating-stars i').forEach(star => {
+                    star.classList.remove('fas', 'active');
+                    star.classList.add('far');
+                });
+
+                // Go back to step 1
+                step2.classList.remove('active');
+                step1.classList.add('active');
+            });
+        })();
 
         // Medical Tab Switching (Drug Test and X-ray)
         const drugtestTabBtn = document.getElementById('drugtest-tab-btn');
