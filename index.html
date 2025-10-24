@@ -3431,8 +3431,8 @@
     }
 
     .overview-card {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
+        background: var(--card-bg);
+        color: var(--text-color);
         padding: 20px;
         border-radius: 12px;
         display: flex;
@@ -3442,7 +3442,7 @@
     }
 
     .overview-icon {
-        background: rgba(255, 255, 255, 0.2);
+        background: var(--primary);
         width: 50px;
         height: 50px;
         border-radius: 50%;
@@ -3450,6 +3450,7 @@
         align-items: center;
         justify-content: center;
         font-size: 20px;
+        color: white;
     }
 
     .overview-content h4 {
@@ -3468,7 +3469,7 @@
         display: flex;
         align-items: center;
         gap: 12px;
-        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        background: var(--primary);
         color: white;
         padding: 20px;
         margin: -20px -20px 20px -20px;
@@ -3488,6 +3489,12 @@
     .enrollment-form {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+    }
+
+    .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         gap: 20px;
     }
 
@@ -3772,6 +3779,170 @@
         color: var(--text-color);
     }
 
+    /* Glass Modal Styles */
+    .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: fadeIn 0.3s ease-out;
+    }
+
+    .glass-modal {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 20px;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        max-width: 90vw;
+        max-height: 90vh;
+        overflow: hidden;
+        animation: slideIn 0.3s ease-out;
+    }
+
+    .modal-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 30px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        background: rgba(255, 255, 255, 0.8);
+    }
+
+    .modal-title {
+        margin: 0;
+        font-size: 24px;
+        font-weight: 600;
+        color: var(--text-color);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .modal-close {
+        background: none;
+        border: none;
+        font-size: 24px;
+        color: var(--gray);
+        cursor: pointer;
+        padding: 5px;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .modal-close:hover {
+        background: rgba(0, 0, 0, 0.1);
+        color: var(--text-color);
+    }
+
+    .modal-body {
+        padding: 0;
+        max-height: calc(90vh - 80px);
+        overflow-y: auto;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    .drug-test-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(30, 58, 95, 0.2);
+        border-color: var(--accent);
+    }
+
+    .drug-test-card:hover .overview-icon {
+        background: var(--accent);
+        transform: scale(1.1);
+    }
+
+    .drug-test-card:hover h4 {
+        color: var(--accent);
+    }
+
+    .x-ray-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(227, 62, 70, 0.2);
+        border-color: var(--danger);
+    }
+
+    .x-ray-card:hover .overview-icon {
+        background: var(--danger);
+        transform: scale(1.1);
+    }
+
+    .x-ray-card:hover h4 {
+        color: var(--danger);
+    }
+
+    .physical-exam-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(40, 167, 69, 0.2);
+        border-color: var(--success);
+    }
+
+    .physical-exam-card:hover .overview-icon {
+        background: var(--success);
+        color: white;
+        transform: scale(1.1);
+    }
+
+    .physical-exam-card:hover h4 {
+        color: var(--success);
+    }
+
+    /* Loading Styles */
+    .loading-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(2px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: var(--border-radius);
+        z-index: 10;
+    }
+
+    .loading-spinner {
+        width: 40px;
+        height: 40px;
+        border: 4px solid rgba(30, 58, 95, 0.1);
+        border-left: 4px solid var(--primary);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+
+    .loading-text {
+        margin-top: 10px;
+        font-size: 12px;
+        color: var(--primary);
+        font-weight: 600;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
     /* Notification modal styles */
     .notification-modal {
         display: none;
@@ -3887,9 +4058,80 @@
     }
 
     /* Medical Records Styles */
+    /* Medical Data Boxes */
+    .medical-boxes {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 30px;
+        margin-top: 20px;
+        flex-wrap: wrap;
+    }
+
+    .medical-data-box {
+        background-color: var(--card-bg);
+        border: 2px solid var(--border-color);
+        border-radius: var(--border-radius);
+        padding: 25px;
+        width: 320px;
+        min-height: 200px;
+        box-shadow: var(--box-shadow);
+        transition: var(--transition);
+        position: relative;
+    }
+
+    .medical-data-box::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary), var(--accent));
+        border-radius: var(--border-radius) var(--border-radius) 0 0;
+    }
+
+    .medical-data-box:hover {
+        border-color: var(--primary);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        transform: translateY(-2px);
+    }
+
+    .medical-box-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .medical-box-header i {
+        font-size: 24px;
+        color: var(--primary);
+    }
+
+    .medical-box-header h3 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--text-color);
+    }
+
+    .medical-box-content {
+        color: var(--text-color);
+    }
+
+    .medical-box-content p {
+        margin: 0;
+        color: var(--gray);
+        font-style: italic;
+    }
+
+    /* Medical Records Grid (for modals) */
     .medical-records-grid {
         display: grid;
-        grid-template-rows: repeat(2, auto);
+        grid-template-rows: repeat(auto, auto);
         gap: 15px;
         margin-top: 20px;
     }
@@ -3936,8 +4178,43 @@
         font-weight: 500;
     }
 
-    /* Responsive adjustments for medical records */
+    /* Animations */
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    @keyframes slideIn {
+        from { transform: translateY(-50px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Responsive adjustments */
     @media (max-width: 768px) {
+        .medical-boxes {
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .medical-data-box {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+        }
+
+        .medical-box-header {
+            gap: 8px;
+        }
+
+        .medical-box-header i {
+            font-size: 20px;
+        }
+
+        .medical-box-header h3 {
+            font-size: 16px;
+        }
+
         .medical-row {
             grid-template-columns: 120px repeat(4, 1fr);
         }
@@ -3950,21 +4227,14 @@
         .medical-cell {
             padding: 12px 8px;
         }
-
-        .medical-label {
-            font-size: 11px;
-        }
-
-        .medical-value {
-            font-size: 12px;
-        }
     }
+
         </style>
         <div class="container">
             <!-- Sidebar -->
             <div class="sidebar" id="sidebar">
                 <div class="logo" style="display: flex; align-items: center; justify-content: flex-start;">
-                    <h1 style="margin: 0;">Student Portal</h1>
+                    
                 </div>
                 <ul class="nav-links">
                     <li class="active nav-item" data-section="dashboard">
@@ -4052,7 +4322,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Dashboard Section -->
                 <div id="dashboard" class="content-section active">
                     <h1 class="page-title">Student Dashboard</h1>
@@ -4780,110 +5050,7 @@
                     <div class="card">
                         <div class="profile-container">
                             <div class="profile-info">
-                                <div class="profile-details-grouped">
-                                    <div class="profile-row">
-                                        <div class="profile-item">
-                                            <div class="profile-label">STUDENT NUMBER</div>
-                                            <div class="profile-value">UA20220094</div>
-                                        </div>
-                                        <div class="profile-item">
-                                            <div class="profile-label">LRN</div>
-                                            <div class="profile-value">109329100192</div>
-                                        </div>
-                                        <div class="profile-item">
-                                            <div class="profile-label">YEAR ENROLLED</div>
-                                            <div class="profile-value">2021</div>
-                                        </div>
-                                        <div class="profile-item">
-                                            <div class="profile-label">SCHOLASTIC STATUS</div>
-                                            <div class="profile-value">REGULAR</div>
-                                        </div>
-                                        <div class="profile-item">
-                                            <div class="profile-label">ENTRY CLASSIFICATION</div>
-                                            <div class="profile-value">CONTINUING</div>
-                                        </div>
-                                    </div>
-                                    <div class="profile-row">
-                                        <div class="profile-item">
-                                            <div class="profile-label">PROGRAM</div>
-                                            <div class="profile-value">Bachelor of Science in Information Technology</div>
-                                        </div>
-                                        <div class="profile-item">
-                                            <div class="profile-label">Major</div>
-                                            <div class="profile-value">Information System</div>
-                                        </div>
-                                        <div class="profile-item">
-                                            <div class="profile-label">Curriculum</div>
-                                            <div class="profile-value">First</div>
-                                        </div>
-                                        <div class="profile-item">
-                                            <div class="profile-label">Academic Year</div>
-                                            <div class="profile-value">2025-2026</div>
-                                        </div>
-                                        <div class="profile-item">
-                                            <div class="profile-label">Academic Term</div>
-                                            <div class="profile-value">First Trimester</div>
-                                        </div>
-                                    </div>
-                                    <div class="profile-row">
-                                        <div class="profile-item">
-                                            <div class="profile-label">Address</div>
-                                            <div class="profile-value">Sample Address, City, Province</div>
-                                        </div>
-                                        <div class="profile-item">
-                                            <div class="profile-label">Birthplace</div>
-                                            <div class="profile-value">City, Province</div>
-                                        </div>
-                                        <div class="profile-item">
-                                            <div class="profile-label">Birth Date</div>
-                                            <div class="profile-value">January 1, 2000</div>
-                                        </div>
-                                        <div class="profile-item">
-                                            <div class="profile-label">Sex</div>
-                                            <div class="profile-value">Male</div>
-                                        </div>
-                                        <div class="profile-item">
-                                            <div class="profile-label">Civil Status</div>
-                                            <div class="profile-value">Single</div>
-                                        </div>
-                                    </div>
-                                    <div class="profile-row">
-                                        <div class="profile-item">
-                                            <div class="profile-label">Official Email</div>
-                                            <div class="profile-value">student@icct.edu.ph</div>
-                                        </div>
-                                        <div class="profile-item">
-                                            <div class="profile-label">Mobile Number</div>
-                                            <div class="profile-value">+63 912 345 6789</div>
-                                        </div>
-                                        <div class="profile-item">
-                                            <div class="profile-label">Citizenship</div>
-                                            <div class="profile-value">Filipino</div>
-                                        </div>
-                                        <div class="profile-item">
-                                            <div class="profile-label">Religious Affiliation</div>
-                                            <div class="profile-value">Roman Catholic</div>
-                                        </div>
-                                        <div class="profile-item">
-                                            <div class="profile-label">Talent</div>
-                                            <div class="profile-value">Programming, Music</div>
-                                        </div>
-                                    </div>
-                                    <div class="profile-row">
-                                        <div class="profile-item">
-                                            <div class="profile-label">Skills</div>
-                                            <div class="profile-value">Web Development, Database Management, Problem Solving</div>
-                                        </div>
-                                        <div class="profile-item">
-                                            <div class="profile-label">Hobbies</div>
-                                            <div class="profile-value">Reading, Gaming, Photography</div>
-                                        </div>
-                                        <div class="profile-item">
-                                            <div class="profile-label">Sports</div>
-                                            <div class="profile-value">Basketball, Swimming</div>
-                                        </div>
-                                    </div>
-                                </div>
+                                
                             </div>
                         </div>
                         
@@ -5038,46 +5205,7 @@
                         <div class="card-header">
                             <h2 class="card-title">Medical</h2>
                         </div>
-                        <div class="medical-records-grid">
-                            <div class="medical-row">
-                                <div class="medical-header">Drug Test</div>
-                                <div class="medical-cell">
-                                    <div class="medical-label">1st Year</div>
-                                    <div class="medical-value">Negative - Dec 2021</div>
-                                </div>
-                                <div class="medical-cell">
-                                    <div class="medical-label">2nd Year</div>
-                                    <div class="medical-value">Negative - Dec 2022</div>
-                                </div>
-                                <div class="medical-cell">
-                                    <div class="medical-label">3rd Year</div>
-                                    <div class="medical-value">Negative - Dec 2023</div>
-                                </div>
-                                <div class="medical-cell">
-                                    <div class="medical-label">4th Year</div>
-                                    <div class="medical-value">Pending</div>
-                                </div>
-                            </div>
-                            <div class="medical-row">
-                                <div class="medical-header">X-ray</div>
-                                <div class="medical-cell">
-                                    <div class="medical-label">1st Year</div>
-                                    <div class="medical-value">Normal - Dec 2021</div>
-                                </div>
-                                <div class="medical-cell">
-                                    <div class="medical-label">2nd Year</div>
-                                    <div class="medical-value">Normal - Dec 2022</div>
-                                </div>
-                                <div class="medical-cell">
-                                    <div class="medical-label">3rd Year</div>
-                                    <div class="medical-value">Normal - Dec 2023</div>
-                                </div>
-                                <div class="medical-cell">
-                                    <div class="medical-label">4th Year</div>
-                                    <div class="medical-value">Pending</div>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
                 
@@ -5200,6 +5328,189 @@
                                                 <i class="fas fa-trash"></i> Drop Subject
                                             </button>
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Change Subject Card -->
+                        <div class="card enrollment-card">
+                            <div class="card-header">
+                                <i class="fas fa-exchange-alt"></i>
+                                <h3>Change Subject</h3>
+                            </div>
+                            <div class="card-content">
+                                <div class="change-subject-form">
+                                    <div class="form-group">
+                                        <label for="current-subject-select">
+                                            <i class="fas fa-book"></i> Current Subject
+                                        </label>
+                                        <select id="current-subject-select" class="form-select">
+                                            <option value="">Select current subject</option>
+                                            <option value="CS101">CS101 - Introduction to Programming</option>
+                                            <option value="CS102">CS102 - Data Structures</option>
+                                            <option value="CS201">CS201 - Database Systems</option>
+                                            <option value="CS202">CS202 - Web Development</option>
+                                            <option value="MATH101">MATH101 - Calculus I</option>
+                                            <option value="MATH102">MATH102 - Calculus II</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="new-subject-select">
+                                            <i class="fas fa-plus"></i> New Subject
+                                        </label>
+                                        <select id="new-subject-select" class="form-select">
+                                            <option value="">Select new subject</option>
+                                            <option value="CS101">CS101 - Introduction to Programming</option>
+                                            <option value="CS102">CS102 - Data Structures</option>
+                                            <option value="CS201">CS201 - Database Systems</option>
+                                            <option value="CS202">CS202 - Web Development</option>
+                                            <option value="MATH101">MATH101 - Calculus I</option>
+                                            <option value="MATH102">MATH102 - Calculus II</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Schedule Selection -->
+                                    <div class="schedule-selection" id="schedule-selection" style="display: none;">
+                                        <h4>Select New Schedule</h4>
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="change-day-select">
+                                                    <i class="fas fa-calendar-day"></i> Day
+                                                </label>
+                                                <select id="change-day-select" class="form-select">
+                                                    <option value="">Select day</option>
+                                                    <option value="monday">Monday</option>
+                                                    <option value="tuesday">Tuesday</option>
+                                                    <option value="wednesday">Wednesday</option>
+                                                    <option value="thursday">Thursday</option>
+                                                    <option value="friday">Friday</option>
+                                                    <option value="saturday">Saturday</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="change-time-select">
+                                                    <i class="fas fa-clock"></i> Time
+                                                </label>
+                                                <select id="change-time-select" class="form-select">
+                                                    <option value="">Select time</option>
+                                                    <option value="7:00-8:30">7:00 AM - 8:30 AM</option>
+                                                    <option value="8:30-10:00">8:30 AM - 10:00 AM</option>
+                                                    <option value="10:00-11:30">10:00 AM - 11:30 AM</option>
+                                                    <option value="11:30-1:00">11:30 AM - 1:00 PM</option>
+                                                    <option value="1:00-2:30">1:00 PM - 2:30 PM</option>
+                                                    <option value="2:30-4:00">2:30 PM - 4:00 PM</option>
+                                                    <option value="4:00-5:30">4:00 PM - 5:30 PM</option>
+                                                    <option value="5:30-7:00">5:30 PM - 7:00 PM</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-actions">
+                                        <button class="btn btn-primary btn-change" id="change-subject-btn">
+                                            <i class="fas fa-exchange-alt"></i> Change Subject
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Shift Professor Card -->
+                        <div class="card enrollment-card">
+                            <div class="card-header">
+                                <i class="fas fa-user-graduate"></i>
+                                <h3>Shift Professor</h3>
+                            </div>
+                            <div class="card-content">
+                                <div class="shift-professor-form">
+                                    <div class="form-group">
+                                        <label for="shift-subject-select">
+                                            <i class="fas fa-book"></i> Subject
+                                        </label>
+                                        <select id="shift-subject-select" class="form-select">
+                                            <option value="">Select subject</option>
+                                            <option value="CS101">CS101 - Introduction to Programming</option>
+                                            <option value="CS102">CS102 - Data Structures</option>
+                                            <option value="CS201">CS201 - Database Systems</option>
+                                            <option value="CS202">CS202 - Web Development</option>
+                                            <option value="MATH101">MATH101 - Calculus I</option>
+                                            <option value="MATH102">MATH102 - Calculus II</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="current-professor-select">
+                                            <i class="fas fa-user"></i> Current Professor
+                                        </label>
+                                        <select id="current-professor-select" class="form-select">
+                                            <option value="">Select current professor</option>
+                                            <option value="prof1">Dr. Maria Santos</option>
+                                            <option value="prof2">Prof. Juan Cruz</option>
+                                            <option value="prof3">Dr. Ana Reyes</option>
+                                            <option value="prof4">Prof. Carlos Mendoza</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="new-professor-select">
+                                            <i class="fas fa-user-plus"></i> New Professor
+                                        </label>
+                                        <select id="new-professor-select" class="form-select">
+                                            <option value="">Select new professor</option>
+                                            <option value="prof1">Dr. Maria Santos</option>
+                                            <option value="prof2">Prof. Juan Cruz</option>
+                                            <option value="prof3">Dr. Ana Reyes</option>
+                                            <option value="prof4">Prof. Carlos Mendoza</option>
+                                            <option value="prof5">Dr. Roberto Garcia</option>
+                                            <option value="prof6">Prof. Elena Torres</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Schedule Selection for Professor Shift -->
+                                    <div class="professor-schedule-selection" id="professor-schedule-selection" style="display: none;">
+                                        <h4>Select New Schedule with Professor</h4>
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="professor-day-select">
+                                                    <i class="fas fa-calendar-day"></i> Day
+                                                </label>
+                                                <select id="professor-day-select" class="form-select">
+                                                    <option value="">Select day</option>
+                                                    <option value="monday">Monday</option>
+                                                    <option value="tuesday">Tuesday</option>
+                                                    <option value="wednesday">Wednesday</option>
+                                                    <option value="thursday">Thursday</option>
+                                                    <option value="friday">Friday</option>
+                                                    <option value="saturday">Saturday</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="professor-time-select">
+                                                    <i class="fas fa-clock"></i> Time
+                                                </label>
+                                                <select id="professor-time-select" class="form-select">
+                                                    <option value="">Select time</option>
+                                                    <option value="7:00-8:30">7:00 AM - 8:30 AM</option>
+                                                    <option value="8:30-10:00">8:30 AM - 10:00 AM</option>
+                                                    <option value="10:00-11:30">10:00 AM - 11:30 AM</option>
+                                                    <option value="11:30-1:00">11:30 AM - 1:00 PM</option>
+                                                    <option value="1:00-2:30">1:00 PM - 2:30 PM</option>
+                                                    <option value="2:30-4:00">2:30 PM - 4:00 PM</option>
+                                                    <option value="4:00-5:30">4:00 PM - 5:30 PM</option>
+                                                    <option value="5:30-7:00">5:30 PM - 7:00 PM</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-actions">
+                                        <button class="btn btn-primary btn-shift" id="shift-professor-btn">
+                                            <i class="fas fa-user-graduate"></i> Shift Professor
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -5858,18 +6169,18 @@
                         <div class="account-card">
                             <h3>Amount Due</h3>
                             <div class="amount amount-due">₱ 0.00</div>
-                            <p>No outstanding balance</p>
+                            <p>No outstanding Due</p>
                         </div>
                         <div class="account-card">
-                            <h3>Total Paid</h3>
+                            <h3>Total Payment</h3>
                             <div class="amount amount-paid">₱ 7,079.70</div>
-                            <p>Fully paid for current term</p>
+                            <p>As of 10/06/205</p>
                         </div>
                         <div class="account-card">
                             <h3>Account Balance</h3>
                             <div class="amount amount-balance">₱ 0.00</div>
-                            <p>No remaining balance</p>
-                        </div>[]
+                            <p>No outstanding Balance</p>
+                        </div>
                     </div>
                     
                     <div class="card">
@@ -5970,7 +6281,7 @@
                                     <i class="fas fa-university"></i>
                                 </div>
                                 <h3>Bank Transfer</h3>
-                                <p>Transfer directly from your bank account</p>
+                                <p>Bank to bank transfer</p>
                                 <button class="pay-btn" style="background-color: var(--success);">
                                     <i class="fas fa-exchange-alt"></i> Bank Transfer
                                 </button>
@@ -5980,7 +6291,7 @@
                                     <i class="fas fa-credit-card"></i>
                                 </div>
                                 <h3>Credit/Debit Card</h3>
-                                <p>Pay using Visa, Mastercard, or other cards</p>
+                                <p>Visa/Master cards</p>
                                 <button class="pay-btn" style="background-color: var(--primary);">
                                     <i class="fas fa-credit-card"></i> Pay with Card
                                 </button>
@@ -6134,241 +6445,419 @@
                         <a href="#" data-section="dashboard">Dashboard</a> <i class="fas fa-chevron-right"></i> <span>Medical Records</span>
                     </div>
                     <h1 class="page-title">Medical Records</h1>
-                    
-                    <!-- Medical Records Navigation -->
-                    <div class="card" style="margin-bottom: 20px;">
-                        <div style="display: flex; gap: 0; border-bottom: 1px solid var(--border-color);">
-                            <button id="drugtest-tab-btn" class="btn" style="flex: 1; padding: 15px; border-radius: 0; border: none; background: none; border-bottom: 3px solid var(--primary);">
-                                <i class="fas fa-vial"></i> Drug Test
-                            </button>
-                            <button id="xray-tab-btn" class="btn" style="flex: 1; padding: 15px; border-radius: 0; border: none; background: none;">
-                                <i class="fas fa-x-ray"></i> X-ray Records
-                            </button>
-                        </div>
-                    </div>
 
-                    <!-- Drug Test Section -->
-                    <div id="drugtest-section" class="card">
-                        <div class="card-header">
-                            <h2 class="card-title">Drug Test Application History</h2>
-                        </div>
-                        <div class="document-preview" style="padding: 30px;">
-                            <div style="max-width: 800px; margin: 0 auto;">
-                                <div style="text-align: center; margin-bottom: 30px;">
-                                    <h3 style="font-size: 24px; margin-bottom: 10px;">ICCT COLLEGES</h3>
-                                    <p style="font-size: 16px; color: var(--gray);">Medical Department</p>
-                                    <h4 style="font-size: 20px; margin-top: 20px;">Drug Test Application Form</h4>
+                    <div class="enrollment-container">
+                        <div class="enrollment-overview">
+                            <div class="overview-card physical-exam-card" id="physical-exam-card" style="cursor: pointer; position: relative;">
+                                <div class="overview-icon">
+                                    <i class="fas fa-stethoscope"></i>
                                 </div>
-
-                                <div style="margin-bottom: 30px;">
-                                    <div class="form-group">
-                                        <label style="font-weight: 600; margin-bottom: 8px;">Student Name:</label>
-                                        <input type="text" class="form-control" value="STUDENT NAME" readonly>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label style="font-weight: 600; margin-bottom: 8px;">Student Number:</label>
-                                        <input type="text" class="form-control" value="UA202200984" readonly>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label style="font-weight: 600; margin-bottom: 8px;">Program:</label>
-                                        <input type="text" class="form-control" value="BS Information Technology" readonly>
+                                <div class="overview-content">
+                                    <h4>Physical Exam</h4>
+                                </div>
+                                <div class="loading-overlay" id="physical-exam-loading" style="display: none;">
+                                    <div style="text-align: center;">
+                                        <div class="loading-spinner"></div>
+                                        <div class="loading-text">Loading...</div>
                                     </div>
                                 </div>
-
-                                <div style="margin-bottom: 30px;">
-                                    <h4 style="font-size: 18px; margin-bottom: 15px;">Drug Test History</h4>
-                                    
-                                    <div style="display: flex; flex-direction: column; gap: 15px;">
-                                        <div style="display: flex; align-items: center; gap: 15px; padding: 15px; border-radius: var(--border-radius); background: rgba(40, 167, 69, 0.1);">
-                                            <i class="fas fa-check-circle" style="color: var(--success); font-size: 24px;"></i>
-                                            <div style="flex: 1;">
-                                                <h5 style="margin: 0;">First Year Drug Test</h5>
-                                                <small style="color: var(--gray);">Completed: September 15, 2022</small>
-                                            </div>
-                                            <span class="status-badge status-completed">Completed</span>
-                                        </div>
-                                        
-                                        <div style="display: flex; align-items: center; gap: 15px; padding: 15px; border-radius: var(--border-radius); background: rgba(40, 167, 69, 0.1);">
-                                            <i class="fas fa-check-circle" style="color: var(--success); font-size: 24px;"></i>
-                                            <div style="flex: 1;">
-                                                <h5 style="margin: 0;">Second Year Drug Test</h5>
-                                                <small style="color: var(--gray);">Completed: September 18, 2023</small>
-                                            </div>
-                                            <span class="status-badge status-completed">Completed</span>
-                                        </div>
-                                        
-                                        <div style="display: flex; align-items: center; gap: 15px; padding: 15px; border-radius: var(--border-radius); background: rgba(40, 167, 69, 0.1);">
-            <i class="fas fa-check-circle" style="color: var(--success); font-size: 24px;"></i>
-            <div style="flex: 1;">
-                <h5 style="margin: 0;">Third Year Drug Test</h5>
-                <small style="color: var(--gray);">Completed: September 18, 2023</small>
-            </div>
-            <span class="status-badge status-completed">Completed</span>
-        </div>
-        
-                                        
-                                        <div style="display: flex; align-items: center; gap: 15px; padding: 15px; border-radius: var(--border-radius); background: rgba(40, 167, 69, 0.1);">
-                                            <i class="fas fa-check-circle" style="color: var(--success); font-size: 24px;"></i>
-                                            <div style="flex: 1;">
-                                                <h5 style="margin: 0;">Fourth Year Drug Test</h5>
-                                                <small style="color: var(--gray);">Completed: September 16, 2025</small>
-                                            </div>
-                                            <span class="status-badge status-completed">Completed</span>
-                                        </div>
+                            </div>
+                            <div class="overview-card x-ray-card" id="x-ray-card" style="cursor: pointer; border: 2px solid var(--accent); background: linear-gradient(135deg, rgba(227, 62, 70, 0.1), rgba(227, 62, 70, 0.05)); transition: all 0.3s ease; position: relative;">
+                                <div class="overview-icon" style="background: var(--accent); color: white;">
+                                    <i class="fas fa-x-ray"></i>
+                                </div>
+                                <div class="overview-content">
+                                    <h4 style="color: var(--accent);">X-Ray</h4>
+                                </div>
+                                <div class="loading-overlay" id="x-ray-loading" style="display: none;">
+                                    <div style="text-align: center;">
+                                        <div class="loading-spinner"></div>
+                                        <div class="loading-text">Loading...</div>
                                     </div>
                                 </div>
-
-                                <div style="text-align: center; margin-top: 30px;">
-                                    <p style="color: var(--success); font-weight: 600; margin-bottom: 20px;">
-                                        <i class="fas fa-check-circle"></i> Well Done!
-                                    </p>
-                                    <button class="btn btn-primary" style="padding: 12px 30px; font-size: 16px;">
-                                        <i class="fas fa-file-medical"> &nbsp;  </i>Submit New Drug Test Application
-                                    </button>
+                            </div>
+                            <div class="overview-card drug-test-card" id="drug-test-card" style="cursor: pointer; border: 2px solid var(--primary); background: linear-gradient(135deg, rgba(30, 58, 95, 0.1), rgba(30, 58, 95, 0.05)); transition: all 0.3s ease; position: relative;">
+                                <div class="overview-icon" style="background: var(--primary); color: white;">
+                                    <i class="fas fa-vial"></i>
+                                </div>
+                                <div class="overview-content">
+                                    <h4 style="color: var(--primary);">Drug Test</h4>
+                                </div>
+                                <div class="loading-overlay" id="drug-test-loading" style="display: none;">
+                                    <div style="text-align: center;">
+                                        <div class="loading-spinner"></div>
+                                        <div class="loading-text">Loading...</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- X-ray Section -->
-                    <div id="xray-section" class="card" style="display: none;">
-                        <div class="card-header">
-                            <h2 class="card-title">X-ray Records & Imaging</h2>
+                <!-- Drug Test Modal -->
+                <div id="drug-test-modal" class="modal-overlay" style="display: none;">
+                    <div class="modal-content glass-modal">
+                        <div class="modal-header">
+                            <h2 class="modal-title">
+                                <i class="fas fa-vial"></i> Drug Test Application History
+                            </h2>
+                            <button class="modal-close" id="drug-test-modal-close">
+                                <i class="fas fa-times"></i>
+                            </button>
                         </div>
-                        <div class="document-preview" style="padding: 30px;">
-                            <div style="max-width: 800px; margin: 0 auto;">
-                                <div style="text-align: center; margin-bottom: 30px;">
-                                    <h3 style="font-size: 24px; margin-bottom: 10px;">ICCT COLLEGES</h3>
-                                    <p style="font-size: 16px; color: var(--gray);">Medical Department - Radiology</p>
-                                    <h4 style="font-size: 20px; margin-top: 20px;">X-ray Medical Imaging Records</h4>
-                                </div>
-
-                                <div style="margin-bottom: 30px;">
-                                    <div class="form-group">
-                                        <label style="font-weight: 600; margin-bottom: 8px;">Patient Name:</label>
-                                        <input type="text" class="form-control" value="PATIENT NAME" readonly>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label style="font-weight: 600; margin-bottom: 8px;">Student Number:</label>
-                                        <input type="text" class="form-control" value="UA202200984" readonly>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label style="font-weight: 600; margin-bottom: 8px;">Program:</label>
-                                        <input type="text" class="form-control" value="BS Information Technology" readonly>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label style="font-weight: 600; margin-bottom: 8px;">Blood Type:</label>
-                                        <input type="text" class="form-control" value="O+" readonly>
-                                    </div>
-                                </div>
-
-                                <div style="margin-bottom: 30px;">
-                                    <h4 style="font-size: 18px; margin-bottom: 15px;">X-ray Examination History</h4>
-                                    
-                                    <div style="display: flex; flex-direction: column; gap: 15px;">
-                                        <!-- Latest X-ray -->
-                                        <div style="display: flex; align-items: center; gap: 15px; padding: 20px; border-radius: var(--border-radius); background: rgba(40, 167, 69, 0.1); border: 2px solid var(--success);">
-                                            <i class="fas fa-x-ray" style="color: var(--success); font-size: 32px;"></i>
-                                            <div style="flex: 1;">
-                                                <h5 style="margin: 0; font-size: 16px;">Chest X-ray (PA View)</h5>
-                                                <small style="color: var(--gray);">Date: October 15, 2025</small>
-                                                <p style="margin: 8px 0 0 0; font-size: 14px;">
-                                                    <strong>Result:</strong> Normal cardiac silhouette. Clear lung fields. No active pulmonary disease.
-                                                </p>
-                                                <small style="color: var(--primary); font-weight: 600;">Radiologist: Dr. Maria Santos, MD</small>
-                                            </div>
-                                            <div style="display: flex; flex-direction: column; gap: 8px;">
-                                                <span class="status-badge status-completed">Completed</span>
-                                                <button class="btn btn-primary" style="padding: 6px 12px; font-size: 12px;">
-                                                    <i class="fas fa-download"></i> Download
-                                                </button>
-                                            </div>
-                                        </div>
+                        <div class="modal-body">
+                            <div class="document-preview" style="padding: 30px;">
+                                <div style="max-width: 800px; margin: 0 auto;">
+                                    <div style="margin-bottom: 30px;">
+                                        <h4 style="font-size: 18px; margin-bottom: 15px;">Drug Test History</h4>
                                         
-                                        <!-- Previous X-rays -->
-                                        <div style="display: flex; align-items: center; gap: 15px; padding: 20px; border-radius: var(--border-radius); background: rgba(40, 167, 69, 0.05); border: 1px solid var(--border-color);">
-                                            <i class="fas fa-x-ray" style="color: var(--gray); font-size: 32px;"></i>
-                                            <div style="flex: 1;">
-                                                <h5 style="margin: 0; font-size: 16px;">Chest X-ray (PA View)</h5>
-                                                <small style="color: var(--gray);">Date: September 10, 2024</small>
-                                                <p style="margin: 8px 0 0 0; font-size: 14px;">
-                                                    <strong>Result:</strong> No significant findings. Heart and lungs within normal limits.
-                                                </p>
-                                                <small style="color: var(--primary); font-weight: 600;">Radiologist: Dr. Juan Cruz, MD</small>
-                                            </div>
-                                            <div style="display: flex; flex-direction: column; gap: 8px;">
+                                        <div style="display: flex; flex-direction: column; gap: 15px;">
+                                            <div style="display: flex; align-items: center; gap: 15px; padding: 15px; border-radius: var(--border-radius); background: rgba(40, 167, 69, 0.1);">
+                                                <i class="fas fa-check-circle" style="color: var(--success); font-size: 24px;"></i>
+                                                <div style="flex: 1;">
+                                                    <h5 style="margin: 0;">First Year Drug Test</h5>
+                                                    <small style="color: var(--gray);">Completed: September 15, 2022</small>
+                                                </div>
                                                 <span class="status-badge status-completed">Completed</span>
-                                                <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 12px;">
-                                                    <i class="fas fa-eye"></i> View
-                                                </button>
                                             </div>
-                                        </div>
-
-                                        <div style="display: flex; align-items: center; gap: 15px; padding: 20px; border-radius: var(--border-radius); background: rgba(40, 167, 69, 0.05); border: 1px solid var(--border-color);">
-                                            <i class="fas fa-x-ray" style="color: var(--gray); font-size: 32px;"></i>
-                                            <div style="flex: 1;">
-                                                <h5 style="margin: 0; font-size: 16px;">Chest X-ray (PA View)</h5>
-                                                <small style="color: var(--gray);">Date: August 20, 2023</small>
-                                                <p style="margin: 8px 0 0 0; font-size: 14px;">
-                                                    <strong>Result:</strong> Normal study. No acute cardiopulmonary disease.
-                                                </p>
-                                                <small style="color: var(--primary); font-weight: 600;">Radiologist: Dr. Maria Santos, MD</small>
-                                            </div>
-                                            <div style="display: flex; flex-direction: column; gap: 8px;">
+                                            
+                                            <div style="display: flex; align-items: center; gap: 15px; padding: 15px; border-radius: var(--border-radius); background: rgba(40, 167, 69, 0.1);">
+                                                <i class="fas fa-check-circle" style="color: var(--success); font-size: 24px;"></i>
+                                                <div style="flex: 1;">
+                                                    <h5 style="margin: 0;">Second Year Drug Test</h5>
+                                                    <small style="color: var(--gray);">Completed: September 18, 2023</small>
+                                                </div>
                                                 <span class="status-badge status-completed">Completed</span>
-                                                <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 12px;">
-                                                    <i class="fas fa-eye"></i> View
-                                                </button>
                                             </div>
-                                        </div>
-
-                                        <div style="display: flex; align-items: center; gap: 15px; padding: 20px; border-radius: var(--border-radius); background: rgba(40, 167, 69, 0.05); border: 1px solid var(--border-color);">
-                                            <i class="fas fa-x-ray" style="color: var(--gray); font-size: 32px;"></i>
-                                            <div style="flex: 1;">
-                                                <h5 style="margin: 0; font-size: 16px;">Chest X-ray (PA View)</h5>
-                                                <small style="color: var(--gray);">Date: September 5, 2022</small>
-                                                <p style="margin: 8px 0 0 0; font-size: 14px;">
-                                                    <strong>Result:</strong> Unremarkable chest radiograph. Normal findings.
-                                                </p>
-                                                <small style="color: var(--primary); font-weight: 600;">Radiologist: Dr. Juan Cruz, MD</small>
-                                            </div>
-                                            <div style="display: flex; flex-direction: column; gap: 8px;">
+                                            
+                                            <div style="display: flex; align-items: center; gap: 15px; padding: 15px; border-radius: var(--border-radius); background: rgba(40, 167, 69, 0.1);">
+                                                <i class="fas fa-check-circle" style="color: var(--success); font-size: 24px;"></i>
+                                                <div style="flex: 1;">
+                                                    <h5 style="margin: 0;">Third Year Drug Test</h5>
+                                                    <small style="color: var(--gray);">Completed: September 18, 2023</small>
+                                                </div>
                                                 <span class="status-badge status-completed">Completed</span>
-                                                <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 12px;">
-                                                    <i class="fas fa-eye"></i> View
-                                                </button>
+                                            </div>
+                                            
+                                            <div style="display: flex; align-items: center; gap: 15px; padding: 15px; border-radius: var(--border-radius); background: rgba(40, 167, 69, 0.1);">
+                                                <i class="fas fa-check-circle" style="color: var(--success); font-size: 24px;"></i>
+                                                <div style="flex: 1;">
+                                                    <h5 style="margin: 0;">Fourth Year Drug Test</h5>
+                                                    <small style="color: var(--gray);">Completed: September 16, 2025</small>
+                                                </div>
+                                                <span class="status-badge status-completed">Completed</span>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <!-- Medical Notes -->
-                                <div style="background-color: rgba(23, 162, 184, 0.1); padding: 20px; border-radius: var(--border-radius); border-left: 4px solid var(--info); margin-bottom: 20px;">
-                                    <h4 style="margin: 0 0 10px 0; color: var(--info); font-size: 16px;">
-                                        <i class="fas fa-info-circle"></i> Medical Notes
-                                    </h4>
-                                    <p style="margin: 0; font-size: 14px; line-height: 1.6;">
-                                        All X-ray examinations have been performed according to standard protocols. 
-                                        Results are reviewed by certified radiologists. Annual chest X-rays are 
-                                        recommended as part of routine health monitoring. Next scheduled X-ray: October 2026.
-                                    </p>
+                                    <div style="text-align: center; margin-top: 30px;">
+                                        <p style="color: var(--success); font-weight: 600; margin-bottom: 20px;">
+                                            <i class="fas fa-check-circle"></i> Well Done!
+                                        </p>
+                                        <button class="btn btn-primary" style="padding: 12px 30px; font-size: 16px;">
+                                            <i class="fas fa-file-medical"> &nbsp;  </i>Submit New Drug Test Application
+                                        </button>
+                                    </div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                                <div style="text-align: center; margin-top: 30px;">
-                                    <p style="color: var(--success); font-weight: 600; margin-bottom: 20px;">
-                                        <i class="fas fa-check-circle"></i> All X-ray Records Up to Date
-                                    </p>
-                                    <button class="btn btn-primary" style="padding: 12px 30px; font-size: 16px; margin-right: 10px;">
-                                        <i class="fas fa-calendar-alt"></i> Schedule New X-ray
-                                    </button>
-                                    <button class="btn btn-secondary" style="padding: 12px 30px; font-size: 16px;">
-                                        <i class="fas fa-file-pdf"></i> Download All Records
-                                    </button>
+                <!-- X-Ray Modal -->
+                <div id="x-ray-modal" class="modal-overlay" style="display: none;">
+                    <div class="modal-content glass-modal">
+                        <div class="modal-header">
+                            <h2 class="modal-title">
+                                <i class="fas fa-x-ray"></i> X-Ray Medical Imaging Records
+                            </h2>
+                            <button class="modal-close" id="x-ray-modal-close">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="document-preview" style="padding: 30px;">
+                                <div style="max-width: 800px; margin: 0 auto;">
+                                    <div style="margin-bottom: 30px;">
+                                        <h4 style="font-size: 18px; margin-bottom: 15px;">X-ray Examination History</h4>
+                                        
+                                        <div style="display: flex; flex-direction: column; gap: 15px;">
+                                            <!-- Latest X-ray -->
+                                            <div style="display: flex; align-items: center; gap: 15px; padding: 20px; border-radius: var(--border-radius); background: rgba(40, 167, 69, 0.1); border: 2px solid var(--success);">
+                                                <i class="fas fa-x-ray" style="color: var(--success); font-size: 32px;"></i>
+                                                <div style="flex: 1;">
+                                                    <h5 style="margin: 0; font-size: 16px;">Chest X-ray (PA View)</h5>
+                                                    <small style="color: var(--gray);">Date: October 15, 2025</small>
+                                                    <p style="margin: 8px 0 0 0; font-size: 14px;">
+                                                        <strong>Result:</strong> Normal cardiac silhouette. Clear lung fields. No active pulmonary disease.
+                                                    </p>
+                                                    <small style="color: var(--primary); font-weight: 600;">Radiologist: Dr. Maria Santos, MD</small>
+                                                </div>
+                                                <div style="display: flex; flex-direction: column; gap: 8px;">
+                                                    <span class="status-badge status-completed">Completed</span>
+                                                    <button class="btn btn-primary" style="padding: 6px 12px; font-size: 12px;">
+                                                        <i class="fas fa-download"></i> Download
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Previous X-rays -->
+                                            <div style="display: flex; align-items: center; gap: 15px; padding: 20px; border-radius: var(--border-radius); background: rgba(40, 167, 69, 0.05); border: 1px solid var(--border-color);">
+                                                <i class="fas fa-x-ray" style="color: var(--gray); font-size: 32px;"></i>
+                                                <div style="flex: 1;">
+                                                    <h5 style="margin: 0; font-size: 16px;">Chest X-ray (PA View)</h5>
+                                                    <small style="color: var(--gray);">Date: September 10, 2024</small>
+                                                    <p style="margin: 8px 0 0 0; font-size: 14px;">
+                                                        <strong>Result:</strong> No significant findings. Heart and lungs within normal limits.
+                                                    </p>
+                                                    <small style="color: var(--primary); font-weight: 600;">Radiologist: Dr. Juan Cruz, MD</small>
+                                                </div>
+                                                <div style="display: flex; flex-direction: column; gap: 8px;">
+                                                    <span class="status-badge status-completed">Completed</span>
+                                                    <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 12px;">
+                                                        <i class="fas fa-eye"></i> View
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <div style="display: flex; align-items: center; gap: 15px; padding: 20px; border-radius: var(--border-radius); background: rgba(40, 167, 69, 0.05); border: 1px solid var(--border-color);">
+                                                <i class="fas fa-x-ray" style="color: var(--gray); font-size: 32px;"></i>
+                                                <div style="flex: 1;">
+                                                    <h5 style="margin: 0; font-size: 16px;">Chest X-ray (PA View)</h5>
+                                                    <small style="color: var(--gray);">Date: August 20, 2023</small>
+                                                    <p style="margin: 8px 0 0 0; font-size: 14px;">
+                                                        <strong>Result:</strong> Normal study. No acute cardiopulmonary disease.
+                                                    </p>
+                                                    <small style="color: var(--primary); font-weight: 600;">Radiologist: Dr. Maria Santos, MD</small>
+                                                </div>
+                                                <div style="display: flex; flex-direction: column; gap: 8px;">
+                                                    <span class="status-badge status-completed">Completed</span>
+                                                    <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 12px;">
+                                                        <i class="fas fa-eye"></i> View
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <div style="display: flex; align-items: center; gap: 15px; padding: 20px; border-radius: var(--border-radius); background: rgba(40, 167, 69, 0.05); border: 1px solid var(--border-color);">
+                                                <i class="fas fa-x-ray" style="color: var(--gray); font-size: 32px;"></i>
+                                                <div style="flex: 1;">
+                                                    <h5 style="margin: 0; font-size: 16px;">Chest X-ray (PA View)</h5>
+                                                    <small style="color: var(--gray);">Date: September 5, 2022</small>
+                                                    <p style="margin: 8px 0 0 0; font-size: 14px;">
+                                                        <strong>Result:</strong> Unremarkable chest radiograph. Normal findings.
+                                                    </p>
+                                                    <small style="color: var(--primary); font-weight: 600;">Radiologist: Dr. Juan Cruz, MD</small>
+                                                </div>
+                                                <div style="display: flex; flex-direction: column; gap: 8px;">
+                                                    <span class="status-badge status-completed">Completed</span>
+                                                    <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 12px;">
+                                                        <i class="fas fa-eye"></i> View
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Medical Notes -->
+                                    <div style="background-color: rgba(23, 162, 184, 0.1); padding: 20px; border-radius: var(--border-radius); border-left: 4px solid var(--info); margin-bottom: 20px;">
+                                        <h4 style="margin: 0 0 10px 0; color: var(--info); font-size: 16px;">
+                                            <i class="fas fa-info-circle"></i> Medical Notes
+                                        </h4>
+                                        <p style="margin: 0; font-size: 14px; line-height: 1.6;">
+                                            All X-ray examinations have been performed according to standard protocols. 
+                                            Results are reviewed by certified radiologists. Annual chest X-rays are 
+                                            recommended as part of routine health monitoring. Next scheduled X-ray: October 2026.
+                                        </p>
+                                    </div>
+
+                                    <div style="text-align: center; margin-top: 30px;">
+                                        <p style="color: var(--success); font-weight: 600; margin-bottom: 20px;">
+                                            <i class="fas fa-check-circle"></i> All X-ray Records Up to Date
+                                        </p>
+                                        <button class="btn btn-primary" style="padding: 12px 30px; font-size: 16px; margin-right: 10px;">
+                                            <i class="fas fa-calendar-alt"></i> Schedule New X-ray
+                                        </button>
+                                        <button class="btn btn-secondary" style="padding: 12px 30px; font-size: 16px;">
+                                            <i class="fas fa-file-pdf"></i> Download All Records
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Physical Exam Modal -->
+                <div id="physical-exam-modal" class="modal-overlay" style="display: none;">
+                    <div class="modal-content glass-modal">
+                        <div class="modal-header">
+                            <h2 class="modal-title">
+                                <i class="fas fa-stethoscope"></i> Physical Examination Records
+                            </h2>
+                            <button class="modal-close" id="physical-exam-modal-close">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="document-preview" style="padding: 30px;">
+                                <div style="max-width: 900px; margin: 0 auto;">
+                                    <!-- Overall Progress -->
+                                    <div style="background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; padding: 20px; border-radius: var(--border-radius); margin-bottom: 30px; text-align: center;">
+                                        <h3 style="margin: 0 0 10px 0; font-size: 24px;">
+                                            <i class="fas fa-chart-line"></i> Medical Examination Progress
+                                        </h3>
+                                        <div style="font-size: 48px; font-weight: bold; margin-bottom: 10px;" id="overall-medical-progress">75%</div>
+                                        <div style="font-size: 16px;">Overall Completion</div>
+                                        <div style="width: 100%; height: 8px; background: rgba(255,255,255,0.3); border-radius: 4px; margin-top: 15px;">
+                                            <div style="width: 75%; height: 100%; background: white; border-radius: 4px;" id="overall-progress-bar"></div>
+                                        </div>
+                                    </div>
+
+                                    <div style="margin-bottom: 30px;">
+                                        <h4 style="font-size: 18px; margin-bottom: 20px;">Physical Examination Components</h4>
+
+                                        <!-- Vital Signs Test -->
+                                        <div class="exam-component" style="display: flex; align-items: center; gap: 15px; padding: 20px; border-radius: var(--border-radius); background: rgba(40, 167, 69, 0.1); border: 2px solid var(--success); margin-bottom: 15px;">
+                                            <div style="flex-shrink: 0;">
+                                                <i class="fas fa-heartbeat" style="color: var(--success); font-size: 32px;"></i>
+                                            </div>
+                                            <div style="flex: 1;">
+                                                <h5 style="margin: 0; font-size: 16px;">Vital Signs Assessment</h5>
+                                                <small style="color: var(--gray);">Blood Pressure, Heart Rate, Temperature, Respiratory Rate</small>
+                                                <div style="margin-top: 10px;">
+                                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                                        <div style="flex: 1; height: 6px; background: rgba(0,0,0,0.1); border-radius: 3px;">
+                                                            <div style="width: 100%; height: 100%; background: var(--success); border-radius: 3px;"></div>
+                                                        </div>
+                                                        <span style="font-weight: bold; color: var(--success);">100%</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div style="display: flex; flex-direction: column; gap: 8px;">
+                                                <span class="status-badge status-completed">Completed</span>
+                                                <small style="color: var(--gray);">Oct 10, 2025</small>
+                                            </div>
+                                        </div>
+
+                                        <!-- General Physical Exam -->
+                                        <div class="exam-component" style="display: flex; align-items: center; gap: 15px; padding: 20px; border-radius: var(--border-radius); background: rgba(40, 167, 69, 0.1); border: 2px solid var(--success); margin-bottom: 15px;">
+                                            <div style="flex-shrink: 0;">
+                                                <i class="fas fa-user-md" style="color: var(--success); font-size: 32px;"></i>
+                                            </div>
+                                            <div style="flex: 1;">
+                                                <h5 style="margin: 0; font-size: 16px;">General Physical Examination</h5>
+                                                <small style="color: var(--gray);">Head, Neck, Chest, Abdomen, Extremities assessment</small>
+                                                <div style="margin-top: 10px;">
+                                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                                        <div style="flex: 1; height: 6px; background: rgba(0,0,0,0.1); border-radius: 3px;">
+                                                            <div style="width: 95%; height: 100%; background: var(--success); border-radius: 3px;"></div>
+                                                        </div>
+                                                        <span style="font-weight: bold; color: var(--success);">95%</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div style="display: flex; flex-direction: column; gap: 8px;">
+                                                <span class="status-badge status-completed">Completed</span>
+                                                <small style="color: var(--gray);">Oct 10, 2025</small>
+                                            </div>
+                                        </div>
+
+                                        <!-- Vision Test -->
+                                        <div class="exam-component" style="display: flex; align-items: center; gap: 15px; padding: 20px; border-radius: var(--border-radius); background: rgba(255, 193, 7, 0.1); border: 2px solid var(--warning); margin-bottom: 15px;">
+                                            <div style="flex-shrink: 0;">
+                                                <i class="fas fa-eye" style="color: var(--warning); font-size: 32px;"></i>
+                                            </div>
+                                            <div style="flex: 1;">
+                                                <h5 style="margin: 0; font-size: 16px;">Vision Screening</h5>
+                                                <small style="color: var(--gray);">Visual acuity, Color vision, Eye examination</small>
+                                                <div style="margin-top: 10px;">
+                                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                                        <div style="flex: 1; height: 6px; background: rgba(0,0,0,0.1); border-radius: 3px;">
+                                                            <div style="width: 80%; height: 100%; background: var(--warning); border-radius: 3px;"></div>
+                                                        </div>
+                                                        <span style="font-weight: bold; color: var(--warning);">80%</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div style="display: flex; flex-direction: column; gap: 8px;">
+                                                <span class="status-badge status-pending">In Progress</span>
+                                                <small style="color: var(--gray);">Oct 10, 2025</small>
+                                            </div>
+                                        </div>
+
+                                        <!-- Hearing Test -->
+                                        <div class="exam-component" style="display: flex; align-items: center; gap: 15px; padding: 20px; border-radius: var(--border-radius); background: rgba(220, 53, 69, 0.1); border: 2px solid var(--danger); margin-bottom: 15px;">
+                                            <div style="flex-shrink: 0;">
+                                                <i class="fas fa-deaf" style="color: var(--danger); font-size: 32px;"></i>
+                                            </div>
+                                            <div style="flex: 1;">
+                                                <h5 style="margin: 0; font-size: 16px;">Hearing Assessment</h5>
+                                                <small style="color: var(--gray);">Audiometric testing, Ear examination</small>
+                                                <div style="margin-top: 10px;">
+                                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                                        <div style="flex: 1; height: 6px; background: rgba(0,0,0,0.1); border-radius: 3px;">
+                                                            <div style="width: 60%; height: 100%; background: var(--danger); border-radius: 3px;"></div>
+                                                        </div>
+                                                        <span style="font-weight: bold; color: var(--danger);">60%</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div style="display: flex; flex-direction: column; gap: 8px;">
+                                                <span class="status-badge status-pending">Pending</span>
+                                                <small style="color: var(--gray);">Scheduled: Oct 15, 2025</small>
+                                            </div>
+                                        </div>
+
+                                        <!-- Laboratory Tests -->
+                                        <div class="exam-component" style="display: flex; align-items: center; gap: 15px; padding: 20px; border-radius: var(--border-radius); background: rgba(40, 167, 69, 0.1); border: 2px solid var(--success); margin-bottom: 15px;">
+                                            <div style="flex-shrink: 0;">
+                                                <i class="fas fa-flask" style="color: var(--success); font-size: 32px;"></i>
+                                            </div>
+                                            <div style="flex: 1;">
+                                                <h5 style="margin: 0; font-size: 16px;">Laboratory Tests</h5>
+                                                <small style="color: var(--gray);">CBC, Urinalysis, Blood Chemistry, Lipid Profile</small>
+                                                <div style="margin-top: 10px;">
+                                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                                        <div style="flex: 1; height: 6px; background: rgba(0,0,0,0.1); border-radius: 3px;">
+                                                            <div style="width: 100%; height: 100%; background: var(--success); border-radius: 3px;"></div>
+                                                        </div>
+                                                        <span style="font-weight: bold; color: var(--success);">100%</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div style="display: flex; flex-direction: column; gap: 8px;">
+                                                <span class="status-badge status-completed">Completed</span>
+                                                <small style="color: var(--gray);">Oct 8, 2025</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Medical Notes -->
+                                    <div style="background-color: rgba(23, 162, 184, 0.1); padding: 20px; border-radius: var(--border-radius); border-left: 4px solid var(--info); margin-bottom: 20px;">
+                                        <h4 style="margin: 0 0 10px 0; color: var(--info); font-size: 16px;">
+                                            <i class="fas fa-info-circle"></i> Medical Examination Notes
+                                        </h4>
+                                        <p style="margin: 0; font-size: 14px; line-height: 1.6;">
+                                            Your physical examination is 75% complete. Vision screening and hearing assessment are still pending.
+                                            Please schedule these remaining tests to complete your annual medical examination.
+                                            All completed tests show normal results.
+                                        </p>
+                                    </div>
+
+                                    <div style="text-align: center; margin-top: 30px;">
+                                        <p style="color: var(--primary); font-weight: 600; margin-bottom: 20px;">
+                                            <i class="fas fa-calendar-check"></i> Next Steps
+                                        </p>
+                                        <button class="btn btn-primary" style="padding: 12px 30px; font-size: 16px; margin-right: 10px;">
+                                            <i class="fas fa-calendar-alt"></i> Schedule Vision Test
+                                        </button>
+                                        <button class="btn btn-warning" style="padding: 12px 30px; font-size: 16px; margin-right: 10px;">
+                                            <i class="fas fa-deaf"></i> Schedule Hearing Test
+                                        </button>
+                                        <button class="btn btn-secondary" style="padding: 12px 30px; font-size: 16px;">
+                                            <i class="fas fa-file-pdf"></i> Download Report
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -8171,6 +8660,14 @@
                     }
                 });
             });
+
+            // Load saved profile image on page load
+            const savedImage = localStorage.getItem('profileImage');
+            if (savedImage) {
+                profileImage.src = savedImage;
+                profileImage.style.display = 'block';
+                profileIcon.style.display = 'none';
+            }
         </script>
 
         <!-- Reference Generator Modal -->
@@ -8397,6 +8894,128 @@
                 updateOverview();
                 updateSubjectsList();
             })();
+
+            // Change Subject Functionality
+            (function() {
+                const currentSubjectSelect = document.getElementById('current-subject-select');
+                const newSubjectSelect = document.getElementById('new-subject-select');
+                const changeSubjectBtn = document.getElementById('change-subject-btn');
+                const scheduleSelection = document.getElementById('schedule-selection');
+                const changeDaySelect = document.getElementById('change-day-select');
+                const changeTimeSelect = document.getElementById('change-time-select');
+
+                if (!currentSubjectSelect || !newSubjectSelect || !changeSubjectBtn) return;
+
+                // Show schedule selection when new subject is selected
+                newSubjectSelect.addEventListener('change', function() {
+                    if (this.value) {
+                        scheduleSelection.style.display = 'block';
+                    } else {
+                        scheduleSelection.style.display = 'none';
+                    }
+                });
+
+                changeSubjectBtn.addEventListener('click', function() {
+                    const currentSubject = currentSubjectSelect.value;
+                    const newSubject = newSubjectSelect.value;
+                    const day = changeDaySelect.value;
+                    const time = changeTimeSelect.value;
+
+                    if (!currentSubject || !newSubject) {
+                        alert('Please select both current and new subjects');
+                        return;
+                    }
+
+                    if (!day || !time) {
+                        alert('Please select day and time for the new subject');
+                        return;
+                    }
+
+                    if (currentSubject === newSubject) {
+                        alert('Current and new subjects cannot be the same');
+                        return;
+                    }
+
+                    const currentSubjectText = currentSubjectSelect.options[currentSubjectSelect.selectedIndex].text;
+                    const newSubjectText = newSubjectSelect.options[newSubjectSelect.selectedIndex].text;
+                    const dayText = changeDaySelect.options[changeDaySelect.selectedIndex].text;
+                    const timeText = changeTimeSelect.options[changeTimeSelect.selectedIndex].text;
+
+                    if (confirm(`Are you sure you want to change from "${currentSubjectText}" to "${newSubjectText}"?\n\nNew Schedule: ${dayText} at ${timeText}`)) {
+                        alert(`Subject change request submitted successfully!\n\nFrom: ${currentSubjectText}\nTo: ${newSubjectText}\nSchedule: ${dayText} ${timeText}\n\nYour request will be reviewed by the department.`);
+                        
+                        // Reset form
+                        currentSubjectSelect.value = '';
+                        newSubjectSelect.value = '';
+                        changeDaySelect.value = '';
+                        changeTimeSelect.value = '';
+                        scheduleSelection.style.display = 'none';
+                    }
+                });
+            })();
+
+            // Shift Professor Functionality
+            (function() {
+                const shiftSubjectSelect = document.getElementById('shift-subject-select');
+                const currentProfessorSelect = document.getElementById('current-professor-select');
+                const newProfessorSelect = document.getElementById('new-professor-select');
+                const shiftProfessorBtn = document.getElementById('shift-professor-btn');
+                const professorScheduleSelection = document.getElementById('professor-schedule-selection');
+                const professorDaySelect = document.getElementById('professor-day-select');
+                const professorTimeSelect = document.getElementById('professor-time-select');
+
+                if (!shiftSubjectSelect || !currentProfessorSelect || !newProfessorSelect || !shiftProfessorBtn) return;
+
+                // Show schedule selection when new professor is selected
+                newProfessorSelect.addEventListener('change', function() {
+                    if (this.value) {
+                        professorScheduleSelection.style.display = 'block';
+                    } else {
+                        professorScheduleSelection.style.display = 'none';
+                    }
+                });
+
+                shiftProfessorBtn.addEventListener('click', function() {
+                    const subject = shiftSubjectSelect.value;
+                    const currentProfessor = currentProfessorSelect.value;
+                    const newProfessor = newProfessorSelect.value;
+                    const day = professorDaySelect.value;
+                    const time = professorTimeSelect.value;
+
+                    if (!subject || !currentProfessor || !newProfessor) {
+                        alert('Please select subject, current professor, and new professor');
+                        return;
+                    }
+
+                    if (!day || !time) {
+                        alert('Please select day and time for the new professor schedule');
+                        return;
+                    }
+
+                    if (currentProfessor === newProfessor) {
+                        alert('Current and new professors cannot be the same');
+                        return;
+                    }
+
+                    const subjectText = shiftSubjectSelect.options[shiftSubjectSelect.selectedIndex].text;
+                    const currentProfessorText = currentProfessorSelect.options[currentProfessorSelect.selectedIndex].text;
+                    const newProfessorText = newProfessorSelect.options[newProfessorSelect.selectedIndex].text;
+                    const dayText = professorDaySelect.options[professorDaySelect.selectedIndex].text;
+                    const timeText = professorTimeSelect.options[professorTimeSelect.selectedIndex].text;
+
+                    if (confirm(`Are you sure you want to shift professors for "${subjectText}"?\n\nFrom: ${currentProfessorText}\nTo: ${newProfessorText}\nSchedule: ${dayText} at ${timeText}`)) {
+                        alert(`Professor shift request submitted successfully!\n\nSubject: ${subjectText}\nFrom: ${currentProfessorText}\nTo: ${newProfessorText}\nSchedule: ${dayText} ${timeText}\n\nYour request will be reviewed by the department.`);
+                        
+                        // Reset form
+                        shiftSubjectSelect.value = '';
+                        currentProfessorSelect.value = '';
+                        newProfessorSelect.value = '';
+                        professorDaySelect.value = '';
+                        professorTimeSelect.value = '';
+                        professorScheduleSelection.style.display = 'none';
+                    }
+                });
+            })();
         </script>
 
         <!-- Modal for stat cards -->
@@ -8488,6 +9107,149 @@
                     notificationModal.style.display = 'none';
                 }
             });
+
+            // Physical Exam Modal Functionality
+            const physicalExamCard = document.getElementById('physical-exam-card');
+            const physicalExamModal = document.getElementById('physical-exam-modal');
+            const physicalExamLoading = document.getElementById('physical-exam-loading');
+            const physicalExamModalClose = document.getElementById('physical-exam-modal-close');
+
+            if (physicalExamCard) {
+                physicalExamCard.addEventListener('click', function() {
+                    physicalExamLoading.style.display = 'flex';
+                    // Simulate loading delay
+                    setTimeout(function() {
+                        physicalExamLoading.style.display = 'none';
+                        physicalExamModal.style.display = 'flex';
+                        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                        // Calculate overall medical progress
+                        calculateMedicalProgress();
+                    }, 1500);
+                });
+            }
+
+            if (physicalExamModalClose) {
+                physicalExamModalClose.addEventListener('click', function() {
+                    physicalExamModal.style.display = 'none';
+                    document.body.style.overflow = 'auto'; // Restore scrolling
+                });
+            }
+
+            // Close modal when clicking outside
+            if (physicalExamModal) {
+                physicalExamModal.addEventListener('click', function(e) {
+                    if (e.target === physicalExamModal) {
+                        physicalExamModal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            }
+
+            // Function to calculate overall medical progress
+            function calculateMedicalProgress() {
+                // Define completion percentages for each medical component
+                const medicalComponents = {
+                    'physical-exam': 83, // Average of exam components (95% general + 80% vision + 60% hearing + 100% vitals + 100% labs) / 5
+                    'x-ray': 100, // All X-rays completed
+                    'drug-test': 100 // All drug tests completed
+                };
+
+                // Calculate weighted average (each component has equal weight)
+                const totalComponents = Object.keys(medicalComponents).length;
+                const totalProgress = Object.values(medicalComponents).reduce((sum, progress) => sum + progress, 0);
+                const overallProgress = Math.round(totalProgress / totalComponents);
+
+                // Update the progress display
+                const progressElement = document.getElementById('overall-medical-progress');
+                const progressBar = document.getElementById('overall-progress-bar');
+
+                if (progressElement) {
+                    progressElement.textContent = overallProgress + '%';
+                }
+
+                if (progressBar) {
+                    progressBar.style.width = overallProgress + '%';
+                }
+
+                // Update progress color based on completion
+                if (overallProgress >= 90) {
+                    if (progressBar) progressBar.style.background = 'var(--success)';
+                } else if (overallProgress >= 70) {
+                    if (progressBar) progressBar.style.background = 'var(--warning)';
+                } else {
+                    if (progressBar) progressBar.style.background = 'var(--danger)';
+                }
+            }
+
+            // Drug Test Modal Functionality
+            const drugTestCard = document.getElementById('drug-test-card');
+            const drugTestModal = document.getElementById('drug-test-modal');
+            const drugTestLoading = document.getElementById('drug-test-loading');
+            const drugTestModalClose = document.getElementById('drug-test-modal-close');
+
+            if (drugTestCard) {
+                drugTestCard.addEventListener('click', function() {
+                    drugTestLoading.style.display = 'flex';
+                    // Simulate loading delay
+                    setTimeout(function() {
+                        drugTestLoading.style.display = 'none';
+                        drugTestModal.style.display = 'flex';
+                        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                    }, 1500);
+                });
+            }
+
+            if (drugTestModalClose) {
+                drugTestModalClose.addEventListener('click', function() {
+                    drugTestModal.style.display = 'none';
+                    document.body.style.overflow = 'auto'; // Restore scrolling
+                });
+            }
+
+            // Close modal when clicking outside
+            if (drugTestModal) {
+                drugTestModal.addEventListener('click', function(e) {
+                    if (e.target === drugTestModal) {
+                        drugTestModal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            }
+
+            // X-Ray Modal Functionality
+            const xRayCard = document.getElementById('x-ray-card');
+            const xRayModal = document.getElementById('x-ray-modal');
+            const xRayLoading = document.getElementById('x-ray-loading');
+            const xRayModalClose = document.getElementById('x-ray-modal-close');
+
+            if (xRayCard) {
+                xRayCard.addEventListener('click', function() {
+                    xRayLoading.style.display = 'flex';
+                    // Simulate loading delay
+                    setTimeout(function() {
+                        xRayLoading.style.display = 'none';
+                        xRayModal.style.display = 'flex';
+                        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                    }, 1500);
+                });
+            }
+
+            if (xRayModalClose) {
+                xRayModalClose.addEventListener('click', function() {
+                    xRayModal.style.display = 'none';
+                    document.body.style.overflow = 'auto'; // Restore scrolling
+                });
+            }
+
+            // Close modal when clicking outside
+            if (xRayModal) {
+                xRayModal.addEventListener('click', function(e) {
+                    if (e.target === xRayModal) {
+                        xRayModal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            }
         </script>
 
     </body>
