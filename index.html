@@ -352,6 +352,25 @@ body {
     background-color: var(--hover-color);
 }
 
+.notification-btn {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 20px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+
+.notification-btn:hover {
+    background-color: var(--hover-color);
+}
+
 /* Fixed theme toggle in top-right corner so it's always available */
 .theme-toggle.fixed-top-right {
     position: fixed;
@@ -1336,6 +1355,10 @@ textarea:focus {
     margin-bottom: 25px;
 }
 
+.years-grid {
+    grid-template-columns: repeat(5, 1fr) !important;
+}
+
 .stat-card {
     background-color: var(--card-bg);
     border-radius: var(--border-radius);
@@ -1370,6 +1393,10 @@ textarea:focus {
     font-weight: 700;
     margin-bottom: 5px;
     word-break: break-word;
+}
+
+.stats-grid .stat-value {
+    text-align: center;
 }
 
 .stat-label {
@@ -2636,7 +2663,85 @@ input:checked + .toggle-slider:before {
     }
 }
 
- Info Banner */
+/* Reference Generator Styles */
+.reference-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.reference-item {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+}
+
+.reference-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.reference-item h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+.reference-item p {
+    color: var(--text-color);
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.generate-ref-btn {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.generate-ref-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Reference Modal Styles */
+.reference-display {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.generated-ref-code {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--primary);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px 0;
+    display: inline-block;
+    letter-spacing: 2px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ========================================
+   PROFESSIONAL UNIFORM SECTION STYLES
+   ======================================== */
+
+/* Info Banner */
 .uniform-info-banner {
     background: linear-gradient(135deg, var(--primary-light) 0%, #f0f7ff 100%);
     border-left: 4px solid var(--primary);
@@ -3273,6 +3378,138 @@ input:checked + .toggle-slider:before {
         align-self: flex-end;
     }
 }
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.3);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.modal-close:hover {
+    color: var(--primary);
+}
+
+.modal-content h3 {
+    color: var(--text-color);
+    margin-top: 0;
+}
+
+.modal-content small {
+    color: var(--text-color);
+}
+
+/* Notification modal styles */
+.notification-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.3);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+}
+
+.notification-content {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    width: 35%;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.notification-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.notification-close:hover {
+    color: var(--primary);
+}
+
+.notification-content h3 {
+    color: var(--text-color);
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.notification-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.notification-item {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 15px;
+    border-left: 4px solid var(--primary);
+}
+
+.notification-item h4 {
+    color: var(--text-color);
+    margin: 0 0 8px 0;
+    font-size: 16px;
+}
+
+.notification-item p {
+    color: var(--text-color);
+    margin: 0 0 8px 0;
+    font-size: 14px;
+}
+
+.notification-date {
+    color: var(--gray);
+    font-size: 12px;
+}
     </style>
     <div class="container">
         <!-- Sidebar -->
@@ -3328,7 +3565,6 @@ input:checked + .toggle-slider:before {
                     <a href="#"><i class="fas fa-user-check"></i> Enrollment</a>
                 </li>
                 
-                
                 <div class="nav-category">SUPPORT</div>
                 <li class="nav-item" data-section="help">
                     <a href="#"><i class="fas fa-question-circle"></i> Help & Support</a>
@@ -3356,6 +3592,9 @@ input:checked + .toggle-slider:before {
                     </div>
                 </div>
                 <div class="header-actions">
+                    <button class="notification-btn" id="notification-btn" aria-label="Notifications">
+                        <i class="fas fa-bell"></i>
+                    </button>
                     <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
                         <i class="fas fa-moon"></i>
                     </button>
@@ -3377,7 +3616,6 @@ input:checked + .toggle-slider:before {
                     <a href="#" class="quick-action-btn" data-section="account">
                         <i class="fas fa-credit-card"></i> Make Payment
                     </a>
-                    
                     <a href="#" class="quick-action-btn" data-section="enrollment">
                         <i class="fas fa-user-check"></i> Enrollment
                     </a>
@@ -3392,7 +3630,7 @@ input:checked + .toggle-slider:before {
                 <div class="stats-grid">
                     <div class="stat-card">
                         <div class="stat-value">14</div>
-                        <div class="stat-label">Total Units</div>
+                        <div class="stat-label">Current Units</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-value">3.25</div>
@@ -3407,7 +3645,39 @@ input:checked + .toggle-slider:before {
                         <div class="stat-label">Balance Due</div>
                     </div>
 
-<!-- Add this code to your dashboard section, between the Balance Due and Uniforms cards -->
+                    <div class="stat-card" id="attendance-summary-card">
+                        <div class="stat-value" id="attendance-summary">
+                            <div style="display:flex;flex-direction:column;gap:6px;">
+                                <div style="margin-bottom:8px">
+                                    <small style="color:var(--gray);font-weight:500;">4th Year , 1st Trime</small>
+                                </div>
+                    
+                                
+                                <div style="display:flex;justify-content:space-between;align-items:center;">
+                                    <small style="color:var(--text-color);">Absences</small>
+                                    <span style="color:var(--danger);font-weight:600;">2</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stat-label">Attendance & Absences</div>
+                    </div>
+
+                    <div class="stat-card" id="ojt-summary-card">
+                        <div class="stat-value" id="ojt-summary">
+                            <div style="display:flex;flex-direction:column;gap:6px;">
+                                <div style="margin-bottom:8px">
+                                    <small style="color:var(--gray);font-weight:500;">Company Name</small>
+                                </div>
+                                <div style="display:flex;align-items:center;">
+                                    <span style="color:var(--text-color);font-size:16px;line-height:1.4;">ICCT Colleges INC. Antipolo Campus</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stat-label">OJT/Intern</div>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
 <div class="stat-card" id="academic-status-card">
   <div class="stat-value" id="academic-status">
     <div style="display:flex;flex-direction:column;gap:6px;">
@@ -3521,19 +3791,19 @@ input:checked + .toggle-slider:before {
                                     <small style="color:var(--gray);font-weight:500;">Drug Test Status</small>
                                 </div>
                                 <div style="display:flex;justify-content:space-between;align-items:center;">
-                                    <small style="color:var(--text-color);">1st Year</small>
+                                    <small style="color:var(--text-color);">1st Year (10/04/2022)</small>
                                     <i class="fas fa-check-circle" style="color:var(--success)"></i>
                                 </div>
                                 <div style="display:flex;justify-content:space-between;align-items:center;">
-                                    <small style="color:var(--text-color);">2nd Year</small>
+                                    <small style="color:var(--text-color);">2nd Year (10/02/2023)</small>
                                     <i class="fas fa-check-circle" style="color:var(--success)"></i>
                                 </div>
                                 <div style="display:flex;justify-content:space-between;align-items:center;">
-                                    <small style="color:var(--text-color);">3rd Year</small>
+                                    <small style="color:var(--text-color);">3rd Year (10/05/2024)</small>
                                     <i class="fas fa-check-circle" style="color:var(--success)"></i>
                                 </div>
                                 <div style="display:flex;justify-content:space-between;align-items:center;">
-                                    <small style="color:var(--text-color);">4th Year</small>
+                                    <small style="color:var(--text-color);">4th Year (10/01/2025)</small>
                                     <i class="fas fa-check-circle" style="color:var(--success)"></i>
                                 </div>
                             </div>
@@ -3541,54 +3811,49 @@ input:checked + .toggle-slider:before {
                         <div class="stat-label">Drug Test</div>
                     </div>
 
-                    <div class="stat-card" id="attendance-summary-card">
-                        <div class="stat-value" id="attendance-summary">
+                    <div class="stat-card">
+                        <div class="stat-value">
                             <div style="display:flex;flex-direction:column;gap:6px;">
                                 <div style="margin-bottom:8px">
-                                    <small style="color:var(--gray);font-weight:500;">4th Year , 1st Trime</small>
+                                    <small style="color:var(--gray);font-weight:500;">Latest X-ray</small>
                                 </div>
-                    
-                                
-                                <div style="display:flex;justify-content:space-between;align-items:center;">
-                                    <small style="color:var(--text-color);">Absences</small>
-                                    <span style="color:var(--danger);font-weight:600;">2</span>
+                                <div style="text-align:center;">
+                                    <i class="fas fa-x-ray" style="color: var(--success); font-size: 32px; margin-bottom: 8px;"></i>
+                                    <div>
+                                        <small style="color:var(--text-color); font-weight: 500;">Chest X-ray (PA View)</small><br>
+                                        <small style="color:var(--gray);">October 15, 2025</small>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="stat-label">Attendance & Absences</div>
+                        <div class="stat-label">Drug Test</div>
                     </div>
 
-                    <div class="stat-card" id="ojt-summary-card">
-                        <div class="stat-value" id="ojt-summary">
-                            <div style="display:flex;flex-direction:column;gap:6px;">
-                                <div style="margin-bottom:8px">
-                                    <small style="color:var(--gray);font-weight:500;">Company Name</small>
-                                </div>
-                                <div style="display:flex;align-items:center;">
-                                    <span style="color:var(--text-color);font-size:16px;line-height:1.4;">ICCT Colleges INC. Antipolo Campus</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="stat-label">OJT/Intern</div>
-                    </div>
                 </div>
-                
-                <div class="card">
-                    <div class="card-header">
-                        <h2 class="card-title">Recent Announcements</h2>
+
+                <div class="stats-grid years-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">100%<div class="progress-bar"><div style="width: 100%; height: 100%; background-color: green; border-radius: 4px;"></div></div></div>
+                        <div class="stat-label">1st Year</div>
                     </div>
-                    <div class="announcements">
-                        <div class="announcement-item">
-                            <h3>Final Examination Schedule</h3>
-                            <p>The final examination schedule for the First Term has been posted. Please check your student portal for details.</p>
-                            <span class="announcement-date">Posted: October 15, 2025</span>
-                        </div>
-                        <div class="announcement-item">
-                            <h3>Graduation Application</h3>
-                            <p>Graduation application for the 2025-2026 academic year is now open. Deadline for submission is November 30, 2025.</p>
-                            <span class="announcement-date">Posted: October 10, 2025</span>
-                        </div>
+                    <div class="stat-card">
+                        <div class="stat-value">100%<div class="progress-bar"><div style="width: 100%; height: 100%; background-color: green; border-radius: 4px;"></div></div></div>
+                        <div class="stat-label">2nd Year</div>
                     </div>
+                    <div class="stat-card">
+                        <div class="stat-value">80%<div class="progress-bar"><div style="width: 80%; height: 100%; background-color: yellow; border-radius: 4px;"></div></div></div>
+                        <div class="stat-label">3rd Year</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">&#8734;<br>in progress<div class="progress-bar"><div style="width: 90%; height: 100%; background-color: yellow; border-radius: 4px;"></div></div></div>
+                        <div class="stat-label">4th Year</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-value">&#8734;<br>in progress<div class="progress-bar"><div style="width: 95%; height: 100%; background-color: green; border-radius: 4px;"></div></div></div>
+                        <div class="stat-label">Overall Progress</div>
+                    </div>
+
                 </div>
                 <!-- Academic status moved into the small dashboard stat-card next to Balance Due -->
             </div>
@@ -4086,8 +4351,8 @@ input:checked + .toggle-slider:before {
                                     <div class="detail-value">2021</div>
                                 </div>
                                 <div class="detail-item">
-                                    <div class="detail-label">Section</div>
-                                    <div class="detail-value">LFAU411A075</div>
+                                    <div class="detail-label">LRN</div>
+                                    <div class="detail-value">109329100192</div>
                                 </div>
                                 <div class="detail-item">
                                     <div class="detail-label">Status</div>
@@ -4967,7 +5232,7 @@ input:checked + .toggle-slider:before {
                                 <tr>
                                     <th>Date</th>
                                     <th>Description</th>
-                                    <th>Reference No
+                                    <th>Reference No.</th>
                                     <th>Debit</th>
                                     <th>Credit</th>
                                     <th>Balance</th>
@@ -6013,7 +6278,7 @@ input:checked + .toggle-slider:before {
                         </table>
                         
                         <div class="document-footer">
-                            <p>Total Units: <strong>14</strong></p>
+                            <p>Current Units: <strong>14</strong></p>
                             <p>Status: <strong>Officially Registered</strong></p>
                             <p>Date Registered: <strong>August 13, 2025</strong></p>
                         </div>
@@ -7367,5 +7632,97 @@ input:checked + .toggle-slider:before {
             updateSubjectsList();
         })();
     </script>
+
+    <!-- Modal for stat cards -->
+    <div id="stat-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- Notification Modal -->
+    <div id="notification-modal" class="notification-modal">
+        <div class="notification-content">
+            <span class="notification-close">&times;</span>
+            <h3>Notifications</h3>
+            <div class="notification-list">
+                <div class="notification-item">
+                    <h4>Final Examination Schedule</h4>
+                    <p>The final examination schedule for the First Term has been posted. Please check your student portal for details.</p>
+                    <span class="notification-date">Posted: October 15, 2025</span>
+                </div>
+                <div class="notification-item">
+                    <h4>Graduation Application</h4>
+                    <p>Graduation application for the 2025-2026 academic year is now open. Deadline for submission is November 30, 2025.</p>
+                    <span class="notification-date">Posted: October 10, 2025</span>
+                </div>
+                <div class="notification-item">
+                    <h4>Enrollment Period Extended</h4>
+                    <p>The enrollment period for the Second Term has been extended until November 15, 2025. Late fees will apply after this date.</p>
+                    <span class="notification-date">Posted: October 8, 2025</span>
+                </div>
+                <div class="notification-item">
+                    <h4>Library Hours Update</h4>
+                    <p>Due to maintenance, the main library will be closed on October 25-26, 2025. Online resources remain available.</p>
+                    <span class="notification-date">Posted: October 5, 2025</span>
+                </div>
+                <div class="notification-item">
+                    <h4>Campus WiFi Maintenance</h4>
+                    <p>Scheduled WiFi maintenance on October 20, 2025 from 2:00 AM to 4:00 AM. Internet services may be intermittent.</p>
+                    <span class="notification-date">Posted: October 3, 2025</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal functionality for stat cards
+        const statModal = document.getElementById('stat-modal');
+        const modalBody = document.getElementById('modal-body');
+        const modalClose = document.querySelector('.modal-close');
+
+        document.querySelectorAll('.stat-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const statValue = this.querySelector('.stat-value');
+                const statLabel = this.querySelector('.stat-label');
+                if (statValue && statLabel) {
+                    modalBody.innerHTML = `<h3>${statLabel.textContent}</h3>`;
+                    modalBody.appendChild(statValue.cloneNode(true));
+                    statModal.style.display = 'flex';
+                }
+            });
+        });
+
+        modalClose.addEventListener('click', function() {
+            statModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', function(event) {
+            if (event.target === statModal) {
+                statModal.style.display = 'none';
+            }
+        });
+
+        // Notification modal functionality
+        const notificationBtn = document.getElementById('notification-btn');
+        const notificationModal = document.getElementById('notification-modal');
+        const notificationClose = document.querySelector('.notification-close');
+
+        notificationBtn.addEventListener('click', function() {
+            notificationModal.style.display = 'flex';
+        });
+
+        notificationClose.addEventListener('click', function() {
+            notificationModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', function(event) {
+            if (event.target === notificationModal) {
+                notificationModal.style.display = 'none';
+            }
+        });
+    </script>
+
 </body>
 </html>
