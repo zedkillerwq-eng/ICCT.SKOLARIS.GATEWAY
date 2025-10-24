@@ -2636,85 +2636,7 @@ input:checked + .toggle-slider:before {
     }
 }
 
-/* Reference Generator Styles */
-.reference-options {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    padding: 20px 0;
-}
-
-.reference-item {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 12px;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: var(--transition);
-}
-
-.reference-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
-}
-
-.reference-item h3 {
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--primary);
-    margin-bottom: 10px;
-}
-
-.reference-item p {
-    color: var(--text-color);
-    margin-bottom: 15px;
-    line-height: 1.5;
-}
-
-.generate-ref-btn {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 500;
-    transition: var(--transition);
-}
-
-.generate-ref-btn:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* Reference Modal Styles */
-.reference-display {
-    text-align: center;
-    margin: 20px 0;
-}
-
-.generated-ref-code {
-    font-size: 24px;
-    font-weight: bold;
-    color: var(--primary);
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 8px;
-    padding: 15px;
-    margin: 10px 0;
-    display: inline-block;
-    letter-spacing: 2px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* ========================================
-   PROFESSIONAL UNIFORM SECTION STYLES
-   ======================================== */
-
-/* Info Banner */
+ Info Banner */
 .uniform-info-banner {
     background: linear-gradient(135deg, var(--primary-light) 0%, #f0f7ff 100%);
     border-left: 4px solid var(--primary);
@@ -3405,9 +3327,7 @@ input:checked + .toggle-slider:before {
                 <li class="nav-item" data-section="enrollment">
                     <a href="#"><i class="fas fa-user-check"></i> Enrollment</a>
                 </li>
-                <li class="nav-item" data-section="reference-generator">
-                    <a href="#"><i class="fas fa-hashtag"></i> Reference Generator</a>
-                </li>
+                
                 
                 <div class="nav-category">SUPPORT</div>
                 <li class="nav-item" data-section="help">
@@ -3457,9 +3377,7 @@ input:checked + .toggle-slider:before {
                     <a href="#" class="quick-action-btn" data-section="account">
                         <i class="fas fa-credit-card"></i> Make Payment
                     </a>
-                    <a href="#" class="quick-action-btn" data-section="reference-generator">
-                        <i class="fas fa-hashtag"></i> Generate Reference
-                    </a>
+                    
                     <a href="#" class="quick-action-btn" data-section="enrollment">
                         <i class="fas fa-user-check"></i> Enrollment
                     </a>
@@ -4136,47 +4054,6 @@ input:checked + .toggle-slider:before {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Reference Generator Section -->
-            <div id="reference-generator" class="content-section">
-                <div class="breadcrumb">
-                    <a href="#" data-section="dashboard">Dashboard</a> <i class="fas fa-chevron-right"></i> <span>Reference Generator</span>
-                </div>
-                <h1 class="page-title">Reference Generator</h1>
-                
-                <div class="reference-options">
-                    <div class="reference-item" data-fee="tuition">
-                        <h3>Tuition Fee</h3>
-                        <p>Generate reference number for tuition payment</p>
-                        <button class="btn btn-primary generate-ref-btn">Generate Reference Number</button>
-                    </div>
-                    <div class="reference-item" data-fee="id">
-                        <h3>ID Fee</h3>
-                        <p>Generate reference number for student ID card</p>
-                        <button class="btn btn-primary generate-ref-btn">Generate Reference Number</button>
-                    </div>
-                    <div class="reference-item" data-fee="graduation">
-                        <h3>Graduation Fee</h3>
-                        <p>Generate reference number for graduation expenses</p>
-                        <button class="btn btn-primary generate-ref-btn">Generate Reference Number</button>
-                    </div>
-                    <div class="reference-item" data-fee="books">
-                        <h3>Books Fee</h3>
-                        <p>Generate reference number for textbooks and materials</p>
-                        <button class="btn btn-primary generate-ref-btn">Generate Reference Number</button>
-                    </div>
-                    <div class="reference-item" data-fee="library">
-                        <h3>Library Fee</h3>
-                        <p>Generate reference number for library services</p>
-                        <button class="btn btn-primary generate-ref-btn">Generate Reference Number</button>
-                    </div>
-                    <div class="reference-item" data-fee="laboratory">
-                        <h3>Laboratory Fee</h3>
-                        <p>Generate reference number for lab equipment and materials</p>
-                        <button class="btn btn-primary generate-ref-btn">Generate Reference Number</button>
                     </div>
                 </div>
             </div>
@@ -5090,7 +4967,7 @@ input:checked + .toggle-slider:before {
                                 <tr>
                                     <th>Date</th>
                                     <th>Description</th>
-                                    <th>Reference No.</th>
+                                    <th>Reference No
                                     <th>Debit</th>
                                     <th>Credit</th>
                                     <th>Balance</th>
