@@ -2357,10 +2357,12 @@
 
                                                                         .stat-box {
                                                                             text-align: center;
-                                                                            background: rgba(255, 255, 255, 0.1);
+                                                                            background: white;
                                                                             padding: 16px 20px;
                                                                             border-radius: 12px;
                                                                             backdrop-filter: blur(10px);
+                                                                            border: 1px solid #e5e7eb;
+                                                                            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
                                                                         }
 
                                                                         .stat-number {
@@ -3202,7 +3204,7 @@
                                                                         }
 
                                                                         .summary-item {
-                                                                            background: #ffffff !important;
+                                                                            background: white;
                                                                             padding: 20px;
                                                                             border-radius: 12px;
                                                                             text-align: center;
@@ -3222,6 +3224,12 @@
                                                                             font-weight: 700;
                                                                             color: #000000;
                                                                             margin: 0;
+                                                                        }
+
+                                                                        .dark-mode .summary-item {
+                                                                            background: white;
+                                                                            border-color: #e5e7eb;
+                                                                            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
                                                                         }
 
                                                                         @media (max-width: 768px) {
@@ -4681,11 +4689,95 @@
                                                                                                 <div class="stat-label">Balance Due</div>
                                                                                             </div>
 
+                                                                                            <div class="stat-card" id="drug-test-summary-card">
+                                                                                                <div class="stat-value" id="drug-test-summary">
+                                                                                                    <div style="display:flex;flex-direction:column;gap:6px;">
+                                                                                                        <div style="margin-bottom:8px">
+                                                                                                            <small style="color:var(--text-color);font-weight:500;">Drug Test</small>
+                                                                                                        </div>
+                                                                                                        <div style="display:flex;flex-direction:column;gap:4px;">
+                                                                                                            <div style="display:flex;justify-content:space-between;align-items:center;">
+                                                                                                                <small style="color:var(--text-color);">1st Year</small>
+                                                                                                                <div style="display:flex;align-items:center;gap:4px;">
+                                                                                                                    <small style="color:var(--gray);">Sep 15, 2022</small>
+                                                                                                                    <i class="fas fa-check-circle" style="color:var(--success)"></i>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <div style="display:flex;justify-content:space-between;align-items:center;">
+                                                                                                                <small style="color:var(--text-color);">2nd Year</small>
+                                                                                                                <div style="display:flex;align-items:center;gap:4px;">
+                                                                                                                    <small style="color:var(--gray);">Sep 18, 2023</small>
+                                                                                                                    <i class="fas fa-check-circle" style="color:var(--success)"></i>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <div style="display:flex;justify-content:space-between;align-items:center;">
+                                                                                                                <small style="color:var(--text-color);">3rd Year</small>
+                                                                                                                <div style="display:flex;align-items:center;gap:4px;">
+                                                                                                                    <small style="color:var(--gray);">Sep 18, 2023</small>
+                                                                                                                    <i class="fas fa-check-circle" style="color:var(--success)"></i>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <div style="display:flex;justify-content:space-between;align-items:center;">
+                                                                                                                <small style="color:var(--text-color);">4th Year</small>
+                                                                                                                <div style="display:flex;align-items:center;gap:4px;">
+                                                                                                                    <small style="color:var(--gray);">Sep 16, 2025</small>
+                                                                                                                    <i class="fas fa-check-circle" style="color:var(--success)"></i>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="stat-label">DRUG TEST</div>
+                                                                                            </div>
+
+                                                                                            <div class="stat-card" id="academic-status-card">
+                                                                        <div class="stat-value" id="academic-status">
+                                                                            <div style="display:flex;flex-direction:column;gap:6px;">
+                                                                            <div style="margin-bottom:8px">
+                                                                                <small style="color:var(--text-color);font-weight:500;">3rd Year (3rd Trime)
+                                                                                </small>
+                                                                            </div>
+                                                                            
+                                                                            <div style="display:flex;justify-content:space-between;align-items:center;">
+                                                                                <small style="color:var(--text-color);">Passed</small>
+                                                                                <span style="color:var(--success);font-weight:600;">2</span>
+                                                                            </div>
+                                                                            <div style="display:flex;justify-content:space-between;align-items:center;">
+                                                                                <small style="color:var(--text-color);">INC</small>
+                                                                                <span style="color:var(--danger);font-weight:600;"></span>
+                                                                            </div>
+                                                                            <div style="display:flex;justify-content:space-between;align-items:center;">
+                                                                                <small style="color:var(--text-color);">Dropped</small>
+                                                                                <span style="color:var(--danger);font-weight:600;">2</span>
+                                                                            </div>
+                                                                            <div style="display:flex;justify-content:space-between;align-items:center;">
+                                                                                <small style="color:var(--text-color);">Failed</small>
+                                                                                <span style="color:var(--danger);font-weight:600;"></span>
+                                                                            </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="stat-label">Academic Status</div>
+                                                                    </div>
+
+                                                                                            <div class="stat-card">
+                                                                                                <div class="stat-value">
+                                                                                                    <div style="display:flex;flex-direction:column;gap:6px;">
+                                                                                                        <div style="text-align:center;">
+                                                                                                            <div>
+                                                                                                                <small style="color:var(--text-color); font-weight: 500;">Chest X-ray (PA View)</small><br>
+                                                                                                                <small style="color:var(--text-color);">October 15, 2025</small>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="stat-label">MEDICAL</div>
+                                                                                            </div>
+
                                                                                             <div class="stat-card" id="attendance-summary-card">
                                                                                                 <div class="stat-value" id="attendance-summary">
                                                                                                     <div style="display:flex;flex-direction:column;gap:6px;">
                                                                                                         <div style="margin-bottom:8px">
-                                                                                                            <small style="color:var(--text-color);font-weight:500;">4th Year , 1st Trime</small>
+                                                                                                            <small style="color:var(--text-color);font-weight:500;">4th Year (1st Trime)</small>
                                                                                                         </div>
                                                                                             
                                                                                                         
@@ -4774,84 +4866,6 @@
                                                                                                 </div>
                                                                                                 <div class="stat-label">Uniforms</div>
                                                                                             </div>
-                                                                                        </div>
-
-                                                                                        <div class="stats-grid">
-                                                                        <div class="stat-card" id="academic-status-card">
-                                                                        <div class="stat-value" id="academic-status">
-                                                                            <div style="display:flex;flex-direction:column;gap:6px;">
-                                                                            <div style="margin-bottom:8px">
-                                                                                <small style="color:var(--text-color);font-weight:500;">3rd Year , 3rd Trime
-                                                                                </small>
-                                                                            </div>
-                                                                            
-                                                                            <div style="display:flex;justify-content:space-between;align-items:center;">
-                                                                                <small style="color:var(--text-color);">Passed</small>
-                                                                                <span style="color:var(--success);font-weight:600;">2</span>
-                                                                            </div>
-                                                                            <div style="display:flex;justify-content:space-between;align-items:center;">
-                                                                                <small style="color:var(--text-color);">INC</small>
-                                                                                <span style="color:var(--danger);font-weight:600;"></span>
-                                                                            </div>
-                                                                            <div style="display:flex;justify-content:space-between;align-items:center;">
-                                                                                <small style="color:var(--text-color);">Dropped</small>
-                                                                                <span style="color:var(--danger);font-weight:600;">2</span>
-                                                                            </div>
-                                                                            <div style="display:flex;justify-content:space-between;align-items:center;">
-                                                                                <small style="color:var(--text-color);">Failed</small>
-                                                                                <span style="color:var(--danger);font-weight:600;"></span>
-                                                                            </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="stat-label">Academic Status</div>
-                                                                        </div>
-
-
-                                                                                            <div class="stat-card" id="drugtest-summary-card">
-                                                                                                <div class="stat-value" id="drugtest-summary">
-                                                                                                    <div style="display:flex;flex-direction:column;gap:6px;">
-                                                                                                        <div style="margin-bottom:8px">
-                                                                                                            <small style="color:var(--text-color);font-weight:500;">Drug Test Status</small>
-                                                                                                        </div>
-                                                                                                        <div style="display:flex;justify-content:space-between;align-items:center;">
-                                                                                                            <small style="color:var(--text-color);">1st Year (10/04/2022)</small>
-                                                                                                            <i class="fas fa-check-circle" style="color:var(--success)"></i>
-                                                                                                        </div>
-                                                                                                        <div style="display:flex;justify-content:space-between;align-items:center;">
-                                                                                                            <small style="color:var(--text-color);">2nd Year (10/02/2023)</small>
-                                                                                                            <i class="fas fa-check-circle" style="color:var(--success)"></i>
-                                                                                                        </div>
-                                                                                                        <div style="display:flex;justify-content:space-between;align-items:center;">
-                                                                                                            <small style="color:var(--text-color);">3rd Year (10/05/2024)</small>
-                                                                                                            <i class="fas fa-check-circle" style="color:var(--success)"></i>
-                                                                                                        </div>
-                                                                                                        <div style="display:flex;justify-content:space-between;align-items:center;">
-                                                                                                            <small style="color:var(--text-color);">4th Year (10/01/2025)</small>
-                                                                                                            <i class="fas fa-check-circle" style="color:var(--success)"></i>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                                <div class="stat-label">MEDICAL</div>
-                                                                                            </div>
-
-                                                                                            <div class="stat-card">
-                                                                                                <div class="stat-value">
-                                                                                                    <div style="display:flex;flex-direction:column;gap:6px;">
-                                                                                                        <div style="margin-bottom:8px">
-                                                                                                            <small style="color:var(--text-color);font-weight:500;">Latest X-ray</small>
-                                                                                                        </div>
-                                                                                                        <div style="text-align:center;">
-                                                                                                            <i class="fas fa-x-ray" style="color: var(--success); font-size: 32px; margin-bottom: 8px;"></i>
-                                                                                                            <div>
-                                                                                                                <small style="color:var(--text-color); font-weight: 500;">Chest X-ray (PA View)</small><br>
-                                                                                                                <small style="color:var(--text-color);">October 15, 2025</small>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                                <div class="stat-label">MEDICAL</div>
-                                                                                            </div>
-
                                                                                         </div>
 
                                                                                         <div class="stats-grid years-grid">
@@ -6870,20 +6884,6 @@
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
-                                                                                                <div class="overview-card x-ray-card" id="x-ray-card" style="cursor: pointer; border: 2px solid var(--accent); background: linear-gradient(135deg, rgba(227, 62, 70, 0.1), rgba(227, 62, 70, 0.05)); transition: all 0.3s ease; position: relative;">
-                                                                                                    <div class="overview-icon" style="background: var(--accent); color: white;">
-                                                                                                        <i class="fas fa-x-ray"></i>
-                                                                                                    </div>
-                                                                                                    <div class="overview-content">
-                                                                                                        <h4 style="color: var(--accent);">X-Ray</h4>
-                                                                                                    </div>
-                                                                                                    <div class="loading-overlay" id="x-ray-loading" style="display: none;">
-                                                                                                        <div style="text-align: center;">
-                                                                                                            <div class="loading-spinner"></div>
-                                                                                                            <div class="loading-text">Loading...</div>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
                                                                                                 <div class="overview-card drug-test-card" id="drug-test-card" style="cursor: pointer; border: 2px solid var(--primary); background: linear-gradient(135deg, rgba(30, 58, 95, 0.1), rgba(30, 58, 95, 0.05)); transition: all 0.3s ease; position: relative;">
                                                                                                     <div class="overview-icon" style="background: var(--primary); color: white;">
                                                                                                         <i class="fas fa-vial"></i>
@@ -6892,6 +6892,20 @@
                                                                                                         <h4 style="color: var(--primary);">Drug Test</h4>
                                                                                                     </div>
                                                                                                     <div class="loading-overlay" id="drug-test-loading" style="display: none;">
+                                                                                                        <div style="text-align: center;">
+                                                                                                            <div class="loading-spinner"></div>
+                                                                                                            <div class="loading-text">Loading...</div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="overview-card x-ray-card" id="x-ray-card" style="cursor: pointer; border: 2px solid var(--accent); background: linear-gradient(135deg, rgba(227, 62, 70, 0.1), rgba(227, 62, 70, 0.05)); transition: all 0.3s ease; position: relative;">
+                                                                                                    <div class="overview-icon" style="background: var(--accent); color: white;">
+                                                                                                        <i class="fas fa-x-ray"></i>
+                                                                                                    </div>
+                                                                                                    <div class="overview-content">
+                                                                                                        <h4 style="color: var(--accent);">X-Ray</h4>
+                                                                                                    </div>
+                                                                                                    <div class="loading-overlay" id="x-ray-loading" style="display: none;">
                                                                                                         <div style="text-align: center;">
                                                                                                             <div class="loading-spinner"></div>
                                                                                                             <div class="loading-text">Loading...</div>
@@ -7366,11 +7380,8 @@
                                                                                         <!-- Professional Header -->
                                                                                         <div class="feedback-header">
                                                                                             <div class="feedback-intro">
-                                                                                                <div class="intro-icon">
-                                                                                                    <i class="fas fa-comments"></i>
-                                                                                                </div>
                                                                                                 <div class="intro-content">
-                                                                                                    <h2>Your Voice Matters</h2>
+                                                                                                    <h2>Your Opinion Matters</h2>
                                                                                                     <p>Help us improve by sharing your feedback and evaluating your professors</p>
                                                                                                 </div>
                                                                                             </div>
