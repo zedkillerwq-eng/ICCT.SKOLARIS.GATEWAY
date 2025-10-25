@@ -2309,7 +2309,7 @@
 
                                                                         /* Feedback Styles */
                                                                         .feedback-header {
-                                                                            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                                                                            background: var(--primary);
                                                                             border-radius: 16px;
                                                                             padding: 32px;
                                                                             margin-bottom: 32px;
@@ -2848,13 +2848,34 @@
                                                                         .prospectus-header {
                                                                             display: flex;
                                                                             align-items: center;
+                                                                            justify-content: space-between;
                                                                             gap: 20px;
                                                                             margin-bottom: 24px;
                                                                             padding: 24px;
-                                                                            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                                                                            background: var(--primary);
                                                                             color: white;
                                                                             border-radius: 12px 12px 0 0;
                                                                             margin: -20px -20px 24px -20px;
+                                                                        }
+
+                                                                        .header-content {
+                                                                            display: flex;
+                                                                            justify-content: space-between;
+                                                                            align-items: center;
+                                                                            flex: 1;
+                                                                        }
+
+                                                                        .prospectus-actions {
+                                                                            display: flex;
+                                                                            gap: 10px;
+                                                                        }
+
+                                                                        .prospectus-header .card-title {
+                                                                            color: white;
+                                                                        }
+
+                                                                        .prospectus-header .program-subtitle {
+                                                                            color: white;
                                                                         }
 
                                                                         .program-badge {
@@ -3181,7 +3202,7 @@
                                                                         }
 
                                                                         .summary-item {
-                                                                            background: #ffffff;
+                                                                            background: #ffffff !important;
                                                                             padding: 20px;
                                                                             border-radius: 12px;
                                                                             text-align: center;
@@ -4872,13 +4893,21 @@
                                                                                                 <div class="program-badge">
                                                                                                     <i class="fas fa-laptop-code"></i>
                                                                                                 </div>
-                                                                                                <div class="program-info">
-                                                                                                    <h2 class="card-title">BS Information Technology Program</h2>
-                                                                                                    <p class="program-subtitle">Bachelor of Science in Information Technology</p>
+                                                                                                <div class="header-content">
+                                                                                                    <div class="program-info">
+                                                                                                        <h2 class="card-title">BS Information Technology Program</h2>
+                                                                                                        <p class="program-subtitle">Bachelor of Science in Information Technology</p>
+                                                                                                    </div>
+                                                                                                    <div class="prospectus-actions">
+                                                                                                        <button class="btn btn-primary" onclick="window.print()">
+                                                                                                            <i class="fas fa-print"></i> Print
+                                                                                                        </button>
+                                                                                                        <button class="btn btn-secondary" onclick="downloadProspectus()">
+                                                                                                            <i class="fas fa-download"></i> Download
+                                                                                                        </button>
+                                                                                                    </div>
                                                                                                 </div>
-                                                                                            </div>
-                                                                                            
-                                                                                            <div class="prospectus-stats">
+                                                                                            </div>                                                                                            <div class="prospectus-stats">
                                                                                                 <div class="stat-item">
                                                                                                     <div class="stat-number">3+</div>
                                                                                                     <div class="stat-label">Years</div>
@@ -9441,6 +9470,19 @@
                                                                             </div>
 
                                                                             <script>
+                                                                                // Download Prospectus function
+                                                                                function downloadProspectus() {
+                                                                                    const element = document.getElementById('prospectus');
+                                                                                    const opt = {
+                                                                                        margin: 1,
+                                                                                        filename: 'BSIT_Prospectus.pdf',
+                                                                                        image: { type: 'jpeg', quality: 0.98 },
+                                                                                        html2canvas: { scale: 2 },
+                                                                                        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+                                                                                    };
+                                                                                    html2pdf().set(opt).from(element).save();
+                                                                                }
+
                                                                                 // Modal functionality for stat cards
                                                                                 const statModal = document.getElementById('stat-modal');
                                                                                 const modalBody = document.getElementById('modal-body');
@@ -9680,6 +9722,8 @@
                                                                                     }
                                                                                 });
                                                                             </script>
+
+                                                                            <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
                                                                         </body>
                                                                         </html>
