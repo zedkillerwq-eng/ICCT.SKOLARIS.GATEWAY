@@ -543,7 +543,7 @@
                                                                         .info-grid {
                                                                             display: grid;
                                                                             grid-template-columns: repeat(4, 1fr);
-                                                                            gap: 20px;
+                                                                            gap: 25px;
                                                                             margin-bottom: 20px;
                                                                         }
 
@@ -552,12 +552,13 @@
                                                                             flex-direction: column;
                                                                             align-items: center;
                                                                             justify-content: center;
-                                                                            padding: 30px;
+                                                                            padding: 40px;
                                                                             border: 1px solid var(--border-color);
                                                                             background: var(--card-bg);
                                                                             border-radius: 8px;
                                                                             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-                                                                            min-height: 100px;
+                                                                            min-height: 120px;
+                                                                            text-align: center;
                                                                         }
 
                                                                         .info-row:last-child {
@@ -568,22 +569,20 @@
                                                                             font-weight: 600;
                                                                             color: var(--gray);
                                                                             text-transform: uppercase;
-                                                                            font-size: 15px;
+                                                                            font-size: 16px;
                                                                             margin-bottom: 8px;
                                                                             width: 100%;
                                                                             text-align: center;
                                                                         }
 
-                                                                        .info-value {
-                                                                            color: var(--text-color);
-                                                                            font-weight: 500;
-                                                                            font-size: 14px;
-                                                                            width: 100%;
-                                                                            word-wrap: break-word;
-                                                                            text-align: center;
-                                                                        }
-
-                                                                        .student-info-container {
+                                                                                .info-value {
+                                                                                    color: var(--text-color);
+                                                                                    font-weight: 400;
+                                                                                    font-size: 16px;
+                                                                                    width: 100%;
+                                                                                    word-wrap: break-word;
+                                                                                    text-align: center;
+                                                                                }                                                                        .student-info-container {
                                                                             display: grid;
                                                                             grid-template-columns: repeat(4, 1fr);
                                                                             gap: 20px;
@@ -741,7 +740,7 @@
                                                                             font-weight: 500;
                                                                             color: var(--text-color);
                                                                             font-size: 14px;
-                                                                            text-align: right;
+                                                                            text-align: center;
                                                                             flex: 1;
                                                                             word-wrap: break-word;
                                                                             overflow-wrap: break-word;
@@ -5340,73 +5339,97 @@
                                                                                                 <div class="info-grid">
                                                                                                     <div class="info-row">
                                                                                                         <span class="info-label">STUDENT NUMBER</span>
+                                                                                                        <span class="info-value" text-align="center">UA202200984</span>
                                                                                                     </div>
                                                                                                     <div class="info-row">
                                                                                                         <span class="info-label">LRN</span>
+                                                                                                        <span class="info-value">988761988</span>
                                                                                                     </div>
                                                                                                     <div class="info-row">
                                                                                                         <span class="info-label">YEAR ENROLLED</span>
+                                                                                                        <span class="info-value">2021</span>
                                                                                                     </div>
                                                                                                     <div class="info-row">
                                                                                                         <span class="info-label">SCHOLASTIC STATUS</span>
+                                                                                                        <span class="info-value">Regular</span>
                                                                                                     </div>
                                                                                                     <div class="info-row">
                                                                                                         <span class="info-label">ENTRY CLASSIFICATION</span>
+                                                                                                        <span class="info-value">Continuing</span>
                                                                                                     </div>
                                                                                                     <div class="info-row">
                                                                                                         <span class="info-label">PROGRAM</span>
+                                                                                                        <span class="info-value">BSIT</span>
                                                                                                     </div>
                                                                                                     <div class="info-row">
                                                                                                         <span class="info-label">MAJOR</span>
+                                                                                                        <span class="info-value">INFORMATION SYSTEM</span>
                                                                                                     </div>
                                                                                                     <div class="info-row">
                                                                                                         <span class="info-label">CURRICULUM YEAR LEVEL</span>
+                                                                                                        <span class="info-value">4th</span>
                                                                                                     </div>
                                                                                                     <div class="info-row">
                                                                                                         <span class="info-label">ACADEMIC YEAR</span>
+                                                                                                        <span class="info-value">2025 - 2026</span>
                                                                                                     </div>
                                                                                                     <div class="info-row">
                                                                                                         <span class="info-label">ACADEMIC TERM</span>
+                                                                                                        <span class="info-value">1st Semester</span>
                                                                                                     </div>
                                                                                                     <div class="info-row">
                                                                                                         <span class="info-label">ADDRESS</span>
+                                                                                                        <span class="info-value">Antipolo ext. Sample address</span>
                                                                                                     </div>
                                                                                                     <div class="info-row">
                                                                                                         <span class="info-label">BIRTH PLACE</span>
+                                                                                                        <span class="info-value">Antipolo</span>
                                                                                                     </div>
                                                                                                     <div class="info-row">
                                                                                                         <span class="info-label">BIRTH DATE</span>
+                                                                                                        <span class="info-value">10/13/2003</span>
                                                                                                     </div>
                                                                                                     <div class="info-row">
                                                                                                         <span class="info-label">SEX</span>
+                                                                                                        <span class="info-value">M</span>
                                                                                                     </div>
                                                                                                     <div class="info-row">
                                                                                                         <span class="info-label">CIVIL STATUS</span>
+                                                                                                        <span class="info-value">SINGLE</span>
                                                                                                     </div>
                                                                                                     <div class="info-row">
                                                                                                         <span class="info-label">OFFICIAL EMAIL</span>
+                                                                                                        <span class="info-value">123edu@gmail.com</span>
                                                                                                     </div>
                                                                                                     <div class="info-row">
                                                                                                         <span class="info-label">MOBILE NUMBER</span>
+                                                                                                        <span class="info-value">0922242134</span>
                                                                                                     </div>
                                                                                                     <div class="info-row">
                                                                                                         <span class="info-label">CITIZENSHIP</span>
+                                                                                                        <span class="info-value">Filipino</span>
                                                                                                     </div>
                                                                                                     <div class="info-row">
                                                                                                         <span class="info-label">RELIGIOUS AFFILIATION</span>
+                                                                                                        <span class="info-value">Catholic</span>
                                                                                                     </div>
                                                                                                     <div class="info-row">
                                                                                                         <span class="info-label">TALENT</span>
+                                                                                                        <span class="info-value">Breakdancing</span>
                                                                                                     </div>
                                                                                                     <div class="info-row">
                                                                                                         <span class="info-label">SKILLS</span>
+                                                                                                        <span class="info-value"></span>
                                                                                                     </div>
                                                                                                     <div class="info-row">
                                                                                                         <span class="info-label">HOBBIES</span>
+                                                                                                        <span class="info-value">Playing Video Games</span>
                                                                                                     </div>
                                                                                                     <div class="info-row">
                                                                                                         <span class="info-label">SPORTS</span>
+                                                                                                        <span class="info-value">FOOTBALL</span>
                                                                                                     </div>
+                                                                                                </div>
                                                                                                 </div>
                                                                                             </div>
                                                                                             
