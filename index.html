@@ -3698,20 +3698,21 @@
 
                                                                         .enrollment-overview {
                                                                             display: grid;
-                                                                            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                                                                            gap: 16px;
+                                                                            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                                                                            gap: 20px;
                                                                             margin-bottom: 8px;
                                                                         }
 
                                                                         .overview-card {
                                                                             background: var(--card-bg);
                                                                             color: var(--text-color);
-                                                                            padding: 20px;
+                                                                            padding: 24px;
                                                                             border-radius: 12px;
                                                                             display: flex;
-                                                                            align-items: center;
+                                                                            align-items: flex-start;
                                                                             gap: 16px;
                                                                             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                                                                            min-height: 140px;
                                                                         }
 
                                                                         .overview-icon {
@@ -3724,18 +3725,27 @@
                                                                             justify-content: center;
                                                                             font-size: 20px;
                                                                             color: white;
+                                                                            flex-shrink: 0;
+                                                                        }
+
+                                                                        .overview-content {
+                                                                            flex: 1;
+                                                                            display: flex;
+                                                                            flex-direction: column;
                                                                         }
 
                                                                         .overview-content h4 {
-                                                                            margin: 0 0 4px 0;
-                                                                            font-size: 14px;
+                                                                            margin: 0 0 8px 0;
+                                                                            font-size: 16px;
                                                                             opacity: 0.9;
+                                                                            font-weight: 600;
                                                                         }
 
                                                                         .overview-content p {
                                                                             margin: 0;
-                                                                            font-size: 18px;
-                                                                            font-weight: 600;
+                                                                            font-size: 13px;
+                                                                            font-weight: 400;
+                                                                            line-height: 1.5;
                                                                         }
 
                                                                         .enrollment-card .card-header {
@@ -4080,6 +4090,31 @@
                                                                             max-height: 90vh;
                                                                             overflow: hidden;
                                                                             animation: slideIn 0.3s ease-out;
+                                                                        }
+
+                                                                        /* X-Ray Modal - Fixed Colors */
+                                                                        #x-ray-modal .glass-modal,
+                                                                        #x-ray-modal .modal-header,
+                                                                        #x-ray-modal .modal-body,
+                                                                        #x-ray-modal .document-preview {
+                                                                            background: #ffffff !important;
+                                                                            color: #000000 !important;
+                                                                        }
+
+                                                                        #x-ray-modal .modal-title,
+                                                                        #x-ray-modal h2,
+                                                                        #x-ray-modal h3,
+                                                                        #x-ray-modal h4,
+                                                                        #x-ray-modal h5,
+                                                                        #x-ray-modal p,
+                                                                        #x-ray-modal small,
+                                                                        #x-ray-modal strong,
+                                                                        #x-ray-modal div {
+                                                                            color: #000000 !important;
+                                                                        }
+
+                                                                        #x-ray-modal .modal-header {
+                                                                            border-bottom: 1px solid #e0e0e0 !important;
                                                                         }
 
                                                                         .modal-header {
@@ -6841,12 +6876,14 @@
 
                                                                                         <div class="enrollment-container">
                                                                                             <div class="enrollment-overview">
-                                                                                                <div class="overview-card physical-exam-card" id="physical-exam-card" style="cursor: pointer; position: relative;">
-                                                                                                    <div class="overview-icon">
+                                                                                                <div class="overview-card physical-exam-card" id="physical-exam-card" style="cursor: pointer; border: 2px solid var(--success); background: linear-gradient(135deg, rgba(40, 167, 69, 0.08), rgba(40, 167, 69, 0.04)); transition: all 0.3s ease; position: relative;">
+                                                                                                    <div class="overview-icon" style="background: var(--success); color: white; align-self: center;">
                                                                                                         <i class="fas fa-stethoscope"></i>
                                                                                                     </div>
                                                                                                     <div class="overview-content">
-                                                                                                        <h4>Physical Exam</h4>
+                                                                                                        <h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 700; color: var(--text-color);">Physical Exam</h3>
+                                                                                                        <h4 style="color: var(--success); margin: 0 0 8px 0; font-size: 15px; font-weight: 600;">Health Assesment</h4>
+                                                                                                        <p style="color: var(--gray); margin: 0; font-size: 13px; line-height: 1.5;">Student's General Physical Exam Results, Vital Signs, and Physician's Findings.</p>
                                                                                                     </div>
                                                                                                     <div class="loading-overlay" id="physical-exam-loading" style="display: none;">
                                                                                                         <div style="text-align: center;">
@@ -6856,11 +6893,13 @@
                                                                                                     </div>
                                                                                                 </div>
                                                                                                 <div class="overview-card drug-test-card" id="drug-test-card" style="cursor: pointer; border: 2px solid var(--primary); background: linear-gradient(135deg, rgba(30, 58, 95, 0.1), rgba(30, 58, 95, 0.05)); transition: all 0.3s ease; position: relative;">
-                                                                                                    <div class="overview-icon" style="background: var(--primary); color: white;">
+                                                                                                    <div class="overview-icon" style="background: var(--primary); color: white; align-self: center;">
                                                                                                         <i class="fas fa-vial"></i>
                                                                                                     </div>
                                                                                                     <div class="overview-content">
-                                                                                                        <h4 style="color: var(--primary);">Drug Test</h4>
+                                                                                                        <h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 700; color: var(--text-color);">Drug Test</h3>
+                                                                                                        <h4 style="color: var(--primary); margin: 0 0 8px 0; font-size: 15px; font-weight: 600;">Substance Screening</h4>
+                                                                                                        <p style="color: var(--gray); margin: 0; font-size: 13px; line-height: 1.5;">Records of Drug Testing results and compliance with School/CHED</p>
                                                                                                     </div>
                                                                                                     <div class="loading-overlay" id="drug-test-loading" style="display: none;">
                                                                                                         <div style="text-align: center;">
@@ -6870,13 +6909,31 @@
                                                                                                     </div>
                                                                                                 </div>
                                                                                                 <div class="overview-card x-ray-card" id="x-ray-card" style="cursor: pointer; border: 2px solid var(--accent); background: linear-gradient(135deg, rgba(227, 62, 70, 0.1), rgba(227, 62, 70, 0.05)); transition: all 0.3s ease; position: relative;">
-                                                                                                    <div class="overview-icon" style="background: var(--accent); color: white;">
+                                                                                                    <div class="overview-icon" style="background: var(--accent); color: white; align-self: center;">
                                                                                                         <i class="fas fa-x-ray"></i>
                                                                                                     </div>
                                                                                                     <div class="overview-content">
-                                                                                                        <h4 style="color: var(--accent);">X-Ray</h4>
+                                                                                                        <h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 700; color: var(--text-color);">X-ray</h3>
+                                                                                                        <h4 style="color: var(--accent); margin: 0 0 8px 0; font-size: 15px; font-weight: 600;">Radiology Report</h4>
+                                                                                                        <p style="color: var(--gray); margin: 0; font-size: 13px; line-height: 1.5;">Repository of X-ray or imaging results required for medical clearance.</p>
                                                                                                     </div>
                                                                                                     <div class="loading-overlay" id="x-ray-loading" style="display: none;">
+                                                                                                        <div style="text-align: center;">
+                                                                                                            <div class="loading-spinner"></div>
+                                                                                                            <div class="loading-text">Loading...</div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="overview-card vaccination-card" id="vaccination-card" style="cursor: pointer; border: 2px solid var(--info); background: linear-gradient(135deg, rgba(23, 162, 184, 0.1), rgba(23, 162, 184, 0.05)); transition: all 0.3s ease; position: relative;">
+                                                                                                    <div class="overview-icon" style="background: var(--info); color: white; align-self: center;">
+                                                                                                        <i class="fas fa-syringe"></i>
+                                                                                                    </div>
+                                                                                                    <div class="overview-content">
+                                                                                                        <h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 700; color: var(--text-color);">Vaccination</h3>
+                                                                                                        <h4 style="color: var(--info); margin: 0 0 8px 0; font-size: 15px; font-weight: 600;">Immunization Record</h4>
+                                                                                                        <p style="color: var(--gray); margin: 0; font-size: 13px; line-height: 1.5;">Tracks vaccines received (e.g., Hepatitis B, MMR, COVID-19, etc.) with validity dates.</p>
+                                                                                                    </div>
+                                                                                                    <div class="loading-overlay" id="vaccination-loading" style="display: none;">
                                                                                                         <div style="text-align: center;">
                                                                                                             <div class="loading-spinner"></div>
                                                                                                             <div class="loading-text">Loading...</div>
@@ -7242,6 +7299,112 @@
                                                                                                                 <i class="fas fa-file-pdf"></i> Download Report
                                                                                                             </button>
                                                                                                         </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <!-- Vaccination Modal -->
+                                                                                    <div id="vaccination-modal" class="modal-overlay" style="display: none;">
+                                                                                        <div class="modal-content glass-modal">
+                                                                                            <div class="modal-header">
+                                                                                                <h2 class="modal-title">
+                                                                                                    <i class="fas fa-syringe"></i> Vaccination Records
+                                                                                                </h2>
+                                                                                            </div>
+                                                                                            <div class="modal-body">
+                                                                                                <div class="document-preview" style="padding: 30px;">
+                                                                                                    <div style="max-width: 800px; margin: 0 auto;">
+                                                                                                        
+                                                                                                        <!-- Alert Message -->
+                                                                                                        <div style="background-color: rgba(23, 162, 184, 0.1); padding: 20px; border-radius: var(--border-radius); border-left: 4px solid var(--info); margin-bottom: 30px;">
+                                                                                                            <h4 style="margin: 0 0 10px 0; color: var(--info); font-size: 16px;">
+                                                                                                                <i class="fas fa-info-circle"></i> Important Notice
+                                                                                                            </h4>
+                                                                                                            <p style="margin: 0; font-size: 14px; line-height: 1.6; color: var(--text-color);">
+                                                                                                                After uploading your vaccination card, the verification process will take <strong>1-3 business days</strong>. 
+                                                                                                                You will be notified once your vaccination records have been verified by the school health office.
+                                                                                                            </p>
+                                                                                                        </div>
+
+                                                                                                        <!-- Upload Section -->
+                                                                                                        <div style="text-align: center; padding: 40px; border: 2px dashed var(--border-color); border-radius: var(--border-radius); background: rgba(23, 162, 184, 0.05); margin-bottom: 30px;">
+                                                                                                            <i class="fas fa-cloud-upload-alt" style="font-size: 64px; color: var(--info); margin-bottom: 20px;"></i>
+                                                                                                            <h3 style="margin: 0 0 10px 0; font-size: 20px; color: var(--text-color);">Upload Vaccination Card</h3>
+                                                                                                
+                                                                                                            
+                                                                                                            <input type="file" id="vaccination-file-input" accept="image/*,.pdf" style="display: none;">
+                                                                                                            <button class="btn btn-primary" id="upload-vaccination-btn" style="padding: 15px 40px; font-size: 16px; margin-bottom: 10px;">
+                                                                                                                <i class="fas fa-upload"></i> Select File to Upload
+                                                                                                            </button>
+                                                                                                            
+                                                                        
+                                                                                                        </div>
+
+                                                                                                        <!-- Current Vaccination Records -->
+                                                                                                        <div style="margin-bottom: 30px;">
+                                                                                                            <h4 style="font-size: 18px; margin-bottom: 20px; color: var(--text-color);">
+                                                                                                                <i class="fas fa-clipboard-list"></i> Required Vaccinations
+                                                                                                            </h4>
+                                                                                                            
+                                                                                                            <div style="display: flex; flex-direction: column; gap: 15px;">
+                                                                                                                <!-- Vaccination Item -->
+                                                                                                                <div style="display: flex; align-items: center; justify-content: space-between; padding: 15px; border-radius: var(--border-radius); background: var(--card-bg); border: 1px solid var(--border-color);">
+                                                                                                                    <div style="display: flex; align-items: center; gap: 12px;">
+                                                                                                                        <i class="fas fa-syringe" style="color: var(--gray); font-size: 20px;"></i>
+                                                                                                                        <div>
+                                                                                                                            <h5 style="margin: 0; font-size: 15px; color: var(--text-color);">COVID-19 Vaccine</h5>
+                                                                                                                            <small style="color: var(--gray);">2 doses required</small>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                    <span class="status-badge status-pending">Pending Upload</span>
+                                                                                                                </div>
+
+                                                                                                                <div style="display: flex; align-items: center; justify-content: space-between; padding: 15px; border-radius: var(--border-radius); background: var(--card-bg); border: 1px solid var(--border-color);">
+                                                                                                                    <div style="display: flex; align-items: center; gap: 12px;">
+                                                                                                                        <i class="fas fa-syringe" style="color: var(--gray); font-size: 20px;"></i>
+                                                                                                                        <div>
+                                                                                                                            <h5 style="margin: 0; font-size: 15px; color: var(--text-color);">Hepatitis B</h5>
+                                                                                                                            <small style="color: var(--gray);">3 doses required</small>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                    <span class="status-badge status-pending">Pending Upload</span>
+                                                                                                                </div>
+
+                                                                                                                <div style="display: flex; align-items: center; justify-content: space-between; padding: 15px; border-radius: var(--border-radius); background: var(--card-bg); border: 1px solid var(--border-color);">
+                                                                                                                    <div style="display: flex; align-items: center; gap: 12px;">
+                                                                                                                        <i class="fas fa-syringe" style="color: var(--gray); font-size: 20px;"></i>
+                                                                                                                        <div>
+                                                                                                                            <h5 style="margin: 0; font-size: 15px; color: var(--text-color);">MMR (Measles, Mumps, Rubella)</h5>
+                                                                                                                            <small style="color: var(--gray);">2 doses required</small>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                    <span class="status-badge status-pending">Pending Upload</span>
+                                                                                                                </div>
+
+                                                                                                                <div style="display: flex; align-items: center; justify-content: space-between; padding: 15px; border-radius: var(--border-radius); background: var(--card-bg); border: 1px solid var(--border-color);">
+                                                                                                                    <div style="display: flex; align-items: center; gap: 12px;">
+                                                                                                                        <i class="fas fa-syringe" style="color: var(--gray); font-size: 20px;"></i>
+                                                                                                                        <div>
+                                                                                                                            <h5 style="margin: 0; font-size: 15px; color: var(--text-color);">Tetanus-Diphtheria</h5>
+                                                                                                                            <small style="color: var(--gray);">Booster every 10 years</small>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                    <span class="status-badge status-pending">Pending Upload</span>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+
+                                                                                                        <!-- Additional Info -->
+                                                                                                        <div style="background-color: rgba(255, 193, 7, 0.1); padding: 15px; border-radius: var(--border-radius); border-left: 4px solid var(--warning);">
+                                                                                                            <p style="margin: 0; font-size: 14px; line-height: 1.6; color: var(--text-color);">
+                                                                                                                <i class="fas fa-exclamation-triangle" style="color: var(--warning);"></i>
+                                                                                                                <strong>Note:</strong> All vaccination records must be verified before you can attend on-campus activities. 
+                                                                                                                Please ensure your vaccination card includes the dates and healthcare provider information.
+                                                                                                            </p>
+                                                                                                        </div>
+
                                                                                                     </div>
                                                                                                 </div>
                                                                                             </div>
@@ -9617,6 +9780,78 @@
                                                                                         if (e.target === xRayModal) {
                                                                                             xRayModal.style.display = 'none';
                                                                                             document.body.style.overflow = 'auto';
+                                                                                        }
+                                                                                    });
+                                                                                }
+
+                                                                                // Vaccination Modal Functionality
+                                                                                const vaccinationCard = document.getElementById('vaccination-card');
+                                                                                const vaccinationModal = document.getElementById('vaccination-modal');
+                                                                                const vaccinationLoading = document.getElementById('vaccination-loading');
+                                                                                const uploadVaccinationBtn = document.getElementById('upload-vaccination-btn');
+                                                                                const vaccinationFileInput = document.getElementById('vaccination-file-input');
+
+                                                                                if (vaccinationCard) {
+                                                                                    vaccinationCard.addEventListener('click', function() {
+                                                                                        vaccinationLoading.style.display = 'flex';
+                                                                                        // Simulate loading delay
+                                                                                        setTimeout(function() {
+                                                                                            vaccinationLoading.style.display = 'none';
+                                                                                            vaccinationModal.style.display = 'flex';
+                                                                                            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                                                                                        }, 1500);
+                                                                                    });
+                                                                                }
+
+                                                                                // Close modal when clicking outside
+                                                                                if (vaccinationModal) {
+                                                                                    vaccinationModal.addEventListener('click', function(e) {
+                                                                                        if (e.target === vaccinationModal) {
+                                                                                            vaccinationModal.style.display = 'none';
+                                                                                            document.body.style.overflow = 'auto';
+                                                                                        }
+                                                                                    });
+                                                                                }
+
+                                                                                // Handle vaccination file upload button click
+                                                                                if (uploadVaccinationBtn && vaccinationFileInput) {
+                                                                                    uploadVaccinationBtn.addEventListener('click', function() {
+                                                                                        vaccinationFileInput.click();
+                                                                                    });
+
+                                                                                    // Handle file selection
+                                                                                    vaccinationFileInput.addEventListener('change', function(e) {
+                                                                                        const file = e.target.files[0];
+                                                                                        if (file) {
+                                                                                            // Check file size (5MB limit)
+                                                                                            const maxSize = 5 * 1024 * 1024; // 5MB in bytes
+                                                                                            if (file.size > maxSize) {
+                                                                                                alert('File size exceeds 5MB limit. Please choose a smaller file.');
+                                                                                                vaccinationFileInput.value = ''; // Reset file input
+                                                                                                return;
+                                                                                            }
+
+                                                                                            // Check file type
+                                                                                            const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'application/pdf'];
+                                                                                            if (!allowedTypes.includes(file.type)) {
+                                                                                                alert('Invalid file format. Please upload JPG, PNG, or PDF files only.');
+                                                                                                vaccinationFileInput.value = ''; // Reset file input
+                                                                                                return;
+                                                                                            }
+
+                                                                                            // Show processing alert
+                                                                                            alert('Uploading vaccination card...\n\nYour vaccination card is being uploaded and will be verified by the school health office.\n\nProcessing Time: 1-3 business days\n\nYou will receive a notification once the verification is complete.');
+                                                                                            
+                                                                                            // Update button to show success
+                                                                                            uploadVaccinationBtn.innerHTML = '<i class="fas fa-check-circle"></i> File Uploaded Successfully';
+                                                                                            uploadVaccinationBtn.style.background = 'var(--success)';
+                                                                                            
+                                                                                            // Reset after 3 seconds
+                                                                                            setTimeout(function() {
+                                                                                                uploadVaccinationBtn.innerHTML = '<i class="fas fa-upload"></i> Select File to Upload';
+                                                                                                uploadVaccinationBtn.style.background = '';
+                                                                                                vaccinationFileInput.value = ''; // Reset file input
+                                                                                            }, 3000);
                                                                                         }
                                                                                     });
                                                                                 }
