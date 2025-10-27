@@ -4658,8 +4658,11 @@
                                                                                         <h1 class="page-title">Student Dashboard</h1>
                                                                                         
                                                                                         <div class="quick-actions">
-                                                                                            <a href="#" class="quick-action-btn" data-section="requirements">
-                                                                                                <i class="fas fa-file-upload"></i> Upload Requirements
+                                                                                            <a href="#" class="quick-action-btn" data-section="schedule">
+                                                                                                <i class="fas fa-calendar-check"></i> Check Schedule
+                                                                                            </a>
+                                                                                            <a href="#" class="quick-action-btn" data-section="grades">
+                                                                                                <i class="fas fa-chart-line"></i> View Grades
                                                                                             </a>
                                                                                             <a href="#" class="quick-action-btn" data-section="account">
                                                                                                 <i class="fas fa-credit-card"></i> Make Payment
@@ -4667,11 +4670,8 @@
                                                                                             <a href="#" class="quick-action-btn" data-section="enrollment">
                                                                                                 <i class="fas fa-user-check"></i> Enrollment
                                                                                             </a>
-                                                                                            <a href="#" class="quick-action-btn" data-section="grades">
-                                                                                                <i class="fas fa-chart-line"></i> View Grades
-                                                                                            </a>
-                                                                                            <a href="#" class="quick-action-btn" data-section="schedule">
-                                                                                                <i class="fas fa-calendar-check"></i> Check Schedule
+                                                                                            <a href="#" class="quick-action-btn" data-section="requirements">
+                                                                                                <i class="fas fa-file-upload"></i> Upload Requirements
                                                                                             </a>
                                                                                         </div>
                                                                                         
@@ -4691,6 +4691,110 @@
                                                                                             <div class="stat-card">
                                                                                                 <div class="stat-value">₱ 0.00</div>
                                                                                                 <div class="stat-label">Balance Due</div>
+                                                                                            </div>
+
+                                                                                            <div class="stat-card" id="ojt-summary-card">
+                                                                                                <div class="stat-value" id="ojt-summary">
+                                                                                                    <div style="display:flex;flex-direction:column;gap:6px;">
+                                                
+                                                                                                        <div style="display:flex;align-items:center;">
+                                                                                                            <span style="color:var(--text-color);font-size:16px;line-height:1.4;">ICCT Colleges INC. Antipolo Campus</span>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="stat-label">OJT/Intern</div>
+                                                                                            </div>
+
+                                                                                            <div class="stat-card" id="uniforms-summary-card">
+                                                                                                <div class="stat-value" id="uniforms-summary">
+                                                                                                    <div style="display:flex;flex-direction:column;gap:6px;">
+                                                                                                        <div style="display:flex;justify-content:space-between;align-items:center;">
+                                                                                                            <small style="color:var(--text-color);">BSIT Uniform</small>
+                                                                                                            <i class="fas fa-check-circle" style="color:var(--success)"></i>
+                                                                                                        </div>
+                                                                                                        <div style="display:flex;justify-content:space-between;align-items:center;">
+                                                                                                            <small style="color:var(--text-color);">College P.E. Uniform</small>
+                                                                                                            <i class="fas fa-check-circle" style="color:var(--success)"></i>
+                                                                                                        </div>
+                                                                                                        <div style="display:flex;justify-content:space-between;align-items:center;">
+                                                                                                            <small style="color:var(--text-color);">NSTP Uniform</small>
+                                                                                                            <i class="fas fa-check-circle" style="color:var(--success)"></i>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="stat-label">Uniforms</div>
+                                                                                            </div>
+
+                                                                                            <div class="stat-card" id="attendance-summary-card">
+                                                                                                <div class="stat-value" id="attendance-summary">
+                                                                                                    <div style="display:flex;flex-direction:column;gap:6px;">
+                                                                                                        <div style="margin-bottom:8px">
+                                                                                                            <small style="color:var(--text-color);font-weight:500;">4th Year (1st Trime)</small>
+                                                                                                        </div>
+                                                                                            
+                                                                                                        
+                                                                                                        <div style="display:flex;justify-content:center;align-items:center;">
+                                                                                                            <small style="color:var(--danger);font-weight:600;">Absences</small>
+                                                                                                        </div>
+
+                                                                                                        <div style="display:flex;justify-content:space-around;align-items:center;margin-top:10px;padding-top:10px;border-top:1px solid var(--border-color);">
+                                                                                                            <div style="text-align:center;">
+                                                                                                                <small style="color:var(--text-color);display:block;margin-bottom:4px;">Pre</small>
+                                                                                                                <span style="color:var(--text-color);font-weight:600;"></span>
+                                                                                                            </div>
+                                                                                                            <div style="text-align:center;">
+                                                                                                                <small style="color:var(--text-color);display:block;margin-bottom:4px;">Mid</small>
+                                                                                                                <span style="color:var(--text-color);font-weight:600;"></span>
+                                                                                                            </div>
+                                                                                                            <div style="text-align:center;">
+                                                                                                                <small style="color:var(--text-color);display:block;margin-bottom:4px;">Fin</small>
+                                                                                                                <span style="color:var(--danger);font-weight:600;">2</span>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="stat-label">Retention</div>
+                                                                                            </div>
+
+                                                                                            <div class="stat-card small-card">
+                                                                                                <div class="stat-value">
+                                                                                                    <div style="display:flex;flex-direction:column;gap:6px;">
+                                                                                                        <div style="margin-bottom:8px">
+                                                                                                            <small style="color:var(--text-color);font-weight:500;">X-ray</small>
+                                                                                                        </div>
+                                                                                                        <div style="display:flex;flex-direction:column;gap:4px;">
+                                                                                                            <div style="display:flex;justify-content:space-between;align-items:center;">
+                                                                                                                <small style="color:var(--text-color);">1st ...</small>
+                                                                                                                <div style="display:flex;align-items:center;gap:4px;">
+                                                                                                                    <small style="color:var(--gray);">Sep 5, 2022</small>
+                                                                                                                    <i class="fas fa-check-circle" style="color:var(--success)"></i>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <div style="display:flex;justify-content:space-between;align-items:center;">
+                                                                                                                <small style="color:var(--text-color);">2nd ...</small>
+                                                                                                                <div style="display:flex;align-items:center;gap:4px;">
+                                                                                                                    <small style="color:var(--gray);">Aug 20, 2023</small>
+                                                                                                                    <i class="fas fa-check-circle" style="color:var(--success)"></i>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <div style="display:flex;justify-content:space-between;align-items:center;">
+                                                                                                                <small style="color:var(--text-color);">3rd ...</small>
+                                                                                                                <div style="display:flex;align-items:center;gap:4px;">
+                                                                                                                    <small style="color:var(--gray);">Sep 10, 2024</small>
+                                                                                                                    <i class="fas fa-check-circle" style="color:var(--success)"></i>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <div style="display:flex;justify-content:space-between;align-items:center;">
+                                                                                                                <small style="color:var(--text-color);">4th ...</small>
+                                                                                                                <div style="display:flex;align-items:center;gap:4px;">
+                                                                                                                    <small style="color:var(--gray);">Oct 15, 2025</small>
+                                                                                                                    <i class="fas fa-check-circle" style="color:var(--success)"></i>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="stat-label">Health & Care</div>
                                                                                             </div>
 
                                                                                             <div class="stat-card" id="drug-test-summary-card">
@@ -4731,144 +4835,7 @@
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
-                                                                                                <div class="stat-label">DRUG TEST</div>
-                                                                                            </div>
-
-                                                                                            <div class="stat-card" id="academic-status-card">
-                                                                        <div class="stat-value" id="academic-status">
-                                                                            <div style="display:flex;flex-direction:column;gap:6px;">
-                                                                            <div style="margin-bottom:8px">
-                                                                                <small style="color:var(--text-color);font-weight:500;">3rd Year (3rd Trime)
-                                                                                </small>
-                                                                            </div>
-                                                                            
-                                                                            <div style="display:flex;justify-content:space-between;align-items:center;">
-                                                                                <small style="color:var(--text-color);">Passed</small>
-                                                                                <span style="color:var(--success);font-weight:600;">2</span>
-                                                                            </div>
-                                                                            <div style="display:flex;justify-content:space-between;align-items:center;">
-                                                                                <small style="color:var(--text-color);">INC</small>
-                                                                                <span style="color:var(--danger);font-weight:600;"></span>
-                                                                            </div>
-                                                                            <div style="display:flex;justify-content:space-between;align-items:center;">
-                                                                                <small style="color:var(--text-color);">Dropped</small>
-                                                                                <span style="color:var(--danger);font-weight:600;">2</span>
-                                                                            </div>
-                                                                            <div style="display:flex;justify-content:space-between;align-items:center;">
-                                                                                <small style="color:var(--text-color);">Failed</small>
-                                                                                <span style="color:var(--danger);font-weight:600;"></span>
-                                                                            </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="stat-label">Academic Status</div>
-                                                                    </div>
-
-                                                                                            <div class="stat-card small-card">
-                                                                                                <div class="stat-value">
-                                                                                                    <div style="display:flex;flex-direction:column;gap:6px;">
-                                                                                                        <div style="text-align:center;">
-                                                                                                            <div>
-                                                                                                                <small style="color:var(--text-color); font-weight: 500;">Chest X-ray (PA View)</small><br>
-                                                                                                                <small style="color:var(--text-color);">October 15, 2025</small>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                                <div class="stat-label">MEDICAL</div>
-                                                                                            </div>
-
-                                                                                            <div class="stat-card" id="attendance-summary-card">
-                                                                                                <div class="stat-value" id="attendance-summary">
-                                                                                                    <div style="display:flex;flex-direction:column;gap:6px;">
-                                                                                                        <div style="margin-bottom:8px">
-                                                                                                            <small style="color:var(--text-color);font-weight:500;">4th Year (1st Trime)</small>
-                                                                                                        </div>
-                                                                                            
-                                                                                                        
-                                                                                                        <div style="display:flex;justify-content:space-between;align-items:center;">
-                                                                                                            <small style="color:var(--text-color);">Absences</small>
-                                                                                                            <span style="color:var(--danger);font-weight:600;">2</span>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                                <div class="stat-label">Retention</div>
-                                                                                            </div>
-
-                                                                                            <div class="stat-card" id="ojt-summary-card">
-                                                                                                <div class="stat-value" id="ojt-summary">
-                                                                                                    <div style="display:flex;flex-direction:column;gap:6px;">
-                                                                                                        <div style="margin-bottom:8px">
-                                                                                                            <small style="color:var(--text-color);font-weight:500;">Company Name</small>
-                                                                                                        </div>
-                                                                                                        <div style="display:flex;align-items:center;">
-                                                                                                            <span style="color:var(--text-color);font-size:16px;line-height:1.4;">ICCT Colleges INC. Antipolo Campus</span>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                                <div class="stat-label">OJT/Intern</div>
-                                                                                            </div>
-
-                                                                                            <div class="stat-card" id="uniforms-summary-card">
-                                                                                                <div class="stat-value" id="uniforms-summary">
-                                                                                                    <div style="display:flex;flex-direction:column;gap:6px;">
-                                                                                                        
-                                                                                                        <div style="display:flex;justify-content:space-between;align-items:center;" data-uniform="BSIT">
-                                                                                                            <small style="color:var(--text-color);">BSIT Uniform</small>
-                                                                                                            <i class="fas fa-check-circle" style="color:var(--success)"></i>
-                                                                                                        </div>
-                                                                                                        <div style="display:flex;justify-content:space-between;align-items:center;display:none;" data-uniform="BSCS">
-                                                                                                            <small style="color:var(--text-color);">BSCS Uniform</small>
-                                                                                                            <i class="fas fa-check-circle" style="color:var(--success)"></i>
-                                                                                                        </div>
-                                                                                                        <div style="display:flex;justify-content:space-between;align-items:center;display:none;" data-uniform="BSBA">
-                                                                                                            <small style="color:var(--text-color);">BSBA Uniform</small>
-                                                                                                            <i class="fas fa-check-circle" style="color:var(--success)"></i>
-                                                                                                        </div>
-                                                                                                        <div style="display:flex;justify-content:space-between;align-items:center;display:none;" data-uniform="BEED">
-                                                                                                            <small style="color:var(--text-color);">BEED Uniform</small>
-                                                                                                            <i class="fas fa-check-circle" style="color:var(--success)"></i>
-                                                                                                        </div>
-                                                                                                        <div style="display:flex;justify-content:space-between;align-items:center;display:none;" data-uniform="BSED">
-                                                                                                            <small style="color:var(--text-color);">BSED Uniform</small>
-                                                                                                            <i class="fas fa-check-circle" style="color:var(--success)"></i>
-                                                                                                        </div>
-                                                                                                        <div style="display:flex;justify-content:space-between;align-items:center;" data-uniform="COLLEGE P.E">
-                                                                                                            <small style="color:var(--text-color);">College P.E. / NSTP Uniform</small>
-                                                                                                            <i class="fas fa-check-circle" style="color:var(--success)"></i>
-                                                                                                        </div>
-                                                                                                        
-                                                                                                        
-                                                                                                        <div style="display:flex;justify-content:space-between;align-items:center;display:none;" data-uniform="STEM">
-                                                                                                            <small style="color:var(--text-color);">STEM Uniform</small>
-                                                                                                            <i class="fas fa-check-circle" style="color:var(--success)"></i>
-                                                                                                        </div>
-                                                                                                        <div style="display:flex;justify-content:space-between;align-items:center;display:none;" data-uniform="ABM">
-                                                                                                            <small style="color:var(--text-color);">ABM Uniform</small>
-                                                                                                            <i class="fas fa-check-circle" style="color:var(--success)"></i>
-                                                                                                        </div>
-                                                                                                        <div style="display:flex;justify-content:space-between;align-items:center;display:none;" data-uniform="HUMSS">
-                                                                                                            <small style="color:var(--text-color);">HUMSS Uniform</small>
-                                                                                                            <i class="fas fa-check-circle" style="color:var(--success)"></i>
-                                                                                                        </div>
-                                                                                                        <div style="display:flex;justify-content:space-between;align-items:center;display:none;" data-uniform="GAS">
-                                                                                                            <small style="color:var(--text-color);">GAS Uniform</small>
-                                                                                                            <i class="fas fa-check-circle" style="color:var(--success)"></i>
-                                                                                                        </div>
-                                                                                                        <div style="display:flex;justify-content:space-between;align-items:center;display:none;" data-uniform="TVL">
-                                                                                                            <small style="color:var(--text-color);">TVL Uniform</small>
-                                                                                                            <i class="fas fa-check-circle" style="color:var(--success)"></i>
-                                                                                                        </div>
-                                                                                                        <div style="display:flex;justify-content:space-between;align-items:center;display:none;" data-uniform="Arts & Design">
-                                                                                                            <small style="color:var(--text-color);">Arts & Design Uniform</small>
-                                                                                                            <i class="fas fa-check-circle" style="color:var(--success)"></i>
-                                                                                                        </div>
-                                                                                                        <div style="display:flex;justify-content:space-between;align-items:center;display:none;" data-uniform="SHS P.E">
-                                                                                                            <small style="color:var(--text-color);">SHS P.E. Uniform</small>
-                                                                                                            <i class="fas fa-check-circle" style="color:var(--success)"></i>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                                <div class="stat-label">Uniforms</div>
+                                                                                                <div class="stat-label">Health & Care</div>
                                                                                             </div>
                                                                                         </div>
 
@@ -6868,9 +6835,9 @@
                                                                                     <!-- Medical Section -->
                                                                                     <div id="medical" class="content-section">
                                                                                         <div class="breadcrumb">
-                                                                                            <a href="#" data-section="dashboard">Dashboard</a> <i class="fas fa-chevron-right"></i> <span>Medical Records</span>
+                                                                                            <a href="#" data-section="dashboard">Dashboard</a> <i class="fas fa-chevron-right"></i> <span>Health & Care</span>
                                                                                         </div>
-                                                                                        <h1 class="page-title">Medical Records</h1>
+                                                                                        <h1 class="page-title">Health & Care</h1>
 
                                                                                         <div class="enrollment-container">
                                                                                             <div class="enrollment-overview">
@@ -6927,9 +6894,6 @@
                                                                                                 <h2 class="modal-title">
                                                                                                     <i class="fas fa-vial"></i> Drug Test Application History
                                                                                                 </h2>
-                                                                                                <button class="modal-close" id="drug-test-modal-close">
-                                                                                                    <i class="fas fa-times"></i>
-                                                                                                </button>
                                                                                             </div>
                                                                                             <div class="modal-body">
                                                                                                 <div class="document-preview" style="padding: 30px;">
@@ -6997,9 +6961,6 @@
                                                                                                 <h2 class="modal-title">
                                                                                                     <i class="fas fa-x-ray"></i> X-Ray Medical Imaging Records
                                                                                                 </h2>
-                                                                                                <button class="modal-close" id="x-ray-modal-close">
-                                                                                                    <i class="fas fa-times"></i>
-                                                                                                </button>
                                                                                             </div>
                                                                                             <div class="modal-body">
                                                                                                 <div class="document-preview" style="padding: 30px;">
@@ -7120,9 +7081,6 @@
                                                                                                 <h2 class="modal-title">
                                                                                                     <i class="fas fa-stethoscope"></i> Physical Examination Records
                                                                                                 </h2>
-                                                                                                <button class="modal-close" id="physical-exam-modal-close">
-                                                                                                    <i class="fas fa-times"></i>
-                                                                                                </button>
                                                                                             </div>
                                                                                             <div class="modal-body">
                                                                                                 <div class="document-preview" style="padding: 30px;">
@@ -9548,7 +9506,6 @@
                                                                                 const physicalExamCard = document.getElementById('physical-exam-card');
                                                                                 const physicalExamModal = document.getElementById('physical-exam-modal');
                                                                                 const physicalExamLoading = document.getElementById('physical-exam-loading');
-                                                                                const physicalExamModalClose = document.getElementById('physical-exam-modal-close');
 
                                                                                 if (physicalExamCard) {
                                                                                     physicalExamCard.addEventListener('click', function() {
@@ -9561,13 +9518,6 @@
                                                                                             // Calculate overall medical progress
                                                                                             calculateMedicalProgress();
                                                                                         }, 1500);
-                                                                                    });
-                                                                                }
-
-                                                                                if (physicalExamModalClose) {
-                                                                                    physicalExamModalClose.addEventListener('click', function() {
-                                                                                        physicalExamModal.style.display = 'none';
-                                                                                        document.body.style.overflow = 'auto'; // Restore scrolling
                                                                                     });
                                                                                 }
 
@@ -9621,7 +9571,6 @@
                                                                                 const drugTestCard = document.getElementById('drug-test-card');
                                                                                 const drugTestModal = document.getElementById('drug-test-modal');
                                                                                 const drugTestLoading = document.getElementById('drug-test-loading');
-                                                                                const drugTestModalClose = document.getElementById('drug-test-modal-close');
 
                                                                                 if (drugTestCard) {
                                                                                     drugTestCard.addEventListener('click', function() {
@@ -9632,13 +9581,6 @@
                                                                                             drugTestModal.style.display = 'flex';
                                                                                             document.body.style.overflow = 'hidden'; // Prevent background scrolling
                                                                                         }, 1500);
-                                                                                    });
-                                                                                }
-
-                                                                                if (drugTestModalClose) {
-                                                                                    drugTestModalClose.addEventListener('click', function() {
-                                                                                        drugTestModal.style.display = 'none';
-                                                                                        document.body.style.overflow = 'auto'; // Restore scrolling
                                                                                     });
                                                                                 }
 
@@ -9656,7 +9598,6 @@
                                                                                 const xRayCard = document.getElementById('x-ray-card');
                                                                                 const xRayModal = document.getElementById('x-ray-modal');
                                                                                 const xRayLoading = document.getElementById('x-ray-loading');
-                                                                                const xRayModalClose = document.getElementById('x-ray-modal-close');
 
                                                                                 if (xRayCard) {
                                                                                     xRayCard.addEventListener('click', function() {
@@ -9667,13 +9608,6 @@
                                                                                             xRayModal.style.display = 'flex';
                                                                                             document.body.style.overflow = 'hidden'; // Prevent background scrolling
                                                                                         }, 1500);
-                                                                                    });
-                                                                                }
-
-                                                                                if (xRayModalClose) {
-                                                                                    xRayModalClose.addEventListener('click', function() {
-                                                                                        xRayModal.style.display = 'none';
-                                                                                        document.body.style.overflow = 'auto'; // Restore scrolling
                                                                                     });
                                                                                 }
 
