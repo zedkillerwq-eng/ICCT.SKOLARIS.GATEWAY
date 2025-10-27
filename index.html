@@ -3145,7 +3145,7 @@
 
                                                                         .subject-row {
                                                                             display: grid;
-                                                                            grid-template-columns: 80px 1fr 60px 70px;
+                                                                            grid-template-columns: 80px 1fr 100px 60px 70px 100px;
                                                                             gap: 12px;
                                                                             padding: 12px 16px;
                                                                             border-bottom: 1px solid #f3f4f6;
@@ -3164,8 +3164,10 @@
 
                                                                         .subject-row.header .subject-code,
                                                                         .subject-row.header .subject-title,
+                                                                        .subject-row.header .subject-prerequisite,
                                                                         .subject-row.header .subject-units,
-                                                                        .subject-row.header .subject-grade {
+                                                                        .subject-row.header .subject-grade,
+                                                                        .subject-row.header .subject-remarks {
                                                                             font-weight: 600;
                                                                         }
 
@@ -3184,6 +3186,14 @@
                                                                             font-weight: 500;
                                                                             color: #374151;
                                                                             line-height: 1.4;
+                                                                        }
+
+                                                                        .subject-prerequisite {
+                                                                            text-align: center;
+                                                                            font-weight: 500;
+                                                                            color: #6366f1;
+                                                                            font-size: 12px;
+                                                                            font-style: italic;
                                                                         }
 
                                                                         .subject-units {
@@ -3207,6 +3217,13 @@
                                                                         .subject-grade {
                                                                             background: #dbeafe;
                                                                             color: #1e40af;
+                                                                        }
+
+                                                                        .subject-remarks {
+                                                                            text-align: center;
+                                                                            font-weight: 500;
+                                                                            color: #10b981;
+                                                                            font-size: 12px;
                                                                         }
 
                                                                         /* Performance Summary Styles */
@@ -4634,7 +4651,7 @@
                                                                                         
                                                                                         <div class="nav-category">ADMINISTRATIVE</div>
                                                                                         <li class="nav-item" data-section="requirements">
-                                                                                            <a href="#"><i class="fas fa-file-alt"></i> Requirements</a>
+                                                                                            <a href="#"><i class="fas fa-file-alt"></i> Document Requirements</a>
                                                                                             <span class="notification-badge" id="requirements-badge">6</span>
                                                                                         </li>
                                                                                         <li class="nav-item" data-section="account">
@@ -5041,44 +5058,58 @@
                                                                                                                 <div class="subject-row header">
                                                                                                                     <div class="subject-code">SUBJECT/<br>COUSRSE CODE</div>
                                                                                                                     <div class="subject-title">Subject Title</div>
+                                                                                                                    <div class="subject-title">Pre-requisite</div>
                                                                                                                     <div class="subject-units">Units</div>
                                                                                                                     <div class="subject-grade">Grade</div>
+                                                                                                                    <div class="subject-remarks">Remarks</div>
                                                                                                                 </div>
                                                                                                                 <div class="subject-row">
                                                                                                                     <div class="subject-code">GE 101</div>
                                                                                                                     <div class="subject-title">Communication Skills 1</div>
+                                                                                                                    <div class="subject-prerequisite">-</div>
                                                                                                                     <div class="subject-units">3</div>
                                                                                                                     <div class="subject-grade">1.25</div>
+                                                                                                                    <div class="subject-remarks">PASSED</div>
                                                                                                                 </div>
                                                                                                                 <div class="subject-row">
                                                                                                                     <div class="subject-code">GE 102</div>
                                                                                                                     <div class="subject-title">Mathematics in the Modern World</div>
+                                                                                                                    <div class="subject-prerequisite">-</div>
                                                                                                                     <div class="subject-units">3</div>
                                                                                                                     <div class="subject-grade">1.50</div>
+                                                                                                                    <div class="subject-remarks">PASSED</div>
                                                                                                                 </div>
                                                                                                                 <div class="subject-row">
                                                                                                                     <div class="subject-code">GE 103</div>
                                                                                                                     <div class="subject-title">Understanding the Self</div>
+                                                                                                                    <div class="subject-prerequisite">-</div>
                                                                                                                     <div class="subject-units">3</div>
                                                                                                                     <div class="subject-grade">1.00</div>
+                                                                                                                    <div class="subject-remarks">PASSED</div>
                                                                                                                 </div>
                                                                                                                 <div class="subject-row">
                                                                                                                     <div class="subject-code">IT 101</div>
                                                                                                                     <div class="subject-title">Introduction to Computing</div>
+                                                                                                                    <div class="subject-prerequisite">-</div>
                                                                                                                     <div class="subject-units">3</div>
                                                                                                                     <div class="subject-grade">1.75</div>
+                                                                                                                    <div class="subject-remarks">PASSED</div>
                                                                                                                 </div>
                                                                                                                 <div class="subject-row">
                                                                                                                     <div class="subject-code">IT 101L</div>
                                                                                                                     <div class="subject-title">Introduction to Computing Lab</div>
+                                                                                                                    <div class="subject-prerequisite">IT 101</div>
                                                                                                                     <div class="subject-units">1</div>
                                                                                                                     <div class="subject-grade">2.00</div>
+                                                                                                                    <div class="subject-remarks">PASSED</div>
                                                                                                                 </div>
                                                                                                                 <div class="subject-row">
                                                                                                                     <div class="subject-code">CS 101</div>
                                                                                                                     <div class="subject-title">Computer Programming 1</div>
+                                                                                                                    <div class="subject-prerequisite">IT 101</div>
                                                                                                                     <div class="subject-units">3</div>
                                                                                                                     <div class="subject-grade">1.25</div>
+                                                                                                                    <div class="subject-remarks">PASSED</div>
                                                                                                                 </div>
                                                                                                             </div>
                                                                                                         </div>
@@ -5089,44 +5120,58 @@
                                                                                                                 <div class="subject-row header">
                                                                                                                     <div class="subject-code">SUBJECT/<br>COUSRSE CODE</div>
                                                                                                                     <div class="subject-title">Subject Title</div>
+                                                                                                                    <div class="subject-title">Pre-requisite</div>
                                                                                                                     <div class="subject-units">Units</div>
                                                                                                                     <div class="subject-grade">Grade</div>
+                                                                                                                    <div class="subject-remarks">Remarks</div>
                                                                                                                 </div>
                                                                                                                 <div class="subject-row">
                                                                                                                     <div class="subject-code">GE 104</div>
                                                                                                                     <div class="subject-title">Readings in Philippine History</div>
+                                                                                                                    <div class="subject-prerequisite">-</div>
                                                                                                                     <div class="subject-units">3</div>
                                                                                                                     <div class="subject-grade">1.50</div>
+                                                                                                                    <div class="subject-remarks">PASSED</div>
                                                                                                                 </div>
                                                                                                                 <div class="subject-row">
                                                                                                                     <div class="subject-code">GE 105</div>
                                                                                                                     <div class="subject-title">Purposive Communication</div>
+                                                                                                                    <div class="subject-prerequisite">GE 101</div>
                                                                                                                     <div class="subject-units">3</div>
                                                                                                                     <div class="subject-grade">1.25</div>
+                                                                                                                    <div class="subject-remarks">PASSED</div>
                                                                                                                 </div>
                                                                                                                 <div class="subject-row">
                                                                                                                     <div class="subject-code">GE 106</div>
                                                                                                                     <div class="subject-title">Art Appreciation</div>
+                                                                                                                    <div class="subject-prerequisite">-</div>
                                                                                                                     <div class="subject-units">3</div>
                                                                                                                     <div class="subject-grade">1.75</div>
+                                                                                                                    <div class="subject-remarks">PASSED</div>
                                                                                                                 </div>
                                                                                                                 <div class="subject-row">
                                                                                                                     <div class="subject-code">IT 102</div>
                                                                                                                     <div class="subject-title">Fundamentals of Information Systems</div>
+                                                                                                                    <div class="subject-prerequisite">IT 101</div>
                                                                                                                     <div class="subject-units">3</div>
                                                                                                                     <div class="subject-grade">1.00</div>
+                                                                                                                    <div class="subject-remarks">PASSED</div>
                                                                                                                 </div>
                                                                                                                 <div class="subject-row">
                                                                                                                     <div class="subject-code">CS 102</div>
                                                                                                                     <div class="subject-title">Computer Programming 2</div>
+                                                                                                                    <div class="subject-prerequisite">CS 101</div>
                                                                                                                     <div class="subject-units">3</div>
                                                                                                                     <div class="subject-grade">1.50</div>
+                                                                                                                    <div class="subject-remarks">PASSED</div>
                                                                                                                 </div>
                                                                                                                 <div class="subject-row">
                                                                                                                     <div class="subject-code">CS 102L</div>
                                                                                                                     <div class="subject-title">Computer Programming 2 Lab</div>
+                                                                                                                    <div class="subject-prerequisite">CS 102</div>
                                                                                                                     <div class="subject-units">1</div>
                                                                                                                     <div class="subject-grade">2.25</div>
+                                                                                                                    <div class="subject-remarks">PASSED</div>
                                                                                                                 </div>
                                                                                                             </div>
                                                                                                         </div>
@@ -5142,44 +5187,58 @@
                                                                                                                 <div class="subject-row header">
                                                                                                                     <div class="subject-code">SUBJECT/<br>COUSRSE CODE</div>
                                                                                                                     <div class="subject-title">Subject Title</div>
+                                                                                                                    <div class="subject-title">Pre-requisite</div>
                                                                                                                     <div class="subject-units">Units</div>
                                                                                                                     <div class="subject-grade">Grade</div>
+                                                                                                                    <div class="subject-remarks">Remarks</div>
                                                                                                                 </div>
                                                                                                                 <div class="subject-row">
                                                                                                                     <div class="subject-code">GE 107</div>
                                                                                                                     <div class="subject-title">Ethics</div>
+                                                                                                                    <div class="subject-prerequisite">-</div>
                                                                                                                     <div class="subject-units">3</div>
                                                                                                                     <div class="subject-grade">1.25</div>
+                                                                                                                    <div class="subject-remarks">PASSED</div>
                                                                                                                 </div>
                                                                                                                 <div class="subject-row">
                                                                                                                     <div class="subject-code">GE 108</div>
                                                                                                                     <div class="subject-title">Science, Technology and Society</div>
+                                                                                                                    <div class="subject-prerequisite">-</div>
                                                                                                                     <div class="subject-units">3</div>
                                                                                                                     <div class="subject-grade">1.50</div>
+                                                                                                                    <div class="subject-remarks">PASSED</div>
                                                                                                                 </div>
                                                                                                                 <div class="subject-row">
                                                                                                                     <div class="subject-code">IT 201</div>
                                                                                                                     <div class="subject-title">Data Structures and Algorithms</div>
+                                                                                                                    <div class="subject-prerequisite">CS 102</div>
                                                                                                                     <div class="subject-units">3</div>
                                                                                                                     <div class="subject-grade">1.75</div>
+                                                                                                                    <div class="subject-remarks">PASSED</div>
                                                                                                                 </div>
                                                                                                                 <div class="subject-row">
                                                                                                                     <div class="subject-code">IT 201L</div>
                                                                                                                     <div class="subject-title">Data Structures and Algorithms Lab</div>
+                                                                                                                    <div class="subject-prerequisite">IT 201</div>
                                                                                                                     <div class="subject-units">1</div>
                                                                                                                     <div class="subject-grade">2.00</div>
+                                                                                                                    <div class="subject-remarks">PASSED</div>
                                                                                                                 </div>
                                                                                                                 <div class="subject-row">
                                                                                                                     <div class="subject-code">IT 202</div>
                                                                                                                     <div class="subject-title">Database Management Systems</div>
+                                                                                                                    <div class="subject-prerequisite">IT 102</div>
                                                                                                                     <div class="subject-units">3</div>
                                                                                                                     <div class="subject-grade">1.25</div>
+                                                                                                                    <div class="subject-remarks">PASSED</div>
                                                                                                                 </div>
                                                                                                                 <div class="subject-row">
                                                                                                                     <div class="subject-code">IT 202L</div>
                                                                                                                     <div class="subject-title">Database Management Systems Lab</div>
+                                                                                                                    <div class="subject-prerequisite">IT 202</div>
                                                                                                                     <div class="subject-units">1</div>
                                                                                                                     <div class="subject-grade">1.50</div>
+                                                                                                                    <div class="subject-remarks">PASSED</div>
                                                                                                                 </div>
                                                                                                             </div>
                                                                                                         </div>
@@ -5190,44 +5249,58 @@
                                                                                                                 <div class="subject-row header">
                                                                                                                     <div class="subject-code">SUBJECT/<br>COUSRSE CODE</div>
                                                                                                                     <div class="subject-title">Subject Title</div>
+                                                                                                                    <div class="subject-title">Pre-requisite</div>
                                                                                                                     <div class="subject-units">Units</div>
                                                                                                                     <div class="subject-grade">Grade</div>
+                                                                                                                    <div class="subject-remarks">Remarks</div>
                                                                                                                 </div>
                                                                                                                 <div class="subject-row">
                                                                                                                     <div class="subject-code">GE 109</div>
                                                                                                                     <div class="subject-title">Rizal's Life and Works</div>
+                                                                                                                    <div class="subject-prerequisite">GE 104</div>
                                                                                                                     <div class="subject-units">3</div>
                                                                                                                     <div class="subject-grade">1.00</div>
+                                                                                                                    <div class="subject-remarks">PASSED</div>
                                                                                                                 </div>
                                                                                                                 <div class="subject-row">
                                                                                                                     <div class="subject-code">IT 203</div>
                                                                                                                     <div class="subject-title">Web Development</div>
+                                                                                                                    <div class="subject-prerequisite">CS 102</div>
                                                                                                                     <div class="subject-units">3</div>
                                                                                                                     <div class="subject-grade">1.25</div>
+                                                                                                                    <div class="subject-remarks">PASSED</div>
                                                                                                                 </div>
                                                                                                                 <div class="subject-row">
                                                                                                                     <div class="subject-code">IT 203L</div>
                                                                                                                     <div class="subject-title">Web Development Lab</div>
+                                                                                                                    <div class="subject-prerequisite">IT 203</div>
                                                                                                                     <div class="subject-units">1</div>
                                                                                                                     <div class="subject-grade">1.75</div>
+                                                                                                                    <div class="subject-remarks">PASSED</div>
                                                                                                                 </div>
                                                                                                                 <div class="subject-row">
                                                                                                                     <div class="subject-code">IT 204</div>
                                                                                                                     <div class="subject-title">Object-Oriented Programming</div>
+                                                                                                                    <div class="subject-prerequisite">CS 102</div>
                                                                                                                     <div class="subject-units">3</div>
                                                                                                                     <div class="subject-grade">1.50</div>
+                                                                                                                    <div class="subject-remarks">PASSED</div>
                                                                                                                 </div>
                                                                                                                 <div class="subject-row">
                                                                                                                     <div class="subject-code">IT 204L</div>
                                                                                                                     <div class="subject-title">Object-Oriented Programming Lab</div>
+                                                                                                                    <div class="subject-prerequisite">IT 204</div>
                                                                                                                     <div class="subject-units">1</div>
                                                                                                                     <div class="subject-grade">2.00</div>
+                                                                                                                    <div class="subject-remarks">PASSED</div>
                                                                                                                 </div>
                                                                                                                 <div class="subject-row">
                                                                                                                     <div class="subject-code">IT 205</div>
                                                                                                                     <div class="subject-title">Computer Networks</div>
+                                                                                                                    <div class="subject-prerequisite">IT 101</div>
                                                                                                                     <div class="subject-units">3</div>
                                                                                                                     <div class="subject-grade">1.25</div>
+                                                                                                                    <div class="subject-remarks">PASSED</div>
                                                                                                                 </div>
                                                                                                             </div>
                                                                                                         </div>
@@ -5243,44 +5316,58 @@
                                                                                                                 <div class="subject-row header">
                                                                                                                     <div class="subject-code">SUBJECT/<br>COUSRSE CODE</div>
                                                                                                                     <div class="subject-title">Subject Title</div>
+                                                                                                                    <div class="subject-title">Pre-requisite</div>
                                                                                                                     <div class="subject-units">Units</div>
                                                                                                                     <div class="subject-grade">Grade</div>
+                                                                                                                    <div class="subject-remarks">Remarks</div>
                                                                                                                 </div>
                                                                                                                 <div class="subject-row">
                                                                                                                     <div class="subject-code">IT 301</div>
                                                                                                                     <div class="subject-title">Software Engineering</div>
+                                                                                                                    <div class="subject-prerequisite">IT 204</div>
                                                                                                                     <div class="subject-units">3</div>
                                                                                                                     <div class="subject-grade">1.50</div>
+                                                                                                                    <div class="subject-remarks">PASSED</div>
                                                                                                                 </div>
                                                                                                                 <div class="subject-row">
                                                                                                                     <div class="subject-code">IT 302</div>
                                                                                                                     <div class="subject-title">System Analysis and Design</div>
+                                                                                                                    <div class="subject-prerequisite">IT 202</div>
                                                                                                                     <div class="subject-units">3</div>
                                                                                                                     <div class="subject-grade">1.25</div>
+                                                                                                                    <div class="subject-remarks">PASSED</div>
                                                                                                                 </div>
                                                                                                                 <div class="subject-row">
                                                                                                                     <div class="subject-code">IT 303</div>
                                                                                                                     <div class="subject-title">Mobile Application Development</div>
+                                                                                                                    <div class="subject-prerequisite">IT 204</div>
                                                                                                                     <div class="subject-units">3</div>
                                                                                                                     <div class="subject-grade">1.75</div>
+                                                                                                                    <div class="subject-remarks">PASSED</div>
                                                                                                                 </div>
                                                                                                                 <div class="subject-row">
                                                                                                                     <div class="subject-code">IT 303L</div>
                                                                                                                     <div class="subject-title">Mobile Application Development Lab</div>
+                                                                                                                    <div class="subject-prerequisite">IT 303</div>
                                                                                                                     <div class="subject-units">1</div>
                                                                                                                     <div class="subject-grade">2.00</div>
+                                                                                                                    <div class="subject-remarks">PASSED</div>
                                                                                                                 </div>
                                                                                                                 <div class="subject-row">
                                                                                                                     <div class="subject-code">IT 304</div>
                                                                                                                     <div class="subject-title">Information Security</div>
+                                                                                                                    <div class="subject-prerequisite">IT 205</div>
                                                                                                                     <div class="subject-units">3</div>
                                                                                                                     <div class="subject-grade">1.25</div>
+                                                                                                                    <div class="subject-remarks">PASSED</div>
                                                                                                                 </div>
                                                                                                                 <div class="subject-row">
                                                                                                                     <div class="subject-code">IT 305</div>
                                                                                                                     <div class="subject-title">IT Project Management</div>
+                                                                                                                    <div class="subject-prerequisite">IT 302</div>
                                                                                                                     <div class="subject-units">3</div>
                                                                                                                     <div class="subject-grade">1.50</div>
+                                                                                                                    <div class="subject-remarks">PASSED</div>
                                                                                                                 </div>
                                                                                                             </div>
                                                                                                         </div>
@@ -5291,38 +5378,50 @@
                                                                                                                 <div class="subject-row header">
                                                                                                                     <div class="subject-code">SUBJECT/<br>COUSRSE CODE</div>
                                                                                                                     <div class="subject-title">Subject Title</div>
+                                                                                                                    <div class="subject-title">Pre-requisite</div>
                                                                                                                     <div class="subject-units">Units</div>
                                                                                                                     <div class="subject-grade">Grade</div>
+                                                                                                                    <div class="subject-remarks">Remarks</div>
                                                                                                                 </div>
                                                                                                                 <div class="subject-row">
                                                                                                                     <div class="subject-code">IT 306</div>
                                                                                                                     <div class="subject-title">Cloud Computing</div>
+                                                                                                                    <div class="subject-prerequisite">IT 205</div>
                                                                                                                     <div class="subject-units">3</div>
                                                                                                                     <div class="subject-grade">1.25</div>
+                                                                                                                    <div class="subject-remarks">PASSED</div>
                                                                                                                 </div>
                                                                                                                 <div class="subject-row">
                                                                                                                     <div class="subject-code">IT 307</div>
                                                                                                                     <div class="subject-title">Data Analytics</div>
+                                                                                                                    <div class="subject-prerequisite">IT 202</div>
                                                                                                                     <div class="subject-units">3</div>
                                                                                                                     <div class="subject-grade">1.50</div>
+                                                                                                                    <div class="subject-remarks">PASSED</div>
                                                                                                                 </div>
                                                                                                                 <div class="subject-row">
                                                                                                                     <div class="subject-code">IT 308</div>
                                                                                                                     <div class="subject-title">Enterprise Systems</div>
+                                                                                                                    <div class="subject-prerequisite">IT 302</div>
                                                                                                                     <div class="subject-units">3</div>
                                                                                                                     <div class="subject-grade">1.75</div>
+                                                                                                                    <div class="subject-remarks">PASSED</div>
                                                                                                                 </div>
                                                                                                                 <div class="subject-row">
                                                                                                                     <div class="subject-code">IT 309</div>
                                                                                                                     <div class="subject-title">Capstone Project 1</div>
+                                                                                                                    <div class="subject-prerequisite">IT 305</div>
                                                                                                                     <div class="subject-units">3</div>
                                                                                                                     <div class="subject-grade">1.25</div>
+                                                                                                                    <div class="subject-remarks">PASSED</div>
                                                                                                                 </div>
                                                                                                                 <div class="subject-row">
                                                                                                                     <div class="subject-code">IT 310</div>
                                                                                                                     <div class="subject-title">Internship/Practicum 1</div>
+                                                                                                                    <div class="subject-prerequisite">IT 305</div>
                                                                                                                     <div class="subject-units">3</div>
                                                                                                                     <div class="subject-grade">1.50</div>
+                                                                                                                    <div class="subject-remarks">PASSED</div>
                                                                                                                 </div>
                                                                                                             </div>
                                                                                                         </div>
@@ -5338,38 +5437,50 @@
                                                                                                                 <div class="subject-row header">
                                                                                                                     <div class="subject-code">SUBJECT/<br>COUSRSE CODE</div>
                                                                                                                     <div class="subject-title">Subject Title</div>
+                                                                                                                    <div class="subject-prerequisite">Pre-requisite</div>
                                                                                                                     <div class="subject-units">Units</div>
                                                                                                                     <div class="subject-grade">Grade</div>
+                                                                                                                    <div class="subject-remarks">Remarks</div>
                                                                                                                 </div>
                                                                                                                 <div class="subject-row">
                                                                                                                     <div class="subject-code">IT 401</div>
                                                                                                                     <div class="subject-title">Advanced Database Systems</div>
+                                                                                                                    <div class="subject-prerequisite">IT 202</div>
                                                                                                                     <div class="subject-units">3</div>
                                                                                                                     <div class="subject-grade">1.25</div>
+                                                                                                                    <div class="subject-remarks">PASSED</div>
                                                                                                                 </div>
                                                                                                                 <div class="subject-row">
                                                                                                                     <div class="subject-code">IT 402</div>
                                                                                                                     <div class="subject-title">Machine Learning Fundamentals</div>
+                                                                                                                    <div class="subject-prerequisite">IT 307</div>
                                                                                                                     <div class="subject-units">3</div>
                                                                                                                     <div class="subject-grade">1.50</div>
+                                                                                                                    <div class="subject-remarks">PASSED</div>
                                                                                                                 </div>
                                                                                                                 <div class="subject-row">
                                                                                                                     <div class="subject-code">IT 403</div>
                                                                                                                     <div class="subject-title">Capstone Project 2</div>
+                                                                                                                    <div class="subject-prerequisite">IT 309</div>
                                                                                                                     <div class="subject-units">3</div>
                                                                                                                     <div class="subject-grade">1.75</div>
+                                                                                                                    <div class="subject-remarks">PASSED</div>
                                                                                                                 </div>
                                                                                                                 <div class="subject-row">
                                                                                                                     <div class="subject-code">IT 404</div>
                                                                                                                     <div class="subject-title">Internship/Practicum 2</div>
+                                                                                                                    <div class="subject-prerequisite">IT 310</div>
                                                                                                                     <div class="subject-units">3</div>
                                                                                                                     <div class="subject-grade">1.25</div>
+                                                                                                                    <div class="subject-remarks">PASSED</div>
                                                                                                                 </div>
                                                                                                                 <div class="subject-row">
                                                                                                                     <div class="subject-code">IT 405</div>
                                                                                                                     <div class="subject-title">IT Ethics and Professional Practice</div>
+                                                                                                                    <div class="subject-prerequisite">-</div>
                                                                                                                     <div class="subject-units">3</div>
                                                                                                                     <div class="subject-grade">1.50</div>
+                                                                                                                    <div class="subject-remarks">PASSED</div>
                                                                                                                 </div>
                                                                                                             </div>
                                                                                                         </div>
@@ -5380,32 +5491,42 @@
                                                                                                                 <div class="subject-row header">
                                                                                                                     <div class="subject-code">SUBJECT/<br>COUSRSE CODE</div>
                                                                                                                     <div class="subject-title">Subject Title</div>
+                                                                                                                    <div class="subject-prerequisite">Pre-requisite</div>
                                                                                                                     <div class="subject-units">Units</div>
                                                                                                                     <div class="subject-grade">Grade</div>
+                                                                                                                    <div class="subject-remarks">Remarks</div>
                                                                                                                 </div>
                                                                                                                 <div class="subject-row">
                                                                                                                     <div class="subject-code">IT 406</div>
                                                                                                                     <div class="subject-title">Emerging Technologies</div>
+                                                                                                                    <div class="subject-prerequisite">-</div>
                                                                                                                     <div class="subject-units">3</div>
                                                                                                                     <div class="subject-grade">1.25</div>
+                                                                                                                    <div class="subject-remarks">PASSED</div>
                                                                                                                 </div>
                                                                                                                 <div class="subject-row">
                                                                                                                     <div class="subject-code">IT 407</div>
                                                                                                                     <div class="subject-title">Research Methods in IT</div>
+                                                                                                                    <div class="subject-prerequisite">-</div>
                                                                                                                     <div class="subject-units">3</div>
                                                                                                                     <div class="subject-grade">1.50</div>
+                                                                                                                    <div class="subject-remarks">PASSED</div>
                                                                                                                 </div>
                                                                                                                 <div class="subject-row">
                                                                                                                     <div class="subject-code">IT 408</div>
                                                                                                                     <div class="subject-title">Thesis Writing</div>
+                                                                                                                    <div class="subject-prerequisite">IT 407</div>
                                                                                                                     <div class="subject-units">3</div>
                                                                                                                     <div class="subject-grade">1.75</div>
+                                                                                                                    <div class="subject-remarks">PASSED</div>
                                                                                                                 </div>
                                                                                                                 <div class="subject-row">
                                                                                                                     <div class="subject-code">IT 409</div>
                                                                                                                     <div class="subject-title">Comprehensive Examination</div>
+                                                                                                                    <div class="subject-prerequisite">-</div>
                                                                                                                     <div class="subject-units">3</div>
                                                                                                                     <div class="subject-grade">1.25</div>
+                                                                                                                    <div class="subject-remarks">PASSED</div>
                                                                                                                 </div>
                                                                                                             </div>
                                                                                                         </div>
