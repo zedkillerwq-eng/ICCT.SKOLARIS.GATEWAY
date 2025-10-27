@@ -4643,7 +4643,7 @@
                                                                                             <a href="#"><i class="fas fa-tshirt"></i> Uniforms</a>
                                                                                         </li>
                                                                                         <li class="nav-item" data-section="medical">
-                                                                                            <a href="#"><i class="fas fa-clinic-medical"></i> Wellness & Care</a>
+                                                                                            <a href="#"><i class="fas fa-clinic-medical"></i> Medical</a>
                                                                                         </li>
                                                                                         <li class="nav-item" data-section="enrollment">
                                                                                             <a href="#"><i class="fas fa-user-check"></i> Enrollment</a>
@@ -4874,6 +4874,35 @@
                                                                                                     </div>
                                                                                                 </div>
                                                                                                 <div class="stat-label">Health & Care</div>
+                                                                                            </div>
+
+                                                                                            <div class="stat-card" id="academic-status-card">
+                                                                                                <div class="stat-value" id="academic-status-summary">
+                                                                                                    <div style="display:flex;flex-direction:column;gap:6px;">
+                                                                                                        <div style="margin-bottom:8px">
+                                                                                                            <small style="color:var(--text-color);font-weight:500;">3rd Year (3rd Trime)</small>
+                                                                                                        </div>
+                                                                                                        <div style="display:flex;flex-direction:column;gap:4px;">
+                                                                                                            <div style="display:flex;justify-content:space-between;align-items:center;">
+                                                                                                                <small style="color:#000000;font-weight:400;">Passed</small>
+                                                                                                                <span style="color:var(--success);font-weight:400;font-size:16px;">2</span>
+                                                                                                            </div>
+                                                                                                            <div style="display:flex;justify-content:space-between;align-items:center;">
+                                                                                                                <small style="color:#000000;font-weight:400;">INC</small>
+                                                                                                                <span style="color:var(--danger);font-weight:400;font-size:16px;"></span>
+                                                                                                            </div>
+                                                                                                            <div style="display:flex;justify-content:space-between;align-items:center;">
+                                                                                                                <small style="color:#000000;font-weight:400;">Dropped</small>
+                                                                                                                <span style="color:var(--danger);font-weight:400;font-size:16px;">2</span>
+                                                                                                            </div>
+                                                                                                            <div style="display:flex;justify-content:space-between;align-items:center;">
+                                                                                                                <small style="color:#000000;font-weight:400;">FAILED</small>
+                                                                                                                <span style="color:var(--danger);font-weight:400;font-size:16px;"></span>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="stat-label">Academic Status</div>
                                                                                             </div>
                                                                                         </div>
 
@@ -6929,10 +6958,27 @@
                                                                                                         <i class="fas fa-syringe"></i>
                                                                                                     </div>
                                                                                                     <div class="overview-content">
+                                                                                                        <h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 700; color: var(--text-color);">Vaccination</h3>
                                                                                                         <h4 style="color: var(--info); margin: 0 0 8px 0; font-size: 15px; font-weight: 600;">Immunization Record</h4>
                                                                                                         <p style="color: var(--gray); margin: 0; font-size: 13px; line-height: 1.5;">Tracks vaccines received (e.g., Hepatitis B, MMR, COVID-19, etc.) with validity dates.</p>
                                                                                                     </div>
                                                                                                     <div class="loading-overlay" id="vaccination-loading" style="display: none;">
+                                                                                                        <div style="text-align: center;">
+                                                                                                            <div class="loading-spinner"></div>
+                                                                                                            <div class="loading-text">Loading...</div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="overview-card mindcare-card" id="mindcare-card" style="cursor: pointer; border: 2px solid var(--warning); background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 193, 7, 0.05)); transition: all 0.3s ease; position: relative;">
+                                                                                                    <div class="overview-icon" style="background: var(--warning); color: white; align-self: center;">
+                                                                                                        <i class="fas fa-brain"></i>
+                                                                                                    </div>
+                                                                                                    <div class="overview-content">
+                                                                                                        <h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 700; color: var(--text-color);">MindCare Awareness</h3>
+                                                                                                        <h4 style="color: var(--warning); margin: 0 0 8px 0; font-size: 15px; font-weight: 600;">Psychological/Mental Wellness</h4>
+                                                                                                        <p style="color: var(--gray); margin: 0; font-size: 13px; line-height: 1.5;">Emotional wellness support and mental health resources for student well-being.</p>
+                                                                                                    </div>
+                                                                                                    <div class="loading-overlay" id="mindcare-loading" style="display: none;">
                                                                                                         <div style="text-align: center;">
                                                                                                             <div class="loading-spinner"></div>
                                                                                                             <div class="loading-text">Loading...</div>
@@ -6948,14 +6994,14 @@
                                                                                         <div class="modal-content glass-modal">
                                                                                             <div class="modal-header">
                                                                                                 <h2 class="modal-title">
-                                                                                                    <i class="fas fa-vial"></i> Substance Screening Report
+                                                                                                    <i class="fas fa-vial"></i> Drug Test Application History
                                                                                                 </h2>
                                                                                             </div>
                                                                                             <div class="modal-body">
                                                                                                 <div class="document-preview" style="padding: 30px;">
                                                                                                     <div style="max-width: 800px; margin: 0 auto;">
                                                                                                         <div style="margin-bottom: 30px;">
-                                                                                                            <h4 style="font-size: 18px; margin-bottom: 15px;">Substance Screening History</h4>
+                                                                                                            <h4 style="font-size: 18px; margin-bottom: 15px;">Drug Test History</h4>
                                                                                                             
                                                                                                             <div style="display: flex; flex-direction: column; gap: 15px;">
                                                                                                                 <div style="display: flex; align-items: center; gap: 15px; padding: 15px; border-radius: var(--border-radius); background: rgba(40, 167, 69, 0.1);">
@@ -7015,7 +7061,7 @@
                                                                                         <div class="modal-content glass-modal">
                                                                                             <div class="modal-header">
                                                                                                 <h2 class="modal-title">
-                                                                                                    <i class="fas fa-x-ray"></i> Radiology Report
+                                                                                                    <i class="fas fa-x-ray"></i> X-Ray Medical Imaging Records
                                                                                                 </h2>
                                                                                             </div>
                                                                                             <div class="modal-body">
@@ -7135,7 +7181,7 @@
                                                                                         <div class="modal-content glass-modal">
                                                                                             <div class="modal-header">
                                                                                                 <h2 class="modal-title">
-                                                                                                    <i class="fas fa-stethoscope"></i> Health Assesment Records
+                                                                                                    <i class="fas fa-stethoscope"></i> Physical Examination Records
                                                                                                 </h2>
                                                                                             </div>
                                                                                             <div class="modal-body">
@@ -7144,10 +7190,10 @@
                                                                                                         <!-- Overall Progress -->
                                                                                                         <div style="background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; padding: 20px; border-radius: var(--border-radius); margin-bottom: 30px; text-align: center;">
                                                                                                             <h3 style="margin: 0 0 10px 0; font-size: 24px;">
-                                                                                                                <i class="fas fa-chart-line"></i> Health Assesment Progress
+                                                                                                                <i class="fas fa-chart-line"></i> Medical Examination Progress
                                                                                                             </h3>
                                                                                                             <div style="font-size: 48px; font-weight: bold; margin-bottom: 10px;" id="overall-medical-progress">75%</div>
-                                                                                                            <div style="font-size: 16px;">Overall Fitness</div>
+                                                                                                            <div style="font-size: 16px;">Overall Completion</div>
                                                                                                             <div style="width: 100%; height: 8px; background: rgba(255,255,255,0.3); border-radius: 4px; margin-top: 15px;">
                                                                                                                 <div style="width: 75%; height: 100%; background: white; border-radius: 4px;" id="overall-progress-bar"></div>
                                                                                                             </div>
