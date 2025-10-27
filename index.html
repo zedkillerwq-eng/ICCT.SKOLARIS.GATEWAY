@@ -3,7 +3,7 @@
                                                                             
                                                                         <head>
                                                                             <meta charset="UTF-8">
-                                                                            <meta name="viewport" content="width=device-width, initialff-scale=1.0">
+                                                                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
                                                                             <title>Student Portal</title>
                                                                             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
                                                                             <style>
@@ -49,6 +49,15 @@
                                                                             --table-header-bg: rgba(255, 255, 255, 0.05);
                                                                             --gray: #9aa0a6;
                                                                             --light-gray: #5f6368;
+                                                                        }
+
+                                                                        /* Dashboard stat cards text colors - black in light mode, white in dark mode */
+                                                                        .stat-card small {
+                                                                            color: #000000 !important;
+                                                                        }
+
+                                                                        .dark-mode .stat-card small {
+                                                                            color: #ffffff !important;
                                                                         }
 
                                                                         * {
@@ -4625,14 +4634,14 @@
                                                                                         
                                                                                         <div class="nav-category">ADMINISTRATIVE</div>
                                                                                         <li class="nav-item" data-section="requirements">
-                                                                                            <a href="#"><i class="fas fa-file-alt"></i> Credential Management</a>
+                                                                                            <a href="#"><i class="fas fa-file-alt"></i> Requirements</a>
                                                                                             <span class="notification-badge" id="requirements-badge">6</span>
                                                                                         </li>
                                                                                         <li class="nav-item" data-section="account">
-                                                                                            <a href="#"><i class="fas fa-money-bill-wave"></i> Account & Payments</a>
+                                                                                            <a href="#"><i class="fas fa-money-bill-wave"></i> Account & Settlements</a>
                                                                                         </li>
                                                                                         <li class="nav-item" data-section="clearance">
-                                                                                            <a href="#"><i class="fas fa-file-invoice"></i> Clearance</a>
+                                                                                            <a href="#"><i class="fas fa-file-invoice"></i> Clearance Tracker</a>
                                                                                             <span class="notification-badge" id="clearance-badge">2</span>
                                                                                         </li>
 
@@ -4640,10 +4649,10 @@
 
                                                                                         <div class="nav-category">OTHERS</div>
                                                                                         <li class="nav-item" data-section="uniforms">
-                                                                                            <a href="#"><i class="fas fa-tshirt"></i> Uniforms</a>
+                                                                                            <a href="#"><i class="fas fa-tshirt"></i>  Uniforms Compliance</a>
                                                                                         </li>
                                                                                         <li class="nav-item" data-section="medical">
-                                                                                            <a href="#"><i class="fas fa-clinic-medical"></i> Wellness & Care</a>
+                                                                                            <a href="#"><i class="fas fa-clinic-medical"></i> Medical</a>
                                                                                         </li>
                                                                                         <li class="nav-item" data-section="enrollment">
                                                                                             <a href="#"><i class="fas fa-user-check"></i> Enrollment</a>
@@ -4760,7 +4769,7 @@
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
-                                                                                                <div class="stat-label">Uniforms</div>
+                                                                                                <div class="stat-label">Uniforms Compliance <command type="command" label="" icon="" /></div>
                                                                                             </div>
 
                                                                                             <div class="stat-card" id="attendance-summary-card">
@@ -4798,34 +4807,34 @@
                                                                                                 <div class="stat-value">
                                                                                                     <div style="display:flex;flex-direction:column;gap:6px;">
                                                                                                         <div style="margin-bottom:8px">
-                                                                                                            <small style="color:var(--text-color);font-weight:500;">X-ray</small>
+                                                                                                            <small style="color:#000000;font-weight:500;">X-ray</small>
                                                                                                         </div>
                                                                                                         <div style="display:flex;flex-direction:column;gap:4px;">
                                                                                                             <div style="display:flex;justify-content:space-between;align-items:center;">
-                                                                                                                <small style="color:var(--text-color);">1st ...</small>
+                                                                                                                <small style="color:#000000;">1st ...</small>
                                                                                                                 <div style="display:flex;align-items:center;gap:4px;">
-                                                                                                                    <small style="color:var(--gray);">Sep 5, 2022</small>
+                                                                                                                    <small style="color:#000000;">Sep 5, 2022</small>
                                                                                                                     <i class="fas fa-check-circle" style="color:var(--success)"></i>
                                                                                                                 </div>
                                                                                                             </div>
                                                                                                             <div style="display:flex;justify-content:space-between;align-items:center;">
-                                                                                                                <small style="color:var(--text-color);">2nd ...</small>
+                                                                                                                <small style="color:#000000;">2nd ...</small>
                                                                                                                 <div style="display:flex;align-items:center;gap:4px;">
-                                                                                                                    <small style="color:var(--gray);">Aug 20, 2023</small>
+                                                                                                                    <small style="color:#000000;">Aug 20, 2023</small>
                                                                                                                     <i class="fas fa-check-circle" style="color:var(--success)"></i>
                                                                                                                 </div>
                                                                                                             </div>
                                                                                                             <div style="display:flex;justify-content:space-between;align-items:center;">
-                                                                                                                <small style="color:var(--text-color);">3rd ...</small>
+                                                                                                                <small style="color:#000000;">3rd ...</small>
                                                                                                                 <div style="display:flex;align-items:center;gap:4px;">
-                                                                                                                    <small style="color:var(--gray);">Sep 10, 2024</small>
+                                                                                                                    <small style="color:#000000;">Sep 10, 2024</small>
                                                                                                                     <i class="fas fa-check-circle" style="color:var(--success)"></i>
                                                                                                                 </div>
                                                                                                             </div>
                                                                                                             <div style="display:flex;justify-content:space-between;align-items:center;">
-                                                                                                                <small style="color:var(--text-color);">4th ...</small>
+                                                                                                                <small style="color:#000000;">4th ...</small>
                                                                                                                 <div style="display:flex;align-items:center;gap:4px;">
-                                                                                                                    <small style="color:var(--gray);">Oct 15, 2025</small>
+                                                                                                                    <small style="color:#000000;">Oct 15, 2025</small>
                                                                                                                     <i class="fas fa-check-circle" style="color:var(--success)"></i>
                                                                                                                 </div>
                                                                                                             </div>
@@ -4839,34 +4848,34 @@
                                                                                                 <div class="stat-value" id="drug-test-summary">
                                                                                                     <div style="display:flex;flex-direction:column;gap:6px;">
                                                                                                         <div style="margin-bottom:8px">
-                                                                                                            <small style="color:var(--text-color);font-weight:500;">Drug Test</small>
+                                                                                                            <small style="color:#000000;font-weight:500;">Drug Test</small>
                                                                                                         </div>
                                                                                                         <div style="display:flex;flex-direction:column;gap:4px;">
                                                                                                             <div style="display:flex;justify-content:space-between;align-items:center;">
-                                                                                                                <small style="color:var(--text-color);">1st ...</small>
+                                                                                                                <small style="color:#000000;">1st ...</small>
                                                                                                                 <div style="display:flex;align-items:center;gap:4px;">
-                                                                                                                    <small style="color:var(--gray);">Sep 15, 2022</small>
+                                                                                                                    <small style="color:#000000;">Sep 15, 2022</small>
                                                                                                                     <i class="fas fa-check-circle" style="color:var(--success)"></i>
                                                                                                                 </div>
                                                                                                             </div>
                                                                                                             <div style="display:flex;justify-content:space-between;align-items:center;">
-                                                                                                                <small style="color:var(--text-color);">2nd ...</small>
+                                                                                                                <small style="color:#000000;">2nd ...</small>
                                                                                                                 <div style="display:flex;align-items:center;gap:4px;">
-                                                                                                                    <small style="color:var(--gray);">Sep 18, 2023</small>
+                                                                                                                    <small style="color:#000000;">Sep 18, 2023</small>
                                                                                                                     <i class="fas fa-check-circle" style="color:var(--success)"></i>
                                                                                                                 </div>
                                                                                                             </div>
                                                                                                             <div style="display:flex;justify-content:space-between;align-items:center;">
-                                                                                                                <small style="color:var(--text-color);">3rd ...</small>
+                                                                                                                <small style="color:#000000;">3rd ...</small>
                                                                                                                 <div style="display:flex;align-items:center;gap:4px;">
-                                                                                                                    <small style="color:var(--gray);">Sep 18, 2023</small>
+                                                                                                                    <small style="color:#000000;">Sep 18, 2023</small>
                                                                                                                     <i class="fas fa-check-circle" style="color:var(--success)"></i>
                                                                                                                 </div>
                                                                                                             </div>
                                                                                                             <div style="display:flex;justify-content:space-between;align-items:center;">
-                                                                                                                <small style="color:var(--text-color);">4th ...</small>
+                                                                                                                <small style="color:#000000;">4th ...</small>
                                                                                                                 <div style="display:flex;align-items:center;gap:4px;">
-                                                                                                                    <small style="color:var(--gray);">Sep 16, 2025</small>
+                                                                                                                    <small style="color:#000000;">Sep 16, 2025</small>
                                                                                                                     <i class="fas fa-check-circle" style="color:var(--success)"></i>
                                                                                                                 </div>
                                                                                                             </div>
@@ -4880,7 +4889,7 @@
                                                                                                 <div class="stat-value" id="academic-status-summary">
                                                                                                     <div style="display:flex;flex-direction:column;gap:6px;">
                                                                                                         <div style="margin-bottom:8px">
-                                                                                                            <small style="color:var(--text-color);font-weight:500;">3rd Year (3rd Trime)</small>
+                                                                                                            <small style="color:#000000;font-weight:500;">3rd Year (3rd Trime)</small>
                                                                                                         </div>
                                                                                                         <div style="display:flex;flex-direction:column;gap:4px;">
                                                                                                             <div style="display:flex;justify-content:space-between;align-items:center;">
@@ -5614,11 +5623,11 @@
                                                                                                     </div>
                                                                                                     
                                                                                                     <div class="guardian-section">
-                                                                                                        <h3 class="guardian-title">Mother</h3>
+                                                                                                        <h3 class="guardian-title">Mother (MAIDEN)</h3>
                                                                                                         <div class="guardian-info">
                                                                                                             <div class="info-row">
                                                                                                                 <span class="info-label">Name:</span>
-                                                                                                                <span class="info-value">Maria Santos</span>
+                                                                                                                <span class="info-value">Maria Sta. ana</span>
                                                                                                             </div>
                                                                                                             <div class="info-row">
                                                                                                                 <span class="info-label">Contact Number:</span>
@@ -5975,9 +5984,9 @@
                                                                                     <!-- Requirements Section -->
                                                                                     <div id="requirements" class="content-section">
                                                                                         <div class="breadcrumb">
-                                                                                            <a href="#" data-section="dashboard">Dashboard</a> <i class="fas fa-chevron-right"></i> <span>Document Compliance</span>
+                                                                                            <a href="#" data-section="dashboard">Dashboard</a> <i class="fas fa-chevron-right"></i> <span>Document Requirements</span>
                                                                                         </div>
-                                                                                        <h1 class="page-title">Document Compliance</h1>
+                                                                                        <h1 class="page-title">Document Requirements</h1>
                                                                                         
                                                                                         <div class="card">
                                                                                             <div class="card-header">
@@ -6401,7 +6410,7 @@
                                                                                     <!-- Uniforms Section -->
                                                                                     <div id="uniforms" class="content-section">
                                                                                         <div class="breadcrumb">
-                                                                                            <a href="#" data-section="dashboard">Dashboard</a> <i class="fas fa-chevron-right"></i> <span>Uniforms</span>
+                                                                                            <a href="#" data-section="dashboard">Dashboard</a> <i class="fas fa-chevron-right"></i> <span>Uniforms Compliance</span>
                                                                                         </div>
                                                                                         <h1 class="page-title">Uniform Selection & Management</h1>
                                                                                         
@@ -6615,9 +6624,9 @@
                                                                                     <!-- Account Section -->
                                                                                     <div id="account" class="content-section">
                                                                                         <div class="breadcrumb">
-                                                                                            <a href="#" data-section="dashboard">Dashboard</a> <i class="fas fa-chevron-right"></i> <span>Account & Payments</span>
+                                                                                            <a href="#" data-section="dashboard">Dashboard</a> <i class="fas fa-chevron-right"></i> <span>Account & Settlements</span>
                                                                                         </div>
-                                                                                        <h1 class="page-title">Account & Payments</h1>
+                                                                                        <h1 class="page-title">Account & Settlements</h1>
                                                                                         
                                                                                         <div class="account-summary">
                                                                                             <div class="account-card">
