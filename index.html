@@ -4,7 +4,7 @@
                                                                             <head>
                                                                                 <meta charset="UTF-8">
                                                                                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                                                                                <title>Icct Skolaris Gateway</title>
+                                                                                <title>GATEWAY</title>
                                                                                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
                                                                                 <style>
                                                                             :root {
@@ -2436,6 +2436,28 @@
                                                                                 box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
                                                                             }
 
+                                                                            /* Green theme for General Feedback button */
+                                                                            #feedback-tab-btn.active {
+                                                                                background: linear-gradient(135deg, #0C7800 0%, #0A6000 100%);
+                                                                                color: white;
+                                                                                box-shadow: 0 4px 12px rgba(12, 120, 0, 0.3);
+                                                                            }
+
+                                                                            #feedback-tab-btn.active i {
+                                                                                color: white;
+                                                                            }
+
+                                                                            /* Blue theme for Faculty Evaluation button */
+                                                                            #evaluation-tab-btn.active {
+                                                                                background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+                                                                                color: white;
+                                                                                box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
+                                                                            }
+
+                                                                            #evaluation-tab-btn.active i {
+                                                                                color: white;
+                                                                            }
+
                                                                             .tab-btn i {
                                                                                 font-size: 16px;
                                                                             }
@@ -2452,6 +2474,97 @@
                                                                                 box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
                                                                                 border: 1px solid #e5e7eb;
                                                                                 overflow: hidden;
+                                                                            }
+
+                                                                            /* General Feedback Green Theme */
+                                                                            .feedback-green-theme .feedback-card {
+                                                                                background: linear-gradient(135deg, #0C7800 0%, #0A6000 100%);
+                                                                                border: 1px solid #0C7800;
+                                                                            }
+
+                                                                            .feedback-green-theme .card-header-professional {
+                                                                                background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.1) 100%);
+                                                                                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+                                                                            }
+
+                                                                            .feedback-green-theme .card-header-professional i {
+                                                                                color: #ffffff;
+                                                                            }
+
+                                                                            .feedback-green-theme .card-header-professional h3 {
+                                                                                color: #ffffff;
+                                                                            }
+
+                                                                            .feedback-green-theme .card-body {
+                                                                                background: #0C7800;
+                                                                            }
+
+                                                                            .feedback-green-theme .form-group-professional label {
+                                                                                color: #ffffff;
+                                                                            }
+
+                                                                            .feedback-green-theme .form-select-professional,
+                                                                            .feedback-green-theme .form-input-professional,
+                                                                            .feedback-green-theme .form-textarea-professional {
+                                                                                background: rgba(255, 255, 255, 0.95);
+                                                                                border-color: rgba(255, 255, 255, 0.3);
+                                                                                color: #1f2937;
+                                                                            }
+
+                                                                            .feedback-green-theme .form-select-professional:focus,
+                                                                            .feedback-green-theme .form-input-professional:focus,
+                                                                            .feedback-green-theme .form-textarea-professional:focus {
+                                                                                background: white;
+                                                                                border-color: #ffffff;
+                                                                            }
+
+                                                                            .feedback-green-theme .btn-primary {
+                                                                                background: linear-gradient(135deg, #ffffff 0%, #e6e6e6 100%);
+                                                                                color: #0C7800;
+                                                                                border: none;
+                                                                            }
+
+                                                                            .feedback-green-theme .btn-primary:hover {
+                                                                                background: linear-gradient(135deg, #f0f0f0 0%, #d9d9d9 100%);
+                                                                                transform: translateY(-2px);
+                                                                            }
+
+                                                                            /* Faculty Evaluation Blue Theme */
+                                                                            .evaluation-blue-theme .evaluation-wizard {
+                                                                                background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+                                                                                padding: 40px;
+                                                                                border-radius: 16px;
+                                                                                box-shadow: 0 8px 16px rgba(30, 58, 138, 0.3);
+                                                                            }
+
+                                                                            .evaluation-blue-theme .step-header {
+                                                                                border-bottom-color: rgba(255, 255, 255, 0.2);
+                                                                            }
+
+                                                                            .evaluation-blue-theme .step-header h3 {
+                                                                                color: #ffffff;
+                                                                            }
+
+                                                                            .evaluation-blue-theme .step-number {
+                                                                                background: linear-gradient(135deg, #ffffff 0%, #e6e6e6 100%);
+                                                                                color: #1e3a8a;
+                                                                            }
+
+                                                                            .evaluation-blue-theme .step-content {
+                                                                                background: rgba(255, 255, 255, 0.98);
+                                                                            }
+
+                                                                            .evaluation-blue-theme .step-actions {
+                                                                                border-top-color: rgba(255, 255, 255, 0.2);
+                                                                            }
+
+                                                                            .evaluation-blue-theme .btn-primary {
+                                                                                background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+                                                                                color: white;
+                                                                            }
+
+                                                                            .evaluation-blue-theme .btn-primary:hover {
+                                                                                background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
                                                                             }
 
                                                                             .card-header-professional {
@@ -3752,6 +3865,57 @@
                                                                             .dark-mode #shs-uniform-options .uniform-card-icon {
                                                                                 background: linear-gradient(135deg, rgba(146, 208, 80, 0.3) 0%, rgba(146, 208, 80, 0.2) 100%);
                                                                                 color: #92D050;
+                                                                            }
+
+                                                                            /* College Uniform Specific Styles - Blue Theme */
+                                                                            #college-uniform-options .uniform-card {
+                                                                                border-color: var(--primary);
+                                                                            }
+
+                                                                            #college-uniform-options .uniform-card::before {
+                                                                                background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
+                                                                            }
+
+                                                                            #college-uniform-options .uniform-card:hover {
+                                                                                border-color: var(--primary);
+                                                                                box-shadow: 0 8px 24px rgba(30, 58, 95, 0.15);
+                                                                            }
+
+                                                                            #college-uniform-options .uniform-card-icon {
+                                                                                background: linear-gradient(135deg, rgba(30, 58, 95, 0.15) 0%, rgba(30, 58, 95, 0.1) 100%);
+                                                                                color: var(--primary);
+                                                                            }
+
+                                                                            #college-uniform-options .uniform-card:hover .uniform-card-icon {
+                                                                                color: var(--primary-dark);
+                                                                            }
+
+                                                                            #college-uniform-options .uniform-card.selected-program {
+                                                                                border-color: var(--primary);
+                                                                                background: linear-gradient(135deg, rgba(30, 58, 95, 0.02) 0%, rgba(30, 58, 95, 0.05) 100%);
+                                                                            }
+
+                                                                            #college-uniform-options .uniform-card.selected-program::before {
+                                                                                background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
+                                                                            }
+
+                                                                            #college-uniform-options .uniform-card.selected-program .uniform-card-icon {
+                                                                                background: linear-gradient(135deg, rgba(30, 58, 95, 0.15) 0%, rgba(30, 58, 95, 0.1) 100%);
+                                                                                color: var(--primary);
+                                                                            }
+
+                                                                            #college-uniform-options .uniform-card.selected-program .uniform-card-badge {
+                                                                                background: var(--primary);
+                                                                                color: white;
+                                                                            }
+
+                                                                            #college-uniform-options .uniform-category-card .card-header h2 i {
+                                                                                color: var(--primary);
+                                                                            }
+
+                                                                            .dark-mode #college-uniform-options .uniform-card-icon {
+                                                                                background: linear-gradient(135deg, rgba(30, 58, 95, 0.3) 0%, rgba(30, 58, 95, 0.2) 100%);
+                                                                                color: var(--primary);
                                                                             }
 
                                                                             /* Responsive Design */
@@ -7126,12 +7290,14 @@
 
                                                                                             <div class="enrollment-container">
                                                                                                 <div class="enrollment-overview">
-                                                                                                    <div class="overview-card physical-exam-card" id="physical-exam-card" style="cursor: pointer; border: 2px solid var(--success); background: linear-gradient(135deg, rgba(40, 167, 69, 0.08), rgba(40, 167, 69, 0.04)); transition: all 0.3s ease; position: relative;">
+                                                                                                    
+                                                                                                    <!-- Health Assessment -->
+                                                                                                    <div class="overview-card health-care-card" id="physical-exam-card" style="cursor: pointer; border: 2px solid var(--success); background: var(--card-bg); transition: all 0.3s ease; position: relative;">
                                                                                                         <div class="overview-icon" style="background: var(--success); color: white; align-self: center;">
                                                                                                             <i class="fas fa-stethoscope"></i>
                                                                                                         </div>
                                                                                                         <div class="overview-content">
-                                                                                                            <h4 style="color: var(--success); margin: 0 0 8px 0; font-size: 15px; font-weight: 600;">Health Assesment</h4>
+                                                                                                            <h4 style="color: var(--success); margin: 0 0 8px 0; font-size: 17px; font-weight: 700;">Health Assesment</h4>
                                                                                                             <p style="color: var(--gray); margin: 0; font-size: 13px; line-height: 1.5;">Student's General Physical Exam Results, Vital Signs, and Physician's Findings.</p>
                                                                                                         </div>
                                                                                                         <div class="loading-overlay" id="physical-exam-loading" style="display: none;">
@@ -7141,12 +7307,14 @@
                                                                                                             </div>
                                                                                                         </div>
                                                                                                     </div>
-                                                                                                    <div class="overview-card drug-test-card" id="drug-test-card" style="cursor: pointer; border: 2px solid var(--primary); background: linear-gradient(135deg, rgba(30, 58, 95, 0.1), rgba(30, 58, 95, 0.05)); transition: all 0.3s ease; position: relative;">
+
+                                                                                                    <!-- Substance Screening -->
+                                                                                                    <div class="overview-card health-care-card" id="drug-test-card" style="cursor: pointer; border: 2px solid var(--primary); background: var(--card-bg); transition: all 0.3s ease; position: relative;">
                                                                                                         <div class="overview-icon" style="background: var(--primary); color: white; align-self: center;">
                                                                                                             <i class="fas fa-vial"></i>
                                                                                                         </div>
                                                                                                         <div class="overview-content">
-                                                                                                            <h4 style="color: var(--primary); margin: 0 0 8px 0; font-size: 15px; font-weight: 600;">Substance Screening</h4>
+                                                                                                            <h4 style="color: var(--primary); margin: 0 0 8px 0; font-size: 17px; font-weight: 700;">Substance Screening</h4>
                                                                                                             <p style="color: var(--gray); margin: 0; font-size: 13px; line-height: 1.5;">Records of Drug Testing results and compliance with School/CHED</p>
                                                                                                         </div>
                                                                                                         <div class="loading-overlay" id="drug-test-loading" style="display: none;">
@@ -7156,12 +7324,14 @@
                                                                                                             </div>
                                                                                                         </div>
                                                                                                     </div>
-                                                                                                    <div class="overview-card x-ray-card" id="x-ray-card" style="cursor: pointer; border: 2px solid var(--accent); background: linear-gradient(135deg, rgba(227, 62, 70, 0.1), rgba(227, 62, 70, 0.05)); transition: all 0.3s ease; position: relative;">
+
+                                                                                                    <!-- Radiology Report -->
+                                                                                                    <div class="overview-card health-care-card" id="x-ray-card" style="cursor: pointer; border: 2px solid var(--accent); background: var(--card-bg); transition: all 0.3s ease; position: relative;">
                                                                                                         <div class="overview-icon" style="background: var(--accent); color: white; align-self: center;">
                                                                                                             <i class="fas fa-x-ray"></i>
                                                                                                         </div>
                                                                                                         <div class="overview-content">
-                                                                                                            <h4 style="color: var(--accent); margin: 0 0 8px 0; font-size: 15px; font-weight: 600;">Radiology Report</h4>
+                                                                                                            <h4 style="color: var(--accent); margin: 0 0 8px 0; font-size: 17px; font-weight: 700;">Radiology Report</h4>
                                                                                                             <p style="color: var(--gray); margin: 0; font-size: 13px; line-height: 1.5;">Repository of X-ray or imaging results required for medical clearance.</p>
                                                                                                         </div>
                                                                                                         <div class="loading-overlay" id="x-ray-loading" style="display: none;">
@@ -7171,12 +7341,14 @@
                                                                                                             </div>
                                                                                                         </div>
                                                                                                     </div>
-                                                                                                    <div class="overview-card vaccination-card" id="vaccination-card" style="cursor: pointer; border: 2px solid var(--info); background: linear-gradient(135deg, rgba(23, 162, 184, 0.1), rgba(23, 162, 184, 0.05)); transition: all 0.3s ease; position: relative;">
+
+                                                                                                    <!-- Immunization Record -->
+                                                                                                    <div class="overview-card health-care-card" id="vaccination-card" style="cursor: pointer; border: 2px solid var(--info); background: var(--card-bg); transition: all 0.3s ease; position: relative;">
                                                                                                         <div class="overview-icon" style="background: var(--info); color: white; align-self: center;">
                                                                                                             <i class="fas fa-syringe"></i>
                                                                                                         </div>
                                                                                                         <div class="overview-content">
-                                                                                                            <h4 style="color: var(--info); margin: 0 0 8px 0; font-size: 15px; font-weight: 600;">Immunization Record</h4>
+                                                                                                            <h4 style="color: var(--info); margin: 0 0 8px 0; font-size: 17px; font-weight: 700;">Immunization Record</h4>
                                                                                                             <p style="color: var(--gray); margin: 0; font-size: 13px; line-height: 1.5;">Tracks vaccines received (e.g., Hepatitis B, MMR, COVID-19, etc.) with validity dates.</p>
                                                                                                         </div>
                                                                                                         <div class="loading-overlay" id="vaccination-loading" style="display: none;">
@@ -7186,13 +7358,15 @@
                                                                                                             </div>
                                                                                                         </div>
                                                                                                     </div>
-                                                                                                    <div class="overview-card mindcare-card" id="mindcare-card" style="cursor: pointer; border: 2px solid var(--warning); background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 193, 7, 0.05)); transition: all 0.3s ease; position: relative;">
+
+                                                                                                    <!-- MindCare Awareness -->
+                                                                                                    <div class="overview-card health-care-card" id="mindcare-card" style="cursor: pointer; border: 2px solid var(--warning); background: var(--card-bg); transition: all 0.3s ease; position: relative;">
                                                                                                         <div class="overview-icon" style="background: var(--warning); color: white; align-self: center;">
                                                                                                             <i class="fas fa-brain"></i>
                                                                                                         </div>
                                                                                                         <div class="overview-content">
-                                                                                                            <h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 700; color: var(--text-color);">MindCare Awareness</h3>
-                                                                                                            <h4 style="color: var(--warning); margin: 0 0 8px 0; font-size: 15px; font-weight: 600;">Psychological/Mental Wellness</h4>
+                                                                                                            <h3 style="margin: 0 0 4px 0; font-size: 17px; font-weight: 700; color: #000000;">MindCare Awareness</h3>
+                                                                                                            <h4 style="color: #000000; margin: 0 0 8px 0; font-size: 17px; font-weight: 600;">Psychological/Mental Wellness</h4>
                                                                                                             <p style="color: var(--gray); margin: 0; font-size: 13px; line-height: 1.5;">Emotional wellness support and mental health resources for student well-being.</p>
                                                                                                         </div>
                                                                                                         <div class="loading-overlay" id="mindcare-loading" style="display: none;">
@@ -7202,9 +7376,17 @@
                                                                                                             </div>
                                                                                                         </div>
                                                                                                     </div>
+
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
+
+                                                                                        <style>
+                                                                                            .health-care-card:hover {
+                                                                                                transform: translateY(-4px);
+                                                                                                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+                                                                                            }
+                                                                                        </style>
 
                                                                                         <!-- Drug Test Modal -->
                                                                                         <div id="drug-test-modal" class="modal-overlay" style="display: none;">
