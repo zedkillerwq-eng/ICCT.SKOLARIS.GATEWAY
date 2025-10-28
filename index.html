@@ -3474,6 +3474,13 @@
                                                                                 box-shadow: 0 4px 12px rgba(30, 58, 95, 0.3);
                                                                             }
 
+                                                                            #uniform-shs-toggle.active {
+                                                                                background: linear-gradient(135deg, #92D050 0%, #7AB83F 100%);
+                                                                                border-color: #92D050;
+                                                                                color: white;
+                                                                                box-shadow: 0 4px 12px rgba(146, 208, 80, 0.3);
+                                                                            }
+
                                                                             /* Section Container */
                                                                             .uniform-section-container {
                                                                                 animation: fadeIn 0.4s ease;
@@ -3694,6 +3701,57 @@
 
                                                                             .dark-mode .summary-item span {
                                                                                 color: #e8eaed;
+                                                                            }
+
+                                                                            /* SHS Uniform Specific Styles - Green Theme */
+                                                                            #shs-uniform-options .uniform-card {
+                                                                                border-color: #92D050;
+                                                                            }
+
+                                                                            #shs-uniform-options .uniform-card::before {
+                                                                                background: linear-gradient(90deg, #92D050 0%, #7AB83F 100%);
+                                                                            }
+
+                                                                            #shs-uniform-options .uniform-card:hover {
+                                                                                border-color: #92D050;
+                                                                                box-shadow: 0 8px 24px rgba(146, 208, 80, 0.15);
+                                                                            }
+
+                                                                            #shs-uniform-options .uniform-card-icon {
+                                                                                background: linear-gradient(135deg, rgba(146, 208, 80, 0.15) 0%, rgba(146, 208, 80, 0.1) 100%);
+                                                                                color: #92D050;
+                                                                            }
+
+                                                                            #shs-uniform-options .uniform-card:hover .uniform-card-icon {
+                                                                                color: #7AB83F;
+                                                                            }
+
+                                                                            #shs-uniform-options .uniform-card.selected-program {
+                                                                                border-color: #92D050;
+                                                                                background: linear-gradient(135deg, rgba(146, 208, 80, 0.02) 0%, rgba(146, 208, 80, 0.05) 100%);
+                                                                            }
+
+                                                                            #shs-uniform-options .uniform-card.selected-program::before {
+                                                                                background: linear-gradient(90deg, #92D050 0%, #7AB83F 100%);
+                                                                            }
+
+                                                                            #shs-uniform-options .uniform-card.selected-program .uniform-card-icon {
+                                                                                background: linear-gradient(135deg, rgba(146, 208, 80, 0.15) 0%, rgba(146, 208, 80, 0.1) 100%);
+                                                                                color: #92D050;
+                                                                            }
+
+                                                                            #shs-uniform-options .uniform-card.selected-program .uniform-card-badge {
+                                                                                background: #92D050;
+                                                                                color: white;
+                                                                            }
+
+                                                                            #shs-uniform-options .uniform-category-card .card-header h2 i {
+                                                                                color: #92D050;
+                                                                            }
+
+                                                                            .dark-mode #shs-uniform-options .uniform-card-icon {
+                                                                                background: linear-gradient(135deg, rgba(146, 208, 80, 0.3) 0%, rgba(146, 208, 80, 0.2) 100%);
+                                                                                color: #92D050;
                                                                             }
 
                                                                             /* Responsive Design */
@@ -6661,7 +6719,7 @@
                                                                                                     <div class="card-header">
                                                                                                         <div>
                                                                                                             <h2 class="card-title">
-                                                                                                                <i class="fas fa-user-graduate"></i> Academic Programs
+                                                                                                                <i class="fas fa-user-graduate"></i> College of Computer Studies
                                                                                                             </h2>
                                                                                                             <p class="card-subtitle">Enrolled Program (BSIT)</p>
                                                                                                         </div>
@@ -6674,7 +6732,7 @@
                                                                                                             <h3 class="uniform-card-title">BSIT</h3>
                                                                                                             <p class="uniform-card-description">BS Information Technology</p>
                                                                                                             <div class="uniform-card-badge">
-                                                                                                                <i class="fas fa-check-circle"></i> Selected
+                                                                                                                <i class="fas fa-check-circle"></i> Completed
                                                                                                             </div>
                                                                                                         </div>
 
@@ -6685,7 +6743,7 @@
                                                                                                             <h3 class="uniform-card-title">NSTP</h3>
                                                                                                             <p class="uniform-card-description">National Service Training Program</p>
                                                                                                             <div class="uniform-card-badge">
-                                                                                                                <i class="fas fa-check-circle"></i> Selected
+                                                                                                                <i class="fas fa-check-circle"></i> Completed
                                                                                                             </div>
                                                                                                         </div>
 
@@ -6696,7 +6754,7 @@
                                                                                                             <h3 class="uniform-card-title">College P.E.</h3>
                                                                                                             <p class="uniform-card-description">Physical Education Uniform</p>
                                                                                                             <div class="uniform-card-badge">
-                                                                                                                <i class="fas fa-check-circle"></i> Selected
+                                                                                                                <i class="fas fa-check-circle"></i> Completed
                                                                                                             </div>
                                                                                                         </div>
                                                                                                     </div>
@@ -6751,7 +6809,7 @@
                                                                                                 <div class="uniform-summary-content">
                                                                                                     <div class="summary-stat">
                                                                                                         <div class="summary-stat-number" id="uniform-count">3</div>
-                                                                                                        <div class="summary-stat-label">Uniforms Completed</div>
+                                                                                                        <div class="summary-stat-label">Uniforms ACQUIRED</div>
                                                                                                     </div>
                                                                                                     <div class="summary-divider"></div>
                                                                                                     <div class="summary-list" id="uniform-summary-list">
