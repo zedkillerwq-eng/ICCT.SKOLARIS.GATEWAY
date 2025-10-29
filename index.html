@@ -2333,6 +2333,347 @@
                                                                                 margin-bottom: 15px;
                                                                             }
 
+                                                                            /* Emergency Boxes Styles */
+                                                                            .emergency-section {
+                                                                                margin-bottom: 20px;
+                                                                            }
+
+                                                                            .emergency-container {
+                                                                                background: var(--card-bg);
+                                                                                border-radius: 8px;
+                                                                                padding: 16px;
+                                                                                box-shadow: var(--box-shadow);
+                                                                                border: 1px solid var(--border-color);
+                                                                            }
+
+                                                                            .emergency-title {
+                                                                                font-size: 18px;
+                                                                                font-weight: 700;
+                                                                                color: var(--text-color);
+                                                                                margin-bottom: 12px;
+                                                                                display: flex;
+                                                                                align-items: center;
+                                                                                gap: 8px;
+                                                                            }
+
+                                                                            .emergency-title i {
+                                                                                color: var(--danger);
+                                                                                font-size: 20px;
+                                                                            }
+
+                                                                            .emergency-grid {
+                                                                                display: grid;
+                                                                                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                                                                                gap: 8px;
+                                                                                margin-bottom: 0;
+                                                                            }
+
+                                                                            .emergency-box {
+                                                                                background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+                                                                                border-radius: 6px;
+                                                                                padding: 8px;
+                                                                                cursor: pointer;
+                                                                                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                                                                                position: relative;
+                                                                                overflow: hidden;
+                                                                                box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
+                                                                                border: 2px solid rgba(255, 255, 255, 0.2);
+                                                                                min-height: 60px;
+                                                                                animation: emergencyColorPulse 3s ease-in-out infinite;
+                                                                            }
+
+                                                                            @keyframes emergencyColorPulse {
+                                                                                0%, 100% {
+                                                                                    background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+                                                                                }
+                                                                                50% {
+                                                                                    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+                                                                                }
+                                                                            }
+
+                                                                            .emergency-box::before {
+                                                                                content: '';
+                                                                                position: absolute;
+                                                                                top: -50%;
+                                                                                left: -50%;
+                                                                                width: 200%;
+                                                                                height: 200%;
+                                                                                background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+                                                                                transform: rotate(45deg);
+                                                                                animation: emergencyShine 3s infinite;
+                                                                            }
+
+                                                                            @keyframes emergencyShine {
+                                                                                0%, 100% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+                                                                                50% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+                                                                            }
+
+                                                                            .emergency-box:hover {
+                                                                                transform: translateY(-3px);
+                                                                                box-shadow: 0 4px 12px rgba(220, 53, 69, 0.5);
+                                                                                border-color: rgba(255, 255, 255, 0.4);
+                                                                            }
+
+                                                                            .emergency-box-content {
+                                                                                position: relative;
+                                                                                z-index: 1;
+                                                                                text-align: center;
+                                                                                display: flex;
+                                                                                flex-direction: column;
+                                                                                justify-content: center;
+                                                                                align-items: center;
+                                                                                height: 100%;
+                                                                            }
+
+                                                                            .emergency-icon {
+                                                                                display: none;
+                                                                            }
+
+                                                                            @keyframes emergencyIconPulse {
+                                                                                0%, 100% {
+                                                                                    color: white;
+                                                                                    transform: scale(1);
+                                                                                }
+                                                                                50% {
+                                                                                    color: #dc3545;
+                                                                                    transform: scale(1.1);
+                                                                                }
+                                                                            }
+
+                                                                            .emergency-label {
+                                                                                font-size: 11px;
+                                                                                font-weight: 700;
+                                                                                margin-bottom: 3px;
+                                                                                line-height: 1.2;
+                                                                                animation: emergencyTextPulse 3s ease-in-out infinite;
+                                                                            }
+
+                                                                            .emergency-description {
+                                                                                font-size: 9px;
+                                                                                opacity: 0.9;
+                                                                                line-height: 1.2;
+                                                                                animation: emergencyTextPulse 3s ease-in-out infinite;
+                                                                            }
+
+                                                                            @keyframes emergencyTextPulse {
+                                                                                0%, 100% {
+                                                                                    color: white;
+                                                                                }
+                                                                                50% {
+                                                                                    color: black;
+                                                                                }
+                                                                            }
+
+                                                                            /* Emergency Modal */
+                                                                            .emergency-modal {
+                                                                                display: none;
+                                                                                position: fixed;
+                                                                                top: 0;
+                                                                                left: 0;
+                                                                                width: 100%;
+                                                                                height: 100%;
+                                                                                background-color: rgba(0, 0, 0, 0.7);
+                                                                                z-index: 2000;
+                                                                                align-items: center;
+                                                                                justify-content: center;
+                                                                                backdrop-filter: blur(5px);
+                                                                                animation: fadeIn 0.3s ease;
+                                                                            }
+
+                                                                            @keyframes fadeIn {
+                                                                                from { opacity: 0; }
+                                                                                to { opacity: 1; }
+                                                                            }
+
+                                                                            .emergency-modal.active {
+                                                                                display: flex;
+                                                                            }
+
+                                                                            .emergency-modal-content {
+                                                                                background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+                                                                                border-radius: 16px;
+                                                                                width: 90%;
+                                                                                max-width: 600px;
+                                                                                padding: 30px;
+                                                                                box-shadow: 0 10px 40px rgba(220, 53, 69, 0.5);
+                                                                                position: relative;
+                                                                                animation: slideUp 0.3s ease;
+                                                                                border: 3px solid rgba(255, 255, 255, 0.3);
+                                                                            }
+
+                                                                            @keyframes slideUp {
+                                                                                from { transform: translateY(50px); opacity: 0; }
+                                                                                to { transform: translateY(0); opacity: 1; }
+                                                                            }
+
+                                                                            .emergency-modal-header {
+                                                                                display: flex;
+                                                                                justify-content: space-between;
+                                                                                align-items: center;
+                                                                                margin-bottom: 20px;
+                                                                                padding-bottom: 15px;
+                                                                                border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+                                                                            }
+
+                                                                            .emergency-modal-header h3 {
+                                                                                font-size: 24px;
+                                                                                font-weight: 700;
+                                                                                color: white;
+                                                                                display: flex;
+                                                                                align-items: center;
+                                                                                gap: 10px;
+                                                                                margin: 0;
+                                                                            }
+
+                                                                            .emergency-modal-header i {
+                                                                                font-size: 28px;
+                                                                                color: white;
+                                                                            }
+
+                                                                            .emergency-close-btn {
+                                                                                background: rgba(255, 255, 255, 0.2);
+                                                                                border: none;
+                                                                                font-size: 28px;
+                                                                                cursor: pointer;
+                                                                                color: white;
+                                                                                padding: 5px;
+                                                                                border-radius: 50%;
+                                                                                transition: var(--transition);
+                                                                                width: 40px;
+                                                                                height: 40px;
+                                                                                display: flex;
+                                                                                align-items: center;
+                                                                                justify-content: center;
+                                                                            }
+
+                                                                            .emergency-close-btn:hover {
+                                                                                background-color: rgba(255, 255, 255, 0.3);
+                                                                                color: white;
+                                                                            }
+
+                                                                            .emergency-modal-body {
+                                                                                margin-bottom: 25px;
+                                                                            }
+
+                                                                            .emergency-upload-area {
+                                                                                border: 3px dashed rgba(255, 255, 255, 0.5);
+                                                                                border-radius: 12px;
+                                                                                padding: 40px 20px;
+                                                                                text-align: center;
+                                                                                background: rgba(255, 255, 255, 0.1);
+                                                                                cursor: pointer;
+                                                                                transition: all 0.3s ease;
+                                                                                margin-bottom: 20px;
+                                                                            }
+
+                                                                            .emergency-upload-area:hover {
+                                                                                background: rgba(255, 255, 255, 0.2);
+                                                                                border-color: rgba(255, 255, 255, 0.7);
+                                                                            }
+
+                                                                            .emergency-upload-area i {
+                                                                                font-size: 48px;
+                                                                                color: white;
+                                                                                margin-bottom: 15px;
+                                                                                display: block;
+                                                                            }
+
+                                                                            .emergency-upload-area p {
+                                                                                font-size: 16px;
+                                                                                font-weight: 600;
+                                                                                color: white;
+                                                                                margin-bottom: 5px;
+                                                                            }
+
+                                                                            .emergency-upload-area small {
+                                                                                color: rgba(255, 255, 255, 0.8);
+                                                                                font-size: 14px;
+                                                                            }
+
+                                                                            .emergency-file-input {
+                                                                                display: none;
+                                                                            }
+
+                                                                            .emergency-file-preview {
+                                                                                margin-top: 15px;
+                                                                                padding: 15px;
+                                                                                background: var(--bg-color);
+                                                                                border-radius: 8px;
+                                                                                display: none;
+                                                                            }
+
+                                                                            .emergency-file-preview.active {
+                                                                                display: block;
+                                                                            }
+
+                                                                            .emergency-file-item {
+                                                                                display: flex;
+                                                                                align-items: center;
+                                                                                justify-content: space-between;
+                                                                                padding: 10px;
+                                                                                background: var(--card-bg);
+                                                                                border-radius: 6px;
+                                                                                margin-bottom: 8px;
+                                                                            }
+
+                                                                            .emergency-file-info {
+                                                                                display: flex;
+                                                                                align-items: center;
+                                                                                gap: 10px;
+                                                                            }
+
+                                                                            .emergency-file-info i {
+                                                                                color: var(--success);
+                                                                                font-size: 20px;
+                                                                            }
+
+                                                                            .emergency-submit-btn {
+                                                                                background: linear-gradient(135deg, var(--danger) 0%, #c82333 100%);
+                                                                                color: white;
+                                                                                border: none;
+                                                                                padding: 14px 30px;
+                                                                                border-radius: 8px;
+                                                                                cursor: pointer;
+                                                                                font-size: 16px;
+                                                                                font-weight: 600;
+                                                                                transition: all 0.3s ease;
+                                                                                width: 100%;
+                                                                                display: flex;
+                                                                                align-items: center;
+                                                                                justify-content: center;
+                                                                                gap: 10px;
+                                                                                box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+                                                                            }
+
+                                                                            .emergency-submit-btn:hover {
+                                                                                transform: translateY(-2px);
+                                                                                box-shadow: 0 6px 20px rgba(220, 53, 69, 0.4);
+                                                                            }
+
+                                                                            .emergency-submit-btn:active {
+                                                                                transform: translateY(0);
+                                                                            }
+
+                                                                            .emergency-submit-btn i {
+                                                                                font-size: 18px;
+                                                                            }
+
+                                                                            /* Responsive */
+                                                                            @media (max-width: 768px) {
+                                                                                .emergency-grid {
+                                                                                    grid-template-columns: 1fr;
+                                                                                }
+
+                                                                                .emergency-modal-content {
+                                                                                    width: 95%;
+                                                                                    padding: 20px;
+                                                                                }
+
+                                                                                .emergency-upload-area {
+                                                                                    padding: 30px 15px;
+                                                                                }
+                                                                            }
+
                                                                             /* Feedback Styles */
                                                                             .feedback-header {
                                                                                 background: var(--primary);
@@ -4987,7 +5328,7 @@
                                                                                                 </div>
                                                                                                 <div class="stat-card">
                                                                                                     <div class="stat-value">3.25</div>
-                                                                                                    <div class="stat-label">Current GPA</div>
+                                                                                                    <div class="stat-label">Current GWA</div>
                                                                                                 </div>
                                                                                                 <div class="stat-card">
                                                                                                     <div class="stat-value" id="pending-requirements-count">6</div>
@@ -5260,7 +5601,7 @@
                                                                                                                 <div class="summary-value">147</div>
                                                                                                             </div>
                                                                                                             <div class="summary-item">
-                                                                                                                <div class="summary-label">Cumulative GPA</div>
+                                                                                                                <div class="summary-label">Cumulative GWA</div>
                                                                                                                 <div class="summary-value">1.45</div>
                                                                                                             </div>
                                                                                                             <div class="summary-item">
@@ -8093,6 +8434,96 @@
                                                                                                 </div>
                                                                                             </div>
 
+                                                                                            <!-- Emergency Section -->
+                                                                                            <div class="emergency-section">
+                                                                                                <div class="emergency-container">
+                                                                                                    <h2 class="emergency-title">
+                                                                                                        <i class="fas fa-exclamation-triangle"></i>
+                                                                                                        Emergency Buttons
+                                                                                                    </h2>
+                                                                                                    <div class="emergency-grid">
+                                                                                                        <!-- Emergency Box 1 -->
+                                                                                                        <button class="emergency-box" onclick="openEmergency('No Internet')">
+                                                                                                            <div class="emergency-box-content">
+                                                                                                                <div class="emergency-label">No Internet</div>
+                                                                                                                <div class="emergency-description">Report connectivity issues</div>
+                                                                                                            </div>
+                                                                                                        </button>
+
+                                                                                                        <!-- Emergency Box 2 -->
+                                                                                                        <button class="emergency-box" onclick="openEmergency('Slow Internet Connection')">
+                                                                                                            <div class="emergency-box-content">
+                                                                                                                <div class="emergency-label">Slow Internet Connection</div>
+                                                                                                                <div class="emergency-description">Report slow speed</div>
+                                                                                                            </div>
+                                                                                                        </button>
+
+                                                                                                        <!-- Emergency Box 3 -->
+                                                                                                        <button class="emergency-box" onclick="openEmergency('')">
+                                                                                                            <div class="emergency-box-content">
+                                                                                                                <div class="emergency-label">Alert</div>
+                                                                                                                <div class="emergency-description">General alert</div>
+                                                                                                            </div>
+                                                                                                        </button>
+
+                                                                                                        <!-- Emergency Box 4 -->
+                                                                                                        <button class="emergency-box" onclick="openEmergency('Alert')">
+                                                                                                            <div class="emergency-box-content">
+                                                                                                                <div class="emergency-label">Alert</div>
+                                                                                                                <div class="emergency-description">Urgent issue</div>
+                                                                                                            </div>
+                                                                                                        </button>
+
+                                                                                                        <!-- Emergency Box 5 -->
+                                                                                                        <button class="emergency-box" onclick="openEmergency('Alert')">
+                                                                                                            <div class="emergency-box-content">
+                                                                                                                <div class="emergency-label">Alert</div>
+                                                                                                                <div class="emergency-description">Security concern</div>
+                                                                                                            </div>
+                                                                                                        </button>
+
+                                                                                                        <!-- Emergency Box 6 -->
+                                                                                                        <button class="emergency-box" onclick="openEmergency('Alert')">
+                                                                                                            <div class="emergency-box-content">
+                                                                                                                <div class="emergency-label">Alert</div>
+                                                                                                                <div class="emergency-description">Emergency situation</div>
+                                                                                                            </div>
+                                                                                                        </button>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+
+                                                                                            <!-- Emergency Modal -->
+                                                                                            <div class="emergency-modal" id="emergencyModal" style="display: none;">
+                                                                                                <div class="emergency-modal-content">
+                                                                                                    <div class="emergency-modal-header">
+                                                                                                        <h3>
+                                                                                                            <i class="fas fa-exclamation-triangle"></i>
+                                                                                                            <span id="emergencyModalTitle">Emergency Report</span>
+                                                                                                        </h3>
+                                                                                                        <button class="emergency-close-btn" onclick="closeEmergency()">
+                                                                                                            <i class="fas fa-times"></i>
+                                                                                                        </button>
+                                                                                                    </div>
+                                                                                                    <div class="emergency-modal-body">
+                                                                                                        <div class="emergency-upload-area" onclick="document.getElementById('emergencyFileInput').click()">
+                                                                                                            <i class="fas fa-cloud-upload-alt"></i>
+                                                                                                            <p>Upload a Photo</p>
+                                                                                                            
+                                                                                                        </div>
+                                                                                                        <input type="file" id="emergencyFileInput" class="emergency-file-input" accept="image/*" multiple onchange="previewFiles(this.files)">
+                                                                                                        
+                                                                                                        <div class="emergency-file-preview" id="emergencyFilePreview" style="display: none;">
+                                                                                                        </div>
+
+                                                                                                        <button class="emergency-submit-btn" onclick="submitEmergency()">
+                                                                                                            <i class="fas fa-paper-plane"></i>
+                                                                                                            Submit
+                                                                                                        </button>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+
                                                                                             <!-- Tab Navigation -->
                                                                                             <div class="feedback-tabs">
                                                                                                 <button id="feedback-tab-btn" class="tab-btn active">
@@ -8167,7 +8598,7 @@
                                                                                                                     <div class="file-upload-content">
                                                                                                                         <i class="fas fa-cloud-upload-alt"></i>
                                                                                                                         <p>Click to upload files or drag and drop</p>
-                                                                                                                        <small>Supported: Images, PDF, Word documents (Max 10MB)</small>
+                                                                                                      
                                                                                                                     </div>
                                                                                                                 </div>
                                                                                                             </div>
@@ -9779,6 +10210,77 @@
                                                                                         profileImage.style.display = 'block';
                                                                                         profileIcon.style.display = 'none';
                                                                                     }
+
+                                                                                    // Emergency Boxes Functionality
+                                                                                    var currentEmergencyType = '';
+
+                                                                                    function openEmergency(type) {
+                                                                                        currentEmergencyType = type;
+                                                                                        var modal = document.getElementById('emergencyModal');
+                                                                                        var title = document.getElementById('emergencyModalTitle');
+                                                                                        
+                                                                                        if (title) title.textContent = type;
+                                                                                        if (modal) {
+                                                                                            modal.style.display = 'flex';
+                                                                                            document.body.style.overflow = 'hidden';
+                                                                                        }
+                                                                                    }
+
+                                                                                    function closeEmergency() {
+                                                                                        var modal = document.getElementById('emergencyModal');
+                                                                                        var fileInput = document.getElementById('emergencyFileInput');
+                                                                                        var preview = document.getElementById('emergencyFilePreview');
+                                                                                        
+                                                                                        if (modal) modal.style.display = 'none';
+                                                                                        document.body.style.overflow = '';
+                                                                                        if (fileInput) fileInput.value = '';
+                                                                                        if (preview) {
+                                                                                            preview.innerHTML = '';
+                                                                                            preview.style.display = 'none';
+                                                                                        }
+                                                                                    }
+
+                                                                                    function previewFiles(files) {
+                                                                                        var preview = document.getElementById('emergencyFilePreview');
+                                                                                        if (!preview) return;
+                                                                                        
+                                                                                        preview.innerHTML = '';
+                                                                                        
+                                                                                        if (files.length > 0) {
+                                                                                            preview.style.display = 'block';
+                                                                                            
+                                                                                            for (var i = 0; i < files.length; i++) {
+                                                                                                var file = files[i];
+                                                                                                var fileItem = document.createElement('div');
+                                                                                                fileItem.className = 'emergency-file-item';
+                                                                                                fileItem.innerHTML = '<div class="emergency-file-info"><i class="fas fa-image"></i><span>' + file.name + ' (' + (file.size / 1024).toFixed(2) + ' KB)</span></div><i class="fas fa-check-circle" style="color: #28a745; font-size: 20px;"></i>';
+                                                                                                preview.appendChild(fileItem);
+                                                                                            }
+                                                                                        } else {
+                                                                                            preview.style.display = 'none';
+                                                                                        }
+                                                                                    }
+
+                                                                                    function submitEmergency() {
+                                                                                        var fileInput = document.getElementById('emergencyFileInput');
+                                                                                        var files = fileInput ? fileInput.files : [];
+                                                                                        
+                                                                                        if (files.length === 0) {
+                                                                                            alert('Please upload at least one image before submitting.');
+                                                                                            return;
+                                                                                        }
+
+                                                                                        alert('Emergency Report Submitted!\n\nType: ' + currentEmergencyType + '\nFiles: ' + files.length + ' image(s)\n\nYour report has been received and will be reviewed shortly.');
+                                                                                        closeEmergency();
+                                                                                    }
+
+                                                                                    // Close modal when clicking outside
+                                                                                    window.addEventListener('click', function(e) {
+                                                                                        var modal = document.getElementById('emergencyModal');
+                                                                                        if (e.target === modal) {
+                                                                                            closeEmergency();
+                                                                                        }
+                                                                                    });
                                                                                 </script>
 
                                                                                 <!-- Reference Generator Modal -->
