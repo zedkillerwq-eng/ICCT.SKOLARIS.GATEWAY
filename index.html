@@ -2379,15 +2379,17 @@
                                                                                 box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
                                                                                 border: 2px solid rgba(255, 255, 255, 0.2);
                                                                                 min-height: 60px;
-                                                                                animation: emergencyColorPulse 3s ease-in-out infinite;
+                                                                                animation: emergencyRedFade 2s ease-in-out infinite;
                                                                             }
 
-                                                                            @keyframes emergencyColorPulse {
+                                                                            @keyframes emergencyRedFade {
                                                                                 0%, 100% {
                                                                                     background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+                                                                                    opacity: 1;
                                                                                 }
                                                                                 50% {
-                                                                                    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+                                                                                    background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+                                                                                    opacity: 0.4;
                                                                                 }
                                                                             }
 
@@ -2433,10 +2435,12 @@
                                                                                 0%, 100% {
                                                                                     color: white;
                                                                                     transform: scale(1);
+                                                                                    opacity: 1;
                                                                                 }
                                                                                 50% {
-                                                                                    color: #dc3545;
-                                                                                    transform: scale(1.1);
+                                                                                    color: white;
+                                                                                    transform: scale(1);
+                                                                                    opacity: 0.5;
                                                                                 }
                                                                             }
 
@@ -2445,22 +2449,24 @@
                                                                                 font-weight: 700;
                                                                                 margin-bottom: 3px;
                                                                                 line-height: 1.2;
-                                                                                animation: emergencyTextPulse 3s ease-in-out infinite;
+                                                                                animation: emergencyTextFade 2s ease-in-out infinite;
                                                                             }
 
                                                                             .emergency-description {
                                                                                 font-size: 9px;
                                                                                 opacity: 0.9;
                                                                                 line-height: 1.2;
-                                                                                animation: emergencyTextPulse 3s ease-in-out infinite;
+                                                                                animation: emergencyTextFade 2s ease-in-out infinite;
                                                                             }
 
-                                                                            @keyframes emergencyTextPulse {
+                                                                            @keyframes emergencyTextFade {
                                                                                 0%, 100% {
                                                                                     color: white;
+                                                                                    opacity: 1;
                                                                                 }
                                                                                 50% {
-                                                                                    color: black;
+                                                                                    color: white;
+                                                                                    opacity: 0.5;
                                                                                 }
                                                                             }
 
@@ -2490,12 +2496,12 @@
                                                                             }
 
                                                                             .emergency-modal-content {
-                                                                                background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+                                                                                background: linear-gradient(135deg, #B0000F 0%, #8B000C 100%);
                                                                                 border-radius: 16px;
                                                                                 width: 90%;
                                                                                 max-width: 600px;
                                                                                 padding: 30px;
-                                                                                box-shadow: 0 10px 40px rgba(220, 53, 69, 0.5);
+                                                                                box-shadow: 0 10px 40px rgba(176, 0, 15, 0.5);
                                                                                 position: relative;
                                                                                 animation: slideUp 0.3s ease;
                                                                                 border: 3px solid rgba(255, 255, 255, 0.3);
@@ -2815,6 +2821,45 @@
                                                                                 box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
                                                                                 border: 1px solid #e5e7eb;
                                                                                 overflow: hidden;
+                                                                            }
+
+                                                                            /* Larger emergency boxes specifically when inside the Feedback section
+                                                                               This overrides the generic emergency styles to make the buttons more prominent
+                                                                               within the feedback page without affecting other contexts. */
+                                                                            #feedback .emergency-grid {
+                                                                                /* make each box wider by increasing the min size */
+                                                                                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                                                                                gap: 12px;
+                                                                                margin-bottom: 8px;
+                                                                            }
+
+                                                                            #feedback .emergency-box {
+                                                                                padding: 16px;
+                                                                                min-height: 120px;
+                                                                                border-radius: 10px;
+                                                                                box-shadow: 0 6px 18px rgba(220, 53, 69, 0.35);
+                                                                                font-size: 15px; /* base size for better tap targets */
+                                                                            }
+
+                                                                            #feedback .emergency-box .emergency-box-content {
+                                                                                padding: 6px 4px;
+                                                                            }
+
+                                                                            #feedback .emergency-box .emergency-label {
+                                                                                font-size: 14px;
+                                                                                margin-bottom: 6px;
+                                                                            }
+
+                                                                            #feedback .emergency-box .emergency-description {
+                                                                                font-size: 12px;
+                                                                            }
+
+                                                                            /* Ensure the icon (if enabled later) is visible and scaled inside feedback */
+                                                                            #feedback .emergency-icon {
+                                                                                display: block;
+                                                                                font-size: 22px;
+                                                                                margin-bottom: 6px;
+                                                                                animation: emergencyIconPulse 3s ease-in-out infinite;
                                                                             }
 
                                                                             /* General Feedback Green Theme */
@@ -11008,3 +11053,4 @@
                                                                             </body>
                                                                             </html>
                 
+                                                                                
