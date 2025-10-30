@@ -3710,9 +3710,12 @@
                                                                             .subject-prerequisite {
                                                                                 text-align: center;
                                                                                 font-weight: 500;
-                                                                                color: #6366f1;
+                                                                                color: #4b5563;
                                                                                 font-size: 12px;
                                                                                 font-style: italic;
+                                                                                background: #e5e7eb;
+                                                                                padding: 4px 8px;
+                                                                                border-radius: 4px;
                                                                             }
 
                                                                             .subject-units {
@@ -3740,9 +3743,20 @@
 
                                                                             .subject-remarks {
                                                                                 text-align: center;
-                                                                                font-weight: 500;
+                                                                                font-weight: 600;
                                                                                 color: #10b981;
                                                                                 font-size: 12px;
+                                                                                background: #d1fae5;
+                                                                                padding: 4px 8px;
+                                                                                border-radius: 4px;
+                                                                            }
+
+                                                                            /* Header specific styles for boxes */
+                                                                            .subject-row.header .subject-prerequisite {
+                                                                                background: #e5e7eb !important;
+                                                                                color: #4b5563 !important;
+                                                                                padding: 4px 8px;
+                                                                                border-radius: 4px;
                                                                             }
 
                                                                             /* Performance Summary Styles */
@@ -4767,9 +4781,9 @@
                                                                                 color: #000000 !important;
                                                                             }
 
-                                                                            #
+                                                                            
 
-                                                                            .modal-header {
+                                                                            #modal-header {
                                                                                 display: flex;
                                                                                 align-items: center;
                                                                                 justify-content: space-between;
@@ -5394,10 +5408,10 @@
                                                                                                         <div style="display:flex;flex-direction:column;gap:6px;">
                                     
                                                                                                             <div style="display:flex;align-items:center;">
-                                                                                                                <span style="color:var(--text-color);font-size:16px;line-height:1.4;">ICCT Colleges INC. Antipolo Campus  <hr> </span>
+                                                                                                                <span style="color:var(--text-color);font-size:20px;line-height:1.4;">ICCT Colleges INC. Antipolo Campus  <hr> </span>
                                                                                                             </div>
                                                                                                             <div style="display:flex;align-items:center;">
-                                                                                                                <small style="color:var(--text-color);font-size:12px;line-height:1.3;">ICCT Bldg,. Gen. Luna Rd. cor. Ressurection St.,
+                                                                                                                <small style="color:var(--text-color);font-size:17px;line-height:1.3;">ICCT Bldg,. Gen. Luna Rd. cor. Ressurection St.,
                                                                                                                     Bgy. San Roque, Antipolo City, Rizal
                                                                                                                 </small>
                                                                                                             </div>
@@ -5410,7 +5424,7 @@
     <div class="stat-value" id="scholarship-summary">
         <div style="display:flex;flex-direction:column;gap:6px;">
             <div style="display:flex;align-items:center;color:var(--text-color);">
-                <span style="text-align:center;font-size:16px;line-height:1.4;">Ynares Youth  (2022)  <hr></span>
+                <span style="text-align:center;font-size:25px;line-height:1.4;">Ynares Youth  (2022)  <hr></span>
             </div>
         </div>
     </div>
@@ -5451,8 +5465,8 @@
 
                                                                                                             <div style="display:flex;justify-content:space-around;align-items:center;margin-top:10px;padding-top:10px;border-top:1px solid var(--border-color);">
                                                                                                                 <div style="text-align:center;">
-                                                                                                                    <small style="color:var(--text-color);display:block;margin-bottom:4px;">Pre</small><br><hr>
-                                                                                                                    <span style="color:var(--text-color);font-weight:600;"></span>
+                                                                                                                    <small style="color:var(--text-color);display:block;margin-bottom:4px;">Pre</small>
+                                                                                                                    <span style="color:var(--text-color);font-weight:600;"></span> <br><hr>
                                                                                                                 </div>
                                                                                                                 <div style="text-align:center;">
                                                                                                                     <small style="color:var(--text-color);display:block;margin-bottom:4px;">Mid</small>
@@ -5611,7 +5625,7 @@
                                                                                         <!-- Prospectus Section -->
                                                                                         <div id="prospectus" class="content-section">
                                                                                             <div class="breadcrumb">
-                                                                                                <a href="#" data-section="dashboard">Dashboard</a> <i class="fas fa-chevron-right"></i> <span>Prospectus</span>
+                                                                                                <a href="#" data-section="dashboard">Dashboard</a> <i class="fas fa-chevron-right"></i> <span>Curriculum Prospectus</span>
                                                                                             </div>
                                                                                             <h1 class="page-title">Program Prospectus</h1>
                                                                                             
@@ -5707,7 +5721,7 @@
                                                                                                                     <div class="subject-row header">
                                                                                                                         <div class="subject-code">Academic Load</div>
                                                                                                                         <div class="subject-title">Subject Title</div>
-                                                                                                                        <div class="subject-title">Pre-requisite</div>
+                                                                                                                        <div class="subject-prerequisite">Pre-requisite</div>
                                                                                                                         <div class="subject-units">Units</div>
                                                                                                                         <div class="subject-grade">Grade</div>
                                                                                                                         <div class="subject-remarks">Remarks</div>
@@ -5769,7 +5783,7 @@
                                                                                                                     <div class="subject-row header">
                                                                                                                         <div class="subject-code">SUBJECT/<br>COUSRSE CODE</div>
                                                                                                                         <div class="subject-title">Subject Title</div>
-                                                                                                                        <div class="subject-title">Pre-requisite</div>
+                                                                                                                        <div class="subject-prerequisite">Pre-requisite</div>
                                                                                                                         <div class="subject-units">Units</div>
                                                                                                                         <div class="subject-grade">Grade</div>
                                                                                                                         <div class="subject-remarks">Remarks</div>
@@ -5836,7 +5850,7 @@
                                                                                                                     <div class="subject-row header">
                                                                                                                         <div class="subject-code">SUBJECT/<br>COUSRSE CODE</div>
                                                                                                                         <div class="subject-title">Subject Title</div>
-                                                                                                                        <div class="subject-title">Pre-requisite</div>
+                                                                                                                        <div class="subject-prerequisite">Pre-requisite</div>
                                                                                                                         <div class="subject-units">Units</div>
                                                                                                                         <div class="subject-grade">Grade</div>
                                                                                                                         <div class="subject-remarks">Remarks</div>
@@ -5898,7 +5912,7 @@
                                                                                                                     <div class="subject-row header">
                                                                                                                         <div class="subject-code">SUBJECT/<br>COUSRSE CODE</div>
                                                                                                                         <div class="subject-title">Subject Title</div>
-                                                                                                                        <div class="subject-title">Pre-requisite</div>
+                                                                                                                        <div class="subject-prerequisite">Pre-requisite</div>
                                                                                                                         <div class="subject-units">Units</div>
                                                                                                                         <div class="subject-grade">Grade</div>
                                                                                                                         <div class="subject-remarks">Remarks</div>
@@ -5965,7 +5979,7 @@
                                                                                                                     <div class="subject-row header">
                                                                                                                         <div class="subject-code">SUBJECT/<br>COUSRSE CODE</div>
                                                                                                                         <div class="subject-title">Subject Title</div>
-                                                                                                                        <div class="subject-title">Pre-requisite</div>
+                                                                                                                        <div class="subject-prerequisite">Pre-requisite</div>
                                                                                                                         <div class="subject-units">Units</div>
                                                                                                                         <div class="subject-grade">Grade</div>
                                                                                                                         <div class="subject-remarks">Remarks</div>
@@ -6027,7 +6041,7 @@
                                                                                                                     <div class="subject-row header">
                                                                                                                         <div class="subject-code">SUBJECT/<br>COUSRSE CODE</div>
                                                                                                                         <div class="subject-title">Subject Title</div>
-                                                                                                                        <div class="subject-title">Pre-requisite</div>
+                                                                                                                        <div class="subject-prerequisite">Pre-requisite</div>
                                                                                                                         <div class="subject-units">Units</div>
                                                                                                                         <div class="subject-grade">Grade</div>
                                                                                                                         <div class="subject-remarks">Remarks</div>
@@ -6086,7 +6100,7 @@
                                                                                                                     <div class="subject-row header">
                                                                                                                         <div class="subject-code">SUBJECT/<br>COUSRSE CODE</div>
                                                                                                                         <div class="subject-title">Subject Title</div>
-                                                                                                                        <div class="subject-title">Pre-requisite</div>
+                                                                                                                        <div class="subject-prerequisite">Pre-requisite</div>
                                                                                                                         <div class="subject-units">Units</div>
                                                                                                                         <div class="subject-grade">Grade</div>
                                                                                                                         <div class="subject-remarks">Remarks</div>
@@ -6140,7 +6154,7 @@
                                                                                                                     <div class="subject-row header">
                                                                                                                         <div class="subject-code">SUBJECT/<br>COUSRSE CODE</div>
                                                                                                                         <div class="subject-title">Subject Title</div>
-                                                                                                                        <div class="subject-title">Pre-requisite</div>
+                                                                                                                        <div class="subject-prerequisite">Pre-requisite</div>
                                                                                                                         <div class="subject-units">Units</div>
                                                                                                                         <div class="subject-grade">Grade</div>
                                                                                                                         <div class="subject-remarks">Remarks</div>
