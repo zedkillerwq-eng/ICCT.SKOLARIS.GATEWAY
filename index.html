@@ -5389,7 +5389,7 @@
                                                                                                     <div class="stat-label">Current GWA</div>
                                                                                                 </div>
                                                                                                 <div class="stat-card">
-                                                                                                    <div class="stat-value" id="pending-requirements-count">12<hr></div>
+                                                                                                    <div class="stat-value" id="pending-requirements-count">12</div><hr>
                                                                                                     <div class="stat-label">Pending Requirements</div>
                                                                                                 </div>
                                                                                                 <div class="stat-card">
@@ -9408,7 +9408,9 @@
                                                                                 </div>
                                                                                 
                                                                                 <script>
-                                                                                    // 
+                                                                                    // Track uploaded requirements
+                                                                                    let uploadedRequirements = 0;
+                                                                                    const totalRequirements = 12;
                                                                                     
                                                                                     // Sidebar Toggle Functionality
                                                                                     const sidebarToggle = document.getElementById('sidebarToggle');
