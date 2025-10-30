@@ -3772,18 +3772,15 @@
                                                                                 font-size: 24px;
                                                                                 font-weight: 700;
                                                                                 color: #000000;
-                                                                                margin: 0;
-                                                                            }
+                                                                            margin: 0;
+                                                                        }
 
-                                                                            .dark-mode 
-                                                                            @media (max-width: 768px) {
-                                                                                .prospectus-header {
-                                                                                    flex-direction: column;
-                                                                                    text-align: center;
-                                                                                    gap: 16px;
-                                                                                }
-                                                                                
-                                                                                .prospectus-stats {
+                                                                        @media (max-width: 768px) {
+                                                                            .prospectus-header {
+                                                                                flex-direction: column;
+                                                                                text-align: center;
+                                                                                gap: 16px;
+                                                                            }                                                                                .prospectus-stats {
                                                                                     grid-template-columns: repeat(2, 1fr);
                                                                                 }
                                                                                 
@@ -5281,7 +5278,7 @@
                                                                                             
                                                                                             <div class="nav-category">ADMINISTRATIVE</div>
                                                                                             <li class="nav-item" data-section="requirements">
-                                                                                                <a href="#"><i class="fas fa-file-alt"></i> Credential<br>Management</a>
+                                                                                                <a href="#"><i class="fas fa-file-alt"></i> Credential Management</a>
                                                                                                 <span class="notification-badge" id="requirements-badge">12</span>
                                                                                             </li>
                                                                                             <li class="nav-item" data-section="account">
@@ -5412,8 +5409,8 @@
                                                    <div class="stat-card" id="scholarship-summary-card">
     <div class="stat-value" id="scholarship-summary">
         <div style="display:flex;flex-direction:column;gap:6px;">
-            <div style="display:flex;align-items:center;style="color:var(--text-color)">
-                <span text-align:"center";font-size:16px;line-height:1.4;">Ynares Youth  (2022)  <hr></span>
+            <div style="display:flex;align-items:center;color:var(--text-color);">
+                <span style="text-align:center;font-size:16px;line-height:1.4;">Ynares Youth  (2022)  <hr></span>
             </div>
         </div>
     </div>
