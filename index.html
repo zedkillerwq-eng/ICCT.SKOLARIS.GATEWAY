@@ -10506,7 +10506,10 @@
                                                                                         const scheduleDaysBoxes = document.querySelectorAll('.schedule-days-box');
                                                                                         scheduleDaysBoxes.forEach(box => {
                                                                                             box.addEventListener('click', function() {
-                                                                                                this.classList.toggle('active');
+                                                                                                // Remove active class from all day boxes (single select)
+                                                                                                scheduleDaysBoxes.forEach(b => b.classList.remove('active'));
+                                                                                                // Add active class to clicked box
+                                                                                                this.classList.add('active');
                                                                                             });
                                                                                         });
 
