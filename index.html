@@ -7516,13 +7516,7 @@
 
                                                                                                     <hr class="enrollment-divider">
 
-                                                                                                    <!-- Third Row -->
-                                                                                                    <div class="enrollment-info-row">
-                                                                                                        <div class="enrollment-field">
-                                                                                                            <label><i class="fas fa-book-open"></i> Program</label>
-                                                                                                            <span class="field-value">BACHELOR OF SCIENCE IN INFORMATION TECHNOLOGY</span>
-                                                                                                            <span class="field-secondary">(BSIT)</span>
-                                                                                                        </div>
+                                                                                                    
                                                                                                         <div class="enrollment-field">
                                                                                                             <label><i class="fas fa-layer-group"></i> Curriculum Year Level</label>
                                                                                                             <span class="field-value">2nd</span>
@@ -7587,16 +7581,15 @@
                                                                                                                 <div class="schedule-pref-options-container">
                                                                                                                     <div class="schedule-pref-option" data-day="mth">
                                                                                                                         <div class="schedule-pref-radio"></div>
-                                                                                                                        <div class="schedule-pref-text">M/TH (Monday/Thursday)</div>
+                                                                                                                        <div class="schedule-pref-text">M/TH</div>
                                                                                                                     </div>
                                                                                                                     <div class="schedule-pref-option" data-day="tf">
                                                                                                                         <div class="schedule-pref-radio"></div>
-                                                                                                                        <div class="schedule-pref-text">T/F (Tuesday/Friday)</div>
+                                                                                                                        <div class="schedule-pref-text">T/F</div>
                                                                                                                     </div>
                                                                                                                     <div class="schedule-pref-option" data-day="ws">
                                                                                                                         <div class="schedule-pref-radio"></div>
-                                                                                                                        <div class="schedule-pref-text">W/S (Wednesday/Saturday)</div>
-                                                                                                                        
+                                                                                                                        <div class="schedule-pref-text">W/S</div>
                                                                                                                     </div>
                                                                                                                 </div>
                                                                                                             </div>
@@ -10747,59 +10740,25 @@
                                                                                         // Show College options by default
                                                                                         uniformCollegeToggle.click();
 
-                                                                                        // Schedule Preference Functionality - Matching Type (New Design)
+                                                                                        // Schedule Preference Functionality - Manual Selection (New Design)
                                                                                         const scheduleTimeOptions = document.querySelectorAll('.schedule-pref-option[data-time]');
                                                                                         const scheduleDayOptions = document.querySelectorAll('.schedule-pref-option[data-day]');
-                                                                                        
-                                                                                        // Matching pairs: Morning->M/TH, Noon->T/F, Afternoon->W/S
-                                                                                        const scheduleMatches = {
-                                                                                            'morning': 'mth',
-                                                                                            'noon': 'tf',
-                                                                                            'afternoon': 'ws'
-                                                                                        };
 
                                                                                         scheduleTimeOptions.forEach(option => {
                                                                                             option.addEventListener('click', function() {
-                                                                                                // Remove active class from all options first (single select)
+                                                                                                // Remove active class from all time options (single select)
                                                                                                 scheduleTimeOptions.forEach(opt => opt.classList.remove('active'));
-                                                                                                scheduleDayOptions.forEach(b => b.classList.remove('active'));
-                                                                                                
                                                                                                 // Add active class to clicked option
                                                                                                 this.classList.add('active');
-                                                                                                
-                                                                                                // Automatically select matching day option
-                                                                                                const timeValue = this.getAttribute('data-time');
-                                                                                                const matchingDay = scheduleMatches[timeValue];
-                                                                                                if (matchingDay) {
-                                                                                                    const dayOption = document.querySelector(`.schedule-pref-option[data-day="${matchingDay}"]`);
-                                                                                                    if (dayOption) {
-                                                                                                        dayOption.classList.add('active');
-                                                                                                    }
-                                                                                                }
                                                                                             });
                                                                                         });
 
                                                                                         scheduleDayOptions.forEach(option => {
                                                                                             option.addEventListener('click', function() {
-                                                                                                // Remove active class from all options (single select)
+                                                                                                // Remove active class from all day options (single select)
                                                                                                 scheduleDayOptions.forEach(b => b.classList.remove('active'));
-                                                                                                scheduleTimeOptions.forEach(opt => opt.classList.remove('active'));
-                                                                                                
                                                                                                 // Add active class to clicked option
                                                                                                 this.classList.add('active');
-                                                                                                
-                                                                                                // Automatically select matching time option
-                                                                                                const dayValue = this.getAttribute('data-day');
-                                                                                                // Find matching time (reverse lookup)
-                                                                                                for (const [time, day] of Object.entries(scheduleMatches)) {
-                                                                                                    if (day === dayValue) {
-                                                                                                        const timeOption = document.querySelector(`.schedule-pref-option[data-time="${time}"]`);
-                                                                                                        if (timeOption) {
-                                                                                                            timeOption.classList.add('active');
-                                                                                                        }
-                                                                                                        break;
-                                                                                                    }
-                                                                                                }
                                                                                             });
                                                                                         });
 
