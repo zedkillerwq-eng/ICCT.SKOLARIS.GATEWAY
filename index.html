@@ -4713,6 +4713,58 @@
                                                                                     margin-bottom: 24px;
                                                                                 }
 
+                                                                                /* DateTime box as a grid item in the 4th column */
+                                                                                .enrollment-datetime-box-grid {
+                                                                                    background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+                                                                                    border-radius: 12px;
+                                                                                    padding: 20px;
+                                                                                    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+                                                                                    display: flex;
+                                                                                    flex-direction: column;
+                                                                                    justify-content: center;
+                                                                                }
+
+                                                                                .dark-mode .enrollment-datetime-box-grid {
+                                                                                    background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
+                                                                                }
+
+                                                                                .enrollment-datetime-box-grid .datetime-content {
+                                                                                    display: flex;
+                                                                                    align-items: center;
+                                                                                    gap: 16px;
+                                                                                }
+
+                                                                                .enrollment-datetime-box-grid .datetime-content i {
+                                                                                    font-size: 36px;
+                                                                                    color: var(--primary);
+                                                                                    opacity: 0.8;
+                                                                                }
+
+                                                                                .enrollment-datetime-box-grid .datetime-info {
+                                                                                    flex: 1;
+                                                                                }
+
+                                                                                .enrollment-datetime-box-grid .datetime-date {
+                                                                                    font-size: 14px;
+                                                                                    font-weight: 700;
+                                                                                    color: var(--text-color);
+                                                                                    margin: 0 0 4px 0;
+                                                                                }
+
+                                                                                .enrollment-datetime-box-grid .datetime-day {
+                                                                                    font-size: 13px;
+                                                                                    font-weight: 500;
+                                                                                    color: var(--text-secondary);
+                                                                                    margin: 0 0 4px 0;
+                                                                                }
+
+                                                                                .enrollment-datetime-box-grid .datetime-time {
+                                                                                    font-size: 15px;
+                                                                                    font-weight: 600;
+                                                                                    color: var(--primary);
+                                                                                    margin: 0;
+                                                                                }
+
                                                                                 .enrollment-field {
                                                                                     display: flex;
                                                                                     flex-direction: column;
@@ -4849,7 +4901,7 @@
                                                                                         font-size: 20px;
                                                                                     }
                                                                                     
-                                                                                    .datetime-content {
+                                                                                    .enrollment-datetime-box-grid .datetime-content {
                                                                                         flex-direction: column;
                                                                                         text-align: center;
                                                                                     }
@@ -6974,22 +7026,21 @@
                                                                                                             <span class="field-value">2nd</span>
                                                                                                         </div>
                                                                                                         <div class="enrollment-field enrollment-field-empty"></div>
-                                                                                                        <div class="enrollment-field enrollment-field-empty"></div>
-                                                                                                    </div>
-
-                                                                                                    <hr class="enrollment-divider">
-
-                                                                                                    <!-- Enrollment Date/Time Box -->
-                                                                                                    <div class="enrollment-datetime-box">
-                                                                                                        <div class="datetime-content">
-                                                                                                            <i class="fas fa-calendar-check"></i>
-                                                                                                            <div class="datetime-info">
-                                                                                                                <p class="datetime-date">30 OCTOBER, 2025</p>
-                                                                                                                <p class="datetime-day">Thursday</p>
-                                                                                                                <p class="datetime-time">8:00am</p>
+                                                                                                        
+                                                                                                        <!-- Enrollment Date/Time Box - 4th column position -->
+                                                                                                        <div class="enrollment-datetime-box-grid">
+                                                                                                            <div class="datetime-content">
+                                                                                                                <i class="fas fa-calendar-check"></i>
+                                                                                                                <div class="datetime-info">
+                                                                                                                    <p class="datetime-date">30 OCTOBER, 2025</p>
+                                                                                                                    <p class="datetime-day">Thursday</p>
+                                                                                                                    <p class="datetime-time">8:00am</p>
+                                                                                                                </div>
                                                                                                             </div>
                                                                                                         </div>
                                                                                                     </div>
+
+                                                                                                    <hr class="enrollment-divider">
 
                                                                                                     <!-- Double HR -->
                                                                                                     <hr class="enrollment-divider">
@@ -7022,6 +7073,13 @@
                                                                                                             <div class="schedule-days-box">
                                                                                                                 M/TH
                                                                                                             </div>
+                                                                                                            <div class="schedule-days-box">
+    T/F
+</div>
+
+<div class="schedule-days-box">
+    W/S
+</div>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
