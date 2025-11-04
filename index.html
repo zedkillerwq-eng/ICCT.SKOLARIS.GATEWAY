@@ -6807,7 +6807,7 @@ opacity: 0.12;
 <a href="#" data-section="dashboard">Dashboard</a> <i class="fas fa-chevron-right"></i> <span>Curriculum Prospectus</span>
 </div>
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-<h1 class="page-title" style="margin: 0;">Curicculum Prospectus</h1>
+<h1 class="page-title" style="margin: 0;">Program Prospectus</h1>
 <button class="doc-btn medium" id="prospectus-download-btn" style="width: auto; position: relative; overflow: hidden;">
   <i class="fas fa-download"></i> Download for Free
   <span class="shimmer"></span>
@@ -6896,7 +6896,7 @@ opacity: 0.12;
 <h5>First Semester</h5>
 <div class="subjects-table">
 <div class="subject-row header">
-<div class="subject-code">SUBJECT/COURSE CODE</div>
+<div class="subject-code">SUBJECT/</div>
 <div class="subject-title">Subject Title</div>
 <div class="subject-prerequisite">Pre-requisite</div>
 <div class="subject-units">Units</div>
@@ -8133,14 +8133,15 @@ Confirm Selection
 <table>
 <thead>
 <tr> 
-<th>Subject / Course Code</th>
-<th>Subject / Course Title</th>
-<th>Lec</th.>
-<th>Lab</th>
-<th>Units</th>
-<th>Professor</th>
-<th>Schedule</th>
-<th>Pre-requisite</th>
+<th>SUBJECT / COURSE CODE</th>
+<th>SUBJECT / COURSE TITLE</th>
+<th>LEC</th.>
+<th>LAB</th>
+<th>UNITS</th>
+<th>PRE-REQUISITE</th>
+<th>DAY</th>
+<th>TIME</th>
+<th>PROFESSOR</th>
 </tr>
 </thead>
 <tbody>
@@ -8150,9 +8151,10 @@ Confirm Selection
 <td>3</td>
 <td>1</td>
 <td>4</td>
-<td>Chions, Jord Dedal</td>
-<td>W 04:30PM-06:00PM, S 04:30PM-06:00PM</td>
 <td></td>
+<td>Monday/<Br>Thursday</td>
+<td>6:00am - 7:30am</td>
+<td>Joriz, Chiong</td>
 </tr>
 <tr>
 <td>OLITPRAC 1</td>
@@ -8160,9 +8162,10 @@ Confirm Selection
 <td>3</td>
 <td>0</td>
 <td>3</td>
-<td>Vilog, Jericho Manlangit</td>
-<td>SUN 03:00PM-04:30PM</td>
 <td></td>
+<td>Thursday/<br>Friday</td>
+<td>7:30am-9:30am</td>
+<td>Vilog, Jericho Manlangit</td>
 </tr>
 <tr>
 <td>OLITPRAC 2</td>
@@ -8170,9 +8173,10 @@ Confirm Selection
 <td>3</td>
 <td>0</td>
 <td>3</td>
-<td>Vilog, Jericho Manlangit</td>
-<td>SUN 04:30PM-06:00PM</td>
 <td></td>
+<td>Wednesday/<br>Satuday</td>
+<td>9:30am-11:30am</td>
+<td>Vilog, Jericho Manlangit</td>
 </tr>
 <tr>
 <td>OLSA01</td>
@@ -8180,9 +8184,10 @@ Confirm Selection
 <td>3</td>
 <td>1</td>
 <td>4</td>
-<td>Chions, Jord Dedal</td>
-<td>W 03:00PM-04:30PM, S 03:00PM-04:30PM</td>
 <td></td>
+<td>Monday/<br>Thursday</td>
+<td>6:00am-7:30am</td>
+<td>Joriz, Chiong</td>
 </tr>
 </tbody>
 </table>
@@ -8605,9 +8610,31 @@ Confirm Selection
 
 <div class="account-summary">
 <div class="account-card">
+<h3>Lab</h3>
+<div class="amount" style="color: #667eea; font-size: 3em;"></div>
+<p style="font-size: 1em; line-height: 1.4;">Lab 1: ₱1,000.00<br>Lab 2: ₱1,000.00<br>Lab 3: ₱1,000.00<br>Lab 4: ₱1,000.00</p><hr>
+<p>Laboratory Fees</p>
+</div>
+<div class="account-card">
+<h3>Tuition</h3>
+<div class="amount" style="color: #667eea;">₱ 5,000.00</div>
+<br>
+<p>2nd Trime</p>
+</div>
+<div class="account-card">
+<h3>Miscellaneous (Others)</h3>
+<div class="amount" style="color: #667eea; font-size: 1em;"></div>
+<p style="font-size: 1em; line-height: 1.4;">Books: ₱1,500.00<br>ID: ₱500.00<br>Insurance: ₱1,500.00</p>
+</div>
+<div class="account-card">
+<h3>Penalties & Surcharges</h3>
+<div class="amount" style="color: #667eea;">₱ 500.00</div>
+<p>Late Payment Fees</p>
+</div>
+<div class="account-card">
 <h3>Amount Due</h3>
-<div class="amount amount-due">₱ 0.00</div>
-<p>No outstanding Due</p>
+<div class="amount amount-due">₱ 13,000</div>
+<p>Total Outstanding Due</p>
 </div>
 <div class="account-card">
 <h3>Total Payment</h3>
@@ -8616,8 +8643,8 @@ Confirm Selection
 </div>
 <div class="account-card">
 <h3>Account Balance</h3>
-<div class="amount amount-balance">₱ 0.00</div>
-<p>No outstanding Balance</p>
+<div class="amount amount-balance" style=color: red;>₱ 5,920.3</div>
+<p>Total Outstanding Balance</p>
 </div>
 </div>
 
@@ -9982,7 +10009,7 @@ Submit anonymously (Your identity will be protected)
 </label>
 <select id="select-professor" class="form-select-professional" required>
 <option value="">Choose a professor...</option>
-<option value="1">Chions, Jord Dedal</option>
+<option value="1">Joriz, Chiong</option>
 <option value="2">Vilog, Jericho Manlangit</option>
 <option value="3">Prof. Maria Santos</option>
 <option value="4">Dr. Juan dela Cruz</option>
