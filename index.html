@@ -2432,17 +2432,37 @@ overflow: hidden;
 box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
 border: 2px solid rgba(255, 255, 255, 0.2);
 min-height: 60px;
-animation: emergencyRedFade 2s ease-in-out infinite;
 }
 
-@keyframes emergencyRedFade {
-0%, 100% {
-background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
-opacity: 1;
+.emergency-box::after {
+content: '';
+position: absolute;
+top: 50%;
+left: 50%;
+width: 0;
+height: 0;
+background: rgba(220, 53, 69, 0.6);
+border-radius: 50%;
+transform: translate(-50%, -50%);
+animation: emergencyPulse 2s ease-in-out infinite;
+z-index: 0;
+}
+
+@keyframes emergencyPulse {
+0% {
+width: 0;
+height: 0;
+opacity: 0.8;
 }
 50% {
-background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+width: 100%;
+height: 100%;
 opacity: 0.4;
+}
+100% {
+width: 120%;
+height: 120%;
+opacity: 0;
 }
 }
 
@@ -2471,7 +2491,7 @@ border-color: rgba(255, 255, 255, 0.4);
 
 .emergency-box-content {
 position: relative;
-z-index: 1;
+z-index: 2;
 text-align: center;
 display: flex;
 flex-direction: column;
@@ -2502,25 +2522,15 @@ font-size: 11px;
 font-weight: 700;
 margin-bottom: 3px;
 line-height: 1.2;
-animation: emergencyTextFade 2s ease-in-out infinite;
+color: white;
+text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .emergency-description {
 font-size: 9px;
-opacity: 0.9;
 line-height: 1.2;
-animation: emergencyTextFade 2s ease-in-out infinite;
-}
-
-@keyframes emergencyTextFade {
-0%, 100% {
 color: white;
-opacity: 1;
-}
-50% {
-color: white;
-opacity: 0.5;
-}
+text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 /* Emergency Modal */
@@ -8122,7 +8132,7 @@ Confirm Selection
 <h1 class="page-title">Academic Load</h1>
 <div class="card">
 <div class="card-header">
-<h2 class="card-title">Registered Subjects / Courses (2025-2026, 4th Year, First Term)</h2>
+<h2 class="card-title">Registered Subjects / Courses (2025-2026, 4th Year, First Trimester)</h2>
 </div>
 <div class="table-container">
 <table>
@@ -8148,7 +8158,7 @@ Confirm Selection
 <td>4</td>
 <td></td>
 <td>Monday/<Br>Thursday</td>
-<td>6:00am - 7:30am</td>
+<td>6:00am-7:30am</td>
 <td>Joriz, Chiong</td>
 </tr>
 <tr>
