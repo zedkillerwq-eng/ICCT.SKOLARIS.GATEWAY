@@ -6113,7 +6113,7 @@ gap: 15px;
 }
 
 .notification-item {
-background: rgba(255, 255, 255, 0.05);
+background: rgba(102, 126, 234, 0.15);
 border-radius: 8px;
 padding: 15px;
 border-left: 4px solid var(--primary);
@@ -8643,7 +8643,7 @@ Confirm Selection
 </div>
 <div class="account-card">
 <h3>Account Balance</h3>
-<div class="amount amount-balance" style=color: red;>₱ 5,920.3</div>
+<div class="amount amount-balance" style=color:red;>₱ 5,920.3</div>
 <p>Total Outstanding Balance</p>
 </div>
 </div>
@@ -10779,6 +10779,38 @@ if (mainContentEl) mainContentEl.classList.add('with-fixed-theme');
 }
 })();
 
+// Notification modal functionality
+const notificationBtn = document.getElementById('notification-btn');
+const notificationModal = document.getElementById('notification-modal');
+const notificationClose = document.querySelector('.notification-close');
+
+if (notificationBtn && notificationModal && notificationClose) {
+notificationBtn.addEventListener('click', function(e) {
+e.preventDefault();
+e.stopPropagation();
+console.log('Notification button clicked');
+notificationModal.style.display = 'flex';
+});
+
+notificationClose.addEventListener('click', function(e) {
+e.preventDefault();
+e.stopPropagation();
+notificationModal.style.display = 'none';
+});
+
+window.addEventListener('click', function(event) {
+if (event.target === notificationModal) {
+notificationModal.style.display = 'none';
+}
+});
+} else {
+console.error('Notification elements not found:', {
+btn: !!notificationBtn,
+modal: !!notificationModal,
+close: !!notificationClose
+});
+}
+
 // Navigation between sections
 const navLinks = document.querySelectorAll('.nav-links li');
 const contentSections = document.querySelectorAll('.content-section');
@@ -12206,25 +12238,6 @@ statModal.style.display = 'none';
 window.addEventListener('click', function(event) {
 if (event.target === statModal) {
 statModal.style.display = 'none';
-}
-});
-
-// Notification modal functionality
-const notificationBtn = document.getElementById('notification-btn');
-const notificationModal = document.getElementById('notification-modal');
-const notificationClose = document.querySelector('.notification-close');
-
-notificationBtn.addEventListener('click', function() {
-notificationModal.style.display = 'flex';
-});
-
-notificationClose.addEventListener('click', function() {
-notificationModal.style.display = 'none';
-});
-
-window.addEventListener('click', function(event) {
-if (event.target === notificationModal) {
-notificationModal.style.display = 'none';
 }
 });
 
