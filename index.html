@@ -5217,8 +5217,11 @@
                                                                                 /* Course Section */
                                                                                 .course-section {
                                                                                     margin-top: 32px;
-                                                                                    padding-top: 24px;
-                                                                                    border-top: 1px solid var(--border-color);
+                                                                                    padding: 24px;
+                                                                                    background: var(--card-bg);
+                                                                                    border: 1px solid var(--border-color);
+                                                                                    border-radius: 12px;
+                                                                                    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
                                                                                 }
 
                                                                                 .course-section-header {
@@ -5233,9 +5236,9 @@
 
                                                                                 .course-info-row {
                                                                                     display: grid;
-                                                                                    grid-template-columns: repeat(4, 1fr);
-                                                                                    gap: 24px;
-                                                                                    margin-bottom: 24px;
+                                                                                    grid-template-columns: repeat(8, 1fr);
+                                                                                    gap: 16px;
+                                                                                    margin-bottom: 0;
                                                                                 }
 
                                                                                 .course-field {
@@ -5254,20 +5257,20 @@
 
                                                                                 .course-field .field-value {
                                                                                     font-size: 16px;
-                                                                                    font-weight: 400;
+                                                                                    font-weight: 600;
                                                                                     color: var(--text-color);
                                                                                 }
 
                                                                                 /* Responsive Design for Course Section */
                                                                                 @media (max-width: 1199px) {
                                                                                     .course-info-row {
-                                                                                        grid-template-columns: repeat(2, 1fr);
+                                                                                        grid-template-columns: repeat(4, 1fr);
                                                                                     }
                                                                                 }
 
                                                                                 @media (max-width: 768px) {
                                                                                     .course-info-row {
-                                                                                        grid-template-columns: 1fr;
+                                                                                        grid-template-columns: repeat(2, 1fr);
                                                                                     }
                                                                                 }
 
@@ -7544,6 +7547,47 @@
                                                                                                   
                                                                                                     <hr class="enrollment-divider enrollment-divider-double">
                                                                                                   <hr class="enrollment-divider enrollment-divider-double">
+
+                                                                                                    <!-- Course Section -->
+                                                                                                    <div class="course-section">
+                                                                                                        <h3 class="course-section-header">Course</h3>
+                                                                                                        
+                                                                                                        <!-- Single Row: All 8 fields -->
+                                                                                                        <div class="course-info-row">
+                                                                                                            <div class="course-field">
+                                                                                                                <label class="field-label"><i class="fas fa-barcode"></i> Code</label>
+                                                                                                                <span class="field-value">SDF04</span>
+                                                                                                            </div>
+                                                                                                            <div class="course-field">
+                                                                                                                <label class="field-label"><i class="fas fa-book"></i> Title</label>
+                                                                                                                <span class="field-value">Database Management System</span>
+                                                                                                            </div>
+                                                                                                            <div class="course-field">
+                                                                                                                <label class="field-label"><i class="fas fa-tag"></i> Type</label>
+                                                                                                                <span class="field-value">Major</span>
+                                                                                                            </div>
+                                                                                                            <div class="course-field">
+                                                                                                                <label class="field-label"><i class="fas fa-calculator"></i> Units</label>
+                                                                                                                <span class="field-value">3</span>
+                                                                                                            </div>
+                                                                                                            <div class="course-field">
+                                                                                                                <label class="field-label"><i class="fas fa-clock"></i> Time</label>
+                                                                                                                <span class="field-value">7:30 AM - 10:30 AM</span>
+                                                                                                            </div>
+                                                                                                            <div class="course-field">
+                                                                                                                <label class="field-label"><i class="fas fa-calendar-day"></i> Day</label>
+                                                                                                                <span class="field-value">M/TH</span>
+                                                                                                            </div>
+                                                                                                            <div class="course-field">
+                                                                                                                <label class="field-label"><i class="fas fa-graduation-cap"></i> Program</label>
+                                                                                                                <span class="field-value">BSIT</span>
+                                                                                                            </div>
+                                                                                                            <div class="course-field">
+                                                                                                                <label class="field-label"><i class="fas fa-users"></i> Available Slot(s)</label>
+                                                                                                                <span class="field-value">25/40</span>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
 
                                                                                                     <!-- Selection Sections Container (Side by Side) -->
                                                                                                     <div class="selection-sections-wrapper">
