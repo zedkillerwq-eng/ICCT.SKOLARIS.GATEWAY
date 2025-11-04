@@ -1084,6 +1084,7 @@ transform: translateY(-1px);
 }
 
 .schedule-subject {
+font-size: 15px;
 font-weight: 600;
 margin-bottom: 2px;
 padding: 4px 8px;
@@ -1094,6 +1095,7 @@ text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .schedule-subject1 {
+  font-size: 15px;
   font-weight: 600;
   margin-bottom: 2px;
   padding: 4px 8px;
@@ -1105,13 +1107,13 @@ text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 
 
 .schedule-time {
-font-size: 10px;
+font-size: 15px;
 color: var(--gray);
 margin-bottom: 2px;
 }
 
 .schedule-room {
-font-size: 10px;
+font-size: 15px;
 color: var(--success);
 font-weight: 500;
 }
@@ -1131,7 +1133,7 @@ grid-template-columns: 100px repeat(7, 1fr);
 }
 
 .time-slot {
-font-size: 11px;
+font-size: 20px;
 padding: 10px 5px;
 }
 
@@ -1155,10 +1157,6 @@ padding: 10px 5px;
 font-size: 11px;
 }
 
-.time-slot {
-font-size: 10px;
-padding: 8px 3px;
-}
 
 .schedule-cell {
 padding: 5px;
@@ -1176,10 +1174,7 @@ font-size: 10px;
 padding: 8px 3px;
 }
 
-.time-slot {
-font-size: 9px;
-padding: 6px 2px;
-}
+
 
 .schedule-item {
 font-size: 9px;
@@ -8609,33 +8604,30 @@ Confirm Selection
 <h1 class="page-title">Account & Settlements</h1>
 
 <div class="account-summary">
-  
   <div class="account-card">
 <h3>Tuition</h3>
 <div class="amount" style="color: #667eea;">₱ 5,000.00</div>
-<br>
-<p>2nd Trime</p>
+<br><br><p>2nd Trime</p>
 </div>
 
 <div class="account-card">
 <h3>Lab</h3>
-<div class="amount" style="color: #667eea; font-size: 3em;"></div>
-<p style="font-size: 1em; line-height: 1.4;">Lab 1: ₱1,000.00<br>Lab 2: ₱1,000.00<br>Lab 3: ₱1,000.00<br>Lab 4: ₱1,000.00</p><hr>
+<div class="amount" style="color: #667eea; font-size: 1em;"><p>Lab 1: ₱1,000.00<br>Lab 2: ₱1,000.00<br>Lab 3: ₱1,000.00<br>Lab 4: ₱1,000.00</p><hr>
+</div>
 <p>Laboratory Fees</p>
 </div>
 <div class="account-card">
 <h3>Miscellaneous (Others)</h3>
-<div class="amount" style="color: #667eea; font-size: 1em;"></div>
-<p style="font-size: 1em; line-height: 1.4;">Books: ₱1,500.00<br>ID: ₱500.00<br>Insurance: ₱1,500.00</p>
+<div class="amount" style="color:#667eea; font-size: 1em;">Books: ₱1,500.00<br>ID: ₱500.00<br>Insurance: ₱1,500.00</div>
 </div>
 <div class="account-card">
 <h3>Penalties & Surcharges</h3>
-<div class="amount" style="color: #667eea;">₱ 500.00</div>
+<div class="amount" style="color:#DE0000;">₱ 500.00</div>
 <p>Late Payment Fees</p>
 </div>
 <div class="account-card">
 <h3>Amount Due</h3>
-<div class="amount amount-due">₱ 13,000</div>
+<div class="amount amount-due" style="color:#DE0000;">₱ 13,000</div>
 <p>Total Outstanding Due</p>
 </div>
 <div class="account-card">
@@ -8645,7 +8637,7 @@ Confirm Selection
 </div>
 <div class="account-card">
 <h3>Account Balance</h3>
-<div class="amount amount-balance" style=color:red;>₱ 5,920.3</div>
+<div class="amount amount-balance" style=color:#DE0000;>₱ 5,920.3</div>
 <p>Total Outstanding Balance</p>
 </div>
 </div>
