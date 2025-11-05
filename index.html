@@ -323,6 +323,7 @@ transition: margin-left 0.3s ease;
 
 .sidebar.collapsed ~ .main-content {
 margin-left: 0;
+padding: 25px 30px;
 }
 
 .header {
@@ -12556,6 +12557,160 @@ const room = this.querySelector('.schedule-room').textContent;
 alert(`Subject: ${subject}\nTime: ${time}\nRoom: ${room}`);
 });
 });
+
+// Stat Card Modal Functionality
+const statCards = document.querySelectorAll('.stat-card[id]');
+statCards.forEach(card => {
+card.style.cursor = 'pointer';
+card.addEventListener('click', function(e) {
+// Don't open modal if clicking inside already
+if (e.target.closest('.modal-overlay')) return;
+openStatCardModal(this);
+});
+});
+
+function openStatCardModal(card) {
+const cardLabel = card.querySelector('.stat-label').textContent;
+const cardValue = card.querySelector('.stat-value').cloneNode(true);
+    
+// Create modal overlay
+const overlay = document.createElement('div');
+overlay.className = 'modal-overlay';
+overlay.style.cssText = `
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: rgba(0, 0, 0, 0.7);
+display: flex;
+align-items: center;
+justify-content: center;
+z-index: 10000;
+animation: fadeIn 0.3s ease;
+`;
+
+// Create modal content
+const modal = document.createElement('div');
+modal.className = 'stat-modal';
+modal.style.cssText = `
+background: var(--card-bg);
+border-radius: 12px;
+padding: 30px;
+max-width: 600px;
+width: 90%;
+max-height: 80vh;
+overflow-y: auto;
+position: relative;
+box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+animation: slideUp 0.3s ease;
+`;
+
+// Create close button
+const closeBtn = document.createElement('button');
+closeBtn.innerHTML = '&times;';
+closeBtn.style.cssText = `
+position: absolute;
+top: 15px;
+right: 15px;
+background: transparent;
+border: none;
+font-size: 32px;
+cursor: pointer;
+color: var(--text-color);
+width: 40px;
+height: 40px;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 50%;
+transition: all 0.3s ease;
+`;
+
+closeBtn.addEventListener('mouseover', function() {
+this.style.background = 'var(--primary)';
+this.style.color = 'white';
+this.style.transform = 'rotate(90deg)';
+});
+
+closeBtn.addEventListener('mouseout', function() {
+this.style.background = 'transparent';
+this.style.color = 'var(--text-color)';
+this.style.transform = 'rotate(0deg)';
+});
+
+// Create title
+const title = document.createElement('h2');
+title.textContent = cardLabel;
+title.style.cssText = `
+margin: 0 0 20px 0;
+padding-bottom: 15px;
+border-bottom: 2px solid var(--primary);
+color: var(--text-color);
+font-size: 24px;
+font-weight: 600;
+padding-right: 40px;
+`;
+
+// Create content wrapper
+const content = document.createElement('div');
+content.style.cssText = `
+color: var(--text-color);
+font-size: 16px;
+line-height: 1.8;
+`;
+content.appendChild(cardValue);
+
+// Assemble modal
+modal.appendChild(closeBtn);
+modal.appendChild(title);
+modal.appendChild(content);
+overlay.appendChild(modal);
+document.body.appendChild(overlay);
+document.body.style.overflow = 'hidden';
+
+// Close handlers
+const closeModal = () => {
+overlay.style.animation = 'fadeOut 0.2s ease';
+setTimeout(() => {
+overlay.remove();
+document.body.style.overflow = 'auto';
+}, 200);
+};
+
+closeBtn.onclick = closeModal;
+overlay.onclick = (e) => {
+if (e.target === overlay) closeModal();
+};
+
+document.addEventListener('keydown', function escHandler(e) {
+if (e.key === 'Escape') {
+closeModal();
+document.removeEventListener('keydown', escHandler);
+}
+});
+}
+
+// Add animations
+const style = document.createElement('style');
+style.textContent = `
+@keyframes fadeIn {
+from { opacity: 0; }
+to { opacity: 1; }
+}
+@keyframes fadeOut {
+from { opacity: 1; }
+to { opacity: 0; }
+}
+@keyframes slideUp {
+from { transform: translateY(30px); opacity: 0; }
+to { transform: translateY(0); opacity: 1; }
+}
+`;
+if (!document.querySelector('style[data-modal-animations]')) {
+style.setAttribute('data-modal-animations', 'true');
+document.head.appendChild(style);
+}
 
 // Sidebar toggle functionality
 const sidebar = document.getElementById('sidebar');
