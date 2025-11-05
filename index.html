@@ -31,7 +31,7 @@
 --bg-color: #f5f7fa;
 --card-bg: white;
 --text-color: #212529;
---sidebar-bg: #1e3a5f;
+--sidebar-bg: #192D57;
 --border-color: #dee2e6;
 --shadow-color: rgba(0, 0, 0, 0.08);
 --hover-color: rgba(0, 0, 0, 0.02);
@@ -1797,6 +1797,64 @@ border-bottom: 1px solid var(--border-color);
 font-size: 20px;
 font-weight: 600;
 color: var(--text-color);
+}
+
+/* Shiny Download Button Styles */
+.shiny-download-btn {
+position: relative;
+padding: 15px 40px;
+font-size: 16px;
+font-weight: 600;
+color: white;
+background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+border: none;
+border-radius: 50px;
+cursor: pointer;
+overflow: hidden;
+transition: all 0.3s ease;
+box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.shiny-download-btn:hover {
+transform: translateY(-2px);
+box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+.shiny-download-btn::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+transition: left 0.5s;
+}
+
+.shiny-download-btn:hover::before {
+left: 100%;
+}
+
+.shiny-download-btn.downloaded {
+background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4);
+}
+
+.shiny-download-btn.downloaded:hover {
+box-shadow: 0 6px 20px rgba(245, 87, 108, 0.6);
+}
+
+@keyframes shine {
+0% {
+left: -100%;
+}
+100% {
+left: 100%;
+}
+}
+
+.shiny-download-btn.shining::before {
+animation: shine 2s infinite;
 }
 
 .close-modal {
@@ -9108,8 +9166,11 @@ box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 <p style="color: var(--success); font-weight: 600; margin-bottom: 20px;">
 <i class="fas fa-check-circle"></i> Well Done!
 </p>
-<button class="btn btn-primary" style="padding: 12px 30px; font-size: 16px;">
+<button class="btn btn-primary" style="padding: 12px 30px; font-size: 16px; margin-right: 10px;">
 <i class="fas fa-file-medical"> &nbsp;  </i>Submit New Drug Test Application
+</button>
+<button class="shiny-download-btn shining" id="drug-test-download-btn" onclick="downloadDrugTest()" style="margin-top: 10px;">
+<i class="fas fa-download"></i> <span id="drug-test-btn-text">Download Report (Free)</span>
 </button>
 </div>
 </div>
@@ -9231,8 +9292,8 @@ recommended as part of routine health monitoring. Next scheduled X-ray: October 
 <button class="btn btn-primary" style="padding: 12px 30px; font-size: 16px; margin-right: 10px;">
 <i class="fas fa-calendar-alt"></i> Schedule New X-ray
 </button>
-<button class="btn btn-secondary" style="padding: 12px 30px; font-size: 16px;">
-<i class="fas fa-file-pdf"></i> Download All Records
+<button class="shiny-download-btn shining" id="xray-download-btn" onclick="downloadXRay()" style="margin-top: 10px;">
+<i class="fas fa-download"></i> <span id="xray-btn-text">Download All Records (Free)</span>
 </button>
 </div>
 </div>
@@ -9272,12 +9333,22 @@ Physical Examination Records
 <h4 style="font-size: 18px; margin-bottom: 20px;">Physical Examination Components</h4>
 
 <!-- Vital Signs Test -->
-<div class="exam-component" style="display: flex; align-items: center; gap: 15px; padding: 20px; border-radius: var(--border-radius); background: rgba(40, 167, 69, 0.1); border: 2px solid var(--success); margin-bottom: 15px;">
+<div class="exam-component" style="display: flex; align-items: flex-start; gap: 15px; padding: 20px; border-radius: var(--border-radius); background: rgba(40, 167, 69, 0.1); border: 2px solid var(--success); margin-bottom: 15px; cursor: pointer;" onclick="
+    const details = document.getElementById('vital-signs-details');
+    const chevron = document.getElementById('vital-signs-chevron');
+    if (details.style.display === 'none' || details.style.display === '') {
+        details.style.display = 'block';
+        chevron.style.transform = 'rotate(180deg)';
+    } else {
+        details.style.display = 'none';
+        chevron.style.transform = 'rotate(0deg)';
+    }
+">
 <div style="flex-shrink: 0;">
 <i class="fas fa-heartbeat" style="color: var(--success); font-size: 32px;"></i>
 </div>
 <div style="flex: 1;">
-<h5 style="margin: 0; font-size: 16px;">Vital Signs Assessment</h5>
+<h5 style="margin: 0; font-size: 16px;">Vital Signs Assessment <i class="fas fa-chevron-down" id="vital-signs-chevron" style="font-size: 12px; margin-left: 8px; transition: transform 0.3s;"></i></h5>
 <small style="color: var(--gray);">Blood Pressure, Heart Rate, Temperature, Respiratory Rate</small>
 <div style="margin-top: 10px;">
 <div style="display: flex; align-items: center; gap: 10px;">
@@ -9285,6 +9356,73 @@ Physical Examination Records
 <div style="width: 100%; height: 100%; background: var(--success); border-radius: 3px;"></div>
 </div>
 <span style="font-weight: bold; color: var(--success);">100%</span>
+</div>
+</div>
+
+<!-- Detailed Vital Signs (Hidden by default) -->
+<div id="vital-signs-details" style="display: none; margin-top: 20px; padding: 20px; background: rgba(255, 255, 255, 0.5); border-radius: var(--border-radius); border: 1px solid var(--success);">
+<h6 style="margin: 0 0 15px 0; color: var(--success); font-size: 15px; font-weight: 600;">
+<i class="fas fa-clipboard-check"></i> Vital Signs Results
+</h6>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+<!-- Blood Pressure -->
+<div style="background: white; padding: 15px; border-radius: 8px; border-left: 4px solid var(--success); box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+<div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+<i class="fas fa-heartbeat" style="color: var(--success); font-size: 20px;"></i>
+<span style="font-size: 13px; color: var(--gray); font-weight: 600;">Blood Pressure</span>
+</div>
+<div style="font-size: 24px; font-weight: bold; color: var(--text-color); margin-bottom: 4px;">120/80</div>
+<div style="font-size: 11px; color: var(--success); font-weight: 600; background: rgba(40, 167, 69, 0.1); padding: 4px 8px; border-radius: 4px; display: inline-block;">
+<i class="fas fa-check-circle"></i> NORMAL
+</div>
+<div style="font-size: 11px; color: var(--gray); margin-top: 6px;">mmHg</div>
+</div>
+
+<!-- Heart Rate -->
+<div style="background: white; padding: 15px; border-radius: 8px; border-left: 4px solid var(--success); box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+<div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+<i class="fas fa-heart" style="color: var(--success); font-size: 20px;"></i>
+<span style="font-size: 13px; color: var(--gray); font-weight: 600;">Heart Rate</span>
+</div>
+<div style="font-size: 24px; font-weight: bold; color: var(--text-color); margin-bottom: 4px;">72</div>
+<div style="font-size: 11px; color: var(--success); font-weight: 600; background: rgba(40, 167, 69, 0.1); padding: 4px 8px; border-radius: 4px; display: inline-block;">
+<i class="fas fa-check-circle"></i> NORMAL
+</div>
+<div style="font-size: 11px; color: var(--gray); margin-top: 6px;">Beats Per Minute</div>
+</div>
+
+<!-- Temperature -->
+<div style="background: white; padding: 15px; border-radius: 8px; border-left: 4px solid var(--success); box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+<div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+<i class="fas fa-thermometer-half" style="color: var(--success); font-size: 20px;"></i>
+<span style="font-size: 13px; color: var(--gray); font-weight: 600;">Temperature</span>
+</div>
+<div style="font-size: 24px; font-weight: bold; color: var(--text-color); margin-bottom: 4px;">36.5°C</div>
+<div style="font-size: 11px; color: var(--success); font-weight: 600; background: rgba(40, 167, 69, 0.1); padding: 4px 8px; border-radius: 4px; display: inline-block;">
+<i class="fas fa-check-circle"></i> NORMAL
+</div>
+<div style="font-size: 11px; color: var(--gray); margin-top: 6px;">Celsius</div>
+</div>
+
+<!-- Respiratory Rate -->
+<div style="background: white; padding: 15px; border-radius: 8px; border-left: 4px solid var(--success); box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+<div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+<i class="fas fa-lungs" style="color: var(--success); font-size: 20px;"></i>
+<span style="font-size: 13px; color: var(--gray); font-weight: 600;">Respiratory Rate</span>
+</div>
+<div style="font-size: 24px; font-weight: bold; color: var(--text-color); margin-bottom: 4px;">16</div>
+<div style="font-size: 11px; color: var(--success); font-weight: 600; background: rgba(40, 167, 69, 0.1); padding: 4px 8px; border-radius: 4px; display: inline-block;">
+<i class="fas fa-check-circle"></i> NORMAL
+</div>
+<div style="font-size: 11px; color: var(--gray); margin-top: 6px;">Breaths Per Minute</div>
+</div>
+</div>
+
+<div style="margin-top: 15px; padding: 12px; background: rgba(40, 167, 69, 0.1); border-radius: 6px; border-left: 3px solid var(--success);">
+<small style="color: var(--text-color); font-weight: 500;">
+<i class="fas fa-info-circle" style="color: var(--success);"></i> 
+All vital signs are within normal ranges. Student is cleared for regular academic activities.
+</small>
 </div>
 </div>
 </div>
@@ -9409,8 +9547,8 @@ All completed tests show normal results.
 <button class="btn btn-warning" style="padding: 12px 30px; font-size: 16px; margin-right: 10px;">
 <i class="fas fa-deaf"></i> Schedule Hearing Test
 </button>
-<button class="btn btn-secondary" style="padding: 12px 30px; font-size: 16px;">
-<i class="fas fa-file-pdf"></i> Download Report
+<button class="shiny-download-btn shining" id="physical-exam-download-btn" onclick="downloadPhysicalExam()" style="margin-top: 10px;">
+<i class="fas fa-download"></i> <span id="physical-exam-btn-text">Download Report (Free)</span>
 </button>
 </div>
 </div>
@@ -9565,7 +9703,10 @@ Please ensure your vaccination card includes the dates and healthcare provider i
 <h5 style="margin: 0 0 5px 0; font-size: 16px; color: var(--text-color);">Psychological/Mental Wellness</h5>
 <small style="color: var(--gray);">Understanding mental health, stress management, and coping strategies</small>
 <div style="margin-top: 8px;">
-<span style="font-size: 12px; color: var(--success); font-weight: 600;">
+<span style="font-size: 12px; color: var(--primary); font-weight: 600;">
+<i class="fas fa-user-md"></i> By Dr. Juan Dela Cruz
+</span>
+<span style="font-size: 12px; color: var(--success); font-weight: 600; margin-left: 15px;">
 <i class="fas fa-calendar-check"></i> Attended: September 15, 2024
 </span>
 </div>
@@ -9582,7 +9723,10 @@ Please ensure your vaccination card includes the dates and healthcare provider i
 <h5 style="margin: 0 0 5px 0; font-size: 16px; color: var(--text-color);">Emotional Wellness</h5>
 <small style="color: var(--gray);">Managing emotions, building resilience, and emotional intelligence</small>
 <div style="margin-top: 8px;">
-<span style="font-size: 12px; color: var(--success); font-weight: 600;">
+<span style="font-size: 12px; color: var(--primary); font-weight: 600;">
+<i class="fas fa-user-md"></i> By Dr. Maria Santos
+</span>
+<span style="font-size: 12px; color: var(--success); font-weight: 600; margin-left: 15px;">
 <i class="fas fa-calendar-check"></i> Attended: October 10, 2024
 </span>
 </div>
@@ -9599,7 +9743,10 @@ Please ensure your vaccination card includes the dates and healthcare provider i
 <h5 style="margin: 0 0 5px 0; font-size: 16px; color: var(--text-color);">Stress Management Workshop</h5>
 <small style="color: var(--gray);">Techniques for managing academic and personal stress</small>
 <div style="margin-top: 8px;">
-<span style="font-size: 12px; color: var(--danger); font-weight: 600;">
+<span style="font-size: 12px; color: var(--primary); font-weight: 600;">
+<i class="fas fa-user-md"></i> By Dr. Roberto Reyes
+</span>
+<span style="font-size: 12px; color: var(--danger); font-weight: 600; margin-left: 15px;">
 <i class="fas fa-calendar-times"></i> Scheduled: November 5, 2024
 </span>
 </div>
@@ -9616,7 +9763,10 @@ Please ensure your vaccination card includes the dates and healthcare provider i
 <h5 style="margin: 0 0 5px 0; font-size: 16px; color: var(--text-color);">Self-Care Practices</h5>
 <small style="color: var(--gray);">Building healthy habits and self-care routines</small>
 <div style="margin-top: 8px;">
-<span style="font-size: 12px; color: var(--danger); font-weight: 600;">
+<span style="font-size: 12px; color: var(--primary); font-weight: 600;">
+<i class="fas fa-user-md"></i> By Dr. Sofia Hernandez
+</span>
+<span style="font-size: 12px; color: var(--danger); font-weight: 600; margin-left: 15px;">
 <i class="fas fa-calendar-times"></i> Scheduled: November 20, 2024
 </span>
 </div>
@@ -9642,8 +9792,8 @@ Completing all seminars will contribute to your holistic development and well-be
 <button class="btn btn-primary" style="padding: 12px 30px; font-size: 16px; margin-right: 10px;">
 <i class="fas fa-calendar-plus"></i> View Upcoming Seminars
 </button>
-<button class="btn btn-secondary" style="padding: 12px 30px; font-size: 16px;">
-<i class="fas fa-file-pdf"></i> Download Certificate
+<button class="shiny-download-btn shining" id="mindcare-download-btn" onclick="downloadMindcare()" style="margin-top: 10px;">
+<i class="fas fa-download"></i> <span id="mindcare-btn-text">Download Certificate (Free)</span>
 </button>
 </div>
 
@@ -11132,6 +11282,90 @@ function closeDashboardModal() {
     const modal = document.getElementById('dashboard-modal');
     modal.style.display = 'none';
     document.body.style.overflow = 'auto';
+}
+
+// Download functions for Wellness & Care
+let downloadedReports = {
+    physicalExam: false,
+    drugTest: false,
+    xray: false,
+    mindcare: false
+};
+
+function downloadPhysicalExam() {
+    const btn = document.getElementById('physical-exam-download-btn');
+    const btnText = document.getElementById('physical-exam-btn-text');
+    
+    if (!downloadedReports.physicalExam) {
+        // First download - Free
+        btn.classList.remove('shining');
+        btn.classList.add('downloaded');
+        btnText.innerHTML = 'Download Report (₱50.00)';
+        downloadedReports.physicalExam = true;
+        alert('Physical Examination Report downloaded successfully!\n\nFirst download is FREE. Next downloads will cost ₱50.00');
+    } else {
+        // Subsequent downloads - With fee
+        if (confirm('Download Physical Examination Report?\n\nCost: ₱50.00\n\nProceed with payment?')) {
+            alert('Payment of ₱50.00 processed successfully!\n\nDownloading report...');
+        }
+    }
+}
+
+function downloadDrugTest() {
+    const btn = document.getElementById('drug-test-download-btn');
+    const btnText = document.getElementById('drug-test-btn-text');
+    
+    if (!downloadedReports.drugTest) {
+        // First download - Free
+        btn.classList.remove('shining');
+        btn.classList.add('downloaded');
+        btnText.innerHTML = 'Download Report (₱50.00)';
+        downloadedReports.drugTest = true;
+        alert('Drug Test Report downloaded successfully!\n\nFirst download is FREE. Next downloads will cost ₱50.00');
+    } else {
+        // Subsequent downloads - With fee
+        if (confirm('Download Drug Test Report?\n\nCost: ₱50.00\n\nProceed with payment?')) {
+            alert('Payment of ₱50.00 processed successfully!\n\nDownloading report...');
+        }
+    }
+}
+
+function downloadXRay() {
+    const btn = document.getElementById('xray-download-btn');
+    const btnText = document.getElementById('xray-btn-text');
+    
+    if (!downloadedReports.xray) {
+        // First download - Free
+        btn.classList.remove('shining');
+        btn.classList.add('downloaded');
+        btnText.innerHTML = 'Download All Records (₱50.00)';
+        downloadedReports.xray = true;
+        alert('X-Ray Records downloaded successfully!\n\nFirst download is FREE. Next downloads will cost ₱50.00');
+    } else {
+        // Subsequent downloads - With fee
+        if (confirm('Download X-Ray Records?\n\nCost: ₱50.00\n\nProceed with payment?')) {
+            alert('Payment of ₱50.00 processed successfully!\n\nDownloading records...');
+        }
+    }
+}
+
+function downloadMindcare() {
+    const btn = document.getElementById('mindcare-download-btn');
+    const btnText = document.getElementById('mindcare-btn-text');
+    
+    if (!downloadedReports.mindcare) {
+        // First download - Free
+        btn.classList.remove('shining');
+        btn.classList.add('downloaded');
+        btnText.innerHTML = 'Download Certificate (₱50.00)';
+        downloadedReports.mindcare = true;
+        alert('MindCare Certificate downloaded successfully!\n\nFirst download is FREE. Next downloads will cost ₱50.00');
+    } else {
+        // Subsequent downloads - With fee
+        if (confirm('Download MindCare Certificate?\n\nCost: ₱50.00\n\nProceed with payment?')) {
+            alert('Payment of ₱50.00 processed successfully!\n\nDownloading certificate...');
+        }
+    }
 }
 
 // Wait for DOM to be fully loaded
@@ -12746,7 +12980,6 @@ document.body.style.overflow = 'auto';
 }
 
 // X-Ray Modal - Close when clicking outside
-const xRayModal = document.getElementById('x-ray-modal');
 if (xRayModal) {
 xRayModal.addEventListener('click', function(e) {
 if (e.target === xRayModal) {
