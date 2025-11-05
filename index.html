@@ -246,7 +246,28 @@ background-color: rgba(255, 255, 255, 0.1);
 
 .nav-links li.active {
 background-color: rgba(255, 255, 255, 0.15);
-border-left: 4px solid var(--accent);
+position: relative;
+padding-left: 23px;
+}
+
+.nav-links li.active::before {
+content: '';
+position: absolute;
+left: 0;
+top: 0;
+bottom: 0;
+width: 4px;
+background: #D0353F;
+}
+
+.nav-links li.active::after {
+content: '';
+position: absolute;
+left: 6px;
+top: 0;
+bottom: 0;
+width: 4px;
+background: #8A1B31;
 }
 
 .nav-links a {
@@ -5460,6 +5481,13 @@ flex-direction: column;
 gap: 8px;
 }
 
+/* Make specific fields narrower - Time, Day, Program, Year Level */
+.course-field:nth-child(5), /* Time */
+.course-field:nth-child(6), /* Day */
+.course-field:nth-child(7)  /* Program */ {
+max-width: 120px;
+}
+
 .course-field .field-label {
 font-size: 14px;
 font-weight: 700;
@@ -5469,12 +5497,16 @@ letter-spacing: 0.5px;
 display: inline-block;
 padding-bottom: 4px;
 border-bottom: 2px solid var(--primary);
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
 }
 
 .course-field .field-value {
 font-size: 16px;
 font-weight: 400;
 color: var(--text-color);
+word-wrap: break-word;
 }
 
 /* Responsive Design for Course Section */
@@ -8934,7 +8966,7 @@ Confirm Selection
 
 <div class="card">
 <div class="card-header">
-<h2 class="card-title">Clearance Requirements</h2>
+<h2 class="card-title">4th Year (1st Trime)</h2>
 </div>
 <div class="table-container">
 <table>
@@ -8994,6 +9026,74 @@ Confirm Selection
 <td>Alumni Registration</td>
 <td><span class="status-badge status-pending">Pending</span></td>
 <td><button class="upload-action">Register</button></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div class="card">
+<div class="card-header">
+<h2 class="card-title">3rd Year (3rd Trime)</h2>
+</div>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Department</th>
+<th>Requirement</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Registrar's Office</td>
+<td>Academic Records Clearance</td>
+<td><span class="status-badge status-completed">Completed</span></td>
+<td><button class="view-action">View</button></td>
+</tr>
+<tr>
+<td>Accounting Office</td>
+<td>Accounting</td>
+<td><span class="status-badge status-completed">Completed</span></td>
+<td><button class="view-action">View</button></td>
+</tr>
+<tr>
+<td>Library</td>
+<td>Library Clearance</td>
+<td><span class="status-badge status-completed">Completed</span></td>
+<td><button class="view-action">View</button></td>
+</tr>
+<tr>
+<td>Guidance Office</td>
+<td>Exit Interview</td>
+<td><span class="status-badge status-completed">Completed</span></td>
+<td><button class="view-action">View</button></td>
+</tr>
+<tr>
+<td>Department of Chair</td>
+<td>Department Clearance</td>
+<td><span class="status-badge status-completed">Completed</span></td>
+<td><button class="view-action">View</button></td>
+</tr>
+<tr>
+<td>Student Affairs</td>
+<td>Organization Clearance</td>
+<td><span class="status-badge status-completed">Completed</span></td>
+<td><button class="view-action">View</button></td>
+</tr>
+<tr>
+<td>Laboratory</td>
+<td>Laboratory Equipment Clearance</td>
+<td><span class="status-badge status-completed">Completed</span></td>
+<td><button class="view-action">View</button></td>
+</tr>
+<tr>
+<td>Alumni Office</td>
+<td>Alumni Registration</td>
+<td><span class="status-badge status-completed">Completed</span></td>
+<td><button class="view-action">View</button></td>
 </tr>
 </tbody>
 </table>
