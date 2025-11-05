@@ -11370,7 +11370,7 @@ const sidebar = document.getElementById('sidebar');
 const mainContent = document.querySelector('.main-content');
 
 // Check for saved sidebar state
-
+const sidebarState = localStorage.getItem('sidebarCollapsed');
 if (sidebarState === 'true') {
 sidebar.classList.add('collapsed');
 }
