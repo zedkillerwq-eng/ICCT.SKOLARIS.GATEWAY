@@ -247,27 +247,32 @@ background-color: rgba(255, 255, 255, 0.1);
 .nav-links li.active {
 background-color: rgba(255, 255, 255, 0.15);
 position: relative;
-padding-left: 23px;
+border-left: none;
+padding-left: 30px;
 }
 
 .nav-links li.active::before {
 content: '';
 position: absolute;
-left: 0;
-top: 0;
-bottom: 0;
-width: 4px;
+left: 0%;
+top: 50%;
+transform: translateY(-50%);
+width: 10px;
+height: 100%;
 background: #D0353F;
+border-radius: 0 50px 50px 0;
 }
 
 .nav-links li.active::after {
 content: '';
 position: absolute;
-left: 6px;
-top: 0;
-bottom: 0;
-width: 4px;
+left: 15px;
+top: 50%;
+transform: translateY(-50%);
+width: 10px;
+height: 100%;
 background: #8A1B31;
+border-radius: 0 50px 50px 0;
 }
 
 .nav-links a {
