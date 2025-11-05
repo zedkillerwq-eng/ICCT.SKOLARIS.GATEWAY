@@ -118,14 +118,14 @@ position: fixed;
 top: 20px;
 left: 20px;
 right: auto;
-z-index: 1001;
+z-index: 10001;
 }
 
 
 
 /* Sidebar Styles */
 .sidebar {
-width: 280px;
+width: 340px;
 background: linear-gradient(180deg, var(--sidebar-bg) 0%, var(--primary-dark) 100%);
 color: white;
 padding: 0;
@@ -227,12 +227,15 @@ background: rgba(255, 255, 255, 0.5);
 }
 
 .nav-links li {
-padding: 14px 15px;
+padding: 22px 15px;
 transition: var(--transition);
 cursor: pointer;
 border-radius: var(--border-radius);
 margin-bottom: 5px;
 position: relative;
+min-height: 70px;
+display: flex;
+align-items: center;
 }
 
 /* Add extra space after last navigation item (Logout) */
@@ -254,7 +257,7 @@ padding-left: 30px;
 .nav-links li.active::before {
 content: '';
 position: absolute;
-left: 0%;
+left: -1%;
 top: 50%;
 transform: translateY(-50%);
 width: 10px;
@@ -313,7 +316,7 @@ flex: 1;
 padding: 25px 30px;
 overflow-y: auto;
 background-color: var(--bg-color);
-margin-left: 280px;
+margin-left: 380px;
 min-height: 100vh;
 transition: margin-left 0.3s ease;
 }
@@ -2065,9 +2068,16 @@ margin-top: auto;
 padding-top: 15px;
 }
 
+.stat-card {
+cursor: pointer;
+user-select: none;
+}
+
 .stat-card:hover {
 transform: translateY(-3px);
 box-shadow: 0 6px 12px var(--shadow-color);
+background-color: var(--primary-light);
+border-left-color: var(--primary-dark);
 }
 
 .stat-value {
@@ -5966,13 +5976,23 @@ color: white;
 position: absolute;
 top: 10px;
 right: 15px;
-font-size: 24px;
+font-size: 28px;
 cursor: pointer;
-color: white;
+color: var(--text-color);
+z-index: 10;
+width: 35px;
+height: 35px;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 50%;
+transition: all 0.3s ease;
 }
 
 .modal-close:hover {
-color: var(--primary);
+background: var(--primary);
+color: white;
+transform: rotate(90deg);
 }
 
 .modal-content h3 {
@@ -6510,6 +6530,116 @@ margin: 20px 0;
 .dark-mode .sidebar-divider {
 background: #fff;   
 opacity: 0.12;
+}
+
+/* Stat Card Modal Styles */
+.stat-modal-overlay {
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: rgba(0, 0, 0, 0.7);
+display: flex;
+align-items: center;
+justify-content: center;
+z-index: 10000;
+backdrop-filter: blur(4px);
+-webkit-backdrop-filter: blur(4px);
+}
+
+.stat-modal-overlay.active {
+display: flex;
+}
+
+.stat-modal-content {
+background: var(--card-bg);
+border-radius: 15px;
+padding: 35px;
+max-width: 650px;
+width: 90%;
+max-height: 85vh;
+overflow-y: auto;
+position: relative;
+box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+border: 1px solid var(--border-color);
+animation: slideUp 0.3s ease;
+}
+
+.stat-modal-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 25px;
+padding-bottom: 15px;
+border-bottom: 1px solid var(--border-color);
+}
+
+.stat-modal-title {
+color: var(--text-color);
+font-size: 26px;
+font-weight: 600;
+margin: 0;
+flex: 1;
+}
+
+.stat-modal-close {
+position: absolute;
+top: 15px;
+right: 20px;
+background: transparent;
+border: none;
+font-size: 32px;
+cursor: pointer;
+color: var(--text-color);
+width: 40px;
+height: 40px;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 50%;
+transition: all 0.3s ease;
+line-height: 1;
+padding: 0;
+}
+
+.stat-modal-close:hover {
+background: var(--primary);
+color: white;
+transform: rotate(90deg);
+}
+
+.stat-modal-body {
+color: var(--text-color);
+font-size: 16px;
+line-height: 1.6;
+}
+
+.stat-modal-body > div {
+display: flex;
+flex-direction: column;
+gap: 15px;
+}
+
+@keyframes slideUp {
+from {
+transform: translateY(30px);
+opacity: 0;
+}
+to {
+transform: translateY(0);
+opacity: 1;
+}
+}
+
+@keyframes fadeIn {
+from { opacity: 0; }
+to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+from { opacity: 1; }
+to { opacity: 0; }
 }
 
 </style>
@@ -12971,32 +13101,186 @@ jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
 html2pdf().set(opt).from(element).save();
 }
 
-// Modal functionality for stat cards
-const statModal = document.getElementById('stat-modal');
-const modalBody = document.getElementById('modal-body');
-const modalClose = document.querySelector('.modal-close');
-
-document.querySelectorAll('.stat-card').forEach(card => {
-card.addEventListener('click', function() {
-const statValue = this.querySelector('.stat-value');
-const statLabel = this.querySelector('.stat-label');
-if (statValue && statLabel) {
-modalBody.innerHTML = `<h3>${statLabel.textContent}</h3>`;
-modalBody.appendChild(statValue.cloneNode(true));
-statModal.style.display = 'flex';
-}
-});
-});
-
-modalClose.addEventListener('click', function() {
-statModal.style.display = 'none';
-});
-
-window.addEventListener('click', function(event) {
-if (event.target === statModal) {
-statModal.style.display = 'none';
-}
-});
+// Dashboard Stat Cards Modal System - Simple and Clean
+(function() {
+    'use strict';
+    
+    // Wait for DOM to be fully loaded
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initStatCardModals);
+    } else {
+        initStatCardModals();
+    }
+    
+    function initStatCardModals() {
+        // Get all stat cards
+        const statCards = document.querySelectorAll('.stat-card[id]');
+        
+        statCards.forEach(function(card) {
+            // Make card look clickable
+            card.style.cursor = 'pointer';
+            card.style.transition = 'all 0.3s ease';
+            
+            // Add click event
+            card.addEventListener('click', function(event) {
+                // Don't open modal if clicking a link
+                if (event.target.tagName === 'A' || event.target.closest('a')) {
+                    return;
+                }
+                
+                openStatModal(this);
+            });
+        });
+    }
+    
+    function openStatModal(card) {
+        const cardId = card.id;
+        const statValue = card.querySelector('.stat-value');
+        const statLabel = card.querySelector('.stat-label');
+        
+        if (!statValue || !statLabel) return;
+        
+        // Create modal overlay
+        const modalOverlay = document.createElement('div');
+        modalOverlay.className = 'stat-modal-overlay';
+        modalOverlay.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.75);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            backdrop-filter: blur(4px);
+            animation: fadeIn 0.3s ease;
+        `;
+        
+        // Create modal content
+        const modalContent = document.createElement('div');
+        modalContent.style.cssText = `
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 35px;
+            max-width: 650px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            animation: slideUp 0.3s ease;
+        `;
+        
+        // Create close button
+        const closeBtn = document.createElement('button');
+        closeBtn.innerHTML = '&times;';
+        closeBtn.style.cssText = `
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: transparent;
+            border: none;
+            font-size: 32px;
+            cursor: pointer;
+            color: var(--text-color);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            line-height: 1;
+        `;
+        
+        closeBtn.onmouseover = function() {
+            this.style.background = 'var(--primary)';
+            this.style.color = 'white';
+            this.style.transform = 'rotate(90deg)';
+        };
+        
+        closeBtn.onmouseout = function() {
+            this.style.background = 'transparent';
+            this.style.color = 'var(--text-color)';
+            this.style.transform = 'rotate(0deg)';
+        };
+        
+        // Create title
+        const title = document.createElement('h2');
+        title.textContent = statLabel.textContent;
+        title.style.cssText = `
+            margin: 0 0 25px 0;
+            color: var(--text-color);
+            font-size: 26px;
+            font-weight: 600;
+            padding-right: 40px;
+        `;
+        
+        // Clone and style content
+        const content = document.createElement('div');
+        content.innerHTML = statValue.innerHTML;
+        content.style.cssText = `
+            color: var(--text-color);
+            font-size: 16px;
+            line-height: 1.6;
+        `;
+        
+        // Assemble modal
+        modalContent.appendChild(closeBtn);
+        modalContent.appendChild(title);
+        modalContent.appendChild(content);
+        modalOverlay.appendChild(modalContent);
+        document.body.appendChild(modalOverlay);
+        
+        // Prevent body scroll
+        document.body.style.overflow = 'hidden';
+        
+        // Close handlers
+        function closeModal() {
+            modalOverlay.style.animation = 'fadeOut 0.2s ease';
+            setTimeout(function() {
+                modalOverlay.remove();
+                document.body.style.overflow = 'auto';
+            }, 200);
+        }
+        
+        closeBtn.onclick = closeModal;
+        
+        modalOverlay.onclick = function(e) {
+            if (e.target === modalOverlay) {
+                closeModal();
+            }
+        };
+        
+        // ESC key to close
+        document.addEventListener('keydown', function escHandler(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+                document.removeEventListener('keydown', escHandler);
+            }
+        });
+    }
+    
+    // Add animations
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    `;
+    document.head.appendChild(style);
+})();
 
 // Physical Exam Modal Functionality
 const physicalExamCard = document.getElementById('physical-exam-card');
