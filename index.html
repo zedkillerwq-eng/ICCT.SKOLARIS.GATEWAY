@@ -6968,21 +6968,21 @@ background: var(--primary-dark);
 <div class="stats-grid">
 <div class="stat-card" onclick="openStatCardModal('units')" style="cursor: pointer;">
 <div class="stat-value">14</div>
-<div class="stat-label">Current Units</div>
+<div class="stat-label" style="color:var(--text-color)">Current Units</div>
 </div>
 <div class="stat-card" onclick="openStatCardModal('gwa')" style="cursor: pointer;">
 <div class="stat-value">3.25</div>
-<div class="stat-label">Current GWA</div>
+<div class="stat-label" style="color:var(--text-color)">Current GWA</div>
 </div>
 <div class="stat-card" onclick="openStatCardModal('requirements')" style="cursor: pointer;">
 <div class="stat-value" id="pending-requirements-count">12</div>
-<div class="stat-label"> Pending Requirements</div>
+<div class="stat-label" style="color:var(--text-color)"> Pending Requirements</div>
 </div>
 <div class="stat-card" onclick="openStatCardModal('balance')" style="cursor: pointer;">
 <div class="stat-value">₱ 0.00
 
 </div>
-<div class="stat-label">Balance Due</div>
+<div class="stat-label" style="color:var(--text-color)">Balance Due</div>
 </div>
 
 <div class="stat-card" id="ojt-summary-card" onclick="openStatCardModal('ojt')" style="cursor: pointer;">
@@ -6993,14 +6993,14 @@ background: var(--primary-dark);
 <span style="color:var(--text-color);font-size:20px;line-height:1.4;">ICCT Colleges INC. Antipolo Campus  <hr> </span>
 </div>
 <div style="display:flex;align-items:center;">
-<small style="color:var(--text-color);font-size:14px;line-height:1.3;">ICCT Bldg,. Gen. Luna Rd. <br>cor. Ressurection St.,
+<small style="color:var(--text-color);font-size:10px;line-height:1.3;">ICCT Bldg,. Gen. Luna Rd. <br>cor. Ressurection St.,
 <br>Bgy. San Roque, Antipolo City, Rizal
 </small>
 </div>
 </div>
 </div>
 
-<div class="stat-label">OJT/Intern</div>
+<div class="stat-label" style="color:var(--text-color)">OJT/Intern</div>
 </div>                
 
 <div class="stat-card" id="integration-summary-card" onclick="openStatCardModal('integration')" style="cursor: pointer;">
@@ -7010,12 +7010,12 @@ background: var(--primary-dark);
 <span style="color:var(--text-color);font-size:18px;line-height:1.4;">Integration Activities</span>
 </div>
 <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px;">
-<small style="color:var(--text-color);">Status:</small>
+<small style="color:var(--text-color);font-size:15px;">Status:</small>
 <i class="fas fa-check-circle" style="color:var(--success)"></i>
 </div>
 </div>
 </div>
-<div class="stat-label">Integration</div>
+<div class="stat-label" style="color:var(--text-color)">Integration</div>
 </div>
 
 <div class="stat-card" id="scholarship-summary-card" onclick="openStatCardModal('scholarship')" style="cursor: pointer;">
@@ -7026,54 +7026,54 @@ background: var(--primary-dark);
 </div>
 </div>
 </div>
-<div class="stat-label">Scholarship(s)</div>
+<div class="stat-label" style="color:var(--text-color)">Scholarship(s)</div>
 </div>                                             
 
 <div class="stat-card" id="uniforms-summary-card" onclick="openStatCardModal('uniforms')" style="cursor: pointer;">
 <div class="stat-value" id="uniforms-summary">
 <div style="display:flex;flex-direction:column;gap:6px;">
 <div data-uniform="BSIT" style="display:flex;justify-content:space-between;align-items:center;">
-<small style="color:var(--text-color);">BSIT Uniform</small>
+<small style="color:var(--text-color); font-size:20px;">BSIT Uniform</small>
 <i class="fas fa-check-circle" style="color:var(--success)"></i>
 </div>
 <div data-uniform="COLLEGE P.E" style="display:flex;justify-content:space-between;align-items:center;">
-<small style="color:var(--text-color);">College P.E.</small>
+<small style="color:var(--text-color);font-size:20px;">College P.E.</small>
 <i class="fas fa-check-circle" style="color:var(--success)"></i>
 </div>
 <div data-uniform="NSTP" style="display:flex;justify-content:space-between;align-items:center;">
-<small style="color:var(--text-color);">NSTP Uniform</small>
+<small style="color:var(--text-color);font-size:20px;">NSTP Uniform</small>
 <i class="fas fa-check-circle" style="color:var(--success)"></i>
 </div>
 </div>
 </div>
-<div class="stat-label">Uniform Compliance <command type="command" label="" icon="" /></div>
+<div class="stat-label" style="color:var(--text-color)">Uniform Compliance <command type="command" label="" icon="" /></div>
 </div>
 
 <div class="stat-card" id="seminars-summary-card" onclick="openStatCardModal('seminars')" style="cursor: pointer;">
 <div class="stat-value" id="seminars-summary">
 <div style="display:flex;flex-direction:column;gap:6px;">
 <div style="display:flex;justify-content:space-between;align-items:center;">
-<small style="color:var(--text-color);">Orientation Seminar</small>
+<small style="color:var(--text-color); font-size:20px;">Orientation Seminar</small>
 <i class="fas fa-check-circle" style="color:var(--success)"></i>
 </div>
 <div style="display:flex;justify-content:space-between;align-items:center;">
-<small style="color:var(--text-color);">Industry Visit</small>
+<small style="color:var(--text-color);font-size:20px;">Industry Visit</small>
 <i class="fas fa-check-circle" style="color:var(--success)"></i>
 </div>
 <div style="display:flex;justify-content:space-between;align-items:center;">
-<small style="color:var(--text-color);">Historical Field Trip</small>
+<small style="color:var(--text-color); font-size:20px;">Historical Field Trip</small>
 <i class="fas fa-times-circle" style="color:var(--danger)"></i>
 </div>
 </div>
 </div>
-<div class="stat-label">Seminars/Fieldtrips</div>
+<div class="stat-label" style="color:var(--text-color)">Seminars/Fieldtrips</div>
 </div>
 
 <div class="stat-card" id="attendance-summary-card" onclick="openStatCardModal('attendance')" style="cursor: pointer;">
 <div class="stat-value" id="attendance-summary">
 <div style="display:flex;flex-direction:column;gap:6px;">
 <div style="margin-bottom:8px">
-<small style="color:var(--text-color);font-weight:500;">4th Year (1st Trime)</small>
+<small style="color:var(--text-color);font-weight:500;font-size:19px;"><b>4th Year (1st Trime)</b></small>
 </div>
 
 
@@ -7097,83 +7097,83 @@ background: var(--primary-dark);
 </div>
 </div>
 </div>
-<div class="stat-label">Retention</div>
+<div class="stat-label"style="color:var(--text-color)">Retention</div>
 </div>
 
 <div class="stat-card small-card" onclick="openStatCardModal('radiology')" style="cursor: pointer;">
 <div class="stat-value">
 <div style="display:flex;flex-direction:column;gap:6px;">
 <div style="margin-bottom:8px">
-<small style="color:var(--text-color);font-weight:400;">Radiology Report</small>
+<small style="color:var(--text-color);font-weight:400;font-size:19px;"><b>Radiology Report</b></small>
 </div>
 <div style="display:flex;flex-direction:column;gap:4px;">
 <div style="display:flex;justify-content:space-between;align-items:center;">
-<small style="color:var(--text-color);font-weight:400;">1st Yr</small>
+<small style="color:var(--text-color);font-weight:400;font-size:15px;">1st Yr</small>
 <div style="display:flex;align-items:center;gap:4px;">
-<small style="color:var(--text-color);font-weight:400;">Sep 5, 2022<hr></small>
+<small style="color:var(--text-color);font-weight:400; font-size:15px;">Sep 5, 2022<hr></small>
 <i class="fas fa-check-circle" style="color:var(--success)"></i>
 </div>
 </div>
 <div style="display:flex;justify-content:space-between;align-items:center;">
-<small style="color:var(--text-color);font-weight:400;">2nd Yr</small>
+<small style="color:var(--text-color);font-weight:400;font-size:15px;">2nd Yr</small>
 <div style="display:flex;align-items:center;gap:4px;">
-<small style="color:var(--text-color);font-weight:400;">Aug 20, 2023<hr></small>
+<small style="color:var(--text-color);font-weight:400;font-size:15px;">Aug 20, 2023<hr></small>
 <i class="fas fa-check-circle" style="color:var(--success)"></i>
 </div>
 </div>
 <div style="display:flex;justify-content:space-between;align-items:center;">
-<small style="color:var(--text-color);font-weight:400;">3rd Yr</small>
+<small style="color:var(--text-color);font-weight:400;font-size:15px;">3rd Yr</small>
 <div style="display:flex;align-items:center;gap:4px;">
-<small style="color:var(--text-color);font-weight:400;">Sep 10, 2024 <hr></small>
+<small style="color:var(--text-color);font-weight:400;font-size:15px;">Sep 10, 2024 <hr></small>
 <i class="fas fa-check-circle" style="color:var(--success)"></i>
 </div>
 </div>
 <div style="display:flex;justify-content:space-between;align-items:center;">
-<small style="color:var(--text-color);font-weight:400;">4th Yr</small>
+<small style="color:var(--text-color);font-weight:400;font-size:15px;">4th Yr</small>
 <div style="display:flex;align-items:center;gap:4px;">
-<small style="color:var(--text-color);font-weight:400;">Oct 15, 2025<hr></small>
+<small style="color:var(--text-color);font-weight:400;font-size:15px;">Oct 15, 2025<hr></small>
 <i class="fas fa-check-circle" style="color:var(--success)"></i>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="stat-label">Wellness & Care</div>
+<div class="stat-label" style="color:var(--text-color)">Wellness & Care</div>
 </div>
 
 <div class="stat-card" id="drug-test-summary-card" onclick="openStatCardModal('drugtest')" style="cursor: pointer;">
 <div class="stat-value" id="drug-test-summary">
 <div style="display:flex;flex-direction:column;gap:6px;">
 <div style="margin-bottom:8px">
-<small style="color:var(--text-color);font-weight:400;">Substance Screening</small>
+<small style="color:var(--text-color);font-weight:400;font-size:19px;"><b>Substance Screening</b></small>
 </div>
 <div style="display:flex;flex-direction:column;gap:4px;">
 <div style="display:flex;justify-content:space-between;align-items:center;">
-<small style="color:var(--text-color);font-weight:400;">1st Yr</small>
+<small style="color:var(--text-color);font-weight:400;font-size:15px;">1st Yr</small>
 <div style="display:flex;align-items:center;gap:4px;">
-<small style="color:var(--text-color);font-weight:400;">Sep 15,2022 <hr></small>
+<small style="color:var(--text-color);font-weight:400;font-size:15px;">Sep 15,2022 <hr></small>
 <i class="fas fa-check-circle" style="color:var(--success)"></i>
 </div>
 </div>
 <div style="display:flex;justify-content:space-between;align-items:center;">
-<small style="color:var(--text-color);font-weight:400;">2nd Yr</small>
+<small style="color:var(--text-color);font-weight:400;font-size:15px;">2nd Yr</small>
 <div style="display:flex;align-items:center;gap:4px;">
-<small style="color:var(--text-color);font-weight:400;">Sep 18, 2023
+<small style="color:var(--text-color);font-weight:400;font-size:15px;">Sep 18, 2023
 <hr></small>
 <i class="fas fa-check-circle" style="color:var(--success)"></i>
 </div>
 </div>
 <div style="display:flex;justify-content:space-between;align-items:center;">
-<small style="color:var(--text-color);font-weight:400;">3rd Yr</small>
+<small style="color:var(--text-color);font-weight:400;font-size:15px;">3rd Yr</small>
 <div style="display:flex;align-items:center;gap:4px;">
-<small style="color:var(--text-color);font-weight:400;">Sep 18, 2023<hr style="color:var(--gray)"></small>
+<small style="color:var(--text-color);font-weight:400;font-size:15px;">Sep 18, 2023<hr style="color:var(--gray)"></small>
 <i class="fas fa-check-circle" style="color:var(--success)"></i>
 </div>
 </div>
 <div style="display:flex;justify-content:space-between;align-items:center;">
-<small style="color:var(--text-color);font-weight:400;">4th Yr</small>
+<small style="color:var(--text-color);font-weight:400;font-size:15px;">4th Yr</small>
 <div style="display:flex;align-items:center;gap:4px;">
-<small style="color:var(--text-color);font-weight:400;">Sep 16, 2025<hr></small>
+<small style="color:var(--text-color);font-weight:400;font-size:15px;">Sep 16, 2025<hr></small>
 <i class="fas fa-check-circle" style="color:var(--success)"></i>
 </div>
 </div>
@@ -7209,7 +7209,7 @@ background: var(--primary-dark);
 </div>
 </div>
 </div>
-<div class="stat-label">Academic Status</div>
+<div class="stat-label" style="color:var(--text-color)">Academic Status</div>
 </div>
 </div>
 
