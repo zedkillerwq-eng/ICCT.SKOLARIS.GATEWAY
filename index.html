@@ -2042,6 +2042,7 @@ display: flex;
 flex-direction: column;
 position: relative;
 overflow: hidden;
+max-width: 100%;
 cursor: pointer;
 background-image: 
     linear-gradient(135deg, rgba(30,58,95,0.05) 0%, transparent 50%),
@@ -2178,6 +2179,12 @@ height: 100%;
 background-color: var(--primary);
 border-radius: 4px;
 transition: width 0.5s ease;
+}
+
+/* Reduce width of stat-cards in years-grid */
+.years-grid .stat-card {
+width: 80%;
+margin: 0 auto;
 }
 
 /* Program selection styles */
@@ -7035,7 +7042,8 @@ background: var(--primary-dark);
 <div class="stat-value" id="scholarship-summary">
 <div style="display:flex;flex-direction:column;gap:6px;">
 <div style="display:flex;align-items:center;color:var(--text-color);">
-<small style="text-align:center; font-weight:400;font-size:15px;">Ynares Youth  (2022)  <hr></small>
+<small style="text-align:center; font-weight:400;font-size:15px;">President's Lifestyle<hr>
+DCLC Scholar<hr></small>
 </div>
 </div>
 </div>
