@@ -3670,11 +3670,14 @@ margin-bottom: 32px;
 }
 
 .stat-item {
-text-align: center;
-padding: 16px;
-background: #f8fafc;
-border-radius: 8px;
-border: 1px solid #e2e8f0;
+    text-align: center;
+    padding: 16px;
+    background: #f8fafc;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .stat-number {
@@ -3880,6 +3883,7 @@ margin-bottom: 12px;
 padding: 8px 12px;
 background: #f8fafc;
 border-radius: 6px;
+text-align: center;
 border-left: 4px solid #3b82f6;
 }
 
@@ -3892,11 +3896,17 @@ box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 
 .subject-row {
 display: grid;
-grid-template-columns: 80px 1fr 100px 60px 70px 100px;
+/* make the first column size to the course code content, so course codes are fully visible */
+grid-template-columns: max-content 1fr 160px 60px 70px 100px;
 gap: 12px;
 padding: 12px 16px;
 border-bottom: 1px solid #f3f4f6;
 align-items: center;
+}
+
+/* Ensure grid children can shrink and not overflow adjacent columns */
+.subject-row > * {
+    min-width: 0;
 }
 
 .subject-row.header {
@@ -3908,6 +3918,7 @@ text-transform: uppercase;
 letter-spacing: 0.5px;
 border-bottom: none;
 padding: 15px;
+
 }
 
 /* Inner box with AntiqueWhite background - covers all header content */
@@ -3916,7 +3927,8 @@ background: #FAEBD7;
 padding: 12px 16px;
 border-radius: 6px;
 display: grid;
-grid-template-columns: 80px 1fr 100px 60px 70px 100px;
+/* mirror the .subject-row layout for the header */
+grid-template-columns: max-content 1fr 160px 60px 70px 100px;
 gap: 12px;
 align-items: center;
 }
@@ -3928,7 +3940,7 @@ align-items: center;
 .subject-row.header .subject-grade,
 .subject-row.header .subject-remarks {
 font-weight: 600;
-color: antiquewhite;
+color: white;
 }
 
 .subject-row:not(.header):hover {
@@ -3936,45 +3948,83 @@ background: #f9fafb;
 }
 
 .subject-code {
-font-family: 'Courier New', monospace;
 font-weight: 600;
 color: #1f2937;
-font-size: 13px;
+font-size: 18px;
+font-weight: 700;
+color: var(--primary);
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+max-width: 100%;
 }
 
 .subject-title {
-font-weight: 500;
-color: #374151;
-line-height: 1.4;
+    display: block;
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 18px;
+    margin-left: 0; /* let the grid column control spacing */
+    white-space: normal; /* allow title to wrap if needed */
+    overflow: visible;
+    text-overflow: unset;
+}
+
+/* Move only non-header subject titles to align them uniformly without touching other columns */
+.subject-row:not(.header) .subject-title {
+    /* uniform left offset so all titles and their inner contents align straight */
+    padding-left: 80px; /* adjust as needed */
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-start;
+}
+
+/* Ensure any immediate children inside the title (subtext, badges) align with the padded title text */
+.subject-row:not(.header) .subject-title > * {
+    margin-left: 0;
+    align-self: flex-start;
+    text-align: left;
+}
+
+@media (max-width: 768px) {
+    /* keep left-aligned on small screens for readability */
+    .subject-row:not(.header) .subject-title {
+        padding-left: 12px;
+    }
 }
 
 .subject-prerequisite {
-text-align: center;
-font-weight: 500;
-color: #4b5563;
-font-size: 12px;
-font-style: italic;
+    text-align: center;
+    white-space: nowrap;        /* force single line */
+    overflow: hidden;
+    text-overflow: ellipsis;    /* truncate with ... when too long */
+    font-weight: 600;
+    color: #4b5563;
+    font-size: 13px;
+    max-width: 100%;
 }
 
 .subject-units {
 text-align: center;
 font-weight: 600;
-color: #059669;
+color: black;
+margin-right: 100px;
 font-size: 13px;
 }
 
 .subject-grade {
 text-align: center;
-font-weight: 700;
+font-weight: 600;
 font-size: 13px;
-color: #1e40af;
+color: green;
 }
 
 .subject-remarks {
-text-align: center;
-font-weight: 600;
-color: #10b981;
-font-size: 12px;
+/* keep course code fully visible; column uses max-content so it will size to fit */
+font-size: 13px;
+color: green;
 }
 
 /* Performance Summary Styles */
@@ -5014,7 +5064,7 @@ font-weight: 700;
 
 .enrollment-info-row {
 display: grid;
-grid-template-columns: repeat(4, 1fr);
+grid-template-columns: repeat(5, 1fr);
 gap: 24px;
 margin-bottom: 24px;
 }
@@ -5276,6 +5326,10 @@ flex-direction: column;
 gap: 16px;
 }
 
+.schedule-pref-options-container.horizontal {
+flex-direction: row;
+}
+
 .schedule-pref-option {
 display: flex;
 align-items: center;
@@ -5286,6 +5340,8 @@ border: 2px solid var(--border-color);
 border-radius: 12px;
 cursor: pointer;
 transition: all 0.3s ease;
+width: 180px;
+height: 60px;
 }
 
 .schedule-pref-option:hover {
@@ -5540,6 +5596,38 @@ border-bottom: 3px solid var(--primary);
 display: inline-block;
 }
 
+.course-checkboxes {
+display: flex;
+gap: 20px;
+margin-bottom: 20px;
+}
+
+.course-checkbox {
+width: 18px;
+height: 18px;
+cursor: pointer;
+}
+
+.checkbox-label {
+font-size: 16px;
+font-weight: 600;
+color: var(--text-color);
+cursor: pointer;
+margin-left: 8px;
+}
+
+.code-field {
+flex-direction: column;
+align-items: flex-start;
+gap: 8px;
+}
+
+.code-values {
+display: flex;
+align-items: center;
+gap: 10px;
+}
+
 .course-info-row {
 display: grid;
 grid-template-columns: 2fr 2.5fr 1fr 1fr 1.5fr 0.8fr 0.8fr 1.5fr;
@@ -5572,6 +5660,38 @@ font-size: 16px;
 font-weight: 400;
 color: var(--text-color);
 word-wrap: break-word;
+}
+
+.total-units-box {
+border: 1px solid #ccc;
+padding: 15px;
+border-radius: 8px;
+background: #f9f9f9;
+text-align: center;
+width: 200px;
+margin: 10px auto;
+}
+
+.units-value {
+font-size: 24px;
+font-weight: bold;
+color: var(--primary);
+margin-bottom: 10px;
+}
+
+.units-divider {
+margin: 10px 0;
+border: none;
+border-top: 1px solid #ccc;
+}
+
+.units-title {
+font-size: 14px;
+font-weight: 600;
+color: var(--text-secondary);
+margin-top: 10px;
+text-transform: uppercase;
+letter-spacing: 0.5px;
 }
 
 /* Responsive Design for Course Section */
@@ -5730,11 +5850,7 @@ flex-direction: column;
 gap: 4px;
 }
 
-.subject-code {
-font-size: 18px;
-font-weight: 700;
-color: var(--primary);
-}
+
 
 .subject-title {
 font-size: 16px;
@@ -7079,7 +7195,7 @@ Bgy. San Roque, Antipolo City, Rizal
 <div class="stat-value" id="attendance-summary">
 <div style="display:flex;flex-direction:column;gap:6px;">
 <div style="margin-bottom:8px">
-<small style="color:var(--text-color);font-weight:500;font-size:15px;"><b>4th Year</b> <span style="font-weigth:200; font-size: 10px">(1st Trim)</span></small>
+<small style="color:var(--text-color);font-weight:500;font-size:15px;"><b>4th Year</b> <span style="font-weight:200; font-size: 10px">(1st Trim)</span></small>
 </div>
 
 
@@ -7175,6 +7291,7 @@ Bgy. San Roque, Antipolo City, Rizal
     
     
     
+    
 <div class="stat-card" style="width:50% margin:6px" >
 <div class="stat-value">100%<div class="progress-bar"><div style="width: 100%; height: 100%; background-color: green; border-radius: 4px;"></div></div></div>
 <div class="stat-label">1st Year</div>
@@ -7188,7 +7305,7 @@ Bgy. San Roque, Antipolo City, Rizal
 <div class="stat-label">3rd Year</div>
 </div>
 <div class="stat-card" style="width:50% margin:6px" >
-<div class="stat-value">&#8734;<br>in progress<div class="progress-bar"><div style="width: 90%; height: 100%; background-color: yellow; border-radius: 4px;"></div></div></div>
+<div class="stat-value">in progress<div class="progress-bar"><div style="width: 90%; height: 100%; background-color: yellow; border-radius: 4px;"></div></div></div>
 <div class="stat-label">4th Year</div>
 </div>
 
@@ -7247,11 +7364,11 @@ Bgy. San Roque, Antipolo City, Rizal
 </div>
 <div class="performance-summary">
 <div class="summary-item">
-<div class="summary-label">Total Units Completed</div>
+<div class="summary-label">Total Units Completed:</div>
 <div class="summary-value">147</div>
 </div>
 <div class="summary-item">
-<div class="summary-label">Cumulative GWA</div>
+<div class="summary-label">Cumulative GWA:</div>
 <div class="summary-value">1.45</div>
 </div>
 <div class="summary-item">
@@ -7285,20 +7402,18 @@ Bgy. San Roque, Antipolo City, Rizal
 
 <div class="prospectus-section">
 <div class="section-header">
-<i class="fas fa-book"></i>
-<h3>Curriculum Structure</h3>
 </div>
 
 <!-- First Year -->
 <div class="curriculum-year">
-<h4><i class="fas fa-calendar"></i> First Year</h4>
+<h4><i class="fas fa-calendar"></i> 1st Year</h4>
 
 <div class="semester-section">
-<h5>First Semester</h5>
+<h5>1st Trim</h5>
 <div class="subjects-table">
 <div class="subject-row header">
-<div class="subject-code">COURSE CODE</div>
-<div class="subject-title">Subject Title</div>
+<div class="subject-code">Course Code</div>
+<div class="subject-title">Course Title</div>
 <div class="subject-prerequisite">Pre-requisite</div>
 <div class="subject-units">Units</div>
 <div class="subject-grade">Grade</div>
@@ -7307,7 +7422,7 @@ Bgy. San Roque, Antipolo City, Rizal
 <div class="subject-row">
 <div class="subject-code">GE 101</div>
 <div class="subject-title">Communication Skills 1</div>
-<div class="subject-prerequisite">-</div>
+<div class="subject-prerequisite"></div>
 <div class="subject-units">3</div>
 <div class="subject-grade">1.25</div>
 <div class="subject-remarks">PASSED</div>
@@ -7315,7 +7430,7 @@ Bgy. San Roque, Antipolo City, Rizal
 <div class="subject-row">
 <div class="subject-code">GE 102</div>
 <div class="subject-title">Mathematics in the Modern World</div>
-<div class="subject-prerequisite">-</div>
+<div class="subject-prerequisite"></div>
 <div class="subject-units">3</div>
 <div class="subject-grade">1.50</div>
 <div class="subject-remarks">PASSED</div>
@@ -7323,7 +7438,7 @@ Bgy. San Roque, Antipolo City, Rizal
 <div class="subject-row">
 <div class="subject-code">GE 103</div>
 <div class="subject-title">Understanding the Self</div>
-<div class="subject-prerequisite">-</div>
+<div class="subject-prerequisite"></div>
 <div class="subject-units">3</div>
 <div class="subject-grade">1.00</div>
 <div class="subject-remarks">PASSED</div>
@@ -7331,15 +7446,15 @@ Bgy. San Roque, Antipolo City, Rizal
 <div class="subject-row">
 <div class="subject-code">IT 101</div>
 <div class="subject-title">Introduction to Computing</div>
-<div class="subject-prerequisite">-</div>
+<div class="subject-prerequisite"></div>
 <div class="subject-units">3</div>
 <div class="subject-grade">1.75</div>
 <div class="subject-remarks">PASSED</div>
 </div>
 <div class="subject-row">
-<div class="subject-code">IT 101L</div>
+<div class="subject-code">IT 101</div>
 <div class="subject-title">Introduction to Computing Lab</div>
-<div class="subject-prerequisite">IT 101</div>
+<div class="subject-prerequisite"></div>
 <div class="subject-units">1</div>
 <div class="subject-grade">2.00</div>
 <div class="subject-remarks">PASSED</div>
@@ -7347,7 +7462,7 @@ Bgy. San Roque, Antipolo City, Rizal
 <div class="subject-row">
 <div class="subject-code">CS 101</div>
 <div class="subject-title">Computer Programming 1</div>
-<div class="subject-prerequisite">IT 101</div>
+<div class="subject-prerequisite"></div>
 <div class="subject-units">3</div>
 <div class="subject-grade">1.25</div>
 <div class="subject-remarks">PASSED</div>
@@ -7356,11 +7471,11 @@ Bgy. San Roque, Antipolo City, Rizal
 </div>
 
 <div class="semester-section">
-<h5>Second Semester</h5>
+<h5>2nd Trim</h5>
 <div class="subjects-table">
 <div class="subject-row header">
-<div class="subject-code">COURSE CODE</div>
-<div class="subject-title">Subject Title</div>
+<div class="subject-code">Course Code</div>
+<div class="subject-title">Course Title</div>
 <div class="subject-prerequisite">Pre-requisite</div>
 <div class="subject-units">Units</div>
 <div class="subject-grade">Grade</div>
@@ -7369,7 +7484,7 @@ Bgy. San Roque, Antipolo City, Rizal
 <div class="subject-row">
 <div class="subject-code">GE 104</div>
 <div class="subject-title">Readings in Philippine History</div>
-<div class="subject-prerequisite">-</div>
+<div class="subject-prerequisite"></div>
 <div class="subject-units">3</div>
 <div class="subject-grade">1.50</div>
 <div class="subject-remarks">PASSED</div>
@@ -7377,7 +7492,7 @@ Bgy. San Roque, Antipolo City, Rizal
 <div class="subject-row">
 <div class="subject-code">GE 105</div>
 <div class="subject-title">Purposive Communication</div>
-<div class="subject-prerequisite">GE 101</div>
+<div class="subject-prerequisite"></div>
 <div class="subject-units">3</div>
 <div class="subject-grade">1.25</div>
 <div class="subject-remarks">PASSED</div>
@@ -7385,7 +7500,7 @@ Bgy. San Roque, Antipolo City, Rizal
 <div class="subject-row">
 <div class="subject-code">GE 106</div>
 <div class="subject-title">Art Appreciation</div>
-<div class="subject-prerequisite">-</div>
+<div class="subject-prerequisite"></div>
 <div class="subject-units">3</div>
 <div class="subject-grade">1.75</div>
 <div class="subject-remarks">PASSED</div>
@@ -7393,7 +7508,7 @@ Bgy. San Roque, Antipolo City, Rizal
 <div class="subject-row">
 <div class="subject-code">IT 102</div>
 <div class="subject-title">Fundamentals of Information Systems</div>
-<div class="subject-prerequisite">IT 101</div>
+<div class="subject-prerequisite"></div>
 <div class="subject-units">3</div>
 <div class="subject-grade">1.00</div>
 <div class="subject-remarks">PASSED</div>
@@ -7401,33 +7516,98 @@ Bgy. San Roque, Antipolo City, Rizal
 <div class="subject-row">
 <div class="subject-code">CS 102</div>
 <div class="subject-title">Computer Programming 2</div>
-<div class="subject-prerequisite">CS 101</div>
+<div class="subject-prerequisite"></div>
 <div class="subject-units">3</div>
 <div class="subject-grade">1.50</div>
 <div class="subject-remarks">PASSED</div>
 </div>
 <div class="subject-row">
-<div class="subject-code">CS 102L</div>
+<div class="subject-code">CS 102</div>
 <div class="subject-title">Computer Programming 2 Lab</div>
-<div class="subject-prerequisite">CS 102</div>
+<div class="subject-prerequisite"></div>
 <div class="subject-units">1</div>
 <div class="subject-grade">2.25</div>
 <div class="subject-remarks">PASSED</div>
 </div>
 </div>
 </div>
+
+
+<div class="semester-section">
+    <h5>3rd Trim</h5>
+    <div class="subjects-table">
+        <div class="subject-row header">
+            <div class="subject-code">Course Code</div>
+            <div class="subject-title">Course Title</div>
+            <div class="subject-prerequisite">Pre-requisite</div>
+            <div class="subject-units">Units</div>
+            <div class="subject-grade">Grade</div>
+            <div class="subject-remarks">Remarks
+            </div>
+        </div>
+        <div class="subject-row">
+            <div class="subject-code">GE 109</div>
+            <div class="subject-title">Rizal's Life and Works</div>
+            <div class="subject-prerequisite"></div>
+            <div class="subject-units">3</div>
+            <div class="subject-grade">1.00</div>
+            <div class="subject-remarks">PASSED</div>
+        </div>
+        <div class="subject-row">
+            <div class="subject-code">IT 203</div>
+            <div class="subject-title">Web Development</div>
+            <div class="subject-prerequisite"></div>
+            <div class="subject-units">3</div>
+            <div class="subject-grade">1.25</div>
+            <div class="subject-remarks">PASSED</div>
+        </div>
+        <div class="subject-row">
+            <div class="subject-code">IT 203</div>
+            <div class="subject-title">Web Development Lab</div>
+            <div class="subject-prerequisite"></div>
+            <div class="subject-units">1</div>
+            <div class="subject-grade">1.75</div>
+            <div class="subject-remarks">PASSED</div>
+        </div>
+        <div class="subject-row">
+            <div class="subject-code">IT 204</div>
+            <div class="subject-title">Object-Oriented Programming</div>
+            <div class="subject-prerequisite"></div>
+            <div class="subject-units">3</div>
+            <div class="subject-grade">1.50</div>
+            <div class="subject-remarks">PASSED</div>
+        </div>
+        <div class="subject-row">
+            <div class="subject-code">IT 204</div>
+            <div class="subject-title">Object-Oriented Programming Lab</div>
+            <div class="subject-prerequisite"></div>
+            <div class="subject-units">1</div>
+            <div class="subject-grade">2.00</div>
+            <div class="subject-remarks">PASSED</div>
+        </div>
+        <div class="subject-row">
+            <div class="subject-code">IT 205</div>
+            <div class="subject-title">Computer Networks</div>
+            <div class="subject-prerequisite"></div>
+            <div class="subject-units">3</div>
+            <div class="subject-grade">1.25</div>
+            <div class="subject-remarks">PASSED</div>
+        </div>
+    </div>
 </div>
+
+
 
 <!-- Second Year -->
 <div class="curriculum-year">
-<h4><i class="fas fa-calendar"></i> Second Year</h4>
+<h4><i class="fas fa-calendar"></i> 2nd Year</h4>
 
 <div class="semester-section">
-<h5>First Semester</h5>
+<h5>1st Trim</h5>
 <div class="subjects-table">
 <div class="subject-row header">
-<div class="subject-code">COURSE CODE</div>
-<div class="subject-title">Subject Title</div>
+<div class="subject-code">Course Code</div>
+<div class="subject-title">Course Title</div>
 <div class="subject-prerequisite">Pre-requisite</div>
 <div class="subject-units">Units</div>
 <div class="subject-grade">Grade</div>
@@ -7437,7 +7617,7 @@ Bgy. San Roque, Antipolo City, Rizal
 <div class="subject-row">
 <div class="subject-code">GE 107</div>
 <div class="subject-title">Ethics</div>
-<div class="subject-prerequisite">-</div>
+<div class="subject-prerequisite"></div>
 <div class="subject-units">3</div>
 <div class="subject-grade">1.25</div>
 <div class="subject-remarks">PASSED</div>
@@ -7445,7 +7625,7 @@ Bgy. San Roque, Antipolo City, Rizal
 <div class="subject-row">
 <div class="subject-code">GE 108</div>
 <div class="subject-title">Science, Technology and Society</div>
-<div class="subject-prerequisite">-</div>
+<div class="subject-prerequisite"></div>
 <div class="subject-units">3</div>
 <div class="subject-grade">1.50</div>
 <div class="subject-remarks">PASSED</div>
@@ -7459,9 +7639,9 @@ Bgy. San Roque, Antipolo City, Rizal
 <div class="subject-remarks">PASSED</div>
 </div>
 <div class="subject-row">
-<div class="subject-code">IT 201L</div>
+<div class="subject-code">IT 201</div>
 <div class="subject-title">Data Structures and Algorithms Lab</div>
-<div class="subject-prerequisite">IT 201</div>
+<div class="subject-prerequisite"></div>
 <div class="subject-units">1</div>
 <div class="subject-grade">2.00</div>
 <div class="subject-remarks">PASSED</div>
@@ -7469,15 +7649,15 @@ Bgy. San Roque, Antipolo City, Rizal
 <div class="subject-row">
 <div class="subject-code">IT 202</div>
 <div class="subject-title">Database Management Systems</div>
-<div class="subject-prerequisite">IT 102</div>
+<div class="subject-prerequisite"></div>
 <div class="subject-units">3</div>
 <div class="subject-grade">1.25</div>
 <div class="subject-remarks">PASSED</div>
 </div>
 <div class="subject-row">
-<div class="subject-code">IT 202L</div>
+<div class="subject-code">IT 202</div>
 <div class="subject-title">Database Management Systems Lab</div>
-<div class="subject-prerequisite">IT 202</div>
+<div class="subject-prerequisite"></div>
 <div class="subject-units">1</div>
 <div class="subject-grade">1.50</div>
 <div class="subject-remarks">PASSED</div>
@@ -7486,11 +7666,11 @@ Bgy. San Roque, Antipolo City, Rizal
 </div>
 
 <div class="semester-section">
-<h5>Second Semester</h5>
+<h5>2nd Trim</h5>
 <div class="subjects-table">
 <div class="subject-row header">
-<div class="subject-code">COURSE CODE</div>
-<div class="subject-title">Subject Title</div>
+<div class="subject-code">Course Code</div>
+<div class="subject-title">Course Title</div>
 <div class="subject-prerequisite">Pre-requisite</div>
 <div class="subject-units">Units</div>
 <div class="subject-grade">Grade</div>
@@ -7500,7 +7680,7 @@ Bgy. San Roque, Antipolo City, Rizal
 <div class="subject-row">
 <div class="subject-code">GE 109</div>
 <div class="subject-title">Rizal's Life and Works</div>
-<div class="subject-prerequisite">GE 104</div>
+<div class="subject-prerequisite"></div>
 <div class="subject-units">3</div>
 <div class="subject-grade">1.00</div>
 <div class="subject-remarks">PASSED</div>
@@ -7508,15 +7688,15 @@ Bgy. San Roque, Antipolo City, Rizal
 <div class="subject-row">
 <div class="subject-code">IT 203</div>
 <div class="subject-title">Web Development</div>
-<div class="subject-prerequisite">CS 102</div>
+<div class="subject-prerequisite"></div>
 <div class="subject-units">3</div>
 <div class="subject-grade">1.25</div>
 <div class="subject-remarks">PASSED</div>
 </div>
 <div class="subject-row">
-<div class="subject-code">IT 203L</div>
+<div class="subject-code">IT 203</div>
 <div class="subject-title">Web Development Lab</div>
-<div class="subject-prerequisite">IT 203</div>
+<div class="subject-prerequisite"></div>
 <div class="subject-units">1</div>
 <div class="subject-grade">1.75</div>
 <div class="subject-remarks">PASSED</div>
@@ -7524,15 +7704,15 @@ Bgy. San Roque, Antipolo City, Rizal
 <div class="subject-row">
 <div class="subject-code">IT 204</div>
 <div class="subject-title">Object-Oriented Programming</div>
-<div class="subject-prerequisite">CS 102</div>
+<div class="subject-prerequisite"></div>
 <div class="subject-units">3</div>
 <div class="subject-grade">1.50</div>
 <div class="subject-remarks">PASSED</div>
 </div>
 <div class="subject-row">
-<div class="subject-code">IT 204L</div>
+<div class="subject-code">IT 204</div>
 <div class="subject-title">Object-Oriented Programming Lab</div>
-<div class="subject-prerequisite">IT 204</div>
+<div class="subject-prerequisite"></div>
 <div class="subject-units">1</div>
 <div class="subject-grade">2.00</div>
 <div class="subject-remarks">PASSED</div>
@@ -7540,25 +7720,90 @@ Bgy. San Roque, Antipolo City, Rizal
 <div class="subject-row">
 <div class="subject-code">IT 205</div>
 <div class="subject-title">Computer Networks</div>
-<div class="subject-prerequisite">IT 101</div>
+<div class="subject-prerequisite"></div>
 <div class="subject-units">3</div>
 <div class="subject-grade">1.25</div>
 <div class="subject-remarks">PASSED</div>
 </div>
 </div>
 </div>
+
+<div class="semester-section">
+    <h5>3rd Trim</h5>
+    <div class="subjects-table">
+        <div class="subject-row header">
+            <div class="subject-code">Course Code</div>
+            <div class="subject-title">Course Title</div>
+            <div class="subject-prerequisite">Pre-requisite</div>
+            <div class="subject-units">Units</div>
+            <div class="subject-grade">Grade</div>
+            <div class="subject-remarks">Remarks
+            </div>
+        </div>
+        <div class="subject-row">
+            <div class="subject-code"></div>
+            <div class="subject-title">Rizal's Life and Works</div>
+            <div class="subject-prerequisite">GE 104</div>
+            <div class="subject-units">3</div>
+            <div class="subject-grade">1.00</div>
+            <div class="subject-remarks">PASSED</div>
+        </div>
+        <div class="subject-row">
+            <div class="subject-code">IT 203</div>
+            <div class="subject-title">Web Development</div>
+            <div class="subject-prerequisite">CS 102</div>
+            <div class="subject-units">3</div>
+            <div class="subject-grade">1.25</div>
+            <div class="subject-remarks">PASSED</div>
+        </div>
+        <div class="subject-row">
+            <div class="subject-code">IT 203</div>
+            <div class="subject-title">Web Development Lab</div>
+            <div class="subject-prerequisite"></div>
+            <div class="subject-units">1</div>
+            <div class="subject-grade">1.75</div>
+            <div class="subject-remarks">PASSED</div>
+        </div>
+        <div class="subject-row">
+            <div class="subject-code">IT 204</div>
+            <div class="subject-title">Object-Oriented Programming</div>
+            <div class="subject-prerequisite"></div>
+            <div class="subject-units">3</div>
+            <div class="subject-grade">1.50</div>
+            <div class="subject-remarks">PASSED</div>
+        </div>
+        <div class="subject-row">
+            <div class="subject-code">IT 204</div>
+            <div class="subject-title">Object-Oriented Programming Lab</div>
+            <div class="subject-prerequisite"></div>
+            <div class="subject-units">1</div>
+            <div class="subject-grade">2.00</div>
+            <div class="subject-remarks">PASSED</div>
+        </div>
+        <div class="subject-row">
+            <div class="subject-code">IT 205</div>
+            <div class="subject-title">Computer Networks</div>
+            <div class="subject-prerequisite"></div>
+            <div class="subject-units">3</div>
+            <div class="subject-grade">1.25</div>
+            <div class="subject-remarks">PASSED</div>
+        </div>
+    </div>
+</div>
+</div>
+
 </div>
 
 <!-- Third Year -->
 <div class="curriculum-year">
-<h4><i class="fas fa-calendar"></i> Third Year</h4>
+<h4><i class="fas fa-calendar"></i> 3rd Year</h4>
 
 <div class="semester-section">
-<h5>First Semester</h5>
+<h5>1st Trim</h5>
 <div class="subjects-table">
 <div class="subject-row header">
-<div class="subject-code">COURSE CODE</div>
-<div class="subject-title">Subject Title</div>
+<div class="subject-code">Course Code</div>
+<div class="subject-title">Course Title</div>
 <div class="subject-prerequisite">Pre-requisite</div>
 <div class="subject-units">Units</div>
 <div class="subject-grade">Grade</div>
@@ -7568,7 +7813,7 @@ Bgy. San Roque, Antipolo City, Rizal
 <div class="subject-row">
 <div class="subject-code">IT 301</div>
 <div class="subject-title">Software Engineering</div>
-<div class="subject-prerequisite">IT 204</div>
+<div class="subject-prerequisite"></div>
 <div class="subject-units">3</div>
 <div class="subject-grade">1.50</div>
 <div class="subject-remarks">PASSED</div>
@@ -7576,7 +7821,7 @@ Bgy. San Roque, Antipolo City, Rizal
 <div class="subject-row">
 <div class="subject-code">IT 302</div>
 <div class="subject-title">System Analysis and Design</div>
-<div class="subject-prerequisite">IT 202</div>
+<div class="subject-prerequisite"></div>
 <div class="subject-units">3</div>
 <div class="subject-grade">1.25</div>
 <div class="subject-remarks">PASSED</div>
@@ -7584,15 +7829,15 @@ Bgy. San Roque, Antipolo City, Rizal
 <div class="subject-row">
 <div class="subject-code">IT 303</div>
 <div class="subject-title">Mobile Application Development</div>
-<div class="subject-prerequisite">IT 204</div>
+<div class="subject-prerequisite"></div>
 <div class="subject-units">3</div>
 <div class="subject-grade">1.75</div>
 <div class="subject-remarks">PASSED</div>
 </div>
 <div class="subject-row">
-<div class="subject-code">IT 303L</div>
+<div class="subject-code">IT 303</div>
 <div class="subject-title">Mobile Application Development Lab</div>
-<div class="subject-prerequisite">IT 303</div>
+<div class="subject-prerequisite"></div>
 <div class="subject-units">1</div>
 <div class="subject-grade">2.00</div>
 <div class="subject-remarks">PASSED</div>
@@ -7600,7 +7845,7 @@ Bgy. San Roque, Antipolo City, Rizal
 <div class="subject-row">
 <div class="subject-code">IT 304</div>
 <div class="subject-title">Information Security</div>
-<div class="subject-prerequisite">IT 205</div>
+<div class="subject-prerequisite"></div>
 <div class="subject-units">3</div>
 <div class="subject-grade">1.25</div>
 <div class="subject-remarks">PASSED</div>
@@ -7608,7 +7853,7 @@ Bgy. San Roque, Antipolo City, Rizal
 <div class="subject-row">
 <div class="subject-code">IT 305</div>
 <div class="subject-title">IT Project Management</div>
-<div class="subject-prerequisite">IT 302</div>
+<div class="subject-prerequisite"></div>
 <div class="subject-units">3</div>
 <div class="subject-grade">1.50</div>
 <div class="subject-remarks">PASSED</div>
@@ -7617,11 +7862,11 @@ Bgy. San Roque, Antipolo City, Rizal
 </div>
 
 <div class="semester-section">
-<h5>Second Semester</h5>
+<h5>2nd Trim</h5>
 <div class="subjects-table">
 <div class="subject-row header">
-<div class="subject-code">COURSE CODE</div>
-<div class="subject-title">Subject Title</div>
+<div class="subject-code">Course Code</div>
+<div class="subject-title">Course Title</div>
 <div class="subject-prerequisite">Pre-requisite</div>
 <div class="subject-units">Units</div>
 <div class="subject-grade">Grade</div>
@@ -7631,7 +7876,7 @@ Bgy. San Roque, Antipolo City, Rizal
 <div class="subject-row">
 <div class="subject-code">IT 306</div>
 <div class="subject-title">Cloud Computing</div>
-<div class="subject-prerequisite">IT 205</div>
+<div class="subject-prerequisite"></div>
 <div class="subject-units">3</div>
 <div class="subject-grade">1.25</div>
 <div class="subject-remarks">PASSED</div>
@@ -7639,7 +7884,7 @@ Bgy. San Roque, Antipolo City, Rizal
 <div class="subject-row">
 <div class="subject-code">IT 307</div>
 <div class="subject-title">Data Analytics</div>
-<div class="subject-prerequisite">IT 202</div>
+<div class="subject-prerequisite"></div>
 <div class="subject-units">3</div>
 <div class="subject-grade">1.50</div>
 <div class="subject-remarks">PASSED</div>
@@ -7647,7 +7892,7 @@ Bgy. San Roque, Antipolo City, Rizal
 <div class="subject-row">
 <div class="subject-code">IT 308</div>
 <div class="subject-title">Enterprise Systems</div>
-<div class="subject-prerequisite">IT 302</div>
+<div class="subject-prerequisite"></div>
 <div class="subject-units">3</div>
 <div class="subject-grade">1.75</div>
 <div class="subject-remarks">PASSED</div>
@@ -7655,7 +7900,7 @@ Bgy. San Roque, Antipolo City, Rizal
 <div class="subject-row">
 <div class="subject-code">IT 309</div>
 <div class="subject-title">Capstone Project 1</div>
-<div class="subject-prerequisite">IT 305</div>
+<div class="subject-prerequisite"></div>
 <div class="subject-units">3</div>
 <div class="subject-grade">1.25</div>
 <div class="subject-remarks">PASSED</div>
@@ -7663,25 +7908,80 @@ Bgy. San Roque, Antipolo City, Rizal
 <div class="subject-row">
 <div class="subject-code">IT 310</div>
 <div class="subject-title">Internship/Practicum 1</div>
-<div class="subject-prerequisite">IT 305</div>
+<div class="subject-prerequisite"></div>
 <div class="subject-units">3</div>
 <div class="subject-grade">1.50</div>
 <div class="subject-remarks">PASSED</div>
 </div>
 </div>
 </div>
+<div class="semester-section">
+<h5>3rd Trim</h5>
+<div class="subjects-table">
+<div class="subject-row header">
+<div class="subject-code">Course Code</div>
+<div class="subject-title">Course Title</div>
+<div class="subject-prerequisite">Pre-requisite</div>
+<div class="subject-units">Units</div>
+<div class="subject-grade">Grade</div>
+<div class="subject-remarks">Remarks
+</div>
+</div>
+<div class="subject-row">
+<div class="subject-code">IT 306</div>
+<div class="subject-title">Cloud Computing</div>
+<div class="subject-prerequisite"></div>
+<div class="subject-units">3</div>
+<div class="subject-grade">1.25</div>
+<div class="subject-remarks">PASSED</div>
+</div>
+<div class="subject-row">
+<div class="subject-code">IT 307</div>
+<div class="subject-title">Data Analytics</div>
+<div class="subject-prerequisite"></div>
+<div class="subject-units">3</div>
+<div class="subject-grade">1.50</div>
+<div class="subject-remarks">PASSED</div>
+</div>
+<div class="subject-row">
+<div class="subject-code">IT 308</div>
+<div class="subject-title">Enterprise Systems</div>
+<div class="subject-prerequisite"></div>
+<div class="subject-units">3</div>
+<div class="subject-grade">1.75</div>
+<div class="subject-remarks">PASSED</div>
+</div>
+<div class="subject-row">
+<div class="subject-code">IT 309</div>
+<div class="subject-title">Capstone Project 1</div>
+<div class="subject-prerequisite"></div>
+<div class="subject-units">3</div>
+<div class="subject-grade">1.25</div>
+<div class="subject-remarks">PASSED</div>
+</div>
+<div class="subject-row">
+<div class="subject-code">IT 310</div>
+<div class="subject-title">Internship/Practicum 1</div>
+<div class="subject-prerequisite"></div>
+<div class="subject-units">3</div>
+<div class="subject-grade">1.50</div>
+<div class="subject-remarks">PASSED</div>
+</div>
+</div>
+</div>
+
 </div>
 
 <!-- Fourth Year -->
 <div class="curriculum-year">
-<h4><i class="fas fa-calendar"></i> Fourth Year</h4>
+<h4><i class="fas fa-calendar"></i> 4th Year</h4>
 
 <div class="semester-section">
-<h5>First Semester</h5>
+<h5>1st trim</h5>
 <div class="subjects-table">
 <div class="subject-row header">
-<div class="subject-code">COURSE CODE</div>
-<div class="subject-title">Subject Title</div>
+<div class="subject-code">Course Code</div>
+<div class="subject-title">Course Title</div>
 <div class="subject-prerequisite">Pre-requisite</div>
 <div class="subject-units">Units</div>
 <div class="subject-grade">Grade</div>
@@ -7691,7 +7991,7 @@ Bgy. San Roque, Antipolo City, Rizal
 <div class="subject-row">
 <div class="subject-code">IT 401</div>
 <div class="subject-title">Advanced Database Systems</div>
-<div class="subject-prerequisite">IT 202</div>
+<div class="subject-prerequisite"></div>
 <div class="subject-units">3</div>
 <div class="subject-grade">1.25</div>
 <div class="subject-remarks">PASSED</div>
@@ -7699,7 +7999,7 @@ Bgy. San Roque, Antipolo City, Rizal
 <div class="subject-row">
 <div class="subject-code">IT 402</div>
 <div class="subject-title">Machine Learning Fundamentals</div>
-<div class="subject-prerequisite">IT 307</div>
+<div class="subject-prerequisite"></div>
 <div class="subject-units">3</div>
 <div class="subject-grade">1.50</div>
 <div class="subject-remarks">PASSED</div>
@@ -7707,7 +8007,7 @@ Bgy. San Roque, Antipolo City, Rizal
 <div class="subject-row">
 <div class="subject-code">IT 403</div>
 <div class="subject-title">Capstone Project 2</div>
-<div class="subject-prerequisite">IT 309</div>
+<div class="subject-prerequisite"></div>
 <div class="subject-units">3</div>
 <div class="subject-grade">1.75</div>
 <div class="subject-remarks">PASSED</div>
@@ -7715,7 +8015,7 @@ Bgy. San Roque, Antipolo City, Rizal
 <div class="subject-row">
 <div class="subject-code">IT 404</div>
 <div class="subject-title">Internship/Practicum 2</div>
-<div class="subject-prerequisite">IT 310</div>
+<div class="subject-prerequisite"></div>
 <div class="subject-units">3</div>
 <div class="subject-grade">1.25</div>
 <div class="subject-remarks">PASSED</div>
@@ -7723,7 +8023,7 @@ Bgy. San Roque, Antipolo City, Rizal
 <div class="subject-row">
 <div class="subject-code">IT 405</div>
 <div class="subject-title">IT Ethics and Professional Practice</div>
-<div class="subject-prerequisite">-</div>
+<div class="subject-prerequisite"></div>
 <div class="subject-units">3</div>
 <div class="subject-grade">1.50</div>
 <div class="subject-remarks">PASSED</div>
@@ -7732,11 +8032,11 @@ Bgy. San Roque, Antipolo City, Rizal
 </div>
 
 <div class="semester-section">
-<h5>Second Semester</h5>
+<h5>2nd Trim</h5>
 <div class="subjects-table">
 <div class="subject-row header">
-<div class="subject-code">COURSE CODE</div>
-<div class="subject-title">Subject Title</div>
+<div class="subject-code">Course Code</div>
+<div class="subject-title">Course Title</div>
 <div class="subject-prerequisite">Pre-requisite</div>
 <div class="subject-units">Units</div>
 <div class="subject-grade">Grade</div>
@@ -7746,7 +8046,7 @@ Bgy. San Roque, Antipolo City, Rizal
 <div class="subject-row">
 <div class="subject-code">IT 406</div>
 <div class="subject-title">Emerging Technologies</div>
-<div class="subject-prerequisite">-</div>
+<div class="subject-prerequisite"></div>
 <div class="subject-units">3</div>
 <div class="subject-grade">1.25</div>
 <div class="subject-remarks">PASSED</div>
@@ -7754,7 +8054,7 @@ Bgy. San Roque, Antipolo City, Rizal
 <div class="subject-row">
 <div class="subject-code">IT 407</div>
 <div class="subject-title">Research Methods in IT</div>
-<div class="subject-prerequisite">-</div>
+<div class="subject-prerequisite"></div>
 <div class="subject-units">3</div>
 <div class="subject-grade">1.50</div>
 <div class="subject-remarks">PASSED</div>
@@ -7762,7 +8062,7 @@ Bgy. San Roque, Antipolo City, Rizal
 <div class="subject-row">
 <div class="subject-code">IT 408</div>
 <div class="subject-title">Thesis Writing</div>
-<div class="subject-prerequisite">IT 407</div>
+<div class="subject-prerequisite"></div>
 <div class="subject-units">3</div>
 <div class="subject-grade">1.75</div>
 <div class="subject-remarks">PASSED</div>
@@ -7770,15 +8070,82 @@ Bgy. San Roque, Antipolo City, Rizal
 <div class="subject-row">
 <div class="subject-code">IT 409</div>
 <div class="subject-title">Comprehensive Examination</div>
-<div class="subject-prerequisite">-</div>
+<div class="subject-prerequisite"></div>
 <div class="subject-units">3</div>
 <div class="subject-grade">1.25</div>
 <div class="subject-remarks">PASSED</div>
 </div>
 </div>
 </div>
+
+
+<div class="semester-section">
+    <h5>3rd Trim</h5>
+    <div class="subjects-table">
+        <div class="subject-row header">
+            <div class="subject-code">Course Code</div>
+            <div class="subject-title">Course Title</div>
+            <div class="subject-prerequisite">Pre-requisite</div>
+            <div class="subject-units">Units</div>
+            <div class="subject-grade">Grade</div>
+            <div class="subject-remarks">Remarks
+            </div>
+        </div>
+        <div class="subject-row">
+            <div class="subject-code">GE 109</div>
+            <div class="subject-title">Rizal's Life and Works</div>
+            <div class="subject-prerequisite">4</div>
+            <div class="subject-units">3</div>
+            <div class="subject-grade">1.00</div>
+            <div class="subject-remarks">PASSED</div>
+        </div>
+        <div class="subject-row">
+            <div class="subject-code">IT 203</div>
+            <div class="subject-title">Web Development</div>
+            <div class="subject-prerequisite">CS 102</div>
+            <div class="subject-units">3</div>
+            <div class="subject-grade">1.25</div>
+            <div class="subject-remarks">PASSED</div>
+        </div>
+        <div class="subject-row">
+            <div class="subject-code">IT 203</div>
+            <div class="subject-title">Web Development Lab</div>
+            <div class="subject-prerequisite">IT 203</div>
+            <div class="subject-units">1</div>
+            <div class="subject-grade">1.75</div>
+            <div class="subject-remarks">PASSED</div>
+        </div>
+        <div class="subject-row">
+            <div class="subject-code">IT 204</div>
+            <div class="subject-title">Object-Oriented Programming</div>
+            <div class="subject-prerequisite">CS 102</div>
+            <div class="subject-units">3</div>
+            <div class="subject-grade">1.50</div>
+            <div class="subject-remarks">PASSED</div>
+        </div>
+        <div class="subject-row">
+            <div class="subject-code">IT 204</div>
+            <div class="subject-title">Object-Oriented Programming Lab</div>
+            <div class="subject-prerequisite">IT 204</div>
+            <div class="subject-units">1</div>
+            <div class="subject-grade">2.00</div>
+            <div class="subject-remarks">PASSED</div>
+        </div>
+        <div class="subject-row">
+            <div class="subject-code">IT 205</div>
+            <div class="subject-title">Computer Networks</div>
+            <div class="subject-prerequisite">IT 101</div>
+            <div class="subject-units">3</div>
+            <div class="subject-grade">1.25</div>
+            <div class="subject-remarks">PASSED</div>
+        </div>
+    </div>
 </div>
 </div>
+
+</div>
+
+
 </div>
 </div>
 </div>
@@ -7859,7 +8226,7 @@ Digital credentials are secure, verifiable electronic documents that certify a s
 </div>
 <div class="info-row">
 <span class="info-label">MAJOR</span>
-<span class="info-value">INFORMATION SYSTEM</span>
+<span class="info-value">Information System</span>
 </div>
 <div class="info-row">
 <span class="info-label">CURRICULUM YEAR LEVEL</span>
@@ -7871,7 +8238,7 @@ Digital credentials are secure, verifiable electronic documents that certify a s
 </div>
 <div class="info-row">
 <span class="info-label">ACADEMIC TERM</span>
-<span class="info-value">1st Semester</span>
+<span class="info-value">1st Trim</span>
 </div>
 <div class="info-row">
 <span class="info-label">ADDRESS</span>
@@ -8106,13 +8473,11 @@ Digital credentials are secure, verifiable electronic documents that certify a s
 </div>
 <div class="enrollment-field">
 <label><i class="fas fa-clock"></i> Academic Term</label>
-<span class="field-value">2nd Trimester</span>
+<span class="field-value">2nd Trim</span>
 </div>
 <div class="enrollment-field">
 <label><i class="fas fa-user-graduate"></i> Scholastic Status</label>
 <span class="field-value status-regular">Regular</span>
-<span class="field-secondary">Irregular</span>
-<span class="field-secondary">Etc...</span>
 </div>
 <div class="enrollment-field">
 <label><i class="fas fa-door-open"></i> Entry Classification</label>
@@ -8150,6 +8515,13 @@ Digital credentials are secure, verifiable electronic documents that certify a s
 <div class="enrollment-field enrollment-field-empty"></div>
 <div class="enrollment-field enrollment-field-empty"></div>
 
+<!-- Total Units Parallel Box -->
+<div class="total-units-box">
+<div class="units-value" id="total-units">0</div>
+<hr class="units-divider">
+<h4 class="units-title">Total Units Enrolled</h4>
+</div>
+
 <!-- Enrollment Date/Time Box - 4th column position -->
 <div class="enrollment-datetime-box-grid">
 <div class="datetime-content">
@@ -8170,61 +8542,17 @@ Digital credentials are secure, verifiable electronic documents that certify a s
 <hr class="enrollment-divider enrollment-divider-double">
 <hr class="enrollment-divider enrollment-divider-double">
 
-<!-- Course Section -->
-<div class="course-section">
-<h3 class="course-section-header">Course</h3>
-
-<!-- Single Row: All 8 fields -->
-<div class="course-info-row">
-<div class="course-field">
-<label class="field-label"><i class="fas fa-barcode"></i> Code</label>
-<span class="field-value">SDF04</span>
-</div>
-<div class="course-field">
-<label class="field-label"><i class="fas fa-book"></i> Title</label>
-<span class="field-value">Database Management System</span>
-</div>
-<div class="course-field">
-<label class="field-label"><i class="fas fa-tag"></i> Type</label>
-<span class="field-value">Major</span>
-</div>
-<div class="course-field">
-<label class="field-label"><i class="fas fa-calculator"></i> Units</label>
-<span class="field-value">3</span>
-</div>
-<div class="course-field">
-<label class="field-label"><i class="fas fa-clock"></i> Time</label>
-<span class="field-value">7:30 AM - 10:30 AM</span>
-</div>
-<div class="course-field">
-<label class="field-label"><i class="fas fa-calendar-day"></i> Day</label>
-<span class="field-value">M/TH</span>
-</div>
-<div class="course-field">
-<label class="field-label"><i class="fas fa-graduation-cap"></i> Program</label>
-<span class="field-value">BSIT</span>
-</div>
-<div class="course-field">
-<label class="field-label"><i class="fas fa-users"></i> Available Slot(s)</label>
-<span class="field-value">25/40</span>
-</div>
-</div>
-</div>
 
 <!-- Selection Sections Container (Side by Side) -->
 <div class="selection-sections-wrapper">
 <!-- Schedule Preference Section -->
 <div class="schedule-preference-section">
-<h3 class="schedule-preference-title">
-<i class="fas fa-clock"></i>
-Schedule Preference
-</h3>
 
 <div class="schedule-preference-grid">
 <!-- Time Preferences Column -->
 <div class="schedule-pref-column">
 <h5 class="schedule-pref-column-title">Time Preference</h5>
-<div class="schedule-pref-options-container">
+<div class="schedule-pref-options-container horizontal">
 <div class="schedule-pref-option" data-time="morning">
 <div class="schedule-pref-radio"></div>
 <div class="schedule-pref-text">Morning</div>
@@ -8247,7 +8575,7 @@ Schedule Preference
 <!-- Day Schedule Column -->
 <div class="schedule-pref-column">
 <h5 class="schedule-pref-column-title">Day Schedule</h5>
-<div class="schedule-pref-options-container">
+<div class="schedule-pref-options-container horizontal">
 <div class="schedule-pref-option" data-day="mth">
 <div class="schedule-pref-radio"></div>
 <div class="schedule-pref-text">M/TH</div>
@@ -8264,66 +8592,105 @@ Schedule Preference
 </div>
 </div>
 </div>
-
-<!-- 2nd Trim Subject Selection -->
-<div class="trim-selection-section">
-<h4 class="trim-selection-header">
-<i class="fas fa-calendar-alt"></i>
-Select Subjects for 2nd Trim
-</h4>
-
-<div class="selection-grid">
-<!-- Subject Options -->
-<div class="selection-column">
-<h5 class="selection-column-title">Subject</h5>
-<div class="subject-options-container">
-<div class="subject-option" data-subject="sdf04">
-<div class="subject-radio"></div>
-<div class="subject-info">
-<span class="subject-code">SDF04</span>
-<span class="subject-title">Database Management System</span>
-</div>
-</div>
-<div class="subject-option" data-subject="sp1">
-<div class="subject-radio"></div>
-<div class="subject-info">
-<span class="subject-code">SP1</span>
-<span class="subject-title">Social and Professional Issues of IT</span>
-</div>
-</div>
-</div>
 </div>
 
-<!-- Year Level Options -->
-<div class="selection-column">
-<h5 class="selection-column-title">Year Level</h5>
-<div class="year-level-options-container">
-<div class="year-level-option" data-year="1st">
-<div class="subject-radio"></div>
-<div class="year-level-text">1st Year</div>
-</div>
-<div class="year-level-option" data-year="2nd">
-<div class="subject-radio"></div>
-<div class="year-level-text">2nd Year</div>
-</div>
-<div class="year-level-option" data-year="3rd">
-<div class="subject-radio"></div>
-<div class="year-level-text">3rd Year</div>
-</div>
-<div class="year-level-option" data-year="4th">
-<div class="subject-radio"></div>
-<div class="year-level-text">4th Year</div>
-</div>
-</div>
-</div>
-</div>
 
-<!-- Confirm Button -->
-<div class="trim-confirm-container">
-<button class="trim-confirm-btn" id="confirm-2nd-trim-btn">
-<i class="fas fa-check-circle"></i>
-Confirm Selection
-</button>
+<!-- Course Section -->
+<div class="course-section">
+<h3 class="course-section-header">Course</h3>
+
+<!-- Single Row: All 8 fields -->
+<div class="course-info-row">
+
+<div class="course-field">
+<label class="field-label"><i class="fas fa-book"></i> Title</label>
+<span class="field-value"><input type="checkbox" style="transform: scale(1.2); accent-color: #667eea;"> &nbsp;SDF04</span>
+<span class="field-value"><input type="checkbox" style="transform: scale(1.2); accent-color: #667eea;"> &nbsp;SDF04</span>
+<hr>
+<span class="field-value"><input type="checkbox" style="transform: scale(1.2); accent-color: #667eea;"> &nbsp;WS1</span>
+
+<span class="field-value"><input type="checkbox" style="transform: scale(1.2); accent-color: #667eea;"> &nbsp;WS1</span>
+<hr>
+<span class="field-value"><input type="checkbox" style="transform: scale(1.2); accent-color: #667eea;"> &nbsp;PE1</span>
+
+<span class="field-value"><input type="checkbox" style="transform: scale(1.2); accent-color: #667eea;"> &nbsp;PE1</span>
+</div>
+<div class="course-field">
+<label class="field-label"><i class="fas fa-book"></i> Title</label>
+<span class="field-value">Database Management</span>
+<span class="field-value">Database Management</span>
+<hr>
+<span class="field-value">Software Management</span>
+<span class="field-value">Software Management</span>
+<hr>
+<span class="field-value">Physical Education1</span>
+<span class="field-value">Physical Education1</span>
+</div>
+<div class="course-field">
+<label class="field-label"><i class="fas fa-tag"></i> Type</label>
+<span class="field-value">Major</span>
+<span class="field-value">Major</span>
+<hr>
+<span class="field-value">Major</span>
+<span class="field-value">Major</span>
+<hr>
+<span class="field-value">Core</span>
+<span class="field-value">Core</span>
+</div>
+<div class="course-field">
+<label class="field-label"><i class="fas fa-calculator"></i> Units</label>
+<span class="field-value">3</span>
+<span class="field-value">3</span>
+<hr>
+<span class="field-value">3</span>
+<span class="field-value">3</span>
+<hr>
+<span class="field-value">1</span>
+<span class="field-value">1</span>
+</div>
+<div class="course-field">
+<label class="field-label"><i class="fas fa-clock"></i> Time</label>
+<span class="field-value">7:30 AM - 10:30 AM</span>
+<span class="field-value">10:30 AM - 12:00 PM</span>
+<hr>
+<span class="field-value">7:30 AM - 10:30 AM</span>
+<span class="field-value">10:30 AM - 12:00 PM</span>
+<hr>
+<span class="field-value">7:30 AM - 10:30 AM</span>
+<span class="field-value">10:30 AM - 12:00 PM</span>
+</div>
+<div class="course-field">
+<label class="field-label"><i class="fas fa-calendar-day"></i> Day</label>
+<span class="field-value">M/TH</span>
+<span class="field-value">M/TH</span>
+<hr>
+<span class="field-value">W/S</span>
+<span class="field-value">W/S</span>
+<hr>
+<span class="field-value">T/F</span>
+<span class="field-value">T/F</span>
+</div>
+<div class="course-field">
+<label class="field-label"><i class="fas fa-graduation-cap"></i> Program</label>
+<span class="field-value">BSIT</span>
+<span class="field-value">COMSCIE</span>
+<hr>
+<span class="field-value">BSIT</span>
+<span class="field-value">ENGINEERING</span>
+<hr>
+<span class="field-value">BSIT</span>
+<span class="field-value">BSIT</span>
+</div>
+<div class="course-field">
+<label class="field-label"><i class="fas fa-users"></i> Available Slot(s)</label>
+<span class="field-value">39/40</span>
+<span class="field-value">20/35</span>
+<hr>
+<span class="field-value">30/40</span>
+<span class="field-value">25/35</span>
+<hr>
+<span class="field-value">39/40</span>
+<span class="field-value">29/35</span>
 </div>
 </div>
 </div>
@@ -8344,7 +8711,14 @@ Confirm Selection
 <div class="progress-fill" id="requirements-progress" style="width: 0%"></div>
 </div>
 </div>
-<p id="requirements-progress-text">0 of 6 documents submitted</p>
+<div class="clearance-status">
+<span>Document Progress:</span>
+<div class="clearance-progress">
+<div class="clearance-progress-fill" style="width: 0%"></div>
+</div>
+<span>0% Complete</span>
+</div>
+<p id="requirements-progress-text">0 of 12 documents submitted</p>
 </div>
 
 <div class="card">
@@ -8528,14 +8902,14 @@ Confirm Selection
 <h1 class="page-title">Academic Load</h1>
 <div class="card">
 <div class="card-header">
-<h2 class="card-title">Registered Subjects / Courses (2025-2026, 4th Year, First Trimester)</h2>
+<h2 class="card-title">Registered Courses (2025-2026, 1st Trim, 4th Year)</h2>
 </div>
 <div class="table-container">
 <table>
 <thead>
 <tr> 
-<th>SUBJECT / COURSE CODE</th>
-<th>SUBJECT / COURSE TITLE</th>
+<th>COURSE CODE</th>
+<th>COURSE TITLE</th>
 <th>LEC</th.>
 <th>LAB</th>
 <th>UNITS</th>
@@ -8552,7 +8926,7 @@ Confirm Selection
 <td>3</td>
 <td>1</td>
 <td>4</td>
-<td></td>
+<td>OLIT1</td>
 <td>Monday/<Br>Thursday</td>
 <td>6:00am-7:30am</td>
 <td>Joriz, Chiong</td>
@@ -8563,10 +8937,10 @@ Confirm Selection
 <td>3</td>
 <td>0</td>
 <td>3</td>
-<td></td>
+<td>4TH YEAR STANDING</td>
 <td>Thursday/<br>Friday</td>
 <td>7:30am-9:30am</td>
-<td>Vilog, Jericho Manlangit</td>
+<td>Joriz, Chiong</td>
 </tr>
 <tr>
 <td>OLITPRAC 2</td>
@@ -8574,7 +8948,7 @@ Confirm Selection
 <td>3</td>
 <td>0</td>
 <td>3</td>
-<td></td>
+<td>4TH YEAR STANDING</td>
 <td>Wednesday/<br>Satuday</td>
 <td>9:30am-11:30am</td>
 <td>Vilog, Jericho Manlangit</td>
@@ -8585,7 +8959,7 @@ Confirm Selection
 <td>3</td>
 <td>1</td>
 <td>4</td>
-<td></td>
+<td>OLSIA01</td>
 <td>Monday/<br>Thursday</td>
 <td>6:00am-7:30am</td>
 <td>Joriz, Chiong</td>
@@ -8822,8 +9196,8 @@ Confirm Selection
 <tr>
 <th>Curriculum<br> Year</th>
 <th>Academic Term</th>
-<th>Course/<br>Subject Code</th>
-<th>Course/<br>Subject Title</th>
+<th>Course Code</th>
+<th>Course Title</th>
 <th>Professor</th>
 <th>Prelim</th>
 <th>Midterm</th>
@@ -8835,7 +9209,7 @@ Confirm Selection
 <tbody>
 <tr>
 <td>3rd Year</td>
-<td>3rd Trime</td>
+<td>3rd Trim</td>
 <td>OLS01</td>
 <td>Applications Development and <br>Emerging Technologies</td>
 <td>Chiong, Joriz</td>
@@ -8847,7 +9221,7 @@ Confirm Selection
 </tr>
 <tr>
 <td>3rd Year</td>
-<td>3rd Trime</td>
+<td>3rd Trim</td>
 <td>OLIPT2</td>
 <td>Information Assurance and Security 2</td>
 <td>Chiong, Joriz</td>
@@ -8859,7 +9233,7 @@ Confirm Selection
 </tr>
 <tr>
 <td>3rd Year</td>
-<td>3rd Trime</td>
+<td>3rd Trim</td>
 <td>CPPROG1</td>
 <td>Event Driven Programming</td>
 <td>Chiong, Joriz</td>
@@ -8871,7 +9245,7 @@ Confirm Selection
 </tr>
 <tr>
 <td>3rd Year</td>
-<td>3rd Trime</td>
+<td>3rd Trim</td>
 <td>OLCISCO</td>
 <td>Cisco Networking 2</td>
 <td>Chiong, Joriz</td>
@@ -9034,19 +9408,53 @@ Confirm Selection
 <div class="account-summary">
   <div class="account-card">
 <h3>Tuition</h3>
-<div class="amount" style="color: #667eea;">₱ 5,000.00</div>
-<br><br><p>2nd Trime</p>
+<div class="amount" style="color: red;">₱ 5,000.00</div>
+<br><br><p>2nd Trim</p>
 </div>
 
 <div class="account-card">
 <h3>Lab</h3>
-<div class="amount" style="color: #667eea; font-size: 1em;"><p>Lab 1: ₱1,000.00<br>Lab 2: ₱1,000.00<br>Lab 3: ₱1,000.00<br>Lab 4: ₱1,000.00</p><hr>
+<div style="color: #667eea; font-size: 1em; width: 250px;">
+    <div style="display: flex; justify-content: space-between; margin: 4px 0;">
+        <span>Lab 1:</span>
+        <span style="color: red">₱1,000.00</span>
+    </div>
+    <div style="display: flex; justify-content: space-between; margin: 4px 0;">
+        <span>Lab 2:</span>
+        <span style="color: red">₱1,000.00</span>
+    </div>
+    <div style="display: flex; justify-content: space-between; margin: 4px 0;">
+        <span>Lab 3:</span>
+        <span style="color: red">₱1,000.00</span>
+    </div>
+    <div style="display: flex; justify-content: space-between; margin: 4px 0;">
+        <span>Lab 4:</span>
+        <span style="color: red">₱1,000.00</span>
+    </div>
+    <hr>
 </div>
 <p>Laboratory Fees</p>
 </div>
 <div class="account-card">
-<h3>Miscellaneous (Others)</h3>
-<div class="amount" style="color:#667eea; font-size: 1em;">Books: ₱1,500.00<br>ID: ₱500.00<br>Insurance: ₱1,500.00</div>
+    <h3>Miscellaneous</h3><div style="color: #667eea; font-size: 1em; width: 250px;">
+    <div style="display: flex; justify-content: space-between; margin: 4px 0;">
+    
+        <span>Books:</span>
+        <span style="color: red">₱2,000.00</span>
+    </div>
+    <div style="display: flex; justify-content: space-between; margin: 4px 0;">
+        <span>ID Lace:</span>
+        <span style="color: red">₱100.00</span>
+    </div>
+    <div style="display: flex; justify-content: space-between; margin: 4px 0;">
+        <span>SOG:</span>
+        <span style="color: red">₱80.00</span>
+    </div>
+    <div style="display: flex; justify-content: space-between; margin: 4px 0;">
+        <span>Download Payment:</span>
+        <span style="color: red">₱10.200</span>
+    </div>
+</div>
 </div>
 <div class="account-card">
 <h3>Penalties & Surcharges</h3>
@@ -9082,7 +9490,7 @@ Confirm Selection
 <img src="https://cdn.manilastandard.net/wp-content/uploads/2025/08/gcash-logo-300x300.png" alt="GCash" style="width: 150x; height: 150px; object-fit: contain; border-radius: 15px 15px 15px 15px">
 </div>
 <h3>GCash</h3>
-<p>Pay instantly using your GCash account</p>
+<p>Pay using your GCash account</p>
 <button class="pay-btn" id="pay-with-gcash">
 <i class="fas fa-wallet"></i> Pay with GCash
 </button>
@@ -9099,17 +9507,17 @@ Confirm Selection
 </div>
 <div class="payment-card">
 <div class="payment-icon">
-<img src="https://play-lh.googleusercontent.com/8ohEjlb3dzWnIjs7nMqEFiSEzadagMDe2SdnuRH9lI11AbmfsqdQb8bLN9_RvS8EUbE" alt="Palawan Pay" style="width: 170px; height: 170px; object-fit: contain; border-radius: 15px 15px 15px 15px">
+<img src="https://play-lh.googleusercontent.com/8ohEjlb3dzWnIjs7nMqEFiSEzadagMDe2SdnuRH9lI11AbmfsqdQb8bLN9_RvS8EUbE" alt="Palawan Pay" style="width: 170px; height: 150px; object-fit: contain; border-radius: 15px 15px 15px 15px">
 </div>
 <h3>Palawan Pay</h3>
-<p>Pay using your Palawan Pay account</p>
+<p>Palawan Pay account</p>
 <button class="pay-btn" style="background-color: #00AEEF;">
 <i class="fas fa-wallet"></i> Pay with Palawan
 </button>
 </div>
 <div class="payment-card">
 <div class="payment-icon">
-<img src="https://th.bing.com/th/id/R.a139b4b3b23e4421cbfca911fad00827?rik=ytNoTxpH1LFlLw&riu=http%3a%2f%2f2.bp.blogspot.com%2f-3qsjVBELep8%2fUfAeqa7iW0I%2fAAAAAAAABis%2fTUHbd3nC4ys%2fs640%2fcebuana_lhuillier-ph-logo.jpg&ehk=UGzmHBVLbVzndoRXA1dBEfGNZoUw5qLLX8nM57XjLEc%3d&risl=&pid=ImgRaw&r=0" alt="Cebuana Lhuillier" style="width: 200px; height: 170px; object-fit: contain; border-radius: 100px 100px 100px 100px">
+<img src="https://th.bing.com/th/id/R.a139b4b3b23e4421cbfca911fad00827?rik=ytNoTxpH1LFlLw&riu=http%3a%2f%2f2.bp.blogspot.com%2f-3qsjVBELep8%2fUfAeqa7iW0I%2fAAAAAAAABis%2fTUHbd3nC4ys%2fs640%2fcebuana_lhuillier-ph-logo.jpg&ehk=UGzmHBVLbVzndoRXA1dBEfGNZoUw5qLLX8nM57XjLEc%3d&risl=&pid=ImgRaw&r=0" alt="Cebuana Lhuillier" style="width: 200px; height: 150px; object-fit: contain; border-radius: 100px 100px 100px 100px">
 </div>
 <h3>Cebuana</h3>
 <p>Pay at Cebuana Lhuillier branches</p>
@@ -9119,7 +9527,7 @@ Confirm Selection
 </div>
 <div class="payment-card">
 <div class="payment-icon">
-<img src="https://promo.loadcentral.com.ph/wp-content/uploads/2017/03/mlhuillier.png" alt="M. Lhuillier" style="width: 200px; height: 200px; object-fit: contain; border-radius: 100px 100px 100px 100px">
+<img src="ML.jng" alt="M. Lhuillier" style="width: 200px; height: 150px; object-fit: contain; border-radius: 100px 100px 100px 100px">
 </div>
 <h3>M. Lhuillier</h3>
 <p>Pay at M. Lhuillier branches</p>
@@ -9129,7 +9537,7 @@ Confirm Selection
 </div>
 <div class="payment-card">
 <div class="payment-icon">
-<img src="https://cdn4.iconfinder.com/data/icons/simple-peyment-methods/512/bank_transfer-512.png" alt="Bank Transfer" style="width 200px; height:200px; object-fit: contain; border-radius: 10px 10px 10px 10px;">
+<img src="BanktoBank.jpg" alt="Bank Transfer" style="width: 200px; height:150px; object-fit: contain; border-radius: 10px 10px 10px 10px;">
 </div>
 <h3>Bank Transfer</h3>
 <p>Bank to bank transfer</p>
@@ -9139,7 +9547,7 @@ Confirm Selection
 </div>
 <div class="payment-card">
 <div class="payment-icon">
-<img src="https://static.vecteezy.com/system/resources/previews/015/805/745/original/credit-card-icon-isolated-credit-debit-card-bank-card-symbol-sign-free-vector.jpg" alt="Credit/Debit Card" style="width 200px; height:200px; object-fit: containg; border-radius: 100px 100px 100px 100px">
+<img src="VISA.IMG" alt="Credit/Debit Card" style="width: 200px; height:150x; object-fit: containg; border-radius: 100px 100px 100px 100px">
 </div>
 <h3>Credit/Debit Card</h3>
 <p>Visa/Master cards</p>
@@ -9267,7 +9675,7 @@ Confirm Selection
 
 <div class="card">
 <div class="card-header">
-<h2 class="card-title">4th Year (1st Trime)</h2>
+<h2 class="card-title">4th Year (1st Trim)</h2>
 </div>
 <div class="table-container">
 <table>
@@ -9342,168 +9750,112 @@ Confirm Selection
 </div>
 </div>
 
-<div class="card">
-<div class="card-header">
-<h2 class="card-title">3rd Year (3rd Trime)</h2>
-</div>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>Department</th>
-<th>Requirement</th>
-<th>Status</th>
-<th>Action</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Registrar's Office</td>
-<td>Academic Records Clearance</td>
-<td><span class="status-badge status-completed">Completed</span></td>
-<td><button class="view-action">View</button></td>
-</tr>
-<tr>
-<td>Accounting Office</td>
-<td>Accounting</td>
-<td><span class="status-badge status-completed">Completed</span></td>
-<td><button class="view-action">View</button></td>
-</tr>
-<tr>
-<td>Library</td>
-<td>Library Clearance</td>
-<td><span class="status-badge status-completed">Completed</span></td>
-<td><button class="view-action">View</button></td>
-</tr>
-<tr>
-<td>Guidance Office</td>
-<td>Exit Interview</td>
-<td><span class="status-badge status-completed">Completed</span></td>
-<td><button class="view-action">View</button></td>
-</tr>
-<tr>
-<td>Department of Chair</td>
-<td>Department Clearance</td>
-<td><span class="status-badge status-completed">Completed</span></td>
-<td><button class="view-action">View</button></td>
-</tr>
-<tr>
-<td>Student Affairs</td>
-<td>Organization Clearance</td>
-<td><span class="status-badge status-completed">Completed</span></td>
-<td><button class="view-action">View</button></td>
-</tr>
-<tr>
-<td>Laboratory</td>
-<td>Laboratory Equipment Clearance</td>
-<td><span class="status-badge status-completed">Completed</span></td>
-<td><button class="view-action">View</button></td>
-</tr>
-<tr>
-<td>Alumni Office</td>
-<td>Alumni Registration</td>
-<td><span class="status-badge status-completed">Completed</span></td>
-<td><button class="view-action">View</button></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+
 </div>
 
-<!-- Medical Section -->
-<div id="medical" class="content-section">
-<div class="breadcrumb">
-<a href="#" data-section="dashboard">Dashboard</a> <i class="fas fa-chevron-right"></i> <span>Wellness & Care</span>
-</div>
-<h1 class="page-title">Wellness & Care</h1>
-
-<div class="enrollment-container">
-<div class="enrollment-overview">
-
-<!-- Health History -->
-<div class="overview-card health-care-card" id="health-history-card" onclick="openHealthHistoryModal()" style="cursor: pointer; border: 2px solid #6c63ff; background: var(--card-bg); transition: all 0.3s ease; position: relative;">
-<div class="overview-icon" style="background: #6c63ff; color: white; align-self: center;">
-<i class="fas fa-heartbeat"></i>
-</div>
-<div class="overview-content">
-<h3 style="margin: 0 0 4px 0; font-size: 17px; font-weight: 700; color: var(--text-color);">Health History</h3>
-<h4 style="color: var(--text-color); margin: 0 0 8px 0; font-size: 17px; font-weight: 600;">Body Composition & Medical Records</h4>
-<p style="color: var(--gray); margin: 0; font-size: 13px; line-height: 1.5;">BMI computation, previous illness, and comprehensive health records.</p>
-</div>
-<div class="loading-overlay" id="health-history-loading" style="display: none;">
-<div style="text-align: center;">
-<div class="loading-spinner"></div>
-<div class="loading-text">Loading...</div>
-</div>
-</div>
-</div>
-
-<!-- Health Assessment -->
-<div class="overview-card health-care-card" id="physical-exam-card" onclick="openPhysicalExamModal()" style="cursor: pointer; border: 2px solid var(--success); background: var(--card-bg); transition: all 0.3s ease; position: relative;">
-<div class="overview-icon" style="background: var(--success); color: white; align-self: center;">
-<i class="fas fa-stethoscope"></i>
-</div>
-<div class="overview-content">
-<h4 style="color: var(--success); margin: 0 0 8px 0; font-size: 17px; font-weight: 700;">Health Assesment</h4>
-<p style="color: var(--gray); margin: 0; font-size: 13px; line-height: 1.5;">Student's General Physical Exam Results, Vital Signs, and Physician's Findings.</p>
-</div>
-<div class="loading-overlay" id="physical-exam-loading" style="display: none;">
-<div style="text-align: center;">
-<div class="loading-spinner"></div>
-<div class="loading-text">Loading...</div>
-</div>
-</div>
-</div>
-
-<!-- Radiology Report -->
-<div class="overview-card health-care-card" id="x-ray-card" onclick="openXRayModal()" style="cursor: pointer; border: 2px solid var(--accent); background: var(--card-bg); transition: all 0.3s ease; position: relative;">
-<div class="overview-icon" style="background: var(--accent); color: white; align-self: center;">
-<i class="fas fa-x-ray"></i>
-</div>
-<div class="overview-content">
-<h4 style="color: var(--accent); margin: 0 0 8px 0; font-size: 17px; font-weight: 700;">Radiology Report</h4>
-<p style="color: var(--gray); margin: 0; font-size: 13px; line-height: 1.5;">Repository of X-ray or imaging results required for medical clearance.</p>
-</div>
-<div class="loading-overlay" id="x-ray-loading" style="display: none;">
-<div style="text-align: center;">
-<div class="loading-spinner"></div>
-<div class="loading-text">Loading...</div>
-</div>
-</div>
-</div>
-
-<!-- Immunization Record -->
-<div class="overview-card health-care-card" id="vaccination-card" onclick="openVaccinationModal()" style="cursor: pointer; border: 2px solid var(--info); background: var(--card-bg); transition: all 0.3s ease; position: relative;">
-<div class="overview-icon" style="background: var(--info); color: white; align-self: center;">
-<i class="fas fa-syringe"></i>
-</div>
-<div class="overview-content">
-<h4 style="color: var(--info); margin: 0 0 8px 0; font-size: 17px; font-weight: 700;">Immunization Record</h4>
-<p style="color: var(--gray); margin: 0; font-size: 13px; line-height: 1.5;">Tracks vaccines received (e.g., Hepatitis B, MMR, COVID-19, etc.) with validity dates.</p>
-</div>
-<div class="loading-overlay" id="vaccination-loading" style="display: none;">
-<div style="text-align: center;">
-<div class="loading-spinner"></div>
-<div class="loading-text">Loading...</div>
-</div>
-</div>
-</div>
-
-<!-- MindCare Awareness -->
-<div class="overview-card health-care-card" id="mindcare-card" onclick="openMindcareModal()" style="cursor: pointer; border: 2px solid var(--warning); background: var(--card-bg); transition: all 0.3s ease; position: relative;">
-<div class="overview-icon" style="background: var(--warning); color: white; align-self: center;">
-<i class="fas fa-brain"></i>
-</div>
-<div class="overview-content">
-<h3 style="margin: 0 0 4px 0; font-size: 17px; font-weight: 700; color: var(--text-color);">MindCare Awareness</h3>
-<h4 style="color: var(--text-color); margin: 0 0 8px 0; font-size: 17px; font-weight: 600;">Psychological/Mental Wellness</h4>
-<p style="color: var(--gray); margin: 0; font-size: 13px; line-height: 1.5;">Emotional wellness support and mental health resources for student well-being.</p>
-</div>
-<div class="loading-overlay" id="mindcare-loading" style="display: none;">
-<div style="text-align: center;">
-<div class="loading-spinner"></div>
-<div class="loading-text">Loading...</div>
+            <!-- Medical Section -->
+            <div id="medical" class="content-section">
+            <div class="breadcrumb">
+            <a href="#" data-section="dashboard">Dashboard</a> <i class="fas fa-chevron-right"></i> <span>Wellness & Care</span>
+            </div>
+            <h1 class="page-title">Wellness & Care</h1>
+            <div class="enrollment-container">
+            <div class="enrollment-overview">
+            <!-- Health History -->
+            <div class="overview-card health-care-card" id="health-history-card" onclick="openHealthHistoryModal()" style="cursor: pointer; border: 2px solid #6c63ff; background: var(--card-bg); transition: all 0.3s ease; position: relative;">
+            <div class="overview-icon" style="background: #6c63ff; color: white; align-self: center;">
+            <i class="fas fa-heartbeat"></i>
+            </div>
+            <div class="overview-content">
+            <h3 style="margin: 0 0 4px 0; font-size: 17px; font-weight: 700; color: var(--text-color);">Health History</h3>
+            <h4 style="color: var(--text-color); margin: 0 0 8px 0; font-size: 17px; font-weight: 600;">Body Composition & Medical Records</h4>
+            <p style="color: var(--gray); margin: 0; font-size: 13px; line-height: 1.5;">BMI computation, previous illness, and comprehensive health records.</p>
+            </div>
+            <div class="loading-overlay" id="health-history-loading" style="display: none;">
+            <div style="text-align: center;">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Loading...</div>
+            </div>
+            </div>
+            </div>
+            <!-- Health Assessment -->
+            <div class="overview-card health-care-card" id="physical-exam-card" onclick="openPhysicalExamModal()" style="cursor: pointer; border: 2px solid var(--success); background: var(--card-bg); transition: all 0.3s ease; position: relative;">
+            <div class="overview-icon" style="background: var(--success); color: white; align-self: center;">
+            <i class="fas fa-stethoscope"></i>
+            </div>
+            <div class="overview-content">
+            <h4 style="color: var(--success); margin: 0 0 8px 0; font-size: 17px; font-weight: 700;">Health Assessment</h4>
+            <p style="color: var(--gray); margin: 0; font-size: 13px; line-height: 1.5;">Student's General Physical Exam Results, Vital Signs, and Physician's Findings.</p>
+            </div>
+            <div class="loading-overlay" id="physical-exam-loading" style="display: none;">
+            <div style="text-align: center;">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Loading...</div>
+            </div>
+            </div>
+            </div>
+            <!-- Substance Screening -->
+            <div class="overview-card health-care-card" id="drug-test-card" onclick="openDrugTestModal()" style="cursor: pointer; border: 2px solid var(--primary); background: var(--card-bg); transition: all 0.3s ease; position: relative;">
+            <div class="overview-icon" style="background: var(--primary); color: white; align-self: center;">
+            <i class="fas fa-vial"></i>
+            </div>
+            <div class="overview-content">
+            <h4 style="color: var(--primary); margin: 0 0 8px 0; font-size: 17px; font-weight: 700;">Substance Screening</h4>
+            <p style="color: var(--gray); margin: 0; font-size: 13px; line-height: 1.5;">Records of Drug Testing results and compliance with School/CHED</p>
+            </div>
+            <div class="loading-overlay" id="drug-test-loading" style="display: none;">
+            <div style="text-align: center;">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Loading...</div>
+            </div>
+            </div>
+            </div>
+            <!-- Radiology Report -->
+            <div class="overview-card health-care-card" id="x-ray-card" onclick="openXRayModal()" style="cursor: pointer; border: 2px solid var(--accent); background: var(--card-bg); transition: all 0.3s ease; position: relative;">
+            <div class="overview-icon" style="background: var(--accent); color: white; align-self: center;">
+            <i class="fas fa-x-ray"></i>
+            </div>
+            <div class="overview-content">
+            <h4 style="color: var(--accent); margin: 0 0 8px 0; font-size: 17px; font-weight: 700;">Radiology Report</h4>
+            <p style="color: var(--gray); margin: 0; font-size: 13px; line-height: 1.5;">Repository of X-ray or imaging results required for medical clearance.</p>
+            </div>
+            <div class="loading-overlay" id="x-ray-loading" style="display: none;">
+            <div style="text-align: center;">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Loading...</div>
+            </div>
+            </div>
+            </div>
+            <!-- Immunization Record -->
+            <div class="overview-card health-care-card" id="vaccination-card" onclick="openVaccinationModal()" style="cursor: pointer; border: 2px solid var(--info); background: var(--card-bg); transition: all 0.3s ease; position: relative;">
+            <div class="overview-icon" style="background: var(--info); color: white; align-self: center;">
+            <i class="fas fa-syringe"></i>
+            </div>
+            <div class="overview-content">
+            <h4 style="color: var(--info); margin: 0 0 8px 0; font-size: 17px; font-weight: 700;">Immunization Record</h4>
+            <p style="color: var(--gray); margin: 0; font-size: 13px; line-height: 1.5;">Tracks vaccines received (e.g., Hepatitis B, MMR, COVID-19, etc.) with validity dates.</p>
+            </div>
+            <div class="loading-overlay" id="vaccination-loading" style="display: none;">
+            <div style="text-align: center;">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Loading...</div>
+            </div>
+            </div>
+            </div>
+            <!-- MindCare Awareness -->
+            <div class="overview-card health-care-card" id="mindcare-card" onclick="openMindcareModal()" style="cursor: pointer; border: 2px solid var(--warning); background: var(--card-bg); transition: all 0.3s ease; position: relative;">
+            <div class="overview-icon" style="background: var(--warning); color: white; align-self: center;">
+            <i class="fas fa-brain"></i>
+            </div>
+            <div class="overview-content">
+            <h3 style="margin: 0 0 4px 0; font-size: 17px; font-weight: 700; color: var(--text-color);">MindCare Awareness</h3>
+            <h4 style="color: var(--text-color); margin: 0 0 8px 0; font-size: 17px; font-weight: 600;">Psychological/Mental Wellness</h4>
+            <p style="color: var(--gray); margin: 0; font-size: 13px; line-height: 1.5;">Emotional wellness support and mental health resources for student well-being.</p>
+            </div>
+            <div class="loading-overlay" id="mindcare-loading" style="display: none;">
+            <div style="text-align: center;">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Loading...</div>
 </div>
 </div>
 </div>
@@ -9540,7 +9892,7 @@ box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 <div style="display: flex; align-items: center; gap: 15px; padding: 15px; border-radius: var(--border-radius); background: rgba(40, 167, 69, 0.5); border: 3px solid #28a745; box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);">
 <i class="fas fa-check-circle" style="color: #4ade80; font-size: 24px;"></i>
 <div style="flex: 1;">
-<h5 style="margin: 0; color: var(--text-color); font-weight: 700;">First Year Drug Test</h5>
+<h5 style="margin: 0; color: var(--text-color); font-weight: 700;">1st Year Drug Test</h5>
 <small style="color: var(--text-color); font-weight: 600; opacity: 0.95;">Completed: September 15, 2022</small>
 </div>
 <span class="status-badge status-completed">Completed</span>
@@ -11114,20 +11466,6 @@ Submit anonymously (Your identity will be protected)
 </div>
 </div>
 
-<div class="settings-section">
-<h3>Privacy Settings</h3>
-<div class="settings-option">
-<div>
-<strong>Profile Visibility</strong>
-<p>Control who can see your profile information</p>
-</div>
-<select class="form-control" style="width: 150px;">
-<option>Students Only</option>
-<option>Faculty Only</option>
-<option>Everyone</option>
-</select>
-</div>
-
 
 <div class="settings-section">
 <h3>Security</h3>
@@ -11227,7 +11565,7 @@ GCASH QR
 <div class="document-header">
 <h3>ICCT Colleges Inc.</h3>
 <p>Official Registration Form</p>
-<p>School Year 2025-2026 • First Term</p>
+<p>School Year 2025-2026 • 1st Term</p>
 </div>
 
 <div class="document-content">
@@ -11321,7 +11659,7 @@ GCASH QR
 <div class="document-header">
 <h3>ICCT Colleges Inc.</h3>
 <p>Tentative Assessment Form</p>
-<p>School Year 2025-2026 • First Term</p>
+<p>School Year 2025-2026 • 1st Term</p>
 </div>
 
 <div class="document-content">
@@ -11413,7 +11751,7 @@ GCASH QR
 <div class="document-header">
 <h3>ICCT Colleges Inc.</h3>
 <p>Student Ledger</p>
-<p>School Year 2025-2026 • First Term</p>
+<p>School Year 2025-2026 • 1st Term</p>
 </div>
 
 <div class="document-content">
@@ -11640,6 +11978,41 @@ function openMindcareModal() {
         loading.style.display = 'none';
         modal.style.display = 'flex';
     }, 1500);
+}
+
+// Course Selection Checkboxes Logic
+document.addEventListener('DOMContentLoaded', function() {
+    const checkbox = document.getElementById('course-select');
+    
+    // Optional: Add any logic here if needed
+    checkbox.addEventListener('change', function() {
+        // For example, highlight or something
+        console.log('Course selected:', this.checked);
+    });
+});
+
+// Function to select course by clicking the row
+function selectCourse() {
+    const row = document.querySelector('.course-info-row');
+    row.classList.toggle('selected');
+}
+
+// Function to select field by clicking the field-value
+function selectField(element) {
+    element.classList.toggle('selected-field');
+    const row = element.closest('.course-info-row');
+    const fields = row.querySelectorAll('.course-field');
+    const unitsField = fields[3]; // 4th field is Units
+    const unitsSpan = unitsField.querySelector('.field-value');
+    const units = parseInt(unitsSpan.textContent) || 0;
+    const totalElement = document.getElementById('total-units');
+    let total = parseInt(totalElement.textContent) || 0;
+    if (element.classList.contains('selected-field')) {
+        total += units;
+    } else {
+        total -= units;
+    }
+    totalElement.textContent = total;
 }
 
 // Track downloads for each report
@@ -12031,6 +12404,31 @@ if (mainContentEl) mainContentEl.classList.add('with-fixed-theme');
 // ignore
 }
 })();
+
+// Course checkboxes logic
+const courseCheckboxes = document.querySelectorAll('.course-info-row input[type="checkbox"]');
+
+courseCheckboxes.forEach((checkbox) => {
+    checkbox.addEventListener('change', function() {
+        // For mutual exclusion: uncheck all others
+        courseCheckboxes.forEach(cb => {
+            if (cb !== this) cb.checked = false;
+        });
+
+        // Update total units
+        const totalElement = document.getElementById('total-units');
+        let total = 0;
+        courseCheckboxes.forEach(cb => {
+            if (cb.checked) {
+                const index = Array.from(courseCheckboxes).indexOf(cb);
+                const unitsSpans = document.querySelectorAll('.course-info-row .course-field:nth-child(4) .field-value');
+                const units = parseInt(unitsSpans[index].textContent) || 0;
+                total += units;
+            }
+        });
+        totalElement.textContent = total;
+    });
+});
 
 // Notification modal functionality
 const notificationBtn = document.getElementById('notification-btn');
@@ -14550,3 +14948,4 @@ document.addEventListener('keydown', function(e) {
 
 </body>
 </html>
+ 
